@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+* {
+  font-family: 'Rubik', Arial, sans-serif;
+  color: #303030;
+  transition: all 0.1s ease-out;
+}
+
+/* INSETS */
+/* box-shadow:0px 0px 0px 1px #0e131809 inset; */
+
+/* BUTTON FORMATTING */
+.button {
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+
+  /* filter:drop-shadow(0 0 2px #e5e5e5); */
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button.primary {
+  color: #fefefe;
+  background-color: #09997F;
+}
+
+.button.secondary {
+  background-color: #e5e5e5;
+}
+
+.button.primary:hover {
+  /* filter:drop-shadow(0 0 4px #e5e5e5) */
+  background-color:#09997fdc
+  /* filter: brightness(105%); */
+  /* filter: brightness(105%); */
+}
+
+.button.secondary:hover {
+  /* filter:drop-shadow(0 0 4px #e5e5e5) */
+  background-color:#dddddd
+  /* filter: brightness(95%) */
+}
+
+
+/* false stuff */
+label, button#create-task-submit {
+  display: block;
+  margin-top: 1em;
+}
+  
+/* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */

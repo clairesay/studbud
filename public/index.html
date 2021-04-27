@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello, world!</title>
-  <meta charset="UTF-8" />
+  <title>StudBud</title>
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link rel="icon" href="img/favicon.png">
+  <!-- CSS reset and stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+  <link rel="icon" href="images/favicon.svg">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>Server running officially!</p>
+  <header>
+    <img src="images/logo.svg">    
+    <button id="new-task" class="button primary">+ Create task</button>
+    <button id="new-column" class="button secondary">Add column</button>
+    <button id="new-content" class="button primary">+ Add content</button>
+    <button id="new-group" class="button secondary">Create group</button>
+  </header>
+    <section id="task"></section>
+    <section id="content"></section>
+
+    <form id="create-task-form">
+        <label for="taskName">Task Name</label>
+        <input type="text" name="taskName" placeholder="What's the task called?"></input>
+
+        <label for="taskDescription">Task Description</label>
+        <input type="text" name="taskDescription" placeholder="How can I complete this task?"></input>
+
+        <label for="taskDueDate">Due Date</label>
+        <input type="date" name="taskDueDate"></input>
+
+        <label for="taskPriorityRating">Priority Level</label>
+        <input type="radio" name="taskPriorityRating" value="Low">Low</input>
+        <input type="radio" name="taskPriorityRating" value="Mid">Mid</input>
+        <input type="radio" name="taskPriorityRating" value="High">High</input>
+
+        <label for="taskPriorityRating">Estimated Time to Complete</label>
+        <input type="text" name="taskEstimatedTime"></input>
+
+        <label for="taskPriorityRating">Completion Status</label>
+        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
+        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input>
+
+        <button id="create-task-submit" class="button" type="submit">Submit</button>
+        </form>
+        <article id="task-display">
+
+        <!-- This is where we populate all the tasks -->
+        </article>
+    <script src="js/script.js"></script>
 </body>
 </html>
