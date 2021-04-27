@@ -13,22 +13,30 @@
 </head>
 <body>
   <header>
-    <img src="images/logo.svg">    
-    <article class="button-container">
+    <img id="home-link" src="images/logo.svg">    
+    <article id="task-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
-      <button id="new-task" class="button primary">Create task</button>
-      <button id="new-column" class="button secondary">Add column</button>
+      <button id="new-task" class="button primary create">Create task</button>
+      <button id="new-column" class="button secondary create">Add column</button>
     </article>
-    <article class="button-container">
+    <article id="content-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
-      <button id="new-content" class="button primary">Add content</button>
-      <button id="new-group" class="button secondary">Create group</button>
+      <button id="new-content" class="button primary create">Add content</button>
+      <button id="new-group" class="button secondary create">Create group</button>
     </header>
   </header>
-    <section id="task"></section>
-    <section id="content"></section>
+  
 
-    <form id="create-task-form">
+  <main>
+    <button id="content-tab" class="tab">Content</button>
+    <button id="tasks-tab" class="tab">Tasks</button>
+    <section id="content"></section>
+    <section id="tasks"></section>
+    
+  </main>
+
+
+    <!-- <form id="create-task-form">
         <label for="taskName">Task Name</label>
         <input type="text" name="taskName" placeholder="What's the task called?"></input>
 
@@ -54,8 +62,8 @@
         </form>
         <article id="task-display">
 
-        <!-- This is where we populate all the tasks -->
         </article>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> -->
+    <script src="js/main.js"></script>
 </body>
 </html>
