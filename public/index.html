@@ -14,10 +14,16 @@
 <body>
   <header>
     <img src="images/logo.svg">    
-    <button id="new-task" class="button primary">+ Create task</button>
-    <button id="new-column" class="button secondary">Add column</button>
-    <button id="new-content" class="button primary">+ Add content</button>
-    <button id="new-group" class="button secondary">Create group</button>
+    <article class="button-container">
+      <button class="button primary icon"><img src="images/add.svg"></button>
+      <button id="new-task" class="button primary">Create task</button>
+      <button id="new-column" class="button secondary">Add column</button>
+    </article>
+    <article class="button-container">
+      <button class="button primary icon"><img src="images/add.svg"></button>
+      <button id="new-content" class="button primary">Add content</button>
+      <button id="new-group" class="button secondary">Create group</button>
+    </header>
   </header>
     <section id="task"></section>
     <section id="content"></section>
@@ -44,7 +50,7 @@
         <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
         <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input>
 
-        <button id="create-task-submit" class="button" type="submit">Submit</button>
+        <button id="create-task-submit" class="button primary" type="submit">Submit</button>
         </form>
         <article id="task-display">
 

@@ -8,6 +8,21 @@
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
 
+/* HEADER */
+header {
+  /* height: 72px; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 12px 12px 36px
+}
+
+header .button-container {
+  display: flex;
+}
+
 /* BUTTON FORMATTING */
 .button {
   padding: 12px 18px;
@@ -15,7 +30,14 @@
   font-weight: 500;
   font-size: 14px;
 
-  /* filter:drop-shadow(0 0 2px #e5e5e5); */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* adding a bit of space between the buttons */
+.button:not(:last-child) {
+  margin-right: 12px;
 }
 
 .button:hover {
@@ -32,16 +54,16 @@
 }
 
 .button.primary:hover {
-  /* filter:drop-shadow(0 0 4px #e5e5e5) */
   background-color:#09997fdc
-  /* filter: brightness(105%); */
-  /* filter: brightness(105%); */
 }
 
 .button.secondary:hover {
-  /* filter:drop-shadow(0 0 4px #e5e5e5) */
   background-color:#dddddd
-  /* filter: brightness(95%) */
+}
+
+.button.icon {
+  width: 48px;
+  height: 48px;
 }
 
 
@@ -52,3 +74,7 @@ label, button#create-task-submit {
 }
   
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
+
+@media only screen and (max-width: 600px) {
+  /* BUTTON SIZE */
+}
