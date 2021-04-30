@@ -64,6 +64,8 @@ table {
 /* BODY */
 body {
   background-color: #fefefe;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 /* HEADER */
@@ -101,7 +103,6 @@ main {
 }
 
 #tasks {
-  background-color: purple;
   padding: 36px;
   overflow: scroll hidden;
 }
@@ -163,18 +164,30 @@ div.column {
 div.column div.title {
   z-index: 2;
   background-color: #fafafa;
-  padding: 16px;
+  padding: 12px 14px;
   border-radius: 18px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-div.column div.title h3 {
+div.column div.title h3, div.column div.title input {
   font-weight: 500;
   font-size: 18px;
   color: #909090;
 }
+div.column div.title input {
+  width: auto;
+  background-color: transparent;
+  border: none;
+  padding: 2px;
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+}
+div.column div.title input.column-name:hover {
+  cursor: text;
+}
 div.column div.cards {
-  width: 100%;
+  width: calc(100% - 24px);
   height: calc(100% - 60px);
   margin-top: 14px;
   overflow-y: scroll;

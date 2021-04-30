@@ -1,0 +1,2 @@
+document.querySelectorAll(".total").forEach((function(e){var t=e.parentElement.nextElementSibling.querySelectorAll("div.cards .card");e.textContent=t.length}));
+//# sourceMappingURL=index.HASH_REF_d3333bbcbc03c96aa58e797913c1f890.js.map

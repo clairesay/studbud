@@ -1,0 +1,25 @@
+// SETTING THE TOTAL NUMBER OF CARDS IN EACH COLUMN FOR DISPLAY
+
+// initialising the total for each of the elements
+var total = document.querySelectorAll('.total'),
+    card = document.querySelectorAll('.card')
+
+// for each of them
+function countCards(total) {
+    total.forEach(function(object) {
+        // set the textcontent of total to be the number of cards in the respective column
+        var cards = object.parentElement.nextElementSibling.querySelectorAll('div.cards .card');
+        object.textContent = cards.length;
+    })
+}
+
+card.forEach(function(object) {
+    object.addEventListener('click', function(object) {
+        // set the textcontent of total to be the number of cards in the respective column
+        var cards = object.parentElement.nextElementSibling.querySelectorAll('div.cards .card');
+        object.textContent = cards.length;
+    })
+})
+
+
+
