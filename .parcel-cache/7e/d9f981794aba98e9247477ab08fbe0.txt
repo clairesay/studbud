@@ -1,4 +1,4 @@
-21290
+21325
 57C:\Users\clair\studbud\node_modules\color-convert\LICENSE121436361000000000 0
 80C:\Users\clair\studbud\node_modules\@nodelib\fs.stat\out\providers\async.spec.js121436361000000000 0
 54C:\Users\clair\studbud\node_modules\uniqs\package.json132642182942661712 0
@@ -21,9 +21,9 @@
 99C:\Users\clair\studbud\node_modules\postcss-normalize-unicode\node_modules\postcss\lib\warn-once.js121436361000000000 0
 121C:\Users\clair\studbud\node_modules\postcss-normalize-unicode\node_modules\chalk\node_modules\supports-color\package.json132642182956793929 0
 98C:\Users\clair\studbud\node_modules\postcss-normalize-url\node_modules\postcss\lib\previous-map.js121436361000000000 0
-45C:\Users\clair\studbud\public\js\draggable.js132642513846409552 0
+45C:\Users\clair\studbud\public\js\draggable.js132642544168247266 0
 71C:\Users\clair\studbud\node_modules\core-js\features\array\last-item.js121436361000000000 0
-40C:\Users\clair\studbud\public\index.html132642520261194322 0
+40C:\Users\clair\studbud\public\index.html132642580289462239 0
 51C:\Users\clair\studbud\node_modules\request\LICENSE121436361000000000 0
 69C:\Users\clair\studbud\node_modules\regenerator-transform\lib\meta.js121436361000000000 0
 75C:\Users\clair\studbud\node_modules\core-js\internals\collection-add-all.js121436361000000000 0
@@ -32,7 +32,7 @@
 79C:\Users\clair\studbud\node_modules\stylehacks\node_modules\postcss\lib\list.js121436361000000000 0
 58C:\Users\clair\studbud\node_modules\react-refresh\babel.js121436361000000000 0
 77C:\Users\clair\studbud\node_modules\url\node_modules\punycode\LICENSE-MIT.txt130530063320000000 0
-27C:\Users\clair\studbud\dist132642523037004708 1
+27C:\Users\clair\studbud\dist132642580290764586 1
 60C:\Users\clair\studbud\node_modules\abortcontroller-polyfill132642182971814335 1
 50C:\Users\clair\studbud\node_modules\ncp\.npmignore130614920630000000 0
 60C:\Users\clair\studbud\node_modules\on-finished\package.json132636175985101932 0
@@ -86,10 +86,6 @@
 43C:\Users\clair\studbud\node_modules\globals132642182967954081 1
 79C:\Users\clair\studbud\node_modules\uncss\node_modules\postcss\lib\postcss.d.ts121436361000000000 0
 60C:\Users\clair\studbud\node_modules\sshpk\lib\certificate.js131837759770000000 0
-42C:\Users\clair\studbud\node_modules\semver132642182951936941 1
-73C:\Users\clair\studbud\node_modules\json-parse-better-errors\CHANGELOG.md121436361000000000 0
-70C:\Users\clair\studbud\node_modules\highlight.js\lib\languages\stan.js121436361000000000 0
-70C:\Users\clair\studbud\node_modules\request\node_modules\qs\dist\qs.js131698875630000000 0
 57C:\Users\clair\studbud\node_modules\node-forge\lib\xhr.js121436361000000000 0
 35C:\Users\clair\studbud\node_modules132642193887193319 1
 70C:\Users\clair\studbud\node_modules\cssnano-util-raw-cache\LICENSE-MIT121436361000000000 0
@@ -188,7 +184,7 @@
 55C:\Users\clair\studbud\node_modules\lodash\_castRest.js121436361000000000 0
 59C:\Users\clair\studbud\node_modules\ipaddr.js\ipaddr.min.js121436361000000000 0
 53C:\Users\clair\studbud\node_modules\binary-extensions132642187414753294 1
-32C:\Users\clair\studbud\public\js132642513208750428 1
+32C:\Users\clair\studbud\public\js132642561463147620 1
 72C:\Users\clair\studbud\node_modules\css-tree\lib\syntax\scope\default.js121436361000000000 0
 79C:\Users\clair\studbud\node_modules\css-tree\lib\syntax\node\DeclarationList.js121436361000000000 0
 101C:\Users\clair\studbud\node_modules\postcss-modules-extract-imports\node_modules\ansi-styles\index.js131644568170000000 0
@@ -240,11 +236,17 @@
 63C:\Users\clair\studbud\node_modules\postcss-reduce-initial\dist132642182856706219 1
 78C:\Users\clair\studbud\node_modules\postcss-normalize-repeat-style\LICENSE-MIT121436361000000000 0
 54C:\Users\clair\studbud\node_modules\yallist\yallist.js121436361000000000 0
-46C:\Users\clair\studbud\public\scss\styles.scss132642522852939735 0
+46C:\Users\clair\studbud\public\scss\styles.scss132642574290396765 0
 55C:\Users\clair\studbud\node_modules\is-wsl\package.json132642182965410876 0
 42C:\Users\clair\studbud\node_modules\for-in132642182968034879 1
 58C:\Users\clair\studbud\node_modules\cssnano-util-get-match132642182969530900 1
 88C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\nodes\HTMLMenuElement-impl.js121436361000000000 0
+117C:\Users\clair\studbud\node_modules\postcss-reduce-transforms\node_modules\chalk\node_modules\supports-color\index.js131792129460000000 0
+54C:\Users\clair\studbud\node_modules\lodash\overSome.js121436361000000000 0
+80C:\Users\clair\studbud\node_modules\postcss-merge-rules\node_modules\postcss\lib132642182863175827 1
+61C:\Users\clair\studbud\node_modules\terser\dist\bundle.min.js121436361000000000 0
+64C:\Users\clair\studbud\node_modules\fast-deep-equal\package.json132642182967944097 0
+42C:\Users\clair\studbud\public\js\kanban.js132642579080578946 0
 73C:\Users\clair\studbud\node_modules\url\node_modules\querystring\index.js130069921000000000 0
 68C:\Users\clair\studbud\node_modules\core-js\internals\math-fround.js121436361000000000 0
 102C:\Users\clair\studbud\node_modules\@parcel\transformer-html\node_modules\posthtml-parser\package.json132642182968832744 0
@@ -1413,10 +1415,10 @@
 50C:\Users\clair\studbud\node_modules\mime\README.md131560426600000000 0
 82C:\Users\clair\studbud\node_modules\regenerate-unicode-properties\Script\Thaana.js121436361000000000 0
 39C:\Users\clair\studbud\node_modules\url132642182942661712 1
-42C:\Users\clair\studbud\node_modules\mkdirp132642182963894931 1
+111C:\Users\clair\studbud\node_modules\stylehacks\node_modules\postcss-selector-parser\dist\selectors\attribute.js121436361000000000 0
 104C:\Users\clair\studbud\node_modules\@babel\generator\node_modules\source-map\lib\source-map-generator.js131411568470000000 0
 56C:\Users\clair\studbud\node_modules\lodash\_baseUnary.js121436361000000000 0
-111C:\Users\clair\studbud\node_modules\stylehacks\node_modules\postcss-selector-parser\dist\selectors\attribute.js121436361000000000 0
+42C:\Users\clair\studbud\node_modules\mkdirp132642182963894931 1
 60C:\Users\clair\studbud\node_modules\symbol-tree\package.json132642182946072586 0
 88C:\Users\clair\studbud\node_modules\postcss-normalize-url\node_modules\has-flag\index.js131593941750000000 0
 65C:\Users\clair\studbud\node_modules\ncp\test\regular-fixtures\src132642182880289891 1
@@ -1811,7 +1813,7 @@
 108C:\Users\clair\studbud\node_modules\postcss-normalize-unicode\node_modules\postcss\lib\terminal-highlight.js121436361000000000 0
 104C:\Users\clair\studbud\node_modules\postcss-normalize-url\node_modules\postcss\docs\guidelines\runner.md121436361000000000 0
 46C:\Users\clair\studbud\node_modules\har-schema132642182967944097 1
-50C:\Users\clair\studbud\dist\index.0c72b7db.css.map132642523036984760 0
+50C:\Users\clair\studbud\dist\index.0c72b7db.css.map132642580290733963 0
 45C:\Users\clair\studbud\node_modules\has-value132642182965540533 1
 70C:\Users\clair\studbud\node_modules\highlight.js\lib\languages\lisp.js121436361000000000 0
 100C:\Users\clair\studbud\node_modules\@parcel\transformer-posthtml\node_modules\dom-serializer\LICENSE121436361000000000 0
@@ -2334,10 +2336,10 @@
 72C:\Users\clair\studbud\node_modules\@babel\traverse\lib\scope\binding.js121012626000000000 0
 67C:\Users\clair\studbud\node_modules\which-typed-array\test\index.js121436361000000000 0
 59C:\Users\clair\studbud\node_modules\snapdragon\package.json132642182942522090 0
-66C:\Users\clair\studbud\node_modules\@babel\parser\lib\index.js.map121012626000000000 0
-48C:\Users\clair\studbud\node_modules\postcss-calc132642182942641764 1
-85C:\Users\clair\studbud\node_modules\caniuse-lite\data\features\css-descendant-gtgt.js121436361000000000 0
 82C:\Users\clair\studbud\node_modules\postcss-ordered-values\dist\rules\boxShadow.js121436361000000000 0
+66C:\Users\clair\studbud\node_modules\@babel\parser\lib\index.js.map121012626000000000 0
+85C:\Users\clair\studbud\node_modules\caniuse-lite\data\features\css-descendant-gtgt.js121436361000000000 0
+48C:\Users\clair\studbud\node_modules\postcss-calc132642182942641764 1
 70C:\Users\clair\studbud\node_modules\css-tree\lib\syntax\scope\index.js121436361000000000 0
 46C:\Users\clair\studbud\node_modules\micromatch132642182944267417 1
 90C:\Users\clair\studbud\node_modules\react-refresh\cjs\react-refresh-runtime.development.js121436361000000000 0
@@ -2756,6 +2758,10 @@
 74C:\Users\clair\studbud\node_modules\uncss\node_modules\ansi-styles\license131408182550000000 0
 62C:\Users\clair\studbud\node_modules\es-abstract\2018\ToInt8.js121436361000000000 0
 48C:\Users\clair\studbud\node_modules\run-parallel132642182952285980 1
+42C:\Users\clair\studbud\node_modules\semver132642182951936941 1
+73C:\Users\clair\studbud\node_modules\json-parse-better-errors\CHANGELOG.md121436361000000000 0
+70C:\Users\clair\studbud\node_modules\highlight.js\lib\languages\stan.js121436361000000000 0
+70C:\Users\clair\studbud\node_modules\request\node_modules\qs\dist\qs.js131698875630000000 0
 67C:\Users\clair\studbud\node_modules\ncp\test\regular-fixtures\src\d130614920630000000 0
 40C:\Users\clair\studbud\node_modules\send132636175985308741 1
 60C:\Users\clair\studbud\node_modules\es-abstract\5\ToInt32.js121436361000000000 0
@@ -4936,11 +4942,6 @@
 43C:\Users\clair\studbud\node_modules\ret\lib132642182865275863 1
 74C:\Users\clair\studbud\node_modules\iconv-lite\encodings\tables\cp936.json130976329310000000 0
 56C:\Users\clair\studbud\node_modules\terser\dist\.gitkeep121436361000000000 0
-117C:\Users\clair\studbud\node_modules\postcss-reduce-transforms\node_modules\chalk\node_modules\supports-color\index.js131792129460000000 0
-54C:\Users\clair\studbud\node_modules\lodash\overSome.js121436361000000000 0
-80C:\Users\clair\studbud\node_modules\postcss-merge-rules\node_modules\postcss\lib132642182863175827 1
-61C:\Users\clair\studbud\node_modules\terser\dist\bundle.min.js121436361000000000 0
-64C:\Users\clair\studbud\node_modules\fast-deep-equal\package.json132642182967944097 0
 92C:\Users\clair\studbud\node_modules\@parcel\scope-hoisting\node_modules\globals\globals.json121436361000000000 0
 69C:\Users\clair\studbud\node_modules\postcss-selector-parser\dist\util132642182854859363 1
 57C:\Users\clair\studbud\node_modules\json-schema\README.md131173448000000000 0
@@ -5047,6 +5048,7 @@
 69C:\Users\clair\studbud\node_modules\svgo\plugins\removeHiddenElems.js121436361000000000 0
 98C:\Users\clair\studbud\node_modules\postcss-minify-gradients\node_modules\postcss\lib\warn-once.js121436361000000000 0
 78C:\Users\clair\studbud\node_modules\icss-utils\node_modules\chalk\package.json132642182966737334 0
+46C:\Users\clair\studbud\dist\index.82838881.css132642567210634724 0
 66C:\Users\clair\studbud\node_modules\svgo\plugins\removeMetadata.js121436361000000000 0
 81C:\Users\clair\studbud\node_modules\postcss-modules\node_modules\has-flag\license131408182550000000 0
 58C:\Users\clair\studbud\node_modules\signal-exit\signals.js121436361000000000 0
@@ -5178,7 +5180,7 @@
 72C:\Users\clair\studbud\node_modules\@babel\traverse\lib\path\comments.js121012626000000000 0
 68C:\Users\clair\studbud\node_modules\es-abstract\2020\BigInt\index.js121436361000000000 0
 59C:\Users\clair\studbud\node_modules\svgo\lib\svgo\js2svg.js121436361000000000 0
-46C:\Users\clair\studbud\dist\index.0c72b7db.css132642523036933432 0
+46C:\Users\clair\studbud\dist\index.0c72b7db.css132642580290694035 0
 60C:\Users\clair\studbud\node_modules\svgo\lib\svgo\plugins.js121436361000000000 0
 82C:\Users\clair\studbud\node_modules\snapdragon\node_modules\source-map\lib\util.js131369414910000000 0
 58C:\Users\clair\studbud\node_modules\svgo\lib\svgo\tools.js121436361000000000 0
@@ -5862,6 +5864,7 @@
 83C:\Users\clair\studbud\node_modules\postcss-normalize-timing-functions\package.json132642182950002084 0
 80C:\Users\clair\studbud\node_modules\highlight.js\styles\atelier-plateau-dark.css121436361000000000 0
 56C:\Users\clair\studbud\node_modules\globals\globals.json121436361000000000 0
+45C:\Users\clair\studbud\dist\index.eec6f77d.js132642577705133253 0
 88C:\Users\clair\studbud\node_modules\snapdragon\node_modules\source-map\lib\base64-vlq.js131369414910000000 0
 101C:\Users\clair\studbud\node_modules\postcss-modules-extract-imports\node_modules\postcss\README-cn.md121436361000000000 0
 84C:\Users\clair\studbud\node_modules\snapdragon\node_modules\source-map\lib\base64.js131369414910000000 0
@@ -6532,6 +6535,7 @@
 91C:\Users\clair\studbud\node_modules\postcss-minify-params\node_modules\postcss\package.json132642182950221497 0
 76C:\Users\clair\studbud\node_modules\@babel\core\node_modules\ms\package.json132642182938283422 0
 104C:\Users\clair\studbud\node_modules\postcss-normalize-repeat-style\node_modules\postcss\lib\stringify.js121436361000000000 0
+49C:\Users\clair\studbud\dist\index.f4c799d8.js.map132642574462580660 0
 103C:\Users\clair\studbud\node_modules\postcss-normalize-display-values\node_modules\color-name\.npmignore130800019150000000 0
 67C:\Users\clair\studbud\node_modules\@parcel\plugin\lib\PluginAPI.js121436361000000000 0
 96C:\Users\clair\studbud\node_modules\@parcel\transformer-json\node_modules\json5\lib\unicode.d.ts121436361000000000 0
@@ -13296,6 +13300,7 @@
 72C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\attributes.js121436361000000000 0
 93C:\Users\clair\studbud\node_modules\@parcel\reporter-dev-server\node_modules\ws\lib\sender.js121436361000000000 0
 96C:\Users\clair\studbud\node_modules\cssnano-util-raw-cache\node_modules\supports-color\readme.md121436361000000000 0
+45C:\Users\clair\studbud\dist\index.17fb587b.js132642524523696629 0
 80C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\constraint-validation132642182852993584 1
 69C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\domparsing132642182853691712 1
 67C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\file-api132642182856028025 1
@@ -13325,6 +13330,7 @@
 63C:\Users\clair\studbud\node_modules\command-exists\test\test.js121436361000000000 0
 80C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\window\Screen-impl.js121436361000000000 0
 83C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\window\SessionHistory.js121436361000000000 0
+50C:\Users\clair\studbud\dist\index.90118c0e.css.map132642532104121625 0
 85C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\webstorage\Storage-impl.js121436361000000000 0
 79C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\traversal\helpers.js121436361000000000 0
 88C:\Users\clair\studbud\node_modules\jsdom\lib\jsdom\living\svg\SVGAnimatedString-impl.js121436361000000000 0
@@ -14184,6 +14190,8 @@
 88C:\Users\clair\studbud\node_modules\is-accessor-descriptor\node_modules\kind-of\index.js131375939560000000 0
 87C:\Users\clair\studbud\node_modules\is-accessor-descriptor\node_modules\kind-of\LICENSE130922319970000000 0
 92C:\Users\clair\studbud\node_modules\is-accessor-descriptor\node_modules\kind-of\package.json132642182966637619 0
+50C:\Users\clair\studbud\dist\index.6c42891a.css.map132642537934245649 0
+50C:\Users\clair\studbud\dist\index.3a9659a8.css.map132642524523754454 0
 59C:\Users\clair\studbud\node_modules\@parcel\runtime-js\test132642182850418651 1
 59C:\Users\clair\studbud\node_modules\is-absolute-url\license131218946930000000 0
 64C:\Users\clair\studbud\node_modules\es-abstract\2019\IsRegExp.js121436361000000000 0
@@ -14951,6 +14959,7 @@
 55C:\Users\clair\studbud\node_modules\glob-parent\LICENSE121436361000000000 0
 67C:\Users\clair\studbud\node_modules\caniuse-lite\data\regions\BS.js121436361000000000 0
 50C:\Users\clair\studbud\node_modules\glob\common.js121436361000000000 0
+49C:\Users\clair\studbud\dist\index.7712257e.js.map132642580290754591 0
 90C:\Users\clair\studbud\node_modules\@parcel\workers\test\integration\workerfarm\ipc-pid.js121436361000000000 0
 48C:\Users\clair\studbud\node_modules\glob\glob.js121436361000000000 0
 87C:\Users\clair\studbud\node_modules\csso\node_modules\css-tree\lib\syntax\pseudo\common132642182878842571 1
@@ -15350,7 +15359,7 @@
 63C:\Users\clair\studbud\node_modules\es-to-primitive\test\es6.js121436361000000000 0
 65C:\Users\clair\studbud\node_modules\es-to-primitive\test\index.js121436361000000000 0
 71C:\Users\clair\studbud\node_modules\es-to-primitive\.github\FUNDING.yml121436361000000000 0
-45C:\Users\clair\studbud\dist\logo.cb4b0752.svg132642523036833712 0
+45C:\Users\clair\studbud\dist\logo.cb4b0752.svg132642580290629894 0
 61C:\Users\clair\studbud\node_modules\es-abstract\.editorconfig121436361000000000 0
 57C:\Users\clair\studbud\node_modules\es-abstract\.eslintrc121436361000000000 0
 72C:\Users\clair\studbud\node_modules\core-js\internals\collection-weak.js121436361000000000 0
@@ -16806,6 +16815,7 @@
 67C:\Users\clair\studbud\node_modules\caniuse-lite\data\regions\MQ.js121436361000000000 0
 94C:\Users\clair\studbud\node_modules\css-declaration-sorter\node_modules\supports-color\license121436361000000000 0
 99C:\Users\clair\studbud\node_modules\css-declaration-sorter\node_modules\supports-color\package.json132642182970059455 0
+46C:\Users\clair\studbud\dist\index.90118c0e.css132642532104042540 0
 84C:\Users\clair\studbud\node_modules\css-declaration-sorter\node_modules\postcss\docs132642182867372646 1
 94C:\Users\clair\studbud\node_modules\css-declaration-sorter\node_modules\postcss\lib\comment.js121436361000000000 0
 92C:\Users\clair\studbud\node_modules\css-declaration-sorter\node_modules\postcss\lib\input.js121436361000000000 0
@@ -17491,6 +17501,7 @@
 60C:\Users\clair\studbud\node_modules\core-js\features\promise132642182901902627 1
 67C:\Users\clair\studbud\node_modules\caniuse-lite\data\regions\CY.js121436361000000000 0
 60C:\Users\clair\studbud\node_modules\core-js\features\reflect132642182901782145 1
+49C:\Users\clair\studbud\dist\index.eec6f77d.js.map132642577705213030 0
 56C:\Users\clair\studbud\node_modules\core-js\features\set132642182901962467 1
 114C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\node_modules\fill-range\node_modules\extend-shallow132642182966258621 1
 64C:\Users\clair\studbud\node_modules\core-js\features\typed-array132642182902012338 1
@@ -17868,6 +17879,7 @@
 70C:\Users\clair\studbud\node_modules\core-js\es\instance\replace-all.js121436361000000000 0
 64C:\Users\clair\studbud\node_modules\core-js\es\instance\slice.js121436361000000000 0
 68C:\Users\clair\studbud\node_modules\core-js\es\instance\trim-left.js121436361000000000 0
+49C:\Users\clair\studbud\dist\index.3c2c54c9.js.map132642577705213030 0
 65C:\Users\clair\studbud\node_modules\core-js\es\instance\values.js121436361000000000 0
 72C:\Users\clair\studbud\node_modules\core-js\es\function\virtual\index.js121436361000000000 0
 58C:\Users\clair\studbud\node_modules\core-js\es\date\now.js121436361000000000 0
@@ -18533,6 +18545,7 @@
 60C:\Users\clair\studbud\node_modules\caniuse-api\CHANGELOG.md121436361000000000 0
 52C:\Users\clair\studbud\node_modules\caniuse-api\dist132642182877316652 1
 55C:\Users\clair\studbud\node_modules\caniuse-api\LICENSE121436361000000000 0
+46C:\Users\clair\studbud\dist\index.cf7b3f0e.css132642545909708094 0
 60C:\Users\clair\studbud\node_modules\caniuse-api\package.json132642182962947467 0
 61C:\Users\clair\studbud\node_modules\caniuse-api\dist\index.js121436361000000000 0
 58C:\Users\clair\studbud\node_modules\callsites\package.json132642182971146102 0
@@ -18743,6 +18756,7 @@
 88C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs3\core-js-compat\data.js119600064000000000 0
 119C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs3\core-js-compat\get-modules-list-for-target-version.js119600064000000000 0
 69C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs2\esm132642182853532145 1
+46C:\Users\clair\studbud\dist\index.444ec0f9.css132642560981350951 0
 69C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs2\lib132642182854200353 1
 78C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs2\node_modules132642182976537381 1
 85C:\Users\clair\studbud\node_modules\babel-plugin-polyfill-corejs2\node_modules\semver132642182971574952 1
@@ -19902,6 +19916,7 @@
 72C:\Users\clair\studbud\node_modules\@babel\helper-replace-supers\LICENSE121012626000000000 0
 114C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-main\package.json121436361000000000 0
 114C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-fallback\index.js121436361000000000 0
+49C:\Users\clair\studbud\dist\index.17fb587b.js.map132642524523764439 0
 120C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-browser-exclude\main.js121436361000000000 0
 125C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-browser-exclude\package.json121436361000000000 0
 121C:\Users\clair\studbud\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-browser-alias\browser.js121436361000000000 0
@@ -20461,6 +20476,7 @@
 75C:\Users\clair\studbud\node_modules\@babel\types\scripts\generators\docs.js121012626000000000 0
 75C:\Users\clair\studbud\node_modules\@babel\types\scripts\generators\flow.js121012626000000000 0
 88C:\Users\clair\studbud\node_modules\@babel\types\scripts\generators\typescript-legacy.js121012626000000000 0
+45C:\Users\clair\studbud\dist\index.7712257e.js132642580290703881 0
 81C:\Users\clair\studbud\node_modules\@babel\types\scripts\generators\validators.js121012626000000000 0
 60C:\Users\clair\studbud\node_modules\@babel\types\lib\asserts132642182854580106 1
 62C:\Users\clair\studbud\node_modules\@babel\types\lib\ast-types132642182855069952 1
@@ -21275,17 +21291,36 @@
 49C:\Users\clair\studbud\node_modules\.bin\uuid.ps1132642182980102383 0
 46C:\Users\clair\studbud\node_modules\.bin\which132642182980182184 0
 50C:\Users\clair\studbud\node_modules\.bin\which.ps1132642182980182184 0
-44C:\Users\clair\studbud\dist\add.5758ee3e.svg132642523036838407 0
-44C:\Users\clair\studbud\dist\add.891196e3.svg132642397354324448 0
-48C:\Users\clair\studbud\dist\favicon.3fb3ebf1.svg132642523036838407 0
-48C:\Users\clair\studbud\dist\favicon.77bfaf62.svg132642397354324448 0
+44C:\Users\clair\studbud\dist\add.5758ee3e.svg132642580290640686 0
+44C:\Users\clair\studbud\dist\add.891196e3.svg132642577702449567 0
+48C:\Users\clair\studbud\dist\favicon.3fb3ebf1.svg132642580290629894 0
+48C:\Users\clair\studbud\dist\favicon.77bfaf62.svg132642577702439597 0
 50C:\Users\clair\studbud\dist\index.02bd7362.css.map132642196147382700 0
-45C:\Users\clair\studbud\dist\index.5f1c56c5.js132642397432184621 0
-49C:\Users\clair\studbud\dist\index.5f1c56c5.js.map132642397432225324 0
-45C:\Users\clair\studbud\dist\index.68cd150d.js132642523036943406 0
-49C:\Users\clair\studbud\dist\index.68cd150d.js.map132642523036994734 0
-45C:\Users\clair\studbud\dist\index.72657542.js132642523036954775 0
-49C:\Users\clair\studbud\dist\index.72657542.js.map132642523036994734 0
+46C:\Users\clair\studbud\dist\index.6c42891a.css132642537934065716 0
+46C:\Users\clair\studbud\dist\index.3a9659a8.css132642524523686631 0
+45C:\Users\clair\studbud\dist\index.3c2c54c9.js132642577705153200 0
+45C:\Users\clair\studbud\dist\index.43bf8e35.js132642543213016864 0
+49C:\Users\clair\studbud\dist\index.43bf8e35.js.map132642543213099784 0
+50C:\Users\clair\studbud\dist\index.444ec0f9.css.map132642560981455672 0
+45C:\Users\clair\studbud\dist\index.5f1c56c5.js132642577705143234 0
+49C:\Users\clair\studbud\dist\index.5f1c56c5.js.map132642577705213030 0
+45C:\Users\clair\studbud\dist\index.68cd150d.js132642580290703881 0
+49C:\Users\clair\studbud\dist\index.68cd150d.js.map132642580290744602 0
+45C:\Users\clair\studbud\dist\index.72657542.js132642580290694035 0
+49C:\Users\clair\studbud\dist\index.72657542.js.map132642580290744602 0
+46C:\Users\clair\studbud\dist\index.80c27bdc.css132642543213000191 0
+50C:\Users\clair\studbud\dist\index.80c27bdc.css.map132642543213089816 0
+50C:\Users\clair\studbud\dist\index.82838881.css.map132642567210708517 0
+46C:\Users\clair\studbud\dist\index.adb78d16.css132642523838925892 0
+50C:\Users\clair\studbud\dist\index.adb78d16.css.map132642523838986065 0
+46C:\Users\clair\studbud\dist\index.b231cc0d.css132642558440763302 0
+50C:\Users\clair\studbud\dist\index.b231cc0d.css.map132642558440887613 0
 46C:\Users\clair\studbud\dist\index.b57e6fc5.css132642397432144721 0
-38C:\Users\clair\studbud\dist\index.html132642523036943406 0
-45C:\Users\clair\studbud\dist\logo.5eb50966.svg132642397354324448 0
+50C:\Users\clair\studbud\dist\index.cf7b3f0e.css.map132642545909749076 0
+46C:\Users\clair\studbud\dist\index.cf9e2f46.css132642577705133253 0
+50C:\Users\clair\studbud\dist\index.cf9e2f46.css.map132642577705203067 0
+46C:\Users\clair\studbud\dist\index.df2f94ec.css132642552951276366 0
+50C:\Users\clair\studbud\dist\index.df2f94ec.css.map132642552951352526 0
+45C:\Users\clair\studbud\dist\index.f4c799d8.js132642574462490902 0
+38C:\Users\clair\studbud\dist\index.html132642580290694035 0
+45C:\Users\clair\studbud\dist\logo.5eb50966.svg132642577702449567 0

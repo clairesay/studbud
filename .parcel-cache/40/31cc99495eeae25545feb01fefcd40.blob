@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StudBud</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <!-- CSS reset and stylesheet -->
+  <link rel="stylesheet" type="text/css" href="ac2b17b88ef0ab3e3e3316d5a6be3892">
+  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.min.js" integrity="sha512-VTqyB/kLQGaTnF5kYAgeEFo8fwqdlAGNUQeoQi4EOmmBYTEQ/XrYC7lnzCvBBp1PR+1ODEQiT075oeUdPeFHwA==" crossorigin="anonymous"></script> -->
+  <script src="0f0424bcd3456d422fb9f7dc23fe4b5f"></script>
+
+  <link rel="icon" href="191763d21b3708b74a5b76dbde393de7">
+</head>
+<body>
+  <header>
+    <img id="home-link" src="7cfdf8f6153f8e10e79f65d51c7b3590">    
+    <article id="task-buttons" class="button-container">
+      <button class="button primary icon"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+      <button id="new-task" class="button primary create">Create task</button>
+      <button id="new-column" class="button secondary create">Add column</button>
+    </article>
+    <article id="content-buttons" class="button-container">
+      <button class="button primary icon"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+      <button id="new-content" class="button primary create">Add content</button>
+      <button id="new-group" class="button secondary create">Create group</button>
+    </article></header>
+  
+  
+
+  <main>
+    <button id="content-tab" class="tab">Content</button>
+    <button id="tasks-tab" class="tab">Tasks</button>
+    <section id="content"></section>
+    <section id="tasks">
+      <div class="column">
+        <div class="title">
+          <h3>Column Name</h3>
+          <h3 class="total">2</h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+        </div>
+
+      </div>
+      <div class="column">
+        <div class="title">
+          <h3>Column Name</h3>
+          <h3 class="total">2</h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+        </div>
+
+      </div>
+    </section>
+    
+  </main>
+
+
+    <!-- <form id="create-task-form">
+        <label for="taskName">Task Name</label>
+        <input type="text" name="taskName" placeholder="What's the task called?"></input>
+
+        <label for="taskDescription">Task Description</label>
+        <input type="text" name="taskDescription" placeholder="How can I complete this task?"></input>
+
+        <label for="taskDueDate">Due Date</label>
+        <input type="date" name="taskDueDate"></input>
+
+        <label for="taskPriorityRating">Priority Level</label>
+        <input type="radio" name="taskPriorityRating" value="Low">Low</input>
+        <input type="radio" name="taskPriorityRating" value="Mid">Mid</input>
+        <input type="radio" name="taskPriorityRating" value="High">High</input>
+
+        <label for="taskPriorityRating">Estimated Time to Complete</label>
+        <input type="text" name="taskEstimatedTime"></input>
+
+        <label for="taskPriorityRating">Completion Status</label>
+        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
+        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input>
+
+        <button id="create-task-submit" class="button primary" type="submit">Submit</button>
+        </form>
+        <article id="task-display">
+
+        </article>
+    <script src="js/script.js"></script> -->
+    <script src="b2cb1c4241769d2db0150c4ba1d04d85"></script>
+    <script src="f047d802950c61e385d0d33781488865"></script>
+</body>
+</html>

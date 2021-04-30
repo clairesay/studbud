@@ -96,7 +96,14 @@ main {
   /* z-index: 3; */
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
+  display: flex;
   /* filter: drop-shadow(0 0 2px #e5e5e5) */
+}
+
+#tasks {
+  background-color: purple;
+  padding: 36px;
+  overflow: scroll hidden;
 }
 
 .tab {
@@ -145,9 +152,87 @@ main {
 /* /////////////// KANBAN BOARD //////////////////// */
 /* COLUMNS */
 div.column {
-  width: 280px;
-  height: 100%;
+  position: relative;
+  min-width: 332px;
+  max-width: 332px;
   background-color: #eeeeee;
+  margin: 0 36px;
+  border-radius: 18px;
+  padding: 18px;
+}
+div.column div.title {
+  z-index: 2;
+  background-color: #fafafa;
+  padding: 16px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+div.column div.title h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #909090;
+}
+div.column div.cards {
+  width: 100%;
+  height: calc(100% - 60px);
+  margin-top: 14px;
+  overflow-y: scroll;
+  scroll-snap-type: proximity;
+}
+div.column div.cards article.card {
+  z-index: 10;
+  width: calc(100% - 36px);
+  border-radius: 16px;
+  background-color: #fefefe;
+  padding: 16px;
+  filter: drop-shadow(0 0 2px #30303018);
+  margin: 16px 0;
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
+}
+div.column div.cards article.card:first-of-type {
+  margin: 2px 0 0 0;
+}
+
+div.column:first-of-type, div.column:last-of-type {
+  margin: 0;
+}
+
+/* ///////////// SCROLL BAR //////////// */
+div.cards::-webkit-scrollbar {
+  width: 16px;
+  /* width of the entire scrollbar */
+}
+
+div.cards::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+div.cards::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 4px solid #eeeeee;
+  /* creates padding around scroll thumb */
+}
+
+/* ///////////// DRAGGABLE //////////////// */
+.draggable-source--is-dragging {
+  opacity: 0.2;
+  border: 2px dashed #909090;
+  color: transparent;
+}
+.draggable-source--is-dragging * {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.card.draggable-mirror {
+  max-width: 296px;
 }
 
 /* ///////////// COMPONENTS /////////////// */

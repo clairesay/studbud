@@ -443,7 +443,7 @@ id) /*: string*/
 
 },{}],"21JEv":[function(require,module,exports) {
 const sortable = new Draggable.Sortable(
-    document.querySelectorAll('.column')[0], {
+    document.querySelectorAll('.cards'), {
         draggable: 'article.card',
     }
 )

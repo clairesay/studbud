@@ -1,0 +1,2 @@
+!function(){var t=document.querySelectorAll(".total");t.forEach((function(e){var n=e.parentElement.querySelectorAll("div.cards .card");t.textContent=n.length}))}();
+//# sourceMappingURL=index.HASH_REF_d3333bbcbc03c96aa58e797913c1f890.js.map
