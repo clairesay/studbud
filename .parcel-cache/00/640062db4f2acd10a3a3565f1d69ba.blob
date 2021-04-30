@@ -49,6 +49,7 @@ table {
 * {
   font-family: "Rubik", Arial, sans-serif;
   color: #303030;
+  /* transition: all 0.1s ease-out; */
 }
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
@@ -103,7 +104,7 @@ main {
   color: #909090;
   background-color: #fefefe;
 }
-.tab:hover {
+.tab :hover {
   cursor: pointer;
 }
 #tasks-tab {
@@ -139,15 +140,15 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* adding a bit of space between the buttons */
 }
-/* adding a bit of space between the buttons */
-.button:not(:last-child) {
+.button :not(:last-child) {
   margin-right: 16px;
 }
-.button:hover {
+.button :hover {
   cursor: pointer;
 }
-.button.primary {
+.button .primary {
   color: #fefefe;
   background-color: #09997F;
 }
@@ -223,4 +224,4 @@ label, button#create-task-submit {
     background-color: #e5e5e5;
   }
 }
-/*# sourceMappingURL=index.0c72b7db.css.map */
+/*# sourceMappingURL=index.HASH_REF_80038805bd6829e42a01d0f20c72b7db.css.map */

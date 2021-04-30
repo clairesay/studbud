@@ -49,6 +49,7 @@ table {
 * {
   font-family: "Rubik", Arial, sans-serif;
   color: #303030;
+  /* transition: all 0.1s ease-out; */
 }
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
@@ -223,4 +224,3 @@ label, button#create-task-submit {
     background-color: #e5e5e5;
   }
 }
-/*# sourceMappingURL=index.0c72b7db.css.map */
