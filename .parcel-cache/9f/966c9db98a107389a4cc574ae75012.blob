@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StudBud</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <!-- CSS reset and stylesheet -->
+  <link rel="stylesheet" type="text/css" href="3726c2e58e14a34ff58a760d13283737">
+  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+  <script src="29b23a9f0f6f64bd51160423c4262d56" integrity="sha512-VTqyB/kLQGaTnF5kYAgeEFo8fwqdlAGNUQeoQi4EOmmBYTEQ/XrYC7lnzCvBBp1PR+1ODEQiT075oeUdPeFHwA==" crossorigin="anonymous"></script>
+
+  <link rel="icon" href="10e93ad89a3a82c11182b863d498ecb0">
+</head>
+<body>
+  <header>
+    <img id="home-link" src="ac5838c4d07be43c32e7c4a6a17b3f6a">    
+    <article id="task-buttons" class="button-container">
+      <button class="button primary icon"><img src="16e162f09e2abec61f8548b50aa8840a"></button>
+      <button id="new-task" class="button primary create">Create task</button>
+      <button id="new-column" class="button secondary create">Add column</button>
+    </article>
+    <article id="content-buttons" class="button-container">
+      <button class="button primary icon"><img src="16e162f09e2abec61f8548b50aa8840a"></button>
+      <button id="new-content" class="button primary create">Add content</button>
+      <button id="new-group" class="button secondary create">Create group</button>
+    </article></header>
+  
+  
+
+  <main>
+    <button id="content-tab" class="tab">Content</button>
+    <button id="tasks-tab" class="tab">Tasks</button>
+    <section id="content"></section>
+    <section id="tasks">
+      <div class="column">
+        <h3>Column Name</h3>
+      </div>
+    </section>
+    
+  </main>
+
+
+    <!-- <form id="create-task-form">
+        <label for="taskName">Task Name</label>
+        <input type="text" name="taskName" placeholder="What's the task called?"></input>
+
+        <label for="taskDescription">Task Description</label>
+        <input type="text" name="taskDescription" placeholder="How can I complete this task?"></input>
+
+        <label for="taskDueDate">Due Date</label>
+        <input type="date" name="taskDueDate"></input>
+
+        <label for="taskPriorityRating">Priority Level</label>
+        <input type="radio" name="taskPriorityRating" value="Low">Low</input>
+        <input type="radio" name="taskPriorityRating" value="Mid">Mid</input>
+        <input type="radio" name="taskPriorityRating" value="High">High</input>
+
+        <label for="taskPriorityRating">Estimated Time to Complete</label>
+        <input type="text" name="taskEstimatedTime"></input>
+
+        <label for="taskPriorityRating">Completion Status</label>
+        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
+        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input>
+
+        <button id="create-task-submit" class="button primary" type="submit">Submit</button>
+        </form>
+        <article id="task-display">
+
+        </article>
+    <script src="js/script.js"></script> -->
+    <script src="c4a2c6794dc03367e218668f4cb6dfea"></script>
+</body>
+</html>

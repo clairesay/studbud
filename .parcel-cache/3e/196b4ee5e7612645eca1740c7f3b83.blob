@@ -56,7 +56,6 @@ table {
 * {
   font-family: "Rubik", Arial, sans-serif;
   color: #303030;
-  /* transition: all 0.1s ease-out; */
 }
 
 /* INSETS */
@@ -100,14 +99,6 @@ main {
   /* filter: drop-shadow(0 0 2px #e5e5e5) */
 }
 
-#tasks {
-  background-color: purple;
-}
-
-#content {
-  background-color: peru;
-}
-
 .tab {
   position: absolute;
   top: -60px;
@@ -149,6 +140,14 @@ main {
   width: calc(100% - 3px);
   background-color: #fafafa;
   z-index: 5;
+}
+
+/* /////////////// KANBAN BOARD //////////////////// */
+/* COLUMNS */
+div.column {
+  width: 280px;
+  height: 100%;
+  background-color: #eeeeee;
 }
 
 /* ///////////// COMPONENTS /////////////// */

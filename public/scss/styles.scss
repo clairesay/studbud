@@ -47,13 +47,13 @@ main {
   /* filter: drop-shadow(0 0 2px #e5e5e5) */
 }
 
-#tasks {
-  background-color: purple
-}
+// #tasks {
+//   background-color: purple
+// }
 
-#content {
-  background-color: peru;
-}
+// #content {
+//   background-color: peru;
+// }
 
 .tab {
   position: absolute;
@@ -98,6 +98,59 @@ main {
   width: calc(100% - 3px);
   background-color: #fafafa;
   z-index: 5;
+}
+
+/* /////////////// KANBAN BOARD //////////////////// */
+/* COLUMNS */
+div.column {
+    width: 332px;
+    height: calc(100% - 108px);
+    background-color: #eeeeee;
+
+    margin: 36px;
+    border-radius: 18px;
+    padding: 18px;
+
+    overflow-y: scroll;
+
+    div.title {
+        background-color: #fafafa;
+        padding: 16px;
+        // max-height: 2px;
+        // margin: 18px;
+        // border-radius: 12px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: space-between;
+        h3 {
+            font-weight: 500;
+            font-size: 18px;
+            color: #909090
+        }
+    }
+
+    article.card {
+        width: calc(100% - 36px);
+        border-radius: 16px;
+        background-color: #fefefe;
+        padding: 16px;
+        filter: drop-shadow(0 0 2px #30303018);
+        margin: 16px 0;
+    }
+
+    article.card:first-of-type:last-of-type {
+        margin: 0
+    }
+}
+
+/* ///////////// DRAGGABLE //////////////// */
+.draggable-source--is-dragging {
+    // visibility: hidden;
+    border: 2px dashed #303030;
+}
+
+.card.draggable-mirror {
+    max-width: 296px;
 }
 
 /* ///////////// COMPONENTS /////////////// */

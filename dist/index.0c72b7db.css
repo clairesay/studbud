@@ -86,12 +86,6 @@ main {
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   /* filter: drop-shadow(0 0 2px #e5e5e5) */
 }
-#tasks {
-  background-color: purple;
-}
-#content {
-  background-color: peru;
-}
 .tab {
   position: absolute;
   top: -60px;
@@ -128,6 +122,46 @@ main {
   width: calc(100% - 3px);
   background-color: #fafafa;
   z-index: 5;
+}
+/* /////////////// KANBAN BOARD //////////////////// */
+/* COLUMNS */
+div.column {
+  width: 332px;
+  height: calc(100% - 108px);
+  background-color: #eeeeee;
+  margin: 36px;
+  border-radius: 18px;
+  padding: 18px;
+}
+div.column div.title {
+  background-color: #fafafa;
+  padding: 16px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+div.column div.title h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #909090;
+}
+div.column article.card {
+  width: calc(100% - 36px);
+  border-radius: 16px;
+  background-color: #fefefe;
+  padding: 16px;
+  filter: drop-shadow(0 0 2px #30303018);
+  margin: 16px 0;
+}
+div.column article.card:first-of-type:last-of-type {
+  margin: 0;
+}
+/* ///////////// DRAGGABLE //////////////// */
+.draggable-source--is-dragging {
+  visibility: hidden;
+}
+.card.draggable-mirror {
+  max-width: 296px;
 }
 /* ///////////// COMPONENTS /////////////// */
 /* BUTTON FORMATTING */
