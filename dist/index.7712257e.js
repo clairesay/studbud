@@ -486,14 +486,28 @@ sortable.on('sortable:sorted', () => {
 
 sortable.on('sortable:stop', () => {
     console.log('sortable:stop')
-    // total.forEach(function count(object) {
-    //     // set the textcontent of total to be the number of cards in the respective column
-    //     var cards = object.parentElement.nextElementSibling.querySelectorAll('div.cards .card');
-    //     object.textContent = cards.length;
-    // })
     counter(total, cards)
 })
 
+
+// const sortable2 = new Draggable.Sortable(
+//     document.querySelectorAll('#tasks')[0], {
+//         draggable: 'div.column',
+//     }
+// )
+// sortable2.on('sortable:start', () => {
+//     console.log('sortable:start')
+// })
+// sortable2.on('sortable:sort', () => {
+//     console.log('sortable:sort')
+// })
+// sortable2.on('sortable:sorted', () => {
+//     console.log('sortable:sorted')
+// })
+
+// sortable2.on('sortable:stop', () => {
+//     console.log('sortable:stop')
+// })
 
 
 },{}]},["YTKTN","3b9tq"], "3b9tq", "parcelRequirec526")

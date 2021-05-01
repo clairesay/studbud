@@ -61,7 +61,7 @@ main {
   // background-color: purple;
   // padding: 36px;
   // overflow: scroll hidden;
-
+  scroll-snap-type: x mandatory; 
 }
 
 // #content {
@@ -117,15 +117,17 @@ main {
 /* COLUMNS */
 div.column {
     position: relative;
-    min-width: 332px;
+    min-width: 280px;
     max-width: 332px;
     height: calc(100% -  108px);
     background-color: #eeeeee;
 
-    margin: 36px;
+    margin: 36px 18px;
     // margin: 36px 0 36px 36px;
     border-radius: 18px;
     padding: 18px;
+    scroll-behavior: smooth;
+    scroll-snap-align: center;
 
     div.title {
         // position: sticky;
@@ -175,14 +177,14 @@ div.column {
     }
 
     div.cards {
-        width: calc(100% - 24px);
+        width: calc(100% - 12px);
         height: calc(100% - 60px);
         margin-top: 14px;
-        margin-right: 12px;
+        // margin-right: 18px;
         // margin-right: 29px;
         padding-right: 12px;
         overflow-y: scroll;
-        scroll-snap-type: mandatory;
+        scroll-snap-type: y mandatory;
         article.card {
             z-index: 10;
             width: calc(100% - 36px);
@@ -202,14 +204,20 @@ div.column {
         //     margin: 0;
         // }
     }
+    div.cards:hover {
+      cursor: grab;
+    }
 }
 
+div.column:hover {
+  // cursor: grab;
+}
 div.column:first-of-type {
-    // margin: 0;
+    margin-left: 36px;
 }
 
 div.column:last-of-type {
-  // margin-right: 18px;
+  margin-right: 36px;
   // border-right: solid 20px rgba(0, 0, 0, 0);
 }
 
@@ -256,6 +264,8 @@ div.column:last-of-type {
         color: transparent;
         background-color: transparent;
         border-color: transparent;
+        fill: transparent;
+        stroke: transparent;
     }
 }
 
@@ -308,6 +318,21 @@ div.column:last-of-type {
 }
 
 /* false stuff */
+#create-task-form {
+  display: none;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: calc(10% - 18px);
+  left: calc(10% - 18px);
+  padding: 36px;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-radius: 16px;
+}
+#create-task-form.active {
+  display: flex;
+}
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;
@@ -315,7 +340,7 @@ label, button#create-task-submit {
   
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   /* LOGO/HOME-LINK */
   #home-link {
     display: none
@@ -326,13 +351,23 @@ label, button#create-task-submit {
   }
 
   /* STRUCTURE */
-  #task .tab {
-    left: 16px;
-  }
+  // #task .tab {
+  //   left: 16px;
+  // }
 
-  #content .tab {
-    left: 118px;
+  // #content .tab {
+  //   left: 118px;
+  // }
+  #tasks-tab {
+    left: 16px;
+    content: 'Tasks';
   }
+  
+  #content-tab {
+    left: 118px;
+    content: 'Content';
+  }
+  
 
   /* /////////// COMPONENTS //////////// */
   /* BUTTON */

@@ -103,6 +103,7 @@ main {
 
 #tasks {
   max-width: 100%;
+  scroll-snap-type: x mandatory;
 }
 
 .tab {
@@ -152,13 +153,15 @@ main {
 /* COLUMNS */
 div.column {
   position: relative;
-  min-width: 332px;
+  min-width: 280px;
   max-width: 332px;
   height: calc(100% - 108px);
   background-color: #eeeeee;
-  margin: 36px;
+  margin: 36px 18px;
   border-radius: 18px;
   padding: 18px;
+  scroll-behavior: smooth;
+  scroll-snap-align: center;
 }
 div.column div.title {
   z-index: 2;
@@ -188,13 +191,12 @@ div.column div.title input.column-name:hover {
   cursor: text;
 }
 div.column div.cards {
-  width: calc(100% - 24px);
+  width: calc(100% - 12px);
   height: calc(100% - 60px);
   margin-top: 14px;
-  margin-right: 12px;
   padding-right: 12px;
   overflow-y: scroll;
-  scroll-snap-type: mandatory;
+  scroll-snap-type: y mandatory;
 }
 div.column div.cards article.card {
   z-index: 10;
@@ -209,6 +211,17 @@ div.column div.cards article.card {
 }
 div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;
+}
+div.column div.cards:hover {
+  cursor: grab;
+}
+
+div.column:first-of-type {
+  margin-left: 36px;
+}
+
+div.column:last-of-type {
+  margin-right: 36px;
 }
 
 /* ///////////// SCROLL BAR //////////// */
@@ -237,7 +250,7 @@ div.cards::-webkit-scrollbar-thumb {
 }
 
 #tasks::-webkit-scrollbar-track {
-  background: transparent;
+  background: #eeeeee;
   /* color of the tracking area */
 }
 
@@ -260,6 +273,8 @@ div.cards::-webkit-scrollbar-thumb {
   color: transparent;
   background-color: transparent;
   border-color: transparent;
+  fill: transparent;
+  stroke: transparent;
 }
 
 .card.draggable-mirror {
@@ -309,13 +324,24 @@ div.cards::-webkit-scrollbar-thumb {
 }
 
 /* false stuff */
+#create-task-form {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#create-task-form.active {
+  display: flex;
+}
+
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;
 }
 
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   /* LOGO/HOME-LINK */
   #home-link {
     display: none;
@@ -326,12 +352,14 @@ label, button#create-task-submit {
   }
 
   /* STRUCTURE */
-  #task .tab {
+  #tasks-tab {
     left: 16px;
+    content: "Tasks";
   }
 
-  #content .tab {
+  #content-tab {
     left: 118px;
+    content: "Content";
   }
 
   /* /////////// COMPONENTS //////////// */
