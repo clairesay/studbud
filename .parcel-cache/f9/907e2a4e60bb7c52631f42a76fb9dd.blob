@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StudBud</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="">
+  <!-- CSS reset and stylesheet -->
+  <link rel="stylesheet" type="text/css" href="/index.HASH_REF_80038805bd6829e42a01d0f20c72b7db.css">
+  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.min.js" integrity="sha512-VTqyB/kLQGaTnF5kYAgeEFo8fwqdlAGNUQeoQi4EOmmBYTEQ/XrYC7lnzCvBBp1PR+1ODEQiT075oeUdPeFHwA==" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+
+  <link rel="icon" href="/favicon.HASH_REF_f2861df21610fd781afa57873fb3ebf1.svg">
+</head>
+<body>
+  <header>
+    <img id="home-link" src="/logo.HASH_REF_65da9037145a6de26f96a153cb4b0752.svg">    
+    <article id="task-buttons" class="button-container">
+      <button class="button primary icon"><img src="/add.HASH_REF_417ad5d6520ce93d1c61c4bf5758ee3e.svg"></button>
+      <button id="new-task" class="button primary create">Create task</button>
+      <button id="new-column" class="button secondary create">Add column</button>
+    </article>
+    <article id="content-buttons" class="button-container">
+      <button class="button primary icon"><img src="/add.HASH_REF_417ad5d6520ce93d1c61c4bf5758ee3e.svg"></button>
+      <button id="new-content" class="button primary create">Add content</button>
+      <button id="new-group" class="button secondary create">Create group</button>
+    </article></header>
+  
+  
+
+  <main>
+    <button id="content-tab" class="tab">Content</button>
+    <button id="tasks-tab" class="tab">Tasks</button>
+    <section id="content"></section>
+    <section id="tasks">
+      <div class="column">
+        <div class="title">
+          <input class="column-name" value="Column Name">
+          <h3 class="total"></h3>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="tag subject">INFO1110</span>
+            <h3>Card container</h3>
+            <hr>
+            <div class="time-details">
+              <!-- <svg>
+
+              </svg> -->
+              <h4>due</h4>
+              <span class="tag time">1HR 30MIN</span>
+
+            </div>
+
+          </article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+          <article class="card">Card container</article>
+        </div>
+
+      </div>
+      <div class="column">
+        <div class="title">
+          <input class="column-name" value="Column Name">
+          <h3 class="total"></h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+        </div>
+      </div>
+      <div class="column">
+        <div class="title">
+          <input class="column-name" value="Column Name">
+          <h3 class="total"></h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+        </div>
+      </div>
+      <div class="column">
+        <div class="title">
+          <input class="column-name" value="Column Name">
+          <h3 class="total"></h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+        </div>
+      </div>
+      <div class="column">
+        <div class="title">
+          <input class="column-name" value="Column Name">
+          <h3 class="total"></h3>
+        </div>
+        <div class="cards">
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+          <article class="card">Card container 2</article>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+
+    <!-- <form id="create-task-form">
+        <label for="taskName">Task Name</label>
+        <input type="text" name="taskName" placeholder="What's the task called?"></input>
+
+        <label for="taskDescription">Task Description</label>
+        <input type="text" name="taskDescription" placeholder="How can I complete this task?"></input>
+
+        <label for="taskDueDate">Due Date</label>
+        <input type="date" name="taskDueDate"></input>
+
+        <label for="taskPriorityRating">Priority Level</label>
+        <input type="radio" name="taskPriorityRating" value="Low">Low</input>
+        <input type="radio" name="taskPriorityRating" value="Mid">Mid</input>
+        <input type="radio" name="taskPriorityRating" value="High">High</input>
+
+        <label for="taskPriorityRating">Estimated Time to Complete</label>
+        <input type="text" name="taskEstimatedTime"></input>
+
+        <label for="taskPriorityRating">Completion Status</label>
+        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
+        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input>
+
+        <button id="create-task-submit" class="button primary" type="submit">Submit</button>
+        </form>
+        <article id="task-display">
+
+        </article>
+    <script src="js/script.js"></script> -->
+    <script src="/index.HASH_REF_434ada622dba897d1df6236f72657542.js"></script>
+    <script src="/index.HASH_REF_819d3f9b4d9b7c301e39c85e68cd150d.js"></script>
+    <script src="/index.HASH_REF_72a66c1fb04e623055ea29017712257e.js"></script>
+</body>
+</html>

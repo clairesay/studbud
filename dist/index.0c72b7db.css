@@ -56,8 +56,6 @@ table {
 /* BODY */
 body {
   background-color: #fefefe;
-  max-width: 100vw;
-  max-height: 100vh;
 }
 /* HEADER */
 header {
@@ -72,8 +70,8 @@ header .button-container {
 }
 /* MAIN */
 main {
-  width: 100vw;
-  height: calc(100vh - 72px);
+  max-width: 100vw;
+  max-height: calc(100vh - 72px);
   background-color: #fafafa;
   position: relative;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
@@ -81,17 +79,17 @@ main {
 }
 #tasks, #content {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: calc(100vh - 72px);
   /* z-index: 3; */
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   display: flex;
   /* filter: drop-shadow(0 0 2px #e5e5e5) */
+  overflow: scroll hidden;
 }
 #tasks {
-  padding: 36px;
-  overflow: scroll hidden;
+  max-width: 100%;
 }
 .tab {
   position: absolute;
@@ -136,8 +134,9 @@ div.column {
   position: relative;
   min-width: 332px;
   max-width: 332px;
+  height: calc(100% - 108px);
   background-color: #eeeeee;
-  margin: 0 36px;
+  margin: 36px;
   border-radius: 18px;
   padding: 18px;
 }
@@ -160,8 +159,11 @@ div.column div.title input {
   background-color: transparent;
   border: none;
   padding: 2px;
-  -webkit-text-decoration: underline #909090;
-          text-decoration: underline #909090;
+  -webkit-text-decoration: underline dotted #909090;
+          text-decoration: underline dotted #909090;
+}
+div.column div.title input:focus {
+  text-decoration: none;
 }
 div.column div.title input.column-name:hover {
   cursor: text;
@@ -170,9 +172,11 @@ div.column div.cards {
   width: calc(100% - 24px);
   height: calc(100% - 60px);
   margin-top: 14px;
+  margin-right: 12px;
+  padding-right: 12px;
   overflow-y: scroll;
-  -ms-scroll-snap-type: proximity;
-      scroll-snap-type: proximity;
+  -ms-scroll-snap-type: mandatory;
+      scroll-snap-type: mandatory;
 }
 div.column div.cards article.card {
   z-index: 10;
@@ -188,9 +192,6 @@ div.column div.cards article.card {
 div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;
 }
-div.column:first-of-type, div.column:last-of-type {
-  margin: 0;
-}
 /* ///////////// SCROLL BAR //////////// */
 div.cards::-webkit-scrollbar {
   width: 16px;
@@ -201,6 +202,22 @@ div.cards::-webkit-scrollbar-track {
   /* color of the tracking area */
 }
 div.cards::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 4px solid #eeeeee;
+  /* creates padding around scroll thumb */
+}
+#tasks::-webkit-scrollbar {
+  width: 16px;
+  /* width of the entire scrollbar */
+}
+#tasks::-webkit-scrollbar-track {
+  background: #eeeeee;
+  /* color of the tracking area */
+}
+#tasks::-webkit-scrollbar-thumb {
   background-color: #cccccc;
   /* color of the scroll thumb */
   border-radius: 20px;
