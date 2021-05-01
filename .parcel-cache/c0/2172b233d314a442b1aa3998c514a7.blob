@@ -60,6 +60,16 @@ table {
 
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
+.edit:hover {
+  background-color: greenyellow;
+  cursor: pointer;
+}
+
+.edit {
+  padding: 18px;
+  pointer-events: none;
+}
+
 /* //////////// STRUCTURE ///////////// */
 /* BODY */
 body {
@@ -182,25 +192,24 @@ div.column div.title input {
   background-color: transparent;
   border: none;
   padding: 2px;
-  text-decoration: underline dotted #909090;
+  text-decoration: underline dotted transparent;
 }
 div.column div.title input:focus {
   text-decoration: none;
 }
 div.column div.title input.column-name:hover {
   cursor: text;
+  text-decoration: underline dotted #909090;
 }
 div.column div.cards {
-  width: calc(100% - 12px);
+  width: auto;
   height: calc(100% - 60px);
   margin-top: 14px;
-  padding-right: 12px;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
 }
 div.column div.cards article.card {
   z-index: 10;
-  width: calc(100% - 36px);
   border-radius: 16px;
   background-color: #fefefe;
   padding: 16px;
@@ -214,6 +223,7 @@ div.column div.cards article.card:first-of-type {
 }
 div.column div.cards:hover {
   cursor: grab;
+  overflow-y: overlay;
 }
 
 div.column:first-of-type {
@@ -226,8 +236,7 @@ div.column:last-of-type {
 
 /* ///////////// SCROLL BAR //////////// */
 div.cards::-webkit-scrollbar {
-  width: 16px;
-  /* width of the entire scrollbar */
+  width: 24px;
 }
 
 div.cards::-webkit-scrollbar-track {
@@ -240,7 +249,7 @@ div.cards::-webkit-scrollbar-thumb {
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
-  border: 4px solid #eeeeee;
+  border: 8px solid #eeeeee;
   /* creates padding around scroll thumb */
 }
 

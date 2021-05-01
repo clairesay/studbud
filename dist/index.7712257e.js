@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"5zd0O":[function(require,module,exports) {
+})({"YTKTN":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 63258;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
 module.bundle.HMR_BUNDLE_ID = "72a66c1fb04e623055ea29017712257e";
@@ -445,7 +445,8 @@ id) /*: string*/
 // DRAGGABLE FUNCTIONALITY
 var total = document.querySelectorAll('.total'),
     cards = document.querySelectorAll('.cards'),
-    card = document.querySelectorAll('.card')
+    card = document.querySelectorAll('.card'),
+    editIcon = document.querySelectorAll('.edit')[0]
 function counter(total, cards) {
 
 total.forEach(function count(object, index) {
@@ -476,6 +477,19 @@ const sortable = new Draggable.Sortable(
 )
 sortable.on('sortable:start', () => {
     console.log('sortable:start')
+    editIcon.addEventListener('click', function(event) {
+        updateVar()
+        alert('yo')
+        console.log('clicked')
+        // e.preventDefault();
+        if (overlayToggle == false) {
+          createTaskForm.classList.add('active')
+          overlayToggle = true;
+        } else if (overlayToggle == true) {
+          createTaskForm.classList.remove('active')
+          overlayToggle = false;
+        }
+    })
 })
 sortable.on('sortable:sort', () => {
     console.log('sortable:sort')
@@ -487,6 +501,7 @@ sortable.on('sortable:sorted', () => {
 sortable.on('sortable:stop', () => {
     console.log('sortable:stop')
     counter(total, cards)
+    cardWidth()
 })
 
 
@@ -510,6 +525,6 @@ sortable.on('sortable:stop', () => {
 // })
 
 
-},{}]},["5zd0O","3b9tq"], "3b9tq", "parcelRequirec526")
+},{}]},["YTKTN","3b9tq"], "3b9tq", "parcelRequirec526")
 
 //# sourceMappingURL=index.7712257e.js.map

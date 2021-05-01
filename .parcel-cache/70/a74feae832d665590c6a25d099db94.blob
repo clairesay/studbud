@@ -52,6 +52,14 @@ table {
 }
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
+.edit:hover {
+  background-color: greenyellow;
+  cursor: pointer;
+}
+.edit {
+  padding: 18px;
+  pointer-events: none;
+}
 /* //////////// STRUCTURE ///////////// */
 /* BODY */
 body {
@@ -163,27 +171,27 @@ div.column div.title input {
   background-color: transparent;
   border: none;
   padding: 2px;
-  -webkit-text-decoration: underline dotted #909090;
-          text-decoration: underline dotted #909090;
+  -webkit-text-decoration: underline dotted transparent;
+          text-decoration: underline dotted transparent;
 }
 div.column div.title input:focus {
   text-decoration: none;
 }
 div.column div.title input.column-name:hover {
   cursor: text;
+  -webkit-text-decoration: underline dotted #909090;
+          text-decoration: underline dotted #909090;
 }
 div.column div.cards {
-  width: calc(100% - 12px);
+  width: auto;
   height: calc(100% - 60px);
   margin-top: 14px;
-  padding-right: 12px;
-  overflow-y: scroll;
+  overflow-y: overlay;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
 }
 div.column div.cards article.card {
   z-index: 10;
-  width: calc(100% - 36px);
   border-radius: 16px;
   background-color: #fefefe;
   padding: 16px;
@@ -198,6 +206,7 @@ div.column div.cards article.card:first-of-type {
 div.column div.cards:hover {
   cursor: -webkit-grab;
   cursor: grab;
+  overflow-y: overlay;
 }
 div.column:first-of-type {
   margin-left: 36px;
@@ -207,7 +216,8 @@ div.column:last-of-type {
 }
 /* ///////////// SCROLL BAR //////////// */
 div.cards::-webkit-scrollbar {
-  width: 16px;
+  width: 8px;
+  padding-left: 12px;
   /* width of the entire scrollbar */
 }
 div.cards::-webkit-scrollbar-track {
@@ -288,16 +298,54 @@ div.cards::-webkit-scrollbar-thumb {
 .button.primary.icon {
   display: none;
 }
-/* false stuff */
 #create-task-form {
   display: none;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
+  top: calc(10% - 18px);
+  left: calc(10% - 18px);
+  padding: 36px;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-radius: 16px;
+}
+#create-task-form input {
+  border: none;
+  filter: drop-shadow(0 0 2px #30303018);
+  border-radius: 4px;
+  padding: 12px;
+}
+#create-task-form input:focus {
+  border: none;
+  filter: drop-shadow(0 0 2px #30303048);
+}
+#create-task-form input[type=radio] {
+  width: 0;
+}
+#create-task-form label.false-radio span {
+  background-color: #fefefe;
+  color: #909090;
+  padding: 16px;
+}
+#create-task-form label.false-radio:hover {
+  cursor: pointer;
+}
+#create-task-form label.false-radio:hover span {
+  color: #303030;
+}
+#create-task-form input[type=radio]:checked ~ span {
+  background-color: #303030;
+  color: #fefefe;
+}
+#create-task-form label[for=taskPriorityRating] {
+  display: flex;
+  flex-direction: row;
 }
 #create-task-form.active {
   display: flex;
 }
+/* false stuff */
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;

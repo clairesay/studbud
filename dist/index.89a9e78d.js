@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"2UDyg":[function(require,module,exports) {
+})({"6c6yg":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 63258;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
 module.bundle.HMR_BUNDLE_ID = "631208e8e08d7e4a79a63af689a9e78d";
@@ -443,9 +443,39 @@ id) /*: string*/
 
 },{}],"51IO2":[function(require,module,exports) {
 const newTask = document.getElementById('new-task');
+var editTask = document.querySelectorAll('.card');
+
+// STACK OVERFLOW https://stackoverflow.com/questions/4880381/check-whether-html-element-has-scrollbars
+
+
+// var hasHorizontalScrollbar = cardContainer.scrollWidth > cardContainer.clientWidth;
+function cardWidth() {
+  editTask.forEach(function(element) {
+    // var cardContainer = document.querySelectorAll('div.cards');
+    var cardContainer = element.parentElement
+    var hasVerticalScrollbar = cardContainer.scrollHeight > cardContainer.clientHeight;
+    if (hasVerticalScrollbar) {
+      element.style.width = 'auto';
+      element.style.maxWidth = '90%'; 
+    } else {
+      // cardContainer.style.maxWidth = 'calc(100% - 32px)';
+      element.style.width = 'auto';
+      cardContainer.style.paddingRight = '36px';
+      // element.style.maxWidth = cardContainer.clientWidth - 36 + 'px'; 
+    }
+  })
+}
+
+
+
+function updateVar() {
+  editTask = document.querySelectorAll('.card');
+  console.log(editTask)
+}
 const createTaskForm = document.getElementById('create-task-form')
 var overlayToggle = false;
 newTask.addEventListener('click', function() {
+  updateVar()
   console.log('clicked')
   // e.preventDefault();
   if (overlayToggle == false) {
@@ -455,9 +485,32 @@ newTask.addEventListener('click', function() {
     createTaskForm.classList.remove('active')
     overlayToggle = false;
   }
-
-
 } )
+editTask.forEach(function(elem) {
+  elem.addEventListener('click', function() {
+    updateVar()
+    console.log('click')
+    if (overlayToggle == false) {
+      createTaskForm.classList.add('active')
+      overlayToggle = true;
+    } else if (overlayToggle == true) {
+      createTaskForm.classList.remove('active')
+      overlayToggle = false;
+    }
+  })
+})
+
+function rip() {
+  updateVar()
+  console.log('click')
+  if (overlayToggle == false) {
+    createTaskForm.classList.add('active')
+    overlayToggle = true;
+  } else if (overlayToggle == true) {
+    createTaskForm.classList.remove('active')
+    overlayToggle = false;
+  }
+}
 
 // declaring a class called Task - this ordains the structure for all the elements to go into the class
 class Task {
@@ -481,7 +534,19 @@ class Task {
     addTask() {
       taskList.push(this);
       // returns its index
-      return taskList.indexOf(this)
+      // return taskList.indexOf(this)
+      return this.id
+    }
+
+    updateTask(id) {
+      // var myNum = 3;
+      // for (let i = 0; i < taskList.length; i ++) {
+      //   if 
+      // }
+      var myObject = taskList.filter(function(element) {
+        return element.id == id;
+      })
+      console.log(myObject)
     }
   //////////////////////////////////////////////////////////////
     // this prints the last task that was added to the array taskList
@@ -528,9 +593,31 @@ class Task {
           description = document.createElement('p'),
           timeDetails = document.createElement('div'),
               dueDate = document.createElement('h4'),
-              timeTag = document.createElement('span')
+              timeTag = document.createElement('span'),
+          
+          editIcon = document.createElement('div')
+          editIcon.classList.add('edit') 
+          // editIcon.setAttribute('onmouseover', 'console.log("nananan")')
+          editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
+          </svg>`
+          editIcon.addEventListener('click', function(event) {
+            updateVar()
+            alert('yo')
+            console.log('clicked')
+            // e.preventDefault();
+            if (overlayToggle == false) {
+              createTaskForm.classList.add('active')
+              overlayToggle = true;
+            } else if (overlayToggle == true) {
+              createTaskForm.classList.remove('active')
+              overlayToggle = false;
+            }
+          })
+          // editIcon.innerHTML = `<path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>`
 
       card.classList.add('card')
+      card.setAttribute('id', 't-'+ n)
       subjectTag.classList.add('tag')
       subjectTag.classList.add('subject')
       timeDetails.classList.add('time-details')
@@ -551,6 +638,7 @@ class Task {
       card.appendChild(subjectTag)
       card.appendChild(title)
       card.appendChild(description)
+      card.appendChild(editIcon)
       card.appendChild(timeDetails)
 
       // appending card to column
@@ -637,7 +725,21 @@ class Task {
     // task.printTask(task.addTask());
 
     // create new card with task
-    task.createCard(task.addTask());
+    if (taskList.length > 0) {
+      taskList.filter(function(element) {
+        if (element.id == taskID) {
+          task.updateTask(taskID)
+        } else {
+          task.createCard(task.addTask());
+        }
+
+      })
+    } else {
+      task.createCard(task.addTask());
+    }
+
+
+
 
     // exit form
     overlayToggle = false;
@@ -648,10 +750,8 @@ class Task {
   })
   
   
-// CHECKING FOR CHECKED CHECKBOX/RADIO
-createTaskForm.addEventListener('click', function() {
+// getting values of the card for editing
 
-})
-},{}]},["2UDyg","51IO2"], "51IO2", "parcelRequirec526")
+},{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 
 //# sourceMappingURL=index.89a9e78d.js.map
