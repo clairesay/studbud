@@ -516,6 +516,41 @@ class Task {
       // adding the task to the display
       taskDisplay.appendChild(printTask)
     }
+
+    createCard(n) {
+      var card = document.createElement('article');
+      var subjectTag = document.createElement('span'),
+          title = document.createElement('h3'),
+          description = document.createElement('p'),
+          timeDetails = document.createElement('div'),
+              dueDate = document.createElement('h4'),
+              timeTag = document.createElement('span')
+
+      card.classList.add('card')
+      subjectTag.classList.add('tag')
+      subjectTag.classList.add('subject')
+      timeDetails.classList.add('time-details')
+      timeTag.classList.add('time')
+      timeTag.classList.add('tag')
+      title.textContent = this.name;
+      description.textContent = this.description;
+      dueDate.textContent = this.dueDate;
+      timeTag.textContent = this.estimatedTime;
+
+      // appending time details to time div
+      timeDetails.appendChild(dueDate)
+      timeDetails.appendChild(timeTag)
+
+      // appending everything to whole div
+      card.appendChild(subjectTag)
+      card.appendChild(title)
+      card.appendChild(description)
+      card.appendChild(timeDetails)
+
+      // appending card to column
+      var cardContainer = document.getElementsByClassName('cards')[0]
+      cardContainer.appendChild(card)
+    }
   }
   
   // initialising task delete button
@@ -573,8 +608,15 @@ class Task {
   
     // add the task to the task list (repo)
   
-    task.printTask(task.addTask());
-  
+    // task.printTask(task.addTask());
+
+    // create new card with task
+    task.createCard(task.addTask());
+
+    // exit form
+    overlayToggle = false;
+    createTaskForm.classList.remove('active')
+    createTaskForm.reset();
     // print to check
     console.log(taskList)
   })
