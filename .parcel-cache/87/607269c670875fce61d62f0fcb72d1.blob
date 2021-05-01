@@ -11,9 +11,6 @@ total.forEach(function count(object, index) {
             counta += 1
         }
     }
-    if (cards[index].classList.contains('draggable-container--over')) {
-        counta += 1;
-    }
     console.log('counter is :' + counta)
     // set the textcontent of total to be the number of cards in the respective column
     // var cards = object.parentElement.nextElementSibling.querySelectorAll('div.cards .card');
