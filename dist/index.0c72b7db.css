@@ -288,7 +288,6 @@ div.cards::-webkit-scrollbar-thumb {
 .button.primary.icon {
   display: none;
 }
-/* false stuff */
 #create-task-form {
   display: none;
   position: absolute;
@@ -301,9 +300,42 @@ div.cards::-webkit-scrollbar-thumb {
   background-color: #fefefe;
   border-radius: 16px;
 }
+#create-task-form input {
+  border: none;
+  filter: drop-shadow(0 0 2px #30303018);
+  border-radius: 4px;
+  padding: 12px;
+}
+#create-task-form input:focus {
+  border: none;
+  filter: drop-shadow(0 0 2px #30303048);
+}
+#create-task-form input[type=radio] {
+  width: 0;
+}
+#create-task-form label.false-radio span {
+  background-color: #fefefe;
+  color: #909090;
+  padding: 16px;
+}
+#create-task-form label.false-radio:hover {
+  cursor: pointer;
+}
+#create-task-form label.false-radio:hover span {
+  color: #303030;
+}
+#create-task-form input[type=radio]:checked ~ span {
+  background-color: #303030;
+  color: #fefefe;
+}
+#create-task-form label[for=taskPriorityRating] {
+  display: flex;
+  flex-direction: row;
+}
 #create-task-form.active {
   display: flex;
 }
+/* false stuff */
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;

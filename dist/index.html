@@ -138,32 +138,66 @@
 
 
     <form id="create-task-form">
+      <h1>Create a task</h1>
+        <section>
         <label for="taskName">Task Name</label>
         <input type="text" name="taskName" placeholder="What's the task called?">
 
         <label for="taskDescription">Task Description</label>
         <input type="text" name="taskDescription" placeholder="How can I complete this task?">
 
+        <!-- SUBJECT -->
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" list="subject">
+        <datalist id="subject">
+          <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
+          <!-- <option value="Boston">
+          <option value="Cambridge"> -->
+        </datalist>
+        </section>
+        <aside>
+        <label for="status">Status</label>
+        <select name="status">
+          <option value="ready">Ready</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+          <!-- populate this with all the existing columns -->
+          <!-- <option value="ready"></option> -->
+        </select>
+
+
+        <label for="taskPriorityRating">Priority Level
+        <label class="false-radio">
+        <input type="radio" name="taskPriorityRating" value="Low">
+        <span>Low</span>
+        </label>
+        <label class="false-radio">
+        <input type="radio" name="taskPriorityRating" value="Mid">
+        <span>Mid</span>
+        </label>
+        <label class="false-radio">
+        <input type="radio" name="taskPriorityRating" value="High">
+        <span>High</span>
+        </label>
+      </label>
+
+        <label for="taskEstimatedTime">Estimated Time to Complete</label>
+        <input type="text" name="taskEstimatedTimeHr">
+        <input type="text" name="taskEstimatedTimeMin">
+
         <label for="taskDueDate">Due Date</label>
         <input type="date" name="taskDueDate">
 
-        <label for="taskPriorityRating">Priority Level</label>
-        <input type="radio" name="taskPriorityRating" value="Low">Low
-        <input type="radio" name="taskPriorityRating" value="Mid">Mid
-        <input type="radio" name="taskPriorityRating" value="High">High
-
-        <label for="taskPriorityRating">Estimated Time to Complete</label>
-        <input type="text" name="taskEstimatedTime">
-
-        <label for="taskPriorityRating">Completion Status</label>
-        <input type="radio" name="taskCompletionStatus" value="Done">Done
-        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done
+      </aside>
+        <!-- <label for="taskCompletionStatus">Completion Status</label>
+        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
+        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input> -->
 
         <button id="create-task-submit" class="button primary" type="submit">Submit</button>
         </form>
-        <article id="task-display">
+        <!-- <article id="task-display">
           printallthingshere
-        </article>
+        </article> -->
     <script src="/index.89a9e78d.js"></script>
     <script src="/index.72657542.js"></script>
     <script src="/index.68cd150d.js"></script>

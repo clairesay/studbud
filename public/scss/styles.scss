@@ -317,7 +317,7 @@ div.column:last-of-type {
   display: none;
 }
 
-/* false stuff */
+// FORM
 #create-task-form {
   display: none;
   position: absolute;
@@ -329,10 +329,52 @@ div.column:last-of-type {
   flex-direction: column;
   background-color: #fefefe;
   border-radius: 16px;
+  input {
+    // border: 2px solid #909090;
+    border: none;
+    filter: drop-shadow(0 0 2px #30303018);
+    border-radius: 4px;
+    padding: 12px;
+  }
+  input:focus {
+    border: none;
+    filter: drop-shadow(0 0 2px #30303048);
+  }
+
+  input[type=radio] {
+    width: 0;
+  }
+  label.false-radio {
+    span {
+      background-color: #fefefe;
+      color: #909090;
+      padding: 16px;
+    }
+  }
+
+  label.false-radio:hover{
+    span {
+      color: #303030;
+    }
+    cursor: pointer;
+  }
+  input[type=radio]:checked ~ span {
+    background-color: #303030;
+    color: #fefefe;
+  }
+  label[for=taskPriorityRating] {
+    display: flex;
+    flex-direction: row;
+  }
 }
 #create-task-form.active {
   display: flex;
 }
+
+
+
+/* false stuff */
+
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;
