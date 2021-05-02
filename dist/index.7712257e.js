@@ -470,11 +470,17 @@ total.forEach(function count(object, index) {
 }
 counter(total, cards)
 
-const sortable = new Draggable.Sortable(
-    document.querySelectorAll('.cards'), {
-        draggable: 'article.card',
-    }
-)
+var sortable
+function createDraggability() {
+    sortable = new Draggable.Sortable(
+        document.querySelectorAll('.cards'), {
+            draggable: 'article.card',
+            autoScroll: 1
+        },
+    
+    )
+}
+createDraggability();
 sortable.on('sortable:start', () => {
     console.log('sortable:start')
     editIcon.addEventListener('click', function(event) {
@@ -523,7 +529,6 @@ sortable.on('sortable:stop', () => {
 // sortable2.on('sortable:stop', () => {
 //     console.log('sortable:stop')
 // })
-
 
 },{}]},["YTKTN","3b9tq"], "3b9tq", "parcelRequirec526")
 

@@ -751,6 +751,51 @@ class Task {
   
   
 // getting values of the card for editing
+// //////////////// ADD COLUMN /////////////////////// //
+const addColumnForm = document.getElementById('add-column-form')
+var newColumnToggle = false;
+const newColumn = document.getElementById('new-column');
+newColumn.addEventListener('click', function(event) {
+  if (newColumnToggle == false) {
+    addColumnForm.classList.add('active')
+    newColumnToggle = true
+  } else if (newColumnToggle == true) {
+    addColumnForm.classList.remove('active')
+    newColumnToggle = false
+  }
+})
+const columnSubmitButton = document.getElementById('add-column-submit')
+columnSubmitButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  let column = document.createElement('div')
+  column.classList.add('column')
+  let title = document.createElement('div')
+  title.classList.add('title')
+  let columnName = document.createElement('input')
+  columnName.classList.add('column-name')
+  let columnNameValue = addColumnForm.querySelectorAll('input')[0]
+
+  columnName.value = columnNameValue.value
+  let total = document.createElement('h3')
+  total.classList.add('total')
+  total.textContent = 0;
+  let cards = document.createElement('div')
+  cards.classList.add('cards')
+  title.appendChild(columnName)
+  title.appendChild(total)
+  column.appendChild(title)
+  column.appendChild(cards)
+  let tasks = document.getElementById('tasks')
+  tasks.appendChild(column)
+
+  newColumnToggle = false;
+  addColumnForm.classList.remove('active')
+  // IDEALLY REFRESH COUNTER
+  // counter(total, cards)
+  // createDraggability();
+})
+
+
 
 },{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 

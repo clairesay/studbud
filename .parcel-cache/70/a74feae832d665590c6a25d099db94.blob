@@ -182,11 +182,23 @@ div.column div.title input.column-name:hover {
   -webkit-text-decoration: underline dotted #909090;
           text-decoration: underline dotted #909090;
 }
+div.column div.title img {
+  position: relative;
+  right: -16px;
+  background-color: #fefefe;
+  visibility: hidden;
+}
+div.column div.title input.column-name:focus ~ img {
+  background-color: blue;
+}
+div.column div.title input.column-name:hover ~ img {
+  visibility: visible;
+}
 div.column div.cards {
   width: auto;
   height: calc(100% - 60px);
   margin-top: 14px;
-  overflow-y: overlay;
+  overflow-y: auto;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
 }
@@ -206,7 +218,6 @@ div.column div.cards article.card:first-of-type {
 div.column div.cards:hover {
   cursor: -webkit-grab;
   cursor: grab;
-  overflow-y: overlay;
 }
 div.column:first-of-type {
   margin-left: 36px;
@@ -216,9 +227,7 @@ div.column:last-of-type {
 }
 /* ///////////// SCROLL BAR //////////// */
 div.cards::-webkit-scrollbar {
-  width: 8px;
-  padding-left: 12px;
-  /* width of the entire scrollbar */
+  width: 24px;
 }
 div.cards::-webkit-scrollbar-track {
   background: transparent;
@@ -229,7 +238,7 @@ div.cards::-webkit-scrollbar-thumb {
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
-  border: 4px solid #eeeeee;
+  border: 8px solid #eeeeee;
   /* creates padding around scroll thumb */
 }
 #tasks::-webkit-scrollbar {

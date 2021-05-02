@@ -479,6 +479,41 @@ function displayMain(option) {
         contentCreateButtonsContainer.style.display = 'flex'
     }
 }
+
+const contentExpandButton = document.querySelectorAll('#content-buttons button.icon')[0]
+const taskExpandButton = document.querySelectorAll('#task-buttons button.icon')[0]
+
+const newContent = document.getElementById('new-content');
+const newGroup = document.getElementById('new-group');
+const newTask = document.getElementById('new-task');
+const newColumn = document.getElementById('new-column');
+
+var contentButtonVisible = false;
+var taskButtonVisible = false;
+contentExpandButton.addEventListener('click', function(event) {
+    if (contentButtonVisible == false) {
+        newContent.classList.add('active')
+        newGroup.classList.add('active')
+        contentButtonVisible = true;
+    } else if (contentButtonVisible == true) {
+        newContent.classList.remove('active')
+        newGroup.classList.remove('active')
+        contentButtonVisible = false;
+    }
+})
+
+taskExpandButton.addEventListener('click', function(event) {
+    if (taskButtonVisible == false) {
+        newTask.classList.add('active')
+        newColumn.classList.add('active')
+        taskButtonVisible = true;
+    } else if (taskButtonVisible == true) {
+        newTask.classList.remove('active')
+        newColumn.classList.remove('active')
+        taskButtonVisible = false;
+    }
+})
+
 },{}]},["6dqj6","1ob9e"], "1ob9e", "parcelRequirec526")
 
 //# sourceMappingURL=index.72657542.js.map

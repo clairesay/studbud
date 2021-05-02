@@ -184,6 +184,18 @@ div.column {
           // text-underline-offset: 0.5em;
           // text-underline-offset: 3px;
         }
+
+        img {
+          // position: absolute;
+          position: relative;
+          right:-16px;
+          background-color: #fefefe;
+          visibility: hidden;
+        }
+
+        input.column-name:focus ~ img, input.column-name:active ~ img, input.column-name:hover ~ img {
+          visibility: visible;
+        }
     }
 
     div.cards {
@@ -309,6 +321,10 @@ div.column:last-of-type {
   justify-content: space-around;
 }
 
+.button.active {
+  visibility: visible;
+}
+
 /* adding a bit of space between the buttons */
 .button:not(:last-child) {
   margin-right: 16px;
@@ -340,7 +356,7 @@ div.column:last-of-type {
 }
 
 // FORM
-#create-task-form {
+#create-task-form, #add-column-form {
   display: none;
   position: absolute;
   width: 80%;
@@ -389,7 +405,7 @@ div.column:last-of-type {
     flex-direction: row;
   }
 }
-#create-task-form.active {
+#create-task-form.active, #add-column-form.active {
   display: flex;
 }
 
@@ -441,6 +457,7 @@ label, button#create-task-submit {
     position: absolute;
     top: 12px;
     right: 12px;
+    z-index: 5;
   }
 
   .button.primary.icon {
@@ -466,6 +483,10 @@ label, button#create-task-submit {
 
   .button.create:hover {
     background-color: #e5e5e5;
+  }
+
+  .button.active {
+    visibility: visible;
   }
 
   

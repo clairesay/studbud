@@ -76,8 +76,9 @@
       </div>
       <div class="column">
         <div class="title">
-          <input class="column-name" value="Column Name">
+          <input class="column-name" value="Column Name">          <img src="/edit.6a78d445.svg">
           <h3 class="total"></h3>
+
         </div>
         <div class="cards">
           <article class="card">Card container 2</article>
@@ -125,13 +126,7 @@
           <h3 class="total"></h3>
         </div>
         <div class="cards">
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
+
         </div>
       </div>
     </section>
@@ -197,11 +192,21 @@
 
         <button id="create-task-submit" class="button primary" type="submit">Submit</button>
         </form>
+
+        <form id="add-column-form">
+          <h1>Create a task</h1>
+
+            <label for="columnName">Column Name</label>
+            <input type="text" name="columnName" placeholder="What is this column for?">
+          <p>TIP: Name the column after a status, like 'In-Progress' so you can categorise your tasks based on completion.</p>
+          <button id="add-column-submit" class="button primary" type="submit">Save</button>  
+        </form>
         <!-- <article id="task-display">
           printallthingshere
         </article> -->
     <script src="/index.89a9e78d.js"></script>
     <script src="/index.72657542.js"></script>
+    <!-- <script src="js/scrolloutofview.js"></script> -->
     <script src="/index.68cd150d.js"></script>
     <script src="/index.7712257e.js"></script>
 </body>
