@@ -443,8 +443,7 @@ id) /*: string*/
 
 },{}],"3b9tq":[function(require,module,exports) {
 // DRAGGABLE FUNCTIONALITY
-// card = document.querySelectorAll('.card'),
-// editIcon = document.querySelectorAll('.edit')[0]
+
 function counter() {
     var total = document.querySelectorAll('.total'),
     cards = document.querySelectorAll('.cards')
@@ -457,9 +456,9 @@ function counter() {
                 counta += 1
             }
         }
-        if (cards[index].classList.contains('draggable-container--over')) {
-            counta += 1;
-        }
+        // if (cards[index].classList.contains('draggable-container--over')) {
+        //     counta += 1;
+        // }
         console.log('counter is :' + counta)
         total[index].textContent = counta;
     })

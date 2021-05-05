@@ -68,7 +68,6 @@ table {
 
 .edit {
   padding: 18px;
-  pointer-events: none;
 }
 
 /* //////////// STRUCTURE ///////////// */
@@ -234,10 +233,6 @@ div.column div.cards article.card:last-child {
 div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;
 }
-div.column div.cards:hover {
-  cursor: grab;
-}
-
 div.column:first-of-type {
   margin-left: 36px;
 }
@@ -289,23 +284,6 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
 }
 
 /* ///////////// DRAGGABLE //////////////// */
-.draggable-source--is-dragging {
-  opacity: 0.2;
-  border: 2px dashed #909090;
-  color: transparent;
-}
-.draggable-source--is-dragging * {
-  color: transparent;
-  background-color: transparent;
-  border-color: transparent;
-  fill: transparent;
-  stroke: transparent;
-}
-
-.card.draggable-mirror {
-  max-width: 296px;
-}
-
 /* ///////////// COMPONENTS /////////////// */
 /* BUTTON FORMATTING */
 .button {
@@ -407,25 +385,34 @@ label, button#create-task-submit {
   margin-top: 1em;
 }
 
-.sortable-ghost {
-  background-color: #833783;
+.chosen-card {
+  background-color: #fefefe;
 }
 
-.banana {
+.sortable-fallback {
+  opacity: 1 !important;
+}
+
+.ghost-card {
   opacity: 0.5;
   border: 2px dashed #909090;
 }
-.banana * {
+.ghost-card * {
   background-color: transparent;
   color: transparent;
   fill: transparent;
   opacity: 0;
 }
 
-.apple {
-  background-color: #bb6d6d;
-  opacity: 1;
-  border: 2px solid rebeccapurple;
+.ghost-column {
+  opacity: 0.5;
+  border: 2px dashed #909090;
+}
+.ghost-column * {
+  background-color: transparent;
+  color: transparent;
+  fill: transparent;
+  opacity: 0;
 }
 
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */

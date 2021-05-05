@@ -59,7 +59,18 @@ table {
 }
 .edit {
   padding: 18px;
-  pointer-events: none;
+}
+form#create-task-form button#create-task-submit {
+  display: flex;
+}
+form#create-task-form button#edit-task-save, form#create-task-form button#edit-task-cancel, form#create-task-form button#edit-task-delete {
+  display: none;
+}
+form#create-task-form.update button#create-task-submit {
+  display: none;
+}
+form#create-task-form.update button#edit-task-save, form#create-task-form.update button#edit-task-cancel, form#create-task-form.update button#edit-task-delete {
+  display: flex;
 }
 /* //////////// STRUCTURE ///////////// */
 /* BODY */
@@ -215,10 +226,6 @@ div.column div.cards article.card:last-child {
 }
 div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;
-}
-div.column div.cards:hover {
-  cursor: -webkit-grab;
-  cursor: grab;
 }
 div.column:first-of-type {
   margin-left: 36px;

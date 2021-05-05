@@ -33,7 +33,24 @@ $small-padding: 12px;
 
 .edit {
   padding: 18px;
-  pointer-events:none;
+  // pointer-events:none;
+}
+
+form#create-task-form {
+  button#create-task-submit {
+    display: flex;
+  }
+  button#edit-task-save, button#edit-task-cancel, button#edit-task-delete {
+    display: none;
+  }
+}
+form#create-task-form.update {
+  button#create-task-submit {
+    display: none;
+  }
+  button#edit-task-save, button#edit-task-cancel, button#edit-task-delete {
+    display: flex;
+  }
 }
 /* //////////// STRUCTURE ///////////// */
 /* BODY */
@@ -240,6 +257,7 @@ div.column {
             scroll-behavior: smooth;
             scroll-snap-align: start;
 
+
             svg.edit {
               // visibility: hidden;
             }
@@ -260,7 +278,7 @@ div.column {
         }
     }
     div.cards:hover {
-      cursor: grab;
+      // cursor: grab;
       // overflow-y: overlay;
     }
 }

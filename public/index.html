@@ -62,16 +62,6 @@
 
           </article>
           <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
-          <article class="card">Card container</article>
         </div>
 
       </div>
@@ -84,11 +74,6 @@
         <div class="cards">
           <article class="card">Card container 2</article>
           <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
         </div>
       </div>
       <div class="column">
@@ -98,12 +83,6 @@
         </div>
         <div class="cards">
           <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
         </div>
       </div>
       <div class="column">
@@ -112,11 +91,6 @@
           <h3 class="total"></h3>
         </div>
         <div class="cards">
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
           <article class="card">Card container 2</article>
           <article class="card">Card container 2</article>
         </div>
@@ -139,7 +113,7 @@
       <h1>Create a task</h1>
         <section>
         <label for="taskName">Task Name</label>
-        <input type="text" name="taskName" placeholder="What's the task called?"></input>
+        <input type="text" name="taskName" placeholder="What's the task called?" autofocus></input>
 
         <label for="taskDescription">Task Description</label>
         <input type="text" name="taskDescription" placeholder="How can I complete this task?"></input>
@@ -191,14 +165,17 @@
         <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
         <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input> -->
 
-        <button id="create-task-submit" class="button primary" type="submit">Submit</button>
+        <button id="create-task-submit" class="button primary" type="button">Submit</button>
+        <button id="edit-task-save" class="button primary" type="button">Save</button>
+        <button id="edit-task-cancel" class="button primary" type="button">Cancel</button>
+        <button id="edit-task-delete" class="button primary" type="button">Delete</button>
         </form>
 
         <form id="add-column-form">
           <h1>Create a task</h1>
 
             <label for="columnName">Column Name</label>
-            <input type="text" name="columnName" placeholder="What is this column for?"></input>
+            <input type="text" name="columnName" placeholder="What is this column for?" autofocus></input>
           <p>TIP: Name the column after a status, like 'In-Progress' so you can categorise your tasks based on completion.</p>
           <button id="add-column-submit" class="button primary" type="submit">Save</button>  
         </form>
