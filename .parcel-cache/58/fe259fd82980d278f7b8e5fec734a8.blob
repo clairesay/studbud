@@ -23,7 +23,6 @@ const createTaskForm = document.getElementById('create-task-form')
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
 function openTaskForm(type) {
-  console.log('opentaskform')
     if (type == 'update') {
       createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
       createTaskForm.classList.add('update')
@@ -38,7 +37,7 @@ function openTaskForm(type) {
       overlayToggle = true;
       reupdate()
     } else if (overlayToggle == true) {
-      // createTaskForm.classList.remove('update')
+      createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
@@ -47,24 +46,21 @@ function openTaskForm(type) {
 }
 
 function reupdate() {
-  console.log('reupdate')
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
+       if (overlayToggle == false) {
+         createTaskForm.classList.add('active')
+         autoFill(object)
+         overlayToggle = true;
+       } else if (overlayToggle == true) {
+         createTaskForm.classList.remove('active')
+         overlayToggle = false;
+       }
      })
  })
  }
 function autoFill(object) {
-  console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
 

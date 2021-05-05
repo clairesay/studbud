@@ -467,48 +467,42 @@ const createTaskForm = document.getElementById('create-task-form')
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
 function openTaskForm(type) {
-  console.log('opentaskform')
-    if (type == 'update') {
-      createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
-      createTaskForm.classList.add('update')
-
-    } else {
-      createTaskForm.querySelector('h1').textContent = 'Create a new task'
-      createTaskForm.classList.remove('update')
-    }
     if (overlayToggle == false) {
       // check if its an update form if so, reword, and show corresponding buttons :)
+      if (type == 'update') {
+        createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
+        createTaskForm.classList.add('update')
+
+      } else {
+        createTaskForm.querySelector('h1').textContent = 'Create a new task'
+        createTaskForm.classList.remove('update')
+      }
       createTaskForm.classList.add('active')
       overlayToggle = true;
-      reupdate()
     } else if (overlayToggle == true) {
-      // createTaskForm.classList.remove('update')
+      createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
-      reupdate()
     }
 }
 
 function reupdate() {
-  console.log('reupdate')
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
+       if (overlayToggle == false) {
+         createTaskForm.classList.add('active')
+         autoFill(object)
+         overlayToggle = true;
+       } else if (overlayToggle == true) {
+         createTaskForm.classList.remove('active')
+         overlayToggle = false;
+       }
      })
  })
  }
 function autoFill(object) {
-  console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
 
@@ -654,7 +648,7 @@ var taskCancelButton = document.getElementById('edit-task-cancel');
 var taskDeleteButton = document.getElementById('edit-task-delete');
 
 taskSaveButton.addEventListener('click', function(event) {
-
+  console.log('task saving')
   event.preventDefault()
   var taskDetails, task, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskSaveStatus;
   // taskDetailer(taskSaveButton.value)
@@ -757,7 +751,7 @@ taskSubmitButton.addEventListener('click', function(event) {
 
 // getting values of the card for editing
 
-// //////////////////////////////////////////// ADD COLUMN //////////////////////////////////////////////// //
+// //////////////// ADD COLUMN /////////////////////// //
 const addColumnForm = document.getElementById('add-column-form')
 var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
@@ -844,4 +838,4 @@ function createNewSortable(element) {
 
 },{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 
-//# sourceMappingURL=index.89a9e78d.js.map
+//# sourceMappingURL=index.HASH_REF_631208e8e08d7e4a79a63af689a9e78d.js.map

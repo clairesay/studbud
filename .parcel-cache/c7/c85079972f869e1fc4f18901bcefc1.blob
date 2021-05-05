@@ -482,7 +482,7 @@ function openTaskForm(type) {
       overlayToggle = true;
       reupdate()
     } else if (overlayToggle == true) {
-      // createTaskForm.classList.remove('update')
+      createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
@@ -495,15 +495,14 @@ function reupdate() {
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
+       if (overlayToggle == false) {
+         createTaskForm.classList.add('active')
+         autoFill(object)
+         overlayToggle = true;
+       } else if (overlayToggle == true) {
+         createTaskForm.classList.remove('active')
+         overlayToggle = false;
+       }
      })
  })
  }
@@ -844,4 +843,4 @@ function createNewSortable(element) {
 
 },{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 
-//# sourceMappingURL=index.89a9e78d.js.map
+//# sourceMappingURL=index.HASH_REF_631208e8e08d7e4a79a63af689a9e78d.js.map

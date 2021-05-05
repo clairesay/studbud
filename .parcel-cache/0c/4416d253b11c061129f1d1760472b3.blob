@@ -466,8 +466,10 @@ function cardWidth() {
 const createTaskForm = document.getElementById('create-task-form')
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
+
+// OPENING UP THE TASK FORM
 function openTaskForm(type) {
-  console.log('opentaskform')
+    // check if its an update form if so, reword, and show corresponding buttons :)
     if (type == 'update') {
       createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
       createTaskForm.classList.add('update')
@@ -476,39 +478,26 @@ function openTaskForm(type) {
       createTaskForm.querySelector('h1').textContent = 'Create a new task'
       createTaskForm.classList.remove('update')
     }
+
     if (overlayToggle == false) {
-      // check if its an update form if so, reword, and show corresponding buttons :)
       createTaskForm.classList.add('active')
       overlayToggle = true;
-      reupdate()
     } else if (overlayToggle == true) {
-      // createTaskForm.classList.remove('update')
+      createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
-      reupdate()
     }
 }
 
-function reupdate() {
-  console.log('reupdate')
+function allowEdit() {
   var card = document.querySelectorAll('.edit')
- card.forEach(function(object, index) {
-     object.addEventListener('click', function() {
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
-     })
- })
- }
+  card.forEach(function(object, index) {
+      object.addEventListener('click', function() {openTaskForm('update')})
+  })
+}
+
 function autoFill(object) {
-  console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
 
@@ -546,10 +535,10 @@ function autoFill(object) {
       taskDetails[8].value = thisTask.dueDate
       taskSaveButton.value = objectId
       openTaskForm('update')
-
     }
   }
 }
+
 
 // declaring a class called Task - this ordains the structure for all the elements to go into the class
 class Task {
@@ -565,23 +554,21 @@ class Task {
       this.estimatedTimeHr = estimatedTimeHr;
       this.estimatedTimeMin = estimatedTimeMin;
       this.dueDate = dueDate;
-
+      // this.completionStatus = completionStatus;
       this.saveStatus = saveStatus;
     }
   
     // this adds tasks to the array taskList
     addTask() {
       taskList.push(this);
-      // returns its index
-      // return taskList.indexOf(this)
       return this.id
     }
 
-    updateTask(id) {
-      var myObject = taskList.filter(function(element) {
-        return element.id == id;
-      })
-    }
+    // updateTask(id) {
+    //   var myObject = taskList.filter(function(element) {
+    //     return element.id == id;
+    //   })
+    // }
   
     createCard(n) {
       var card = document.createElement('article');
@@ -630,7 +617,7 @@ class Task {
       } else if (this.status == 'done') {
         cardContainer[2].appendChild(card)
       }
-      reupdate()
+      allowUpdate()
     }
 }
   
@@ -654,7 +641,6 @@ var taskCancelButton = document.getElementById('edit-task-cancel');
 var taskDeleteButton = document.getElementById('edit-task-delete');
 
 taskSaveButton.addEventListener('click', function(event) {
-
   event.preventDefault()
   var taskDetails, task, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskSaveStatus;
   // taskDetailer(taskSaveButton.value)
@@ -664,18 +650,24 @@ taskSaveButton.addEventListener('click', function(event) {
   // console.log(taskDetails)
   var id = parseInt(taskSaveButton.value)
   console.log('we are in the save button. the id is '+ id)
-  // if (id) {
-  taskID = id
-  for (let i = 0; i < taskList.length; i ++) {
-    var oldTask = taskList[i]
-    if (oldTask.id == id) {
-      taskList.splice(taskList.indexOf(oldTask), 1)
-      var oldCard = document.getElementById('t-' + id)
-      oldCard.remove();
-      taskSaveButton.value = ''
+  if (id) {
+    for (let i = 0; i < taskList.length; i ++) {
+      var oldTask = taskList[i]
+      if (oldTask.id == id) {
+        taskList.splice(taskList.indexOf(oldTask), 1)
+        if (id == 0) {
+          var oldCard = document.getElementById('t-0')
+        } else {
+          var oldCard = document.getElementById('t-' + id)
+        }
+        oldCard.remove();
+        taskSaveButton.value = ''
+      }
     }
+    taskID = id
+  } else {
+    taskID = taskList.length
   }
-  
   // get all of the user input in the input fields
 
   taskName = taskDetails[0].value;
@@ -703,14 +695,11 @@ taskSaveButton.addEventListener('click', function(event) {
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
 })
-// something to populate tasks with on the page
 
 // on submit:
 taskSubmitButton.addEventListener('click', function(event) {
   event.preventDefault()
   var taskDetails, task, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskSaveStatus;
-
-  // taskDetailer()
   taskSaveStatus = 'saved';
 
   /////////////////////////////
@@ -747,17 +736,33 @@ taskSubmitButton.addEventListener('click', function(event) {
   // task.printTask(task.addTask());
   task.createCard(task.addTask());
   // create new card with task
+  // if (taskList.length > 0) {
+  //   taskList.filter(function(element) {
+  //     if (element.id == taskID) {
+  //       task.updateTask(taskID)
+  //     } else {
+  //       task.createCard(task.addTask());
+  //     }
+
+  //   })
+  // } else {
+  //   task.createCard(task.addTask());
+  // }
+
   // exit form
   overlayToggle = false;
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
   // print to check
-
+  console.log(taskList)
 })
+  
+function taskDetailer(id) {
 
+}
 // getting values of the card for editing
 
-// //////////////////////////////////////////// ADD COLUMN //////////////////////////////////////////////// //
+// //////////////// ADD COLUMN /////////////////////// //
 const addColumnForm = document.getElementById('add-column-form')
 var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
@@ -842,6 +847,7 @@ function createNewSortable(element) {
 }
 
 
+
 },{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 
-//# sourceMappingURL=index.89a9e78d.js.map
+//# sourceMappingURL=index.HASH_REF_631208e8e08d7e4a79a63af689a9e78d.js.map

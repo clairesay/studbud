@@ -38,7 +38,7 @@ function openTaskForm(type) {
       overlayToggle = true;
       reupdate()
     } else if (overlayToggle == true) {
-      // createTaskForm.classList.remove('update')
+      createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
@@ -51,15 +51,14 @@ function reupdate() {
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
+       if (overlayToggle == false) {
+         createTaskForm.classList.add('active')
+         autoFill(object)
+         overlayToggle = true;
+       } else if (overlayToggle == true) {
+         createTaskForm.classList.remove('active')
+         overlayToggle = false;
+       }
      })
  })
  }
