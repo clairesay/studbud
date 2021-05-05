@@ -751,11 +751,14 @@ class Task {
   
   
 // getting values of the card for editing
+
 // //////////////// ADD COLUMN /////////////////////// //
 const addColumnForm = document.getElementById('add-column-form')
 var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
-newColumn.addEventListener('click', function(event) {
+
+// adding an event listener to bring up the form
+newColumn.addEventListener('click', function() {
   if (newColumnToggle == false) {
     addColumnForm.classList.add('active')
     newColumnToggle = true
@@ -764,17 +767,22 @@ newColumn.addEventListener('click', function(event) {
     newColumnToggle = false
   }
 })
+
+// adding an event listener for submitting the column
 const columnSubmitButton = document.getElementById('add-column-submit')
 columnSubmitButton.addEventListener('click', function(event) {
   event.preventDefault();
+
+  // creating the column
   let column = document.createElement('div')
   column.classList.add('column')
   let title = document.createElement('div')
   title.classList.add('title')
   let columnName = document.createElement('input')
   columnName.classList.add('column-name')
-  let columnNameValue = addColumnForm.querySelectorAll('input')[0]
 
+  // giving it the name provided by the user
+  let columnNameValue = addColumnForm.querySelectorAll('input')[0]
   columnName.value = columnNameValue.value
   let total = document.createElement('h3')
   total.classList.add('total')
@@ -787,13 +795,26 @@ columnSubmitButton.addEventListener('click', function(event) {
   column.appendChild(cards)
   let tasks = document.getElementById('tasks')
   tasks.appendChild(column)
-
+  // smooth scroll to the new column
+  tasks.scrollTo({
+    top: 0,
+    left: tasks.clientWidth,
+    behavior: 'smooth'
+  })
+  // close the form
   newColumnToggle = false;
+  addColumnForm.reset()
   addColumnForm.classList.remove('active')
+
   // IDEALLY REFRESH COUNTER
   // counter(total, cards)
-  // createDraggability();
+  var newColumn = document.querySelectorAll('.column')[-1]
+  // IDEALLY ADD CONTAINER TO SORTABLE
+  // sortable.addContainer(newColumn)
+
 })
+// console.log(pizza)
+
 
 
 

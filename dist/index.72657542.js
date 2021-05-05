@@ -490,7 +490,9 @@ const newColumn = document.getElementById('new-column');
 
 var contentButtonVisible = false;
 var taskButtonVisible = false;
-contentExpandButton.addEventListener('click', function(event) {
+contentExpandButton.addEventListener('click', contentButtonVisibility)
+function contentButtonVisibility() {
+    console.log('but')
     if (contentButtonVisible == false) {
         newContent.classList.add('active')
         newGroup.classList.add('active')
@@ -500,9 +502,9 @@ contentExpandButton.addEventListener('click', function(event) {
         newGroup.classList.remove('active')
         contentButtonVisible = false;
     }
-})
-
-taskExpandButton.addEventListener('click', function(event) {
+}
+taskExpandButton.addEventListener('click', taskButtonVisibility)  
+function taskButtonVisibility() {
     if (taskButtonVisible == false) {
         newTask.classList.add('active')
         newColumn.classList.add('active')
@@ -512,7 +514,7 @@ taskExpandButton.addEventListener('click', function(event) {
         newColumn.classList.remove('active')
         taskButtonVisible = false;
     }
-})
+}
 
 },{}]},["6dqj6","1ob9e"], "1ob9e", "parcelRequirec526")
 
