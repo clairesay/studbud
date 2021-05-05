@@ -316,23 +316,23 @@ div.column:last-of-type {
       }
 
 /* ///////////// DRAGGABLE //////////////// */
-.draggable-source--is-dragging {
-    // visibility: hidden;
-    opacity: 0.2;
-    border: 2px dashed $dark-grey;
-    color: transparent;
-    * {
-        color: transparent;
-        background-color: transparent;
-        border-color: transparent;
-        fill: transparent;
-        stroke: transparent;
-    }
-}
+// .draggable-source--is-dragging {
+//     // visibility: hidden;
+//     opacity: 0.2;
+//     border: 2px dashed $dark-grey;
+//     color: transparent;
+//     * {
+//         color: transparent;
+//         background-color: transparent;
+//         border-color: transparent;
+//         fill: transparent;
+//         stroke: transparent;
+//     }
+// }
 
-.card.draggable-mirror {
-    max-width: 296px;
-}
+// .card.draggable-mirror {
+//     max-width: 296px;
+// }
 
 /* ///////////// COMPONENTS /////////////// */
 
@@ -444,6 +444,36 @@ label, button#create-task-submit {
   display: block;
   margin-top: 1em;
 }
+
+
+.chosen-card {
+  // border: 5px solid blue;
+  // background-color: $grey;
+  background-color: $white;
+}
+.sortable-fallback { opacity: 1 !important }
+.ghost-card {
+  // background-color: rgb(106, 212, 106);
+  opacity: 0.5;
+  border: 2px dashed $dark-grey;
+  * {
+    background-color: transparent;
+    color: transparent;
+    fill: transparent;
+    opacity: 0;
+  }
+}
+
+.ghost-column {
+  opacity: 0.5;
+  border: 2px dashed $dark-grey;
+  * {
+    background-color: transparent;
+    color: transparent;
+    fill: transparent;
+    opacity: 0;
+  }
+}
   
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
 
@@ -518,3 +548,4 @@ label, button#create-task-submit {
 
   
 }
+

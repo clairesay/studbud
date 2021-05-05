@@ -202,7 +202,7 @@ div.column div.cards {
 }
 div.column div.cards article.card {
   z-index: 10;
-  border-radius: 4px;
+  border-radius: 16px;
   background-color: #fefefe;
   padding: 16px;
   filter: drop-shadow(0 0 2px #30303018);
@@ -262,21 +262,6 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
   background-color: #aaaaaa;
 }
 /* ///////////// DRAGGABLE //////////////// */
-.draggable-source--is-dragging {
-  opacity: 0.2;
-  border: 2px dashed #909090;
-  color: transparent;
-}
-.draggable-source--is-dragging * {
-  color: transparent;
-  background-color: transparent;
-  border-color: transparent;
-  fill: transparent;
-  stroke: transparent;
-}
-.card.draggable-mirror {
-  max-width: 296px;
-}
 /* ///////////// COMPONENTS /////////////// */
 /* BUTTON FORMATTING */
 .button {
@@ -365,6 +350,32 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
 label, button#create-task-submit {
   display: block;
   margin-top: 1em;
+}
+.chosen-card {
+  background-color: #fefefe;
+}
+.sortable-fallback {
+  opacity: 1 !important;
+}
+.ghost-card {
+  opacity: 0.5;
+  border: 2px dashed #909090;
+}
+.ghost-card * {
+  background-color: transparent;
+  color: transparent;
+  fill: transparent;
+  opacity: 0;
+}
+.ghost-column {
+  opacity: 0.5;
+  border: 2px dashed #909090;
+}
+.ghost-column * {
+  background-color: transparent;
+  color: transparent;
+  fill: transparent;
+  opacity: 0;
 }
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
 @media only screen and (max-width: 700px) {

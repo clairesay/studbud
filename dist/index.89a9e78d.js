@@ -789,6 +789,7 @@ columnSubmitButton.addEventListener('click', function(event) {
   total.textContent = 0;
   let cards = document.createElement('div')
   cards.classList.add('cards')
+
   title.appendChild(columnName)
   title.appendChild(total)
   column.appendChild(title)
@@ -808,13 +809,48 @@ columnSubmitButton.addEventListener('click', function(event) {
 
   // IDEALLY REFRESH COUNTER
   // counter(total, cards)
-  var newColumn = document.querySelectorAll('.column')[-1]
+  var newCards = document.querySelectorAll('.cards')
+  newCards = newCards[newCards.length - 1]
+   
+  createNewSortable(newCards);
   // IDEALLY ADD CONTAINER TO SORTABLE
   // sortable.addContainer(newColumn)
 
 })
 // console.log(pizza)
+function createNewSortable(element) {
+  new Sortable(element, {
+  group: 'nested',
+  animation: 200,
+  // fallbackOnBody: true,
+  swapThreshold: 0.65,
+      ghostClass: 'ghost-card',
+      chosenClass: 'chosen-card',
+      forceFallback: true,
+      onEnd: function (evt) {
+        var total = document.querySelectorAll('.total'),
+        cards = document.querySelectorAll('.cards')
+          total.forEach(function count(object, index) {
+            counta = 0;
+            for (let i = 0; i < cards[index].querySelectorAll('.card').length; i ++) {
+                if (cards[index].querySelectorAll('.card')[i].classList.length == 1) {
+                    counta += 1
+                }
+            }
+            if (cards[index].classList.contains('draggable-container--over')) {
+                counta += 1;
+            }
+            console.log('counter is :' + counta)
+            total[index].textContent = counta;
+        })
+          ////
+      }
+    })
+}
 
+function counter(total, cards) {
+  
+}
 
 
 

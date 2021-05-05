@@ -443,12 +443,13 @@ id) /*: string*/
 
 },{}],"3b9tq":[function(require,module,exports) {
 // DRAGGABLE FUNCTIONALITY
-var total = document.querySelectorAll('.total'),
-    cards = document.querySelectorAll('.cards'),
-    card = document.querySelectorAll('.card'),
-    editIcon = document.querySelectorAll('.edit')[0]
+// card = document.querySelectorAll('.card'),
+// editIcon = document.querySelectorAll('.edit')[0]
+function counter() {
+    var total = document.querySelectorAll('.total'),
+    cards = document.querySelectorAll('.cards')
 
-function counter(total, cards) {
+
     total.forEach(function count(object, index) {
         counta = 0;
         for (let i = 0; i < cards[index].querySelectorAll('.card').length; i ++) {
@@ -463,19 +464,87 @@ function counter(total, cards) {
         total[index].textContent = counta;
     })
 }
-counter(total, cards)
+counter()
+// function createNewSortable(element) {
+//     new Sortable(element, {
+// 		group: 'nested',
+// 		animation: 200,
+// 		// fallbackOnBody: true,
+// 		swapThreshold: 0.65,
+//         ghostClass: 'ghost-card',
+//         chosenClass: 'chosen-card',
+//         forceFallback: true,
+//         onEnd: function (evt) {
+//             counter(total, cards)
+//             var itemEl = evt.item;
+//         }
+//       })
+// }
+var cards = document.querySelectorAll('.cards')
+cards.forEach(function(element) {
+    // var sortable = Sortable.create(element)
+    new Sortable(element, {
+		group: 'nested',
+		animation: 200,
+		// fallbackOnBody: true,
+		swapThreshold: 0.65,
+        ghostClass: 'ghost-card',
+        chosenClass: 'chosen-card',
+        forceFallback: true,
+        onEnd: function (evt) {
+            // console.log(total.length)
+            counter()
+            var itemEl = evt.item;  // dragged HTMLElement
+            // evt.to;    // target list
+            // evt.from;  // previous list
+            // evt.oldIndex;  // element's old index within old parent
+            // evt.newIndex;  // element's new index within new parent
+            // evt.oldDraggableIndex; // element's old index within old parent, only counting draggable elements
+            // evt.newDraggableIndex; // element's new index within new parent, only counting draggable elements
+            // evt.clone // the clone element
+            // evt.pullMode;  // when item is in another sortable: `"clone"` if cloning, `true` if moving
+        },
+    
+	});
 
-var sortable;
-// function createDraggability() {
-sortable = new Draggable.Sortable(
-    document.querySelectorAll('.cards'), {
-        draggable: 'article.card',
-        autoScroll: 1
-    },
+})
+var tasks = document.getElementById('tasks')
+new Sortable(tasks, {
+    // group: 'nested',
+    animation: 150,
+    // fallbackOnBody: true,
+    swapThreshold: 0.65,
+    ghostClass: 'ghost-column',
+    chosenClass: 'chosen-column',
+    forceFallback: true
+});
+// var sortable = Sortable.create(el);
+// var sortable;
+// // function createDraggability() {
+// sortable = new Draggable.Sortable(
+//     document.querySelectorAll('.cards'), {
+//         draggable: 'article.card',
+//         autoScroll: 1
+//     },
 
-)
-sortable.on('sortable:start', () => {
-    console.log('sortable:start')
+// )
+// sortable.on('sortable:start', () => {
+//     console.log('sortable:start')
+
+// })
+// sortable.on('sortable:sort', () => {
+//     console.log('sortable:sort')
+// })
+// sortable.on('sortable:sorted', () => {
+//     console.log('sortable:sorted')
+// })
+
+// sortable.on('sortable:stop', () => {
+//     console.log('sortable:stop')
+//     counter(total, cards)
+//     // cardWidth()
+// })
+
     // editIcon.addEventListener('click', function(event) {
     //     updateVar()
     //     alert('yo')
@@ -488,45 +557,6 @@ sortable.on('sortable:start', () => {
     //       overlayToggle = false;
     //     }
     // })
-})
-sortable.on('sortable:sort', () => {
-    console.log('sortable:sort')
-})
-sortable.on('sortable:sorted', () => {
-    console.log('sortable:sorted')
-})
-
-sortable.on('sortable:stop', () => {
-    console.log('sortable:stop')
-    counter(total, cards)
-    // cardWidth()
-})
-
-// var pizza = 'pizza'
-// }
-// createDraggability();
-
-
-
-// const sortable2 = new Draggable.Sortable(
-//     document.querySelectorAll('#tasks')[0], {
-//         draggable: 'div.column',
-//     }
-// )
-// sortable2.on('sortable:start', () => {
-//     console.log('sortable:start')
-// })
-// sortable2.on('sortable:sort', () => {
-//     console.log('sortable:sort')
-// })
-// sortable2.on('sortable:sorted', () => {
-//     console.log('sortable:sorted')
-// })
-
-// sortable2.on('sortable:stop', () => {
-//     console.log('sortable:stop')
-// })
-
 },{}]},["YTKTN","3b9tq"], "3b9tq", "parcelRequirec526")
 
 //# sourceMappingURL=index.7712257e.js.map
