@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"7cy2i":[function(require,module,exports) {
+})({"6c6yg":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 60193;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
 module.bundle.HMR_BUNDLE_ID = "631208e8e08d7e4a79a63af689a9e78d";
@@ -480,6 +480,7 @@ function cardWidth() {
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
 function openTaskForm(type) {
+  console.log('task-form-opened')
     if (type == 'update') {
       createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
       createTaskForm.classList.add('update')
@@ -492,20 +493,22 @@ function openTaskForm(type) {
       // check if its an update form if so, reword, and show corresponding buttons :)
       createTaskForm.classList.add('active')
       overlayToggle = true;
-      reupdate()
+      // reupdate()
     } else if (overlayToggle == true) {
       // createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
-      reupdate()
+      // reupdate()
     }
 }
 
 function reupdate() {
+  console.log('reupdate')
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
+      console.log('click')
       autoFill(object)
       //  if (overlayToggle == false) {
       //    createTaskForm.classList.add('active')
@@ -519,6 +522,7 @@ function reupdate() {
  })
  }
 function autoFill(object) {
+  console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
 
@@ -672,7 +676,33 @@ var taskSubmitButton = document.getElementById('create-task-submit');
 var taskSaveButton = document.getElementById('edit-task-save');
 var taskCancelButton = document.getElementById('edit-task-cancel');
 var taskDeleteButton = document.getElementById('edit-task-delete');
-
+taskDeleteButton.addEventListener('click', function(event) {
+    var id = parseInt(taskSaveButton.value)
+    // console.log('we are in the save button. the id is '+ id)
+    // if (id) {
+    taskID = id
+    for (let i = 0; i < taskList.length; i ++) {
+      var oldTask = taskList[i]
+      if (oldTask.id == id) {
+        taskList.splice(taskList.indexOf(oldTask), 1)
+        var oldCard = document.getElementById('t-' + id)
+        oldCard.remove();
+        taskSaveButton.value = ''
+      }
+    }
+    overlayToggle = false;
+    createTaskForm.classList.remove('active')
+    createTaskForm.reset();
+    counter()
+    // reupdate()
+})
+taskCancelButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  overlayToggle = false;
+  createTaskForm.classList.remove('active')
+  createTaskForm.reset();
+  // reupdate()
+})
 taskSaveButton.addEventListener('click', function(event) {
 
   event.preventDefault()
@@ -723,6 +753,7 @@ taskSaveButton.addEventListener('click', function(event) {
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
   counter()
+  // reupdate()
 })
 // something to populate tasks with on the page
 
@@ -775,6 +806,7 @@ taskSubmitButton.addEventListener('click', function(event) {
   // print to check
 
   counter()
+  // reupdate()
 })
 
 // getting values of the card for editing
@@ -869,6 +901,6 @@ function counter() {
       total[index].textContent = counta;
   })
 }
-},{}]},["7cy2i","51IO2"], "51IO2", "parcelRequirec526")
+},{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
 
 //# sourceMappingURL=index.89a9e78d.js.map

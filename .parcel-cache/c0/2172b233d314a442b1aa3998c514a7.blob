@@ -198,7 +198,7 @@ div.column div.title {
 }
 div.column div.title h3, div.column div.title input {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #909090;
 }
 div.column div.title input {
@@ -217,7 +217,7 @@ div.column div.title input.column-name:hover {
 }
 div.column div.title img {
   position: relative;
-  right: -16px;
+  right: -24px;
   background-color: #fefefe;
   visibility: hidden;
 }
