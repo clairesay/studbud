@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"6c6yg":[function(require,module,exports) {
+})({"7cy2i":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 1234;
+var HMR_PORT = 60193;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
 module.bundle.HMR_BUNDLE_ID = "631208e8e08d7e4a79a63af689a9e78d";
@@ -444,6 +444,19 @@ id) /*: string*/
 },{}],"51IO2":[function(require,module,exports) {
 const newTask = document.getElementById('new-task');
 var editTask = document.querySelectorAll('.card');
+const createTaskForm = document.getElementById('create-task-form')
+function updateColumnNames() {
+  var columnNames = document.querySelectorAll('.column-name')
+  var statuses = createTaskForm.querySelector('select[name=status]');
+  statuses.innerHTML = ''
+  columnNames.forEach(function(object) {
+    var newOption = document.createElement('option')
+    newOption.textContent = object.value
+    newOption.value = object.value
+    statuses.appendChild(newOption)
+  })
+}
+updateColumnNames()
 
 // STACK OVERFLOW https://stackoverflow.com/questions/4880381/check-whether-html-element-has-scrollbars
 
@@ -463,11 +476,10 @@ function cardWidth() {
 }
 
 // CREATE A NEW TASK
-const createTaskForm = document.getElementById('create-task-form')
+
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
 function openTaskForm(type) {
-  console.log('opentaskform')
     if (type == 'update') {
       createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
       createTaskForm.classList.add('update')
@@ -491,7 +503,6 @@ function openTaskForm(type) {
 }
 
 function reupdate() {
-  console.log('reupdate')
   var card = document.querySelectorAll('.edit')
  card.forEach(function(object, index) {
      object.addEventListener('click', function() {
@@ -508,7 +519,6 @@ function reupdate() {
  })
  }
 function autoFill(object) {
-  console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
 
@@ -524,9 +534,11 @@ function autoFill(object) {
       // taskSubject 
       taskDetails[2].value = thisTask.subject
       //status SELECT THE STATUS
+
       var statuses = createTaskForm.querySelector('select[name=status]');
-      taskStatus = statuses.value;
-      
+      // statuses.value = thisTask.status
+      // console.log(object.parentElement.parentElement.parentElement.query)
+      statuses.value = object.parentElement.parentElement.parentElement.querySelector('div.title input.column-name').value
       // 3 is low
       // 4 is mid
       // 5 is high
@@ -622,14 +634,22 @@ class Task {
       card.appendChild(timeDetails)
 
       // appending card to column
-      var cardContainer = document.getElementsByClassName('cards')
-      if (this.status == 'ready') {
-        cardContainer[0].appendChild(card)
-      } else if (this.status == 'in-progress') {
-        cardContainer[1].appendChild(card)
-      } else if (this.status == 'done') {
-        cardContainer[2].appendChild(card)
-      }
+
+      var columnNames = document.querySelectorAll('.column-name')
+      var cardContainers = document.querySelectorAll('.cards')
+      var currentStatus = this.status
+      columnNames.forEach(function setColumn(object, index) {
+        if (object.value == currentStatus) {
+          cardContainers[index].appendChild(card)
+        }
+      })
+      // if (this.status == 'ready') {
+      //   cardContainer[0].appendChild(card)
+      // } else if (this.status == 'in-progress') {
+      //   cardContainer[1].appendChild(card)
+      // } else if (this.status == 'done') {
+      //   cardContainer[2].appendChild(card)
+      // }
       reupdate()
     }
 }
@@ -661,9 +681,9 @@ taskSaveButton.addEventListener('click', function(event) {
   /////////////////////////////
   // initialising variables
   taskDetails = createTaskForm.querySelectorAll('form input');
-  // console.log(taskDetails)
+
   var id = parseInt(taskSaveButton.value)
-  console.log('we are in the save button. the id is '+ id)
+  // console.log('we are in the save button. the id is '+ id)
   // if (id) {
   taskID = id
   for (let i = 0; i < taskList.length; i ++) {
@@ -702,6 +722,7 @@ taskSaveButton.addEventListener('click', function(event) {
   overlayToggle = false;
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
+  counter()
 })
 // something to populate tasks with on the page
 
@@ -753,6 +774,7 @@ taskSubmitButton.addEventListener('click', function(event) {
   createTaskForm.reset();
   // print to check
 
+  counter()
 })
 
 // getting values of the card for editing
@@ -807,6 +829,7 @@ columnSubmitButton.addEventListener('click', function(event) {
     left: tasks.clientWidth,
     behavior: 'smooth'
   })
+  updateColumnNames()
   // close the form
   newColumnToggle = false;
   addColumnForm.reset()
@@ -826,22 +849,26 @@ function createNewSortable(element) {
       chosenClass: 'chosen-card',
       forceFallback: true,
       onEnd: function (evt) {
-        var total = document.querySelectorAll('.total'),
-        cards = document.querySelectorAll('.cards')
-          total.forEach(function count(object, index) {
-            counta = 0;
-            for (let i = 0; i < cards[index].querySelectorAll('.card').length; i ++) {
-                if (cards[index].querySelectorAll('.card')[i].classList.length == 1) {
-                    counta += 1
-                }
-            }
-            total[index].textContent = counta;
-        })
+        // console.log(evt.to)
+        counter()
+
       }
     })
 }
 
-
-},{}]},["6c6yg","51IO2"], "51IO2", "parcelRequirec526")
+function counter() {
+  var total = document.querySelectorAll('.total'),
+  cards = document.querySelectorAll('.cards')
+    total.forEach(function count(object, index) {
+      counta = 0;
+      for (let i = 0; i < cards[index].querySelectorAll('.card').length; i ++) {
+          if (cards[index].querySelectorAll('.card')[i].classList.length == 1) {
+              counta += 1
+          }
+      }
+      total[index].textContent = counta;
+  })
+}
+},{}]},["7cy2i","51IO2"], "51IO2", "parcelRequirec526")
 
 //# sourceMappingURL=index.89a9e78d.js.map
