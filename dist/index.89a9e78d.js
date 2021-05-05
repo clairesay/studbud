@@ -502,25 +502,24 @@ function openTaskForm(type) {
       // reupdate()
     }
 }
-
+var objectValue;
 function reupdate() {
   console.log('reupdate')
   var card = document.querySelectorAll('.edit')
- card.forEach(function(object, index) {
-     object.addEventListener('click', function() {
-      console.log('click')
-      autoFill(object)
-      //  if (overlayToggle == false) {
-      //    createTaskForm.classList.add('active')
-         
-      //    overlayToggle = true;
-      //  } else if (overlayToggle == true) {
-      //    createTaskForm.classList.remove('active')
-      //    overlayToggle = false;
-      //  }
-     })
- })
+  console.log('there are ' + card.length + ' cards left')
+  card.forEach(function(object, index) {
+    object.removeEventListener('click', addAutoFill)
+      
+    objectValue = object
+    object.addEventListener('click', addAutoFill)
+  })
  }
+
+function addAutoFill() {
+  console.log('click')
+  autoFill(objectValue)
+}
+
 function autoFill(object) {
   console.log('autofill')
   var objectId = object.parentElement.id;
@@ -654,7 +653,7 @@ class Task {
       // } else if (this.status == 'done') {
       //   cardContainer[2].appendChild(card)
       // }
-      reupdate()
+      // reupdate()
     }
 }
   
@@ -694,14 +693,14 @@ taskDeleteButton.addEventListener('click', function(event) {
     createTaskForm.classList.remove('active')
     createTaskForm.reset();
     counter()
-    // reupdate()
+    reupdate()
 })
 taskCancelButton.addEventListener('click', function(event) {
   event.preventDefault()
   overlayToggle = false;
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
-  // reupdate()
+  reupdate()
 })
 taskSaveButton.addEventListener('click', function(event) {
 
@@ -753,7 +752,7 @@ taskSaveButton.addEventListener('click', function(event) {
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
   counter()
-  // reupdate()
+  reupdate()
 })
 // something to populate tasks with on the page
 
@@ -806,7 +805,7 @@ taskSubmitButton.addEventListener('click', function(event) {
   // print to check
 
   counter()
-  // reupdate()
+  reupdate()
 })
 
 // getting values of the card for editing
