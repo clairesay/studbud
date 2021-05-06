@@ -17,17 +17,21 @@
 </head>
 <body>
   <header>
-    <img id="home-link" src="images/logo.svg">    
+    <img id="home-link" src="images/logo.svg">   
+    <div id="button-background" class="background"></div> 
+    <!-- <div class="modal-background"></div>  -->
     <article id="task-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
       <button id="new-task" class="button primary create">Create task</button>
       <button id="new-column" class="button secondary create">Add column</button>
     </article>
+    <!-- <div class="modal-background"></div> -->
     <article id="content-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
       <button id="new-content" class="button primary create">Add content</button>
       <button id="new-group" class="button secondary create">Create group</button>
-    </header>
+    </article>
+
   </header>
   
 
@@ -108,7 +112,7 @@
     
   </main>
 
-
+    <div id="modal-background" class="background"></div>
     <form id="create-task-form">
       <h1>Create a task</h1>
         <section>

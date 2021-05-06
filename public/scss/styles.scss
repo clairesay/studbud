@@ -155,7 +155,7 @@ main {
   height: 8px;
   width: calc(100% - 3px);
   background-color: $dark-white;
-  z-index: 5;
+  z-index: 3;
 }
 
 /* /////////////// KANBAN BOARD //////////////////// */
@@ -401,6 +401,9 @@ div.column:last-of-type {
 }
 
 // FORM
+form {
+  z-index: 8;
+}
 #create-task-form, #add-column-form {
   display: none;
   position: absolute;
@@ -492,7 +495,17 @@ label, button#create-task-submit {
     opacity: 0;
   }
 }
-  
+.background {
+  display: none;
+   background-color: #0e1318af;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   z-index: 5;
+ }
+
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
 
 @media only screen and (max-width: 700px) {
@@ -523,7 +536,6 @@ label, button#create-task-submit {
     content: 'Content';
   }
   
-
   /* /////////// COMPONENTS //////////// */
   /* BUTTON */
   .button-container {

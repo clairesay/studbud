@@ -476,10 +476,11 @@ function cardWidth() {
 }
 
 // CREATE A NEW TASK
-
+const modalBackground = document.getElementById('modal-background')
 var overlayToggle = false;
 newTask.addEventListener('click', openTaskForm)
 function openTaskForm(type) {
+  // IF THE DEVICE IS MOBILE, RETOGGLE AND LOWER THE BUTTONS TO Z-INDEX 4
   console.log('task-form-opened')
     if (type == 'update') {
       createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
@@ -493,37 +494,46 @@ function openTaskForm(type) {
       // check if its an update form if so, reword, and show corresponding buttons :)
       createTaskForm.classList.add('active')
       overlayToggle = true;
+      modalBackground.style.display = 'flex'
       // reupdate()
     } else if (overlayToggle == true) {
       // createTaskForm.classList.remove('update')
       createTaskForm.classList.remove('active')
       createTaskForm.reset()
       overlayToggle = false;
+      modalBackground.style.display = 'none'
       // reupdate()
     }
 }
-var objectValue;
+
 function reupdate() {
   console.log('reupdate')
-  var card = document.querySelectorAll('.edit')
-  console.log('there are ' + card.length + ' cards left')
-  card.forEach(function(object, index) {
-    object.removeEventListener('click', addAutoFill)
-      
-    objectValue = object
-    object.addEventListener('click', addAutoFill)
+  var editButton = document.querySelectorAll('.edit')
+  console.log('there are ' + editButton.length + ' editbuttons left')
+
+  editButton.forEach(function(object, index) {
+
+
+    if (object.getAttribute('listener') !== 'true') {
+      object.addEventListener('click', addAutoFill)
+      object.setAttribute('listener', 'true')
+
+    }
+    function addAutoFill() {
+      autoFill(object)
+    }
   })
  }
 
-function addAutoFill() {
-  console.log('click')
-  autoFill(objectValue)
-}
+
 
 function autoFill(object) {
   console.log('autofill')
   var objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '')
+
+  // var objectId = object;
+  // objectId = objectId.replace('t-', '')
 
   for (let i = 0; i < taskList.length; i ++) {
     var thisTask = taskList[i]
@@ -559,7 +569,8 @@ function autoFill(object) {
       taskDetails[7].value = thisTask.estimatedTimeMin
       // taskDueDate
       taskDetails[8].value = thisTask.dueDate
-      taskSaveButton.value = objectId
+      // taskSaveButton.value = objectId
+      taskSaveButton.value = thisTask.id
       openTaskForm('update')
 
     }
@@ -690,6 +701,7 @@ taskDeleteButton.addEventListener('click', function(event) {
       }
     }
     overlayToggle = false;
+    modalBackground.style.display = 'none'
     createTaskForm.classList.remove('active')
     createTaskForm.reset();
     counter()
@@ -698,8 +710,10 @@ taskDeleteButton.addEventListener('click', function(event) {
 taskCancelButton.addEventListener('click', function(event) {
   event.preventDefault()
   overlayToggle = false;
+  modalBackground.style.display = 'none'
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
+  taskSaveButton.value = ''
   reupdate()
 })
 taskSaveButton.addEventListener('click', function(event) {
@@ -749,9 +763,11 @@ taskSaveButton.addEventListener('click', function(event) {
   task = new Task(taskID, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskSaveStatus)
   task.createCard(task.addTask());
   overlayToggle = false;
+  modalBackground.style.display = 'none'
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
   counter()
+  taskSaveButton.value = ''
   reupdate()
 })
 // something to populate tasks with on the page
@@ -800,11 +816,13 @@ taskSubmitButton.addEventListener('click', function(event) {
   // create new card with task
   // exit form
   overlayToggle = false;
+  modalBackground.style.display = 'none'
   createTaskForm.classList.remove('active')
   createTaskForm.reset();
   // print to check
 
   counter()
+  taskSaveButton.value = ''
   reupdate()
 })
 
@@ -820,9 +838,11 @@ newColumn.addEventListener('click', function() {
   if (newColumnToggle == false) {
     addColumnForm.classList.add('active')
     newColumnToggle = true
+    modalBackground.style.display = 'flex'
   } else if (newColumnToggle == true) {
     addColumnForm.classList.remove('active')
     newColumnToggle = false
+    modalBackground.style.display = 'none'
   }
 })
 
@@ -863,6 +883,7 @@ columnSubmitButton.addEventListener('click', function(event) {
   updateColumnNames()
   // close the form
   newColumnToggle = false;
+  modalBackground.style.display = 'none'
   addColumnForm.reset()
   addColumnForm.classList.remove('active')
 

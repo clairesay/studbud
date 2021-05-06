@@ -170,7 +170,7 @@ main {
   height: 8px;
   width: calc(100% - 3px);
   background-color: #fafafa;
-  z-index: 5;
+  z-index: 3;
 }
 
 /* /////////////// KANBAN BOARD //////////////////// */
@@ -344,6 +344,10 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
   display: none;
 }
 
+form {
+  z-index: 8;
+}
+
 #create-task-form, #add-column-form {
   display: none;
   position: absolute;
@@ -441,6 +445,17 @@ label, button#create-task-submit {
   }
 
   /* STRUCTURE */
+  .background {
+    display: none;
+    background-color: #0e1318af;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+  }
+
   #tasks-tab {
     left: 16px;
     content: "Tasks";

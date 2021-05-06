@@ -60,6 +60,18 @@ table {
 .edit {
   padding: 18px;
 }
+form#create-task-form button#create-task-submit {
+  display: flex;
+}
+form#create-task-form button#edit-task-save, form#create-task-form button#edit-task-cancel, form#create-task-form button#edit-task-delete {
+  display: none;
+}
+form#create-task-form.update button#create-task-submit {
+  display: none;
+}
+form#create-task-form.update button#edit-task-save, form#create-task-form.update button#edit-task-cancel, form#create-task-form.update button#edit-task-delete {
+  display: flex;
+}
 /* //////////// STRUCTURE ///////////// */
 /* BODY */
 body {
@@ -163,7 +175,7 @@ div.column div.title {
 }
 div.column div.title h3, div.column div.title input {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #909090;
 }
 div.column div.title input {
@@ -184,7 +196,7 @@ div.column div.title input.column-name:hover {
 }
 div.column div.title img {
   position: relative;
-  right: -16px;
+  right: -24px;
   background-color: #fefefe;
   visibility: hidden;
 }
@@ -384,6 +396,16 @@ label, button#create-task-submit {
   }
 
   /* STRUCTURE */
+  .modal-background {
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+  }
+
   #tasks-tab {
     left: 16px;
     content: "Tasks";
