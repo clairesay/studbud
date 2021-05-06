@@ -148,7 +148,62 @@ main {
   height: 8px;
   width: calc(100% - 3px);
   background-color: #fafafa;
-  z-index: 5;
+  z-index: 3;
+}
+/* /////////////// CONTENT CARDS /////////////////// */
+section#content {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+section#content div.group {
+  display: flex;
+  flex-direction: column;
+  margin: 36px;
+}
+section#content div.group div.group-title {
+  background-color: #fafafa;
+  padding: 12px 0;
+  border-radius: 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+section#content div.group div.group-title h3, section#content div.group div.group-title input {
+  font-weight: 500;
+  font-size: 16px;
+  color: #909090;
+}
+section#content div.group div.group-title input {
+  width: auto;
+  background-color: transparent;
+  border: none;
+  padding: 2px;
+  -webkit-text-decoration: underline dotted transparent;
+          text-decoration: underline dotted transparent;
+}
+section#content div.group div.group-title input:focus {
+  text-decoration: none;
+}
+section#content div.group div.group-title input.column-name:hover {
+  cursor: text;
+  -webkit-text-decoration: underline dotted #909090;
+          text-decoration: underline dotted #909090;
+}
+section#content div.group div.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px;
+}
+section#content div.group div.tiles article.tile {
+  min-width: 260px;
+  max-width: 280px;
+  flex: 1 1 280px;
+  margin: 12px;
+  border-radius: 16px;
+  background-color: #fefefe;
+  padding: 16px;
+  filter: drop-shadow(0 0 2px #30303018);
 }
 /* /////////////// KANBAN BOARD //////////////////// */
 /* COLUMNS */
@@ -306,7 +361,10 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
 .button.primary.icon {
   display: none;
 }
-#create-task-form, #add-column-form {
+form {
+  z-index: 8;
+}
+#create-task-form, #add-column-form, #create-content-form {
   display: none;
   position: absolute;
   width: 80%;
@@ -318,39 +376,39 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
   background-color: #fefefe;
   border-radius: 16px;
 }
-#create-task-form input, #add-column-form input {
+#create-task-form input, #add-column-form input, #create-content-form input {
   border: none;
   filter: drop-shadow(0 0 2px #30303018);
   border-radius: 4px;
   padding: 12px;
 }
-#create-task-form input:focus, #add-column-form input:focus {
+#create-task-form input:focus, #add-column-form input:focus, #create-content-form input:focus {
   border: none;
   filter: drop-shadow(0 0 2px #30303048);
 }
-#create-task-form input[type=radio], #add-column-form input[type=radio] {
+#create-task-form input[type=radio], #add-column-form input[type=radio], #create-content-form input[type=radio] {
   width: 0;
 }
-#create-task-form label.false-radio span, #add-column-form label.false-radio span {
+#create-task-form label.false-radio span, #add-column-form label.false-radio span, #create-content-form label.false-radio span {
   background-color: #fefefe;
   color: #909090;
   padding: 16px;
 }
-#create-task-form label.false-radio:hover, #add-column-form label.false-radio:hover {
+#create-task-form label.false-radio:hover, #add-column-form label.false-radio:hover, #create-content-form label.false-radio:hover {
   cursor: pointer;
 }
-#create-task-form label.false-radio:hover span, #add-column-form label.false-radio:hover span {
+#create-task-form label.false-radio:hover span, #add-column-form label.false-radio:hover span, #create-content-form label.false-radio:hover span {
   color: #303030;
 }
-#create-task-form input[type=radio]:checked ~ span, #add-column-form input[type=radio]:checked ~ span {
+#create-task-form input[type=radio]:checked ~ span, #add-column-form input[type=radio]:checked ~ span, #create-content-form input[type=radio]:checked ~ span {
   background-color: #303030;
   color: #fefefe;
 }
-#create-task-form label[for=taskPriorityRating], #add-column-form label[for=taskPriorityRating] {
+#create-task-form label[for=taskPriorityRating], #add-column-form label[for=taskPriorityRating], #create-content-form label[for=taskPriorityRating] {
   display: flex;
   flex-direction: row;
 }
-#create-task-form.active, #add-column-form.active {
+#create-task-form.active, #add-column-form.active, #create-content-form.active {
   display: flex;
 }
 /* false stuff */
@@ -384,6 +442,16 @@ label, button#create-task-submit {
   fill: transparent;
   opacity: 0;
 }
+.background {
+  display: none;
+  background-color: #0e1318af;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
 /* /////////////////////////// RESPONSIVE CSS ////////////////////////////// */
 @media only screen and (max-width: 700px) {
   /* LOGO/HOME-LINK */
@@ -396,16 +464,6 @@ label, button#create-task-submit {
   }
 
   /* STRUCTURE */
-  .modal-background {
-    background-color: red;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 5;
-  }
-
   #tasks-tab {
     left: 16px;
     content: "Tasks";

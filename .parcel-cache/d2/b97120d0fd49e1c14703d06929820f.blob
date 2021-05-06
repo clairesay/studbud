@@ -1,0 +1,12 @@
+const createContentForm = document.getElementById('create-content-form')
+var overlayToggle = false
+newContent.addEventListener('click', function() {
+    console.log('click')
+    if (overlayToggle == false) {
+        createContentForm.classList.add('active')
+        overlayToggle = true
+    } else if (overlayToggle == true) {
+        createContentForm.classList.remove('active')
+        overlayToggle = false
+    }
+})

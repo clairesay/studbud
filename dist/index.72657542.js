@@ -512,15 +512,20 @@ var taskButtonVisible = false;
 contentExpandButton.addEventListener('click', contentButtonVisibility)
 
 function contentButtonVisibility() {
-    console.log('but')
     if (contentButtonVisible == false) {
         newContent.classList.add('active')
         newGroup.classList.add('active')
         contentButtonVisible = true;
+        if (deviceSize == 'mobile') {
+            buttonBackground.style.display = 'flex'
+        }
     } else if (contentButtonVisible == true) {
         newContent.classList.remove('active')
         newGroup.classList.remove('active')
         contentButtonVisible = false;
+        if (deviceSize == 'mobile') {
+            buttonBackground.style.display = 'none'
+        }
     }
 }
 taskExpandButton.addEventListener('click', taskButtonVisibility) 

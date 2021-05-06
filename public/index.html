@@ -38,7 +38,54 @@
   <main>
     <button id="content-tab" class="tab">Content</button>
     <button id="tasks-tab" class="tab">Tasks</button>
-    <section id="content"></section>
+    <section id="content">
+      <button id="filter-by" class="button" type="button">Filter by</button>
+      <div class="tags"></div>
+      <div class="group">
+        <div class="group-title">
+          <input class="group-name" value="INFO1110"></input>
+          <h3 class="open-link"><img src="images/open-link.svg"></h3>
+        </div>
+        <div class="tiles">
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+          <article class="tile">
+            <h4>Content Title</4>
+          <hr/>
+            <p>Content Description</p>
+            <a>Link to the resource</a>
+          </article>
+        </div>
+      </div>
+    </section>
     <section id="tasks">
       <div class="column">
         <div class="title">
@@ -52,13 +99,7 @@
             <p>Description</p>
             <hr />
             <div class="time-details">
-              <img src="images/time.svg">
-              <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.99 1.52588e-05C4.47 1.52588e-05 0 4.48002 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48002 15.52 1.52588e-05 9.99 1.52588e-05ZM10 18C5.58 18 2 14.42 2 10C2 5.58002 5.58 2.00002 10 2.00002C14.42 2.00002 18 5.58002 18 10C18 14.42 14.42 18 10 18Z" fill="#909090"/>
-                <path d="M10.5 5.00002H9V11L14.25 14.15L15 12.92L10.5 10.25V5.00002Z" fill="#909090"/>
-              </svg> -->
-              <!-- <img src="images/" -->
-                
+              <img src="images/time.svg">                
               <h4>due</h4>
               <span class="tag time">1HR 30MIN</span>
 
@@ -89,30 +130,47 @@
           <article class="card">Card container 2</article>
         </div>
       </div>
-      <!-- <div class="column">
-        <div class="title">
-          <input class="column-name" value="Column Name"></input>
-          <h3 class="total"></h3>
-        </div>
-        <div class="cards">
-          <article class="card">Card container 2</article>
-          <article class="card">Card container 2</article>
-        </div>
-      </div>
-      <div class="column">
-        <div class="title">
-          <input class="column-name" value="Column Name"></input>
-          <h3 class="total"></h3>
-        </div>
-        <div class="cards">
-
-        </div>
-      </div> -->
     </section>
     
   </main>
 
     <div id="modal-background" class="background"></div>
+    <form id="create-content-form">
+      <h1>Add content</h1>
+      <section>
+        <label for="contentTitle">Title</label>
+        <input type="text" name="contentTitle" placeholder="What's this content about?" autofocus></input>
+
+        <label for="conceptDescription">Concept Description</label>
+        <input type="text" name="conceptDescription" placeholder="In a few sentences, how would you explain the contept to a newbie?"></input>
+      
+        <label for="link">Link</label>
+        <input type="text" name="link" placeholder="Paste the resource link here" ></input>
+
+        <!-- SUBJECT -->
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" list="subject">
+        <datalist id="subject">
+          <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
+          <!-- <option value="Boston">
+          <option value="Cambridge"> -->
+        </datalist>
+      </section>
+      <aside>
+        <label for="group">Group</label>
+        <select name="group">
+          <option value="INFO1110">INFO1110</option>
+          <option value="COMP2823">COMP2823</option>
+          <option value="SOFT2201">SOFT2201</option>
+          <!-- populate this with all the existing columns -->
+          <!-- <option value="ready"></option> -->
+        </select>
+      </aside>
+      <button id="create-content-submit" class="button primary" type="button">Submit</button>
+      <button id="edit-content-save" class="button primary" type="button">Save</button>
+      <button id="edit-content-cancel" class="button primary" type="button">Cancel</button>
+      <button id="edit-content-delete" class="button primary" type="button">Delete</button>
+    </form>
     <form id="create-task-form">
       <h1>Create a task</h1>
         <section>
@@ -191,6 +249,7 @@
     <script src="js/main.js"></script>
     <!-- <script src="js/scrolloutofview.js"></script> -->
     <script src="js/draggable.js"></script>
+    <script src="js/content.js"></script>
 
 </body>
 </html>

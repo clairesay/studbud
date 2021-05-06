@@ -157,6 +157,80 @@ main {
   background-color: $dark-white;
   z-index: 3;
 }
+/* /////////////// CONTENT CARDS /////////////////// */
+section#content {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  div.group {
+
+    // width: 100vw;
+    // height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 36px;
+   div.group-title {
+
+      background-color: $dark-white;
+      padding: 12px 0;
+      border-radius: $big-radius;
+      display: flex;
+      justify-content: flex-start;
+      h3, input {
+          font-weight: 500;
+          font-size: 16px;
+          color: $dark-grey
+      }
+
+      input {
+        width: auto;
+        background-color: transparent;
+        border: none;
+        padding: 2px;
+        text-decoration: underline dotted transparent;
+      }
+
+      input:focus {
+        text-decoration: none;
+      }
+
+      input.column-name:hover {
+        cursor: text;
+        text-decoration: underline dotted $dark-grey;
+      }
+  }
+    div.tiles {
+      // display: flex;
+      // flex-wrap: wrap;
+      // align-items: space-between;
+      // justify-content: space-between;
+      // 
+      // display: grid;
+      // grid-template-columns: repeat(auto-fill,minmax(320px, 1fr));
+      // row-gap: 36px;
+      // column-gap: 36px;
+      // 
+      display: flex;
+      flex-wrap: wrap;
+      margin:-12px;
+      article.tile {
+        // margin: 
+        // flex-grow: 1;
+        min-width: 260px;
+        max-width: 280px;
+        flex: 1 1 280px;
+        margin: 12px;
+        border-radius: $big-radius;
+        background-color: $white;
+        padding: 16px;
+        filter: drop-shadow(0 0 2px #30303018);
+      }
+    }
+  }
+}
+
 
 /* /////////////// KANBAN BOARD //////////////////// */
 /* COLUMNS */
@@ -404,7 +478,7 @@ div.column:last-of-type {
 form {
   z-index: 8;
 }
-#create-task-form, #add-column-form {
+#create-task-form, #add-column-form, #create-content-form {
   display: none;
   position: absolute;
   width: 80%;
@@ -453,10 +527,9 @@ form {
     flex-direction: row;
   }
 }
-#create-task-form.active, #add-column-form.active {
+#create-task-form.active, #add-column-form.active, #create-content-form.active {
   display: flex;
 }
-
 
 
 /* false stuff */

@@ -514,7 +514,7 @@ new Sortable(tasks, {
     // group: 'nested',
     animation: 150,
     // fallbackOnBody: true,
-    swapThreshold: 0.65,
+    swapThreshold: 0.8,
     ghostClass: 'ghost-column',
     chosenClass: 'chosen-column',
     forceFallback: true
