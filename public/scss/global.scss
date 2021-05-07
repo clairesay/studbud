@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
+
+// COLOURS
+$white: #fefefe;
+$dark-white: #fafafa;
+$light-grey: #eeeeee;
+$grey: #cccccc;
+$dark-grey: #909090;
+$black: #303030;
+
+$primary: #09997f;
+$primary-hover: #09997fdc;
+$danger: #e56b45;
+
+// BORDER RADII
+$big-radius: 16px;
+$mini-radius: 4px;
+
+// PADDING
+$big-padding: 18px;
+$medium-padding: 16px;
+$small-padding: 12px;
+
+* {
+  font-family: "Rubik", Arial, sans-serif;
+  color: $black;
+}
+
+/* INSETS */
+/* box-shadow:0px 0px 0px 1px #0e131809 inset; */

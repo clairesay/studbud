@@ -1,0 +1,49 @@
+// BUTTON FORMATTING
+.button {
+    padding: 12px 18px;
+    border-radius: $mini-radius;
+    font-weight: 500;
+    font-size: 14px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    // variations
+    &.active {
+        visibility: visible;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    // adding a bit of space between the buttons
+    &:not(:last-child) {
+        margin-right: 16px;
+    }
+
+    // BUTTON TYPES
+    &.primary {
+        color: $white;
+        background-color: $primary;
+
+        &:hover {
+            background-color:$primary-hover
+        }
+
+        // hiding the expanded buttons for mobile
+        &.icon {
+            display: none;
+        }
+    }
+
+    &.secondary {
+        background-color: $light-grey;
+
+        &.hover {
+            background-color:#dddddd
+        }
+    }
+
+}

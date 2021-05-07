@@ -110,18 +110,15 @@ main {
   background-color: #fafafa;
   position: relative;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
-  /* filter: drop-shadow(0 0 4px $light-grey) */
 }
 
 #tasks, #content {
   position: absolute;
   width: 100vw;
   height: calc(100vh - 72px);
-  /* z-index: 3; */
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   display: flex;
-  /* filter: drop-shadow(0 0 2px $light-grey) */
   overflow: scroll hidden;
 }
 
@@ -301,6 +298,7 @@ div.column div.cards article.card:last-child {
 div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;
 }
+
 div.column:first-of-type {
   margin-left: 36px;
 }
@@ -312,6 +310,7 @@ div.column:last-of-type {
 /* ///////////// SCROLL BAR //////////// */
 div.cards::-webkit-scrollbar {
   width: 24px;
+  /* width of the entire scrollbar */
 }
 
 div.cards::-webkit-scrollbar-track {
@@ -351,7 +350,6 @@ div.cards::-webkit-scrollbar-thumb:hover, #tasks::-webkit-scrollbar-thumb:hover 
   background-color: #aaaaaa;
 }
 
-/* ///////////// DRAGGABLE //////////////// */
 /* ///////////// COMPONENTS /////////////// */
 /* BUTTON FORMATTING */
 .button {
