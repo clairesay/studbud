@@ -85,6 +85,7 @@
             </div>
         </section>
         <section id="tasks">
+
             <div class="column">
                 <div id="empty-state-message">
                     <h4>It's a bit empty around here. Try creating a new task.</h4>
@@ -175,7 +176,10 @@
         <button id="create-content-submit" class="button primary" type="button">Submit</button>
         <button id="edit-content-save" class="button primary" type="button">Save</button>
         <button id="edit-content-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="images/black-close.svg"></button>
         <button id="edit-content-delete" class="button primary" type="button">Delete</button>
+
+
     </form>
     <form id="create-task-form">
         <h1>Create a task</h1>
@@ -225,10 +229,10 @@
 
         </aside>
         <button id="task-save" class="button primary" type="button">Save</button>
-        <!-- <button id="create-task-submit" class="button primary" type="button">Submit</button>
-        <button id="edit-task-save" class="button primary" type="button">Save</button> -->
         <button id="edit-task-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="images/black-close.svg"></button>
         <button id="edit-task-delete" class="button primary" type="button">Delete</button>
+
     </form>
 
     <form id="add-column-form">
@@ -239,15 +243,15 @@
         <p>TIP: Name the column after a status, like 'In-Progress' so you can categorise your tasks based on completion.
         </p>
         <button id="add-column-submit" class="button primary" type="submit">Save</button>
+        <button id="add-column-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="images/black-close.svg"></button>
     </form>
-    <!-- <article id="task-display">
-          printallthingshere
-        </article> -->
 
     <script src="main.js"></script>
 
     <script src="js/task-form.js"></script>
-    <script src="js/column.js"></script>
+    <script src="js/column-form.js"></script>
+
     <script src="js/content.js"></script>
 
 </body>

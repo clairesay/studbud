@@ -7,14 +7,15 @@ export function countCards() {
 
     const emptyStateMessage = document.getElementById('empty-state-message')
         
+    // if there are no cards, add an empty state
     if (cards.length == 0) {
         columns[0].appendChild(emptyStateMessage)
         emptyStateMessage.style.display = 'flex';
     } else {
-        // body.appendChild(emptyStateMessage)
         emptyStateMessage.style.display = 'none';
     }
 
+    // writing the total number of cards at the head of each column
     total.forEach(function count(object, index) {
         let cardCount = 0;
         for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i ++) {
@@ -43,6 +44,7 @@ cardContainers.forEach(function(element) {
 	});
 })
 
+// setting sortable functionality to the columns with the sortable.js library
 var tasks = document.getElementById('tasks')
 new Sortable(tasks, {
     animation: 150,

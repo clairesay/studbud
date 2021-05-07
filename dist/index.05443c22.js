@@ -561,7 +561,9 @@ newTask.addEventListener('click', toggleTaskForm);
 // adding event listeners to the form buttons.
 const taskSaveButton = document.getElementById('task-save');
 const taskCancelButton = document.getElementById('edit-task-cancel');
+const taskCloseButton = taskCancelButton.nextElementSibling;
 const taskDeleteButton = document.getElementById('edit-task-delete');
+// deleting a task
 taskDeleteButton.addEventListener('click', function () {
   let id = parseInt(taskSaveButton.value);
   for (let i = 0; i < taskList.length; i++) {
@@ -575,10 +577,16 @@ taskDeleteButton.addEventListener('click', function () {
   toggleTaskForm();
   reupdate();
 });
+// cancelling the creation of a task or button
 taskCancelButton.addEventListener('click', function () {
   toggleTaskForm();
   reupdate();
 });
+taskCloseButton.addEventListener('click', function () {
+  toggleTaskForm();
+  reupdate();
+});
+// saving a new task or updating
 taskSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
   // depends whether we are updating or creating a task
@@ -735,13 +743,14 @@ _parcelHelpers.export(exports, "countCards", function () {
 function countCards() {
   let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
   const emptyStateMessage = document.getElementById('empty-state-message');
+  // if there are no cards, add an empty state
   if (cards.length == 0) {
     columns[0].appendChild(emptyStateMessage);
     emptyStateMessage.style.display = 'flex';
   } else {
-    // body.appendChild(emptyStateMessage)
     emptyStateMessage.style.display = 'none';
   }
+  // writing the total number of cards at the head of each column
   total.forEach(function count(object, index) {
     let cardCount = 0;
     for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i++) {
@@ -768,6 +777,7 @@ cardContainers.forEach(function (element) {
     }
   });
 });
+// setting sortable functionality to the columns with the sortable.js library
 var tasks = document.getElementById('tasks');
 new Sortable(tasks, {
   animation: 150,

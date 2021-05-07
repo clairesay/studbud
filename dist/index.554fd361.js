@@ -442,102 +442,200 @@ id) /*: string*/
 }
 
 },{}],"4Vh9G":[function(require,module,exports) {
+var _kanban = require('./kanban');
 // //////////////////////////////////////////// ADD COLUMN //////////////////////////////////////////////// //
-const newTask = document.getElementById('new-task');
-var editTask = document.querySelectorAll('.card');
-const createTaskForm = document.getElementById('create-task-form')
-function updateColumnNames() {
-    let columnNames = document.querySelectorAll('.column-name')
-    let statuses = createTaskForm.querySelector('select[name=status]');
-    statuses.innerHTML = ''
-    columnNames.forEach(function (object) {
-        let newOption = document.createElement('option')
-        newOption.textContent = object.value
-        newOption.value = object.value
-        statuses.appendChild(newOption)
-    })
-}
-updateColumnNames()
-
-const modalBackground = document.getElementById('modal-background')
-
-const addColumnForm = document.getElementById('add-column-form')
-var newColumnToggle = false;
-const newColumn = document.getElementById('new-column');
-
-// adding an event listener to bring up the form
-newColumn.addEventListener('click', function () {
-    if (newColumnToggle == false) {
-        addColumnForm.classList.add('active')
-        newColumnToggle = true
-        modalBackground.style.display = 'flex'
-    } else if (newColumnToggle == true) {
-        addColumnForm.classList.remove('active')
-        newColumnToggle = false
-        modalBackground.style.display = 'none'
-    }
-})
-
-// adding an event listener for submitting the column
-const columnSubmitButton = document.getElementById('add-column-submit')
-columnSubmitButton.addEventListener('click', function (event) {
-    event.preventDefault();
-
+class Column {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  createColumn() {
     // creating the column
-    let column = document.createElement('div')
-    column.classList.add('column')
-    let title = document.createElement('div')
-    title.classList.add('title')
-    let columnName = document.createElement('input')
-    columnName.classList.add('column-name')
-
-    // giving it the name provided by the user
-    let columnNameValue = addColumnForm.querySelectorAll('input')[0]
-    columnName.value = columnNameValue.value
-    let total = document.createElement('h3')
-    total.classList.add('total')
+    let column = document.createElement('div');
+    column.classList.add('column');
+    let title = document.createElement('div');
+    title.classList.add('title');
+    let columnName = document.createElement('input');
+    columnName.classList.add('column-name');
+    columnName.value = this.name;
+    let total = document.createElement('h3');
+    total.classList.add('total');
     total.textContent = 0;
-    let cards = document.createElement('div')
-    cards.classList.add('cards')
-
-    title.appendChild(columnName)
-    title.appendChild(total)
-    column.appendChild(title)
-    column.appendChild(cards)
-    let tasks = document.getElementById('tasks')
-    tasks.appendChild(column)
+    let cards = document.createElement('div');
+    cards.classList.add('cards');
+    title.appendChild(columnName);
+    title.appendChild(total);
+    column.appendChild(title);
+    column.appendChild(cards);
+    let tasks = document.getElementById('tasks');
+    tasks.appendChild(column);
     // smooth scroll to the new column
     tasks.scrollTo({
-        top: 0,
-        left: tasks.clientWidth,
-        behavior: 'smooth'
-    })
-    updateColumnNames()
-    // close the form
-    newColumnToggle = false;
-    modalBackground.style.display = 'none'
-    addColumnForm.reset()
-    addColumnForm.classList.remove('active')
-
-    var newCards = document.querySelectorAll('.cards')
-    newCards = newCards[newCards.length - 1]
-    createNewSortable(newCards);
-})
-
-function createNewSortable(element) {
-    new Sortable(element, {
-        group: 'nested',
-        animation: 200,
-        swapThreshold: 0.65,
-        ghostClass: 'ghost-card',
-        chosenClass: 'chosen-card',
-        forceFallback: true,
-        onEnd: function (evt) {
-            countCards()
-        }
-    })
+      top: 0,
+      left: tasks.clientWidth,
+      behavior: 'smooth'
+    });
+  }
 }
-///////////////////////////////////////////////////////
+const newTask = document.getElementById('new-task');
+var editTask = document.querySelectorAll('.card');
+const createTaskForm = document.getElementById('create-task-form');
+function updateColumnNames() {
+  let columnNames = document.querySelectorAll('.column-name');
+  let statuses = createTaskForm.querySelector('select[name=status]');
+  statuses.innerHTML = '';
+  columnNames.forEach(function (object) {
+    let newOption = document.createElement('option');
+    newOption.textContent = object.value;
+    newOption.value = object.value;
+    statuses.appendChild(newOption);
+  });
+}
+updateColumnNames();
+const modalBackground = document.getElementById('modal-background');
+const addColumnForm = document.getElementById('add-column-form');
+var newColumnToggle = false;
+const newColumn = document.getElementById('new-column');
+// adding an event listener to bring up the form
+function toggleColumnForm() {
+  if (newColumnToggle == false) {
+    addColumnForm.classList.add('active');
+    newColumnToggle = true;
+    modalBackground.style.display = 'flex';
+  } else if (newColumnToggle == true) {
+    addColumnForm.classList.remove('active');
+    addColumnForm.reset();
+    newColumnToggle = false;
+    modalBackground.style.display = 'none';
+  }
+}
+newColumn.addEventListener('click', toggleColumnForm);
+// adding an event listener for submitting the column
+const columnSubmitButton = document.getElementById('add-column-submit');
+columnSubmitButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  let id = Date.now();
+  let name = addColumnForm.querySelector('input').value;
+  let column = new Column(id, name);
+  column.createColumn();
+  updateColumnNames();
+  // close the form
+  toggleColumnForm();
+  // newColumnToggle = false;
+  // modalBackground.style.display = 'none'
+  // addColumnForm.reset()
+  // addColumnForm.classList.remove('active')
+  let newCards = document.querySelectorAll('.cards');
+  newCards = newCards[newCards.length - 1];
+  createNewSortable(newCards);
+});
+function createNewSortable(element) {
+  new Sortable(element, {
+    group: 'nested',
+    animation: 200,
+    swapThreshold: 0.65,
+    ghostClass: 'ghost-card',
+    chosenClass: 'chosen-card',
+    forceFallback: true,
+    onEnd: function (evt) {
+      _kanban.countCards();
+    }
+  });
+}
+
+},{"./kanban":"3b9tq"}],"3b9tq":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "countCards", function () {
+  return countCards;
+});
+function countCards() {
+  let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
+  const emptyStateMessage = document.getElementById('empty-state-message');
+  if (cards.length == 0) {
+    columns[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'flex';
+  } else {
+    // body.appendChild(emptyStateMessage)
+    emptyStateMessage.style.display = 'none';
+  }
+  total.forEach(function count(object, index) {
+    let cardCount = 0;
+    for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i++) {
+      if (cardContainers[index].querySelectorAll('.card')[i].classList.length == 1) {
+        cardCount += 1;
+      }
+    }
+    total[index].textContent = cardCount;
+  });
+}
+countCards();
+// Setting sortable functionality to the cards with the sortable.js library
+var cardContainers = document.querySelectorAll('.cards');
+cardContainers.forEach(function (element) {
+  new Sortable(element, {
+    group: 'nested',
+    animation: 200,
+    swapThreshold: 0.65,
+    ghostClass: 'ghost-card',
+    chosenClass: 'chosen-card',
+    forceFallback: true,
+    onEnd: function (evt) {
+      countCards();
+    }
+  });
+});
+var tasks = document.getElementById('tasks');
+new Sortable(tasks, {
+  animation: 150,
+  swapThreshold: 0.8,
+  ghostClass: 'ghost-column',
+  chosenClass: 'chosen-column',
+  forceFallback: true
+});
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
 },{}]},["275Mn","4Vh9G"], "4Vh9G", "parcelRequirec526")
 
 //# sourceMappingURL=index.554fd361.js.map

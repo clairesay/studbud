@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>StudBud</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Study tool for programmers in training">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="ac2b17b88ef0ab3e3e3316d5a6be3892">
+    <script src="d94f9aa01d9671d8449671126e020f85" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="191763d21b3708b74a5b76dbde393de7">
+</head>
+
+<body>
+    <header>
+        <img id="home-link" src="7cfdf8f6153f8e10e79f65d51c7b3590">
+        <div id="button-background" class="background"></div>
+        <article id="task-buttons" class="button-container">
+            <button class="button primary icon"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+            <button id="new-task" class="button primary create">Create task</button>
+            <button id="new-column" class="button secondary create">Add column</button>
+        </article>
+        <article id="content-buttons" class="button-container">
+            <button class="button primary icon"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+            <button id="new-content" class="button primary create">Add content</button>
+            <button id="new-group" class="button secondary create">Create group</button>
+        </article>
+
+    </header>
+
+
+    <main>
+        <button id="content-tab" class="tab">Content</button>
+        <button id="tasks-tab" class="tab">Tasks</button>
+        <section id="content">
+            <button id="filter-by" class="button" type="button">Filter by</button>
+            <div class="tags"></div>
+            <div class="group">
+                <div class="group-title">
+                    <input class="group-name" value="INFO1110">
+                    <h3 class="open-link"><img src="c58c9506186bac9fd55bf86ae102545c"></h3>
+                </div>
+                <div class="tiles">
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                    <article class="tile">
+                        <h4>Content Title<!--4-->
+                            <hr>
+                            <p>Content Description</p>
+                            <a>Link to the resource</a>
+                    </h4></article>
+                </div>
+            </div>
+        </section>
+        <section id="tasks">
+            <div class="column">
+                <div id="empty-state-message">
+                    <h4>It's a bit empty around here. Try creating a new task.</h4>
+                    <img src="dad8ea7ef3a51327118fcde20c852b6f">
+                    <button class="button primary">Create Task</button>
+                </div>
+                <div class="title">
+                    <input class="column-name" value="Ready">
+                    <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    
+                    <h3 class="total"></h3>
+                </div>
+                <div class="cards">
+                </div>
+
+            </div>
+            <div class="column">
+                <div class="title">
+                    <input class="column-name" value="In Progress">
+                    <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    
+                    <h3 class="total"></h3>
+
+                </div>
+                <div class="cards">
+                </div>
+            </div>
+            <div class="column">
+                <div class="title">
+                    <input class="column-name" value="Done">
+                    <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    
+                    <h3 class="total"></h3>
+                </div>
+                <div class="cards">
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <div id="modal-background" class="background"></div>
+    <form id="create-content-form">
+        <h1>Add content</h1>
+        <section>
+            <label for="contentTitle">Title</label>
+            <input type="text" name="contentTitle" placeholder="What's this content about?" autofocus="">
+
+            <label for="conceptDescription">Concept Description</label>
+            <input type="text" name="conceptDescription" placeholder="In a few sentences, how would you explain the contept to a newbie?">
+
+            <label for="link">Link</label>
+            <input type="text" name="link" placeholder="Paste the resource link here">
+
+            <!-- SUBJECT -->
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" list="subject">
+            <datalist id="subject">
+                <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
+                <!-- <option value="Boston">
+          <option value="Cambridge"> -->
+            </datalist>
+        </section>
+        <aside>
+            <label for="group">Group</label>
+            <select name="group">
+                <option value="INFO1110">INFO1110</option>
+                <option value="COMP2823">COMP2823</option>
+                <option value="SOFT2201">SOFT2201</option>
+                <!-- populate this with all the existing columns -->
+                <!-- <option value="ready"></option> -->
+            </select>
+        </aside>
+        <button id="create-content-submit" class="button primary" type="button">Submit</button>
+        <button id="edit-content-save" class="button primary" type="button">Save</button>
+        <button id="edit-content-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+        <button id="edit-content-delete" class="button primary" type="button">Delete</button>
+
+
+    </form>
+    <form id="create-task-form">
+        <h1>Create a task</h1>
+        <section>
+            <label for="taskName">Task Name</label>
+            <input type="text" name="taskName" placeholder="What's the task called?" autofocus="">
+
+            <label for="taskDescription">Task Description</label>
+            <input type="text" name="taskDescription" placeholder="How can I complete this task?">
+
+            <!-- SUBJECT -->
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" list="subject">
+            <datalist id="subject">
+                <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
+                <!-- <option value="Boston">
+          <option value="Cambridge"> -->
+            </datalist>
+        </section>
+        <aside>
+            <label for="status">Status</label>
+            <select name="status">
+            </select>
+
+
+            <label for="taskPriorityRating">Priority Level
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="Low">
+                    <span>Low</span>
+                </label>
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="Mid">
+                    <span>Mid</span>
+                </label>
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="High">
+                    <span>High</span>
+                </label>
+            </label>
+
+            <label for="taskEstimatedTime">Estimated Time to Complete</label>
+            <input type="text" name="taskEstimatedTimeHr">
+            <input type="text" name="taskEstimatedTimeMin">
+
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" name="taskDueDate">
+
+        </aside>
+        <button id="task-save" class="button primary" type="button">Save</button>
+        <button id="edit-task-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+        <button id="edit-task-delete" class="button primary" type="button">Delete</button>
+
+    </form>
+
+    <form id="add-column-form">
+        <h1>Create a task</h1>
+
+        <label for="columnName">Column Name</label>
+        <input type="text" name="columnName" placeholder="What is this column for?" autofocus="">
+        <p>TIP: Name the column after a status, like 'In-Progress' so you can categorise your tasks based on completion.
+        </p>
+        <button id="add-column-submit" class="button primary" type="submit">Save</button>
+        <button id="add-column-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+    </form>
+
+    <script src="956e94fa531b26cb4e5c8ba0473f4981"></script>
+
+    <script src="fb8edede0bfb84ccb99e54fac6796a68"></script>
+    <script src="f87277b8ab24e1af2717d62bde9ace8d"></script>
+    <script src="1403562a9e5c5fed791d2bc2335d6b55"></script>
+
+</body>
+
+</html>

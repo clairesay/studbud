@@ -45,6 +45,23 @@ form {
         &#edit-task-delete {
             display: none;
         }
+
+        &.close-form {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+
+            background-color: $white;
+            border-radius: $mini-radius;
+
+            &:hover {
+                background-color: $light-grey;
+                cursor: pointer;
+            }
+        }
     }
 
     &.update {

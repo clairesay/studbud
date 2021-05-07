@@ -410,6 +410,20 @@ form.active {
 form button#edit-task-delete {
   display: none;
 }
+form button.close-form {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  background-color: #fefefe;
+  border-radius: 4px;
+}
+form button.close-form:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
 form.update button#edit-task-delete {
   display: flex;
 }

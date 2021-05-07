@@ -127,8 +127,10 @@ newTask.addEventListener('click', toggleTaskForm)
 // adding event listeners to the form buttons.
 const taskSaveButton = document.getElementById('task-save')
 const taskCancelButton = document.getElementById('edit-task-cancel');
+const taskCloseButton = taskCancelButton.nextElementSibling;
 const taskDeleteButton = document.getElementById('edit-task-delete');
 
+// deleting a task
 taskDeleteButton.addEventListener('click', function () {
     let id = parseInt(taskSaveButton.value)
 
@@ -144,11 +146,17 @@ taskDeleteButton.addEventListener('click', function () {
     reupdate()
 })
 
+// cancelling the creation of a task or button
 taskCancelButton.addEventListener('click', function () {
     toggleTaskForm()
     reupdate()
 })
+taskCloseButton.addEventListener('click', function () {
+    toggleTaskForm()
+    reupdate()
+})
 
+// saving a new task or updating
 taskSaveButton.addEventListener('click', function (event) {
     event.preventDefault()
 

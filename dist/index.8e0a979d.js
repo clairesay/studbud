@@ -556,6 +556,14 @@ function taskButtonVisibility() {
     }
 }
 
+// FORMS
+
+// var closeButtons = document.querySelectorAll('close-form')
+// closeButtons.forEach(function(closeButton) {
+//     closeButton.addEventListener('click', function() {
+//         let thisForm = closeButton.parentElement
+//     })
+// })
 },{}]},["3tXkp","43dFp"], "43dFp", "parcelRequirec526")
 
 //# sourceMappingURL=index.8e0a979d.js.map
