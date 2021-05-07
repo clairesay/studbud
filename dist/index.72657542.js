@@ -444,19 +444,17 @@ id) /*: string*/
 },{}],"1ob9e":[function(require,module,exports) {
 var deviceSize
 ////////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////
-function myFunction(x) {
+function mediaQuery(x) {
     if (x.matches) { // If media query matches
-    //   document.body.style.backgroundColor = "yellow";
       deviceSize = 'mobile'
     } else {
-    //   document.body.style.backgroundColor = "pink";
       deviceSize = 'desktop'
     }
 }
 
 var x = window.matchMedia("(max-width: 700px)")
-myFunction(x) // Call listener function at run time
-x.addEventListener('change', myFunction) // Attach listener function on state changes
+mediaQuery(x) // Call listener function at run time
+x.addEventListener('change', mediaQuery) // Attach listener function on state changes
 
 
 const main = document.getElementsByTagName('main')[0]
@@ -476,7 +474,6 @@ const contentCreateButtons = document.querySelectorAll('#content-buttons button.
 displayMain('tasks')
 
 tasksTab.addEventListener('click', function() {displayMain('tasks')})
-// body.addEventListener('click', function() {displayMain('tasks')})
 contentTab.addEventListener('click', function() {displayMain('content')})
 
 function displayMain(option) {

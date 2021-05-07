@@ -4,13 +4,9 @@
   <title>StudBud</title>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="" />
-  <!-- CSS reset and stylesheet -->
+  <meta name="description" content="Study tool for programmers in training" />
+  <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="scss/main.scss" />
-  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
-  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.12/draggable.min.js" integrity="sha512-VTqyB/kLQGaTnF5kYAgeEFo8fwqdlAGNUQeoQi4EOmmBYTEQ/XrYC7lnzCvBBp1PR+1ODEQiT075oeUdPeFHwA==" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
 
   <link rel="icon" href="images/favicon.svg">
@@ -19,13 +15,11 @@
   <header>
     <img id="home-link" src="images/logo.svg">   
     <div id="button-background" class="background"></div> 
-    <!-- <div class="modal-background"></div>  -->
     <article id="task-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
       <button id="new-task" class="button primary create">Create task</button>
       <button id="new-column" class="button secondary create">Add column</button>
     </article>
-    <!-- <div class="modal-background"></div> -->
     <article id="content-buttons" class="button-container">
       <button class="button primary icon"><img src="images/add.svg"></button>
       <button id="new-content" class="button primary create">Add content</button>
@@ -192,11 +186,6 @@
         <aside>
         <label for="status">Status</label>
         <select name="status">
-          <!-- <option value="Ready">Ready</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Done">Done</option> -->
-          <!-- populate this with all the existing columns -->
-          <!-- <option value="ready"></option> -->
         </select>
 
 
@@ -223,10 +212,6 @@
         <input type="date" name="taskDueDate"></input>
 
       </aside>
-        <!-- <label for="taskCompletionStatus">Completion Status</label>
-        <input type="radio" name="taskCompletionStatus" value="Done">Done</input>
-        <input type="radio" name="taskCompletionStatus" value="Not Done">Not Done</input> -->
-
         <button id="create-task-submit" class="button primary" type="button">Submit</button>
         <button id="edit-task-save" class="button primary" type="button">Save</button>
         <button id="edit-task-cancel" class="button primary" type="button">Cancel</button>
@@ -244,10 +229,11 @@
         <!-- <article id="task-display">
           printallthingshere
         </article> -->
-    <script src="js/kanban.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/main.js"></script>
-    <!-- <script src="js/scrolloutofview.js"></script> -->
+        <script src="main.js"></script>
+    <script src="js/column.js"></script>
+    <!-- <script src="js/kanban.js"></script> -->
+    <script src="js/tasks.js"></script>
+
     <script src="js/draggable.js"></script>
     <script src="js/content.js"></script>
 

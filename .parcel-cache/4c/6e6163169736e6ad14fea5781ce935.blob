@@ -1,0 +1,20 @@
+const newTask = document.getElementById('new-task');
+var editTask = document.querySelectorAll('.card');
+const createTaskForm = document.getElementById('create-task-form')
+
+// STACK OVERFLOW https://stackoverflow.com/questions/4880381/check-whether-html-element-has-scrollbars
+
+// RESIZING CARD WIDTH BASED ON OVERFLOW PROPERTIES TO ACCOUNT FOR SCROLLBAR
+function cardWidth() {
+    editTask.forEach(function (element) {
+        let cardContainer = element.parentElement
+        let hasVerticalScrollbar = cardContainer.scrollHeight > cardContainer.clientHeight;
+        if (hasVerticalScrollbar) {
+            element.style.width = 'auto';
+            element.style.maxWidth = '90%';
+        } else {
+            element.style.width = 'auto';
+            cardContainer.style.paddingRight = '36px';
+        }
+    })
+}
