@@ -2,6 +2,7 @@
 #tasks {
     max-width: 100%;
     scroll-snap-type: x mandatory;
+    overflow: scroll hidden;
 
     // SCROLLBAR
     &::-webkit-scrollbar {
@@ -19,7 +20,7 @@
     }
     
     &::-webkit-scrollbar-thumb:hover {
-        background-color: $grey;
+        background-color: $dark-grey;
     }
 
     // COLUMNS
@@ -81,22 +82,23 @@
                         text-decoration: underline dotted $dark-grey;
                     }
 
-                    &:focus ~ img,
-                    &:active ~ img,
-                    &:hover ~ img {
+                    &:focus ~ svg,
+                    &:active ~ svg,
+                    &:hover ~ svg {
                         visibility: visible;
-                    }
-
-                    img {
-                        position: relative;
-                        right: -24px;
-                        background-color: $white;
-                        visibility: hidden;
                     }
                 }
             }
-        }
 
+            svg {
+                position: relative;
+                right: -24px;
+                background-color: $white;
+                visibility: hidden;
+            }
+
+        }
+        
         div.cards {
             width: auto;
             height: calc(100% - 60px);
@@ -121,7 +123,7 @@
             }
             
             &::-webkit-scrollbar-thumb:hover {
-                background-color: $grey;
+                background-color: $dark-grey;
             }
 
             article.card {
@@ -141,6 +143,22 @@
                 &:last-child {
                     margin-bottom: 24px;
                 }
+            }
+        }
+
+
+        div#empty-state-message {
+            flex-direction: column;
+            position: absolute;
+            top: 20%;
+            // max-width: calc(100% - 18px);
+
+            h4, img, button {
+                max-width: calc(100% - 18px);
+            }
+
+            h4 {
+                text-align: center;
             }
         }
     }

@@ -20,6 +20,14 @@
         content: "Content";
     }
 
+    #tasks {
+        div.column {
+            min-width: 260px;
+            width: 75vw;
+            max-width: 332px;
+        }
+    }
+
     /* /////////// COMPONENTS //////////// */
     // BUTTON
     .button-container {

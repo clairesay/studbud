@@ -50,3 +50,81 @@
   // } else if (taskDetails[8].checked == true) {
   //   taskCompletionStatus = taskDetails[8].value;
   // }
+
+
+//   /////////// DOUBLE BUTTON TASKS
+
+// const taskSubmitButton = document.getElementById('create-task-submit');
+// const taskSaveButton = document.getElementById('edit-task-save');
+// taskSaveButton.addEventListener('click', function (event) {
+//     event.preventDefault()
+//     // initialising variables
+
+
+//     let taskID = parseInt(taskSaveButton.value)
+//     for (let i = 0; i < taskList.length; i++) {
+//         var oldTask = taskList[i]
+//         if (oldTask.id == taskID) {
+//             taskList.splice(taskList.indexOf(oldTask), 1)
+//             let oldCard = document.getElementById('t-' + taskID)
+//             oldCard.remove();
+//             taskSaveButton.value = ''
+//         }
+//     }
+
+//     // initialising variables
+//     let taskDetails = createTaskForm.querySelectorAll('form input');
+//     // get all of the user input in the input fields
+//     let task = populateTaskDetails(taskDetails)
+
+//     // create a new task using the task class
+//     let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList)
+//     // append to taskList and create new card with task
+//     newTask.createCard(newTask.addTask());
+
+//     toggleTaskForm()
+//     reupdate()
+// })
+
+// // on submit:
+// taskSubmitButton.addEventListener('click', function (event) {
+//     event.preventDefault()
+
+//     // initialising variables
+//     let taskDetails = createTaskForm.querySelectorAll('form input');
+//     // get all of the user input in the input fields
+//     let task = populateTaskDetails(taskDetails)
+
+//     // since it's a new task, generate a new ID
+//     let taskID = Date.now()
+
+//     // create a new task using the task class
+//     let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList)
+//     // append to taskList and create new card with task
+//     newTask.createCard(newTask.addTask());
+
+
+//     toggleTaskForm()
+//     reupdate()
+// })
+
+// ////////////////////////////
+// // STACK OVERFLOW https://stackoverflow.com/questions/4880381/check-whether-html-element-has-scrollbars
+// // RESIZING CARD WIDTH BASED ON OVERFLOW PROPERTIES TO ACCOUNT FOR SCROLLBAR
+// function cardWidth() {
+
+//     let cards = document.querySelectorAll('.card');
+
+//     cards.forEach(function(element) {
+//         let cardContainer = element.parentElement
+//         let hasVerticalScrollbar = cardContainer.scrollHeight > cardContainer.clientHeight;
+
+//         if (hasVerticalScrollbar) {
+//             element.style.width = 'auto';
+//             element.style.maxWidth = '90%';
+//         } else {
+//             element.style.width = 'auto';
+//             cardContainer.style.paddingRight = '36px';
+//         }
+//     })
+// }

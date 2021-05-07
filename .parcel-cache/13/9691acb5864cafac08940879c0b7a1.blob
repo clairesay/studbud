@@ -87,7 +87,6 @@ body main #tasks, body main #content {
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   display: flex;
-  overflow: scroll hidden;
 }
 body main .tab {
   position: absolute;
@@ -129,6 +128,7 @@ body main .tab.active::before {
 #tasks {
   max-width: 100%;
   scroll-snap-type: x mandatory;
+  overflow: scroll hidden;
 }
 #tasks::-webkit-scrollbar {
   width: 18px;
@@ -147,7 +147,7 @@ body main .tab.active::before {
   /* creates padding around scroll thumb */
 }
 #tasks::-webkit-scrollbar-thumb:hover {
-  background-color: #cccccc;
+  background-color: #909090;
 }
 #tasks div.column {
   position: relative;
@@ -195,10 +195,10 @@ body main .tab.active::before {
   cursor: text;
   text-decoration: underline dotted #909090;
 }
-#tasks div.column div.title input.column-name:focus ~ img, #tasks div.column div.title input.column-name:active ~ img, #tasks div.column div.title input.column-name:hover ~ img {
+#tasks div.column div.title input.column-name:focus ~ svg, #tasks div.column div.title input.column-name:active ~ svg, #tasks div.column div.title input.column-name:hover ~ svg {
   visibility: visible;
 }
-#tasks div.column div.title input.column-name img {
+#tasks div.column div.title svg {
   position: relative;
   right: -24px;
   background-color: #fefefe;
@@ -228,7 +228,7 @@ body main .tab.active::before {
   /* creates padding around scroll thumb */
 }
 #tasks div.column div.cards::-webkit-scrollbar-thumb:hover {
-  background-color: #cccccc;
+  background-color: #909090;
 }
 #tasks div.column div.cards article.card {
   z-index: 10;
@@ -245,6 +245,17 @@ body main .tab.active::before {
 }
 #tasks div.column div.cards article.card:last-child {
   margin-bottom: 24px;
+}
+#tasks div.column div#empty-state-message {
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
+}
+#tasks div.column div#empty-state-message h4, #tasks div.column div#empty-state-message img, #tasks div.column div#empty-state-message button {
+  max-width: calc(100% - 18px);
+}
+#tasks div.column div#empty-state-message h4 {
+  text-align: center;
 }
 
 .chosen-card {
@@ -269,8 +280,26 @@ body main .tab.active::before {
 #content {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
+}
+#content::-webkit-scrollbar {
+  width: 18px;
+  /* width of the entire scrollbar */
+}
+#content::-webkit-scrollbar-track {
+  background: #fafafa;
+  /* color of the tracking area */
+}
+#content::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  /* color of the scroll thumb */
+  border-radius: 16px;
+  /* roundness of the scroll thumb */
+  border: 4px solid #fafafa;
+  /* creates padding around scroll thumb */
+}
+#content::-webkit-scrollbar-thumb:hover {
+  background-color: #909090;
 }
 #content div.group {
   display: flex;
@@ -389,16 +418,10 @@ form {
 form.active {
   display: flex;
 }
-form button#create-task-submit {
-  display: flex;
-}
-form button#edit-task-save, form button#edit-task-cancel, form button#edit-task-delete {
+form button#edit-task-delete {
   display: none;
 }
-form.update button#create-task-submit {
-  display: none;
-}
-form.update button#edit-task-save, form.update button#edit-task-cancel, form.update button#edit-task-delete {
+form.update button#edit-task-delete {
   display: flex;
 }
 form input {
@@ -454,6 +477,12 @@ form label .false-radio span {
   body main .tab#content-tab {
     left: 128px;
     content: "Content";
+  }
+
+  #tasks div.column {
+    min-width: 260px;
+    width: 75vw;
+    max-width: 332px;
   }
 
   /* /////////// COMPONENTS //////////// */

@@ -442,20 +442,11 @@ id) /*: string*/
 }
 
 },{}],"6dqWB":[function(require,module,exports) {
-require('./misc');
 var _task = require('./task');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _taskDefault = _parcelHelpers.interopDefault(_task);
 var _kanban = require('./kanban');
-// /////
-var taskList = [];
-// /////
-const newTask = document.getElementById('new-task');
-const createTaskForm = document.getElementById('create-task-form');
-// CREATE A NEW TASK
-const modalBackground = document.getElementById('modal-background');
-var formVisible = false;
-newTask.addEventListener('click', toggleTaskForm);
+// opening or closing the task form and changing its type
 function toggleTaskForm(type) {
   // check if its an update form if so, reword, and show corresponding buttons :)
   if (type == 'update') {
@@ -478,6 +469,7 @@ function toggleTaskForm(type) {
     _kanban.countCards();
   }
 }
+// adding event listeners to edit buttons
 function reupdate() {
   // each card has an edit button that allows users to reaccess and update task details
   let editButtons = document.querySelectorAll('.edit');
@@ -488,31 +480,28 @@ function reupdate() {
       editButton.setAttribute('listener', 'true');
     }
     function addAutoFill() {
-      autoFill(editButton);
+      autoFillTaskDetails(editButton);
     }
   });
 }
-// this function autopopulates the data
-function autoFill(object) {
-  var objectId = object.parentElement.id;
+// autopopulates the form with existing task data previously inputted by user
+function autoFillTaskDetails(object) {
+  let objectId = object.parentElement.id;
   objectId = objectId.replace('t-', '');
-  for (let i = 0; i < taskList.length; i++) {
-    var thisTask = taskList[i];
+  taskList.forEach(function (task) {
+    let thisTask = task;
     if (thisTask.id == objectId) {
-      var taskDetails = createTaskForm.querySelectorAll('form input');
+      let taskDetails = createTaskForm.querySelectorAll('form input');
       // taskName
       taskDetails[0].value = thisTask.name;
       // taskDescription
       taskDetails[1].value = thisTask.description;
       // taskSubject
       taskDetails[2].value = thisTask.subject;
-      // status SELECT THE STATUS
-      var statuses = createTaskForm.querySelector('select[name=status]');
-      // statuses.value = thisTask.status
+      // taskStatus
+      let statuses = createTaskForm.querySelector('select[name=status]');
       statuses.value = object.parentElement.parentElement.parentElement.querySelector('div.title input.column-name').value;
-      // 3 is low
-      // 4 is mid
-      // 5 is high
+      // taskPriorityRating
       if (thisTask.priorityRating == 'Low') {
         taskDetails[3].checked = true;
       } else if (thisTask.priorityRating == 'Mid') {
@@ -520,7 +509,6 @@ function autoFill(object) {
       } else if (thisTask.priorityRating == 'High') {
         taskDetails[5].checked = true;
       }
-      // name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate, saveStatus
       // taskEstimatedTimeHr
       taskDetails[6].value = thisTask.estimatedTimeHr;
       // taskEstimatedTimeMin
@@ -530,11 +518,47 @@ function autoFill(object) {
       taskSaveButton.value = thisTask.id;
       toggleTaskForm('update');
     }
-  }
+  });
 }
-// selecting the submit button for the form
-const taskSubmitButton = document.getElementById('create-task-submit');
-const taskSaveButton = document.getElementById('edit-task-save');
+function populateTaskDetails(taskDetails) {
+  let name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate;
+  name = taskDetails[0].value;
+  description = taskDetails[1].value;
+  subject = taskDetails[2].value;
+  var statuses = createTaskForm.querySelector('select[name=status]');
+  status = statuses.value;
+  // checking the radios
+  if (taskDetails[3].checked == true) {
+    priorityRating = taskDetails[3].value;
+  } else if (taskDetails[4].checked == true) {
+    priorityRating = taskDetails[4].value;
+  } else if (taskDetails[5].checked == true) {
+    priorityRating = taskDetails[5].value;
+  }
+  estimatedTimeHr = taskDetails[6].value;
+  estimatedTimeMin = taskDetails[7].value;
+  dueDate = taskDetails[8].value;
+  return {
+    name,
+    description,
+    subject,
+    status,
+    priorityRating,
+    estimatedTimeHr,
+    estimatedTimeMin,
+    dueDate
+  };
+}
+// /////
+var taskList = [];
+const newTask = document.getElementById('new-task');
+const createTaskForm = document.getElementById('create-task-form');
+const modalBackground = document.getElementById('modal-background');
+var formVisible = false;
+// create a new task
+newTask.addEventListener('click', toggleTaskForm);
+// adding event listeners to the form buttons.
+const taskSaveButton = document.getElementById('task-save');
 const taskCancelButton = document.getElementById('edit-task-cancel');
 const taskDeleteButton = document.getElementById('edit-task-delete');
 taskDeleteButton.addEventListener('click', function () {
@@ -556,99 +580,36 @@ taskCancelButton.addEventListener('click', function () {
 });
 taskSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
-  var taskDetails, task, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate;
-  // initialising variables
-  taskDetails = createTaskForm.querySelectorAll('form input');
-  var id = parseInt(taskSaveButton.value);
-  taskID = id;
-  for (let i = 0; i < taskList.length; i++) {
-    var oldTask = taskList[i];
-    if (oldTask.id == id) {
-      taskList.splice(taskList.indexOf(oldTask), 1);
-      var oldCard = document.getElementById('t-' + id);
-      oldCard.remove();
-      taskSaveButton.value = '';
+  // depends whether we are updating or creating a task
+  let taskID;
+  if (createTaskForm.classList.contains('update')) {
+    taskID = parseInt(taskSaveButton.value);
+    for (let i = 0; i < taskList.length; i++) {
+      var oldTask = taskList[i];
+      if (oldTask.id == taskID) {
+        taskList.splice(taskList.indexOf(oldTask), 1);
+        let oldCard = document.getElementById('t-' + taskID);
+        oldCard.remove();
+        taskSaveButton.value = '';
+      }
     }
+  } else {
+    taskID = Date.now();
   }
-  // get all of the user input in the input fields
-  taskName = taskDetails[0].value;
-  taskDescription = taskDetails[1].value;
-  taskSubject = taskDetails[2].value;
-  var statuses = createTaskForm.querySelector('select[name=status]');
-  taskStatus = statuses.value;
-  // checking the radios
-  if (taskDetails[3].checked == true) {
-    taskPriorityRating = taskDetails[3].value;
-  } else if (taskDetails[4].checked == true) {
-    taskPriorityRating = taskDetails[4].value;
-  } else if (taskDetails[5].checked == true) {
-    taskPriorityRating = taskDetails[5].value;
-  }
-  taskEstimatedTimeHr = taskDetails[6].value;
-  taskEstimatedTimeMin = taskDetails[7].value;
-  taskDueDate = taskDetails[8].value;
-  // ///////////////////////////
-  task = new _taskDefault.default(taskID, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskList);
-  task.createCard(task.addTask());
-  toggleTaskForm();
-  reupdate();
-});
-// something to populate tasks with on the page
-// on submit:
-taskSubmitButton.addEventListener('click', function (event) {
-  event.preventDefault();
-  var taskDetails, task, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate;
-  // ///////////////////////////
   // initialising variables
-  taskDetails = createTaskForm.querySelectorAll('form input');
-  taskID = Date.now();
+  let taskDetails = createTaskForm.querySelectorAll('form input');
   // get all of the user input in the input fields
-  taskName = taskDetails[0].value;
-  taskDescription = taskDetails[1].value;
-  taskSubject = taskDetails[2].value;
-  var statuses = createTaskForm.querySelector('select[name=status]');
-  taskStatus = statuses.value;
-  // checking the radios
-  if (taskDetails[3].checked == true) {
-    taskPriorityRating = taskDetails[3].value;
-  } else if (taskDetails[4].checked == true) {
-    taskPriorityRating = taskDetails[4].value;
-  } else if (taskDetails[5].checked == true) {
-    taskPriorityRating = taskDetails[5].value;
-  }
-  taskEstimatedTimeHr = taskDetails[6].value;
-  taskEstimatedTimeMin = taskDetails[7].value;
-  taskDueDate = taskDetails[8].value;
-  // ///////////////////////////
+  let task = populateTaskDetails(taskDetails);
   // create a new task using the task class
-  task = new _taskDefault.default(taskID, taskName, taskDescription, taskSubject, taskStatus, taskPriorityRating, taskEstimatedTimeHr, taskEstimatedTimeMin, taskDueDate, taskList);
-  task.createCard(task.addTask());
-  // create new card with task
+  let newTask = new _taskDefault.default(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList);
+  // append to taskList and create new card with task
+  newTask.createCard(newTask.addTask());
+  // close the form and add event listeners to any new items
   toggleTaskForm();
   reupdate();
 });
 
-},{"./misc":"4zZ5c","./task":"3EAmk","./kanban":"3b9tq","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"4zZ5c":[function(require,module,exports) {
-// STACK OVERFLOW https://stackoverflow.com/questions/4880381/check-whether-html-element-has-scrollbars
-// RESIZING CARD WIDTH BASED ON OVERFLOW PROPERTIES TO ACCOUNT FOR SCROLLBAR
-function cardWidth() {
-
-    let cards = document.querySelectorAll('.card');
-
-    cards.forEach(function(element) {
-        let cardContainer = element.parentElement
-        let hasVerticalScrollbar = cardContainer.scrollHeight > cardContainer.clientHeight;
-
-        if (hasVerticalScrollbar) {
-            element.style.width = 'auto';
-            element.style.maxWidth = '90%';
-        } else {
-            element.style.width = 'auto';
-            cardContainer.style.paddingRight = '36px';
-        }
-    })
-}
-},{}],"3EAmk":[function(require,module,exports) {
+},{"./task":"3EAmk","./kanban":"3b9tq","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3EAmk":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 // declaring a class called Task - this ordains the structure for all the elements to go into the class
@@ -672,14 +633,9 @@ class Task {
     this.taskList.push(this);
     return this.id;
   }
-  updateTask(id) {
-    this.taskList.filter(function (element) {
-      return element.id == id;
-    });
-  }
   createCard(n) {
-    var card = document.createElement('article');
-    var subjectTag = document.createElement('span'), title = document.createElement('h3'), description = document.createElement('p'), timeDetails = document.createElement('div'), dueDate = document.createElement('h4'), timeTag = document.createElement('span'), editIcon = document.createElement('a');
+    let card = document.createElement('article');
+    let subjectTag = document.createElement('span'), title = document.createElement('h3'), description = document.createElement('p'), timeDetails = document.createElement('div'), dueDate = document.createElement('h4'), timeTag = document.createElement('span'), editIcon = document.createElement('a');
     editIcon.classList.add('edit');
     editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
@@ -706,9 +662,9 @@ class Task {
     card.appendChild(editIcon);
     card.appendChild(timeDetails);
     // appending card to column
-    var columnNames = document.querySelectorAll('.column-name');
-    var cardContainers = document.querySelectorAll('.cards');
-    var currentStatus = this.status;
+    let columnNames = document.querySelectorAll('.column-name');
+    let cardContainers = document.querySelectorAll('.cards');
+    let currentStatus = this.status;
     columnNames.forEach(function setColumn(object, index) {
       if (object.value == currentStatus) {
         cardContainers[index].appendChild(card);
@@ -779,7 +735,7 @@ function countCards() {
   });
 }
 countCards();
-// DRAGGABLE FUNCTIONALITY
+// Sortable JS library
 var cards = document.querySelectorAll('.cards');
 cards.forEach(function (element) {
   new Sortable(element, {

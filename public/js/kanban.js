@@ -1,12 +1,24 @@
-// FUNCTION COUNTS HOW MANY CARDS THERE ARE WITHIN A COLUMN
+// counts how many cards are in a kanban column
 export function countCards() {
     let total = document.querySelectorAll('.total'),
-        cards = document.querySelectorAll('.cards')
+        cardContainers = document.querySelectorAll('.cards'),
+        columns = document.querySelectorAll('.column'),
+        cards = document.getElementsByClassName('card')
+
+    const emptyStateMessage = document.getElementById('empty-state-message')
+        
+    if (cards.length == 0) {
+        columns[0].appendChild(emptyStateMessage)
+        emptyStateMessage.style.display = 'flex';
+    } else {
+        // body.appendChild(emptyStateMessage)
+        emptyStateMessage.style.display = 'none';
+    }
 
     total.forEach(function count(object, index) {
-        cardCount = 0;
-        for (let i = 0; i < cards[index].querySelectorAll('.card').length; i ++) {
-            if (cards[index].querySelectorAll('.card')[i].classList.length == 1) {
+        let cardCount = 0;
+        for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i ++) {
+            if (cardContainers[index].querySelectorAll('.card')[i].classList.length == 1) {
                 cardCount += 1
             }
         }
@@ -15,9 +27,9 @@ export function countCards() {
 }
 countCards()
 
-// DRAGGABLE FUNCTIONALITY
-var cards = document.querySelectorAll('.cards')
-cards.forEach(function(element) {
+// Setting sortable functionality to the cards with the sortable.js library
+var cardContainers = document.querySelectorAll('.cards')
+cardContainers.forEach(function(element) {
     new Sortable(element, {
 		group: 'nested',
 		animation: 200,

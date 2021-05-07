@@ -42,12 +42,6 @@ form {
     }
 
     button {
-        &#create-task-submit {
-            display: flex;
-        }
-
-        &#edit-task-save,
-        &#edit-task-cancel,
         &#edit-task-delete {
             display: none;
         }
@@ -55,12 +49,6 @@ form {
 
     &.update {
         button {
-            &#create-task-submit {
-                display: none;
-            }
-
-            &#edit-task-save,
-            &#edit-task-cancel,
             &#edit-task-delete {
                 display: flex;
             }
