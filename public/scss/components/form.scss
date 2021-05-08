@@ -42,7 +42,7 @@ form {
     }
 
     button {
-        &#edit-task-delete {
+        &#edit-task-delete, &#edit-content-delete {
             display: none;
         }
 
@@ -66,7 +66,7 @@ form {
 
     &.update {
         button {
-            &#edit-task-delete {
+            &#edit-task-delete, &#edit-content-delete {
                 display: flex;
             }
         } 

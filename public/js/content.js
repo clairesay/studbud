@@ -1,60 +1,45 @@
-const newContent = document.getElementById('new-content')
-const createContentForm = document.getElementById('create-content-form')
-var overlayToggle = false
-const modalBackground = document.getElementById('modal-background')
-newContent.addEventListener('click', function() {openContentForm()})
-
-function openContentForm(type) {
-    if (type == 'update') {
-
-    }
-    if (overlayToggle == false) {
-        createContentForm.classList.add('active')
-        overlayToggle = true
-        modalBackground.style.display = 'flex'
-    } else if (overlayToggle == true) {
-        createContentForm.classList.remove('active')
-        createContentForm.reset()
-        overlayToggle = false
-        modalBackground.style.display = 'none'
-    }
-}
-
-var contentList = [];
 class Content {
-    constructor(id, title, description, link, subject, group) {
+    constructor(id, title, description, link, subject, group, contentList) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.subject = subject;
         this.group = group;
         this.link = link;
+        this.contentList = contentList;
     }
 
     addContent() {
-        contentList.push(this);
+        this.contentList.push(this);
         return this.id
     }
 
     createCard(n) {
-        var groupNames = document.querySelectorAll('.group-name')
-        var cards = document.querySelectorAll('.tiles')
-        var card = document.createElement('article'),
+        let groupNames = document.querySelectorAll('.group-name')
+        let cards = document.querySelectorAll('.tiles'),
+            card = document.createElement('article'),
             title = document.createElement('h4'),
             description = document.createElement('p'),
-            link = document.createElement('a');
+            link = document.createElement('a'),
+            editIcon = document.createElement('a');
 
-        
+        card.setAttribute('id', 'c-' + this.id)
         card.classList.add('tile')
         title.textContent = this.title
         description.textContent = this.description
         link.textContent = this.link
 
+        editIcon.classList.add('edit-content')
+        editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
+          </svg>`
+
         card.appendChild(title)
         card.appendChild(description)
         card.appendChild(link)
+        card.appendChild(editIcon)
 
-        var currentGroup = this.group
+        let currentGroup = this.group
         groupNames.forEach(function setGroup(object, index) {
             if (object.value == currentGroup) {
                 cards[index].appendChild(card)
@@ -64,26 +49,4 @@ class Content {
     }
 }
 
-const contentSubmitButton = document.getElementById('create-content-submit')
-contentSubmitButton.addEventListener('click', function(event) {
-    event.preventDefault()
-    var contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentSubject, contentGroup;
-      contentID = contentList.length
-      contentDetails = createContentForm.querySelectorAll('form input');
-      contentTitle = contentDetails[0].value
-      contentDescription = contentDetails[1].value
-      contentLink = contentDetails[2].value
-      contentSubject = contentDetails[3].value
-
-      var groups = createContentForm.querySelector('select[name=group]')
-      contentGroup = groups.value
-
-      content = new Content(contentID, contentTitle, contentDescription, contentLink, contentSubject, contentGroup)
-      content.createCard(content.addContent());
-      overlayToggle = false;
-      modalBackground.style.display = 'none'
-      createContentForm.classList.remove('active')
-      createContentForm.reset()
-
-      console.log(contentList)
-})
+export default Content

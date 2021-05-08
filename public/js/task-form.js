@@ -88,13 +88,6 @@ function autoFillTaskDetails(object) {
     })
 }
 
-var tags = document.querySelector('input[name=subject]')
-// TAGIFYING
-var tagify1 = new Tagify(tags, {
-    whitelist : ['INFO1110', 'COMP2000']
-}) 
-// 
-
 // getting all of the task details inputted by the user
 function getTaskDetails(taskDetails) {
     let name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate;

@@ -499,7 +499,7 @@ form {
 form.active {
   display: flex;
 }
-form button#edit-task-delete {
+form button#edit-task-delete, form button#edit-content-delete {
   display: none;
 }
 form button.close-form {
@@ -516,7 +516,7 @@ form button.close-form:hover {
   background-color: #eeeeee;
   cursor: pointer;
 }
-form.update button#edit-task-delete {
+form.update button#edit-task-delete, form.update button#edit-content-delete {
   display: flex;
 }
 form input {
