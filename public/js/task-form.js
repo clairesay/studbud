@@ -65,7 +65,7 @@ function autoFillTaskDetails(object) {
             // taskStatus
             let statuses = createTaskForm.querySelector('select[name=status]');
             statuses.value = object.parentElement.parentElement.parentElement.querySelector('div.title input.column-name').value
-
+            
             // taskPriorityRating
             if (thisTask.priorityRating == 'Low') {
                 taskDetails[3].checked = true

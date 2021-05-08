@@ -152,16 +152,13 @@ body main .tab.active::before {
   scroll-snap-align: center;
   border-radius: 16px;
   background-color: #eeeeee;
+  box-shadow: 0px 0px 0px 1px #0e131809 inset;
 }
 #tasks div.column.column:first-of-type {
   margin-left: 36px;
 }
 #tasks div.column.column:last-of-type {
   margin-right: 36px;
-}
-#tasks div.column:hover {
-  cursor: -webkit-grab;
-  cursor: grab;
 }
 #tasks div.column div.title {
   z-index: 2;
@@ -193,64 +190,16 @@ body main .tab.active::before {
   -webkit-text-decoration: underline dotted transparent;
           text-decoration: underline dotted transparent;
 }
-#tasks div.column div.title input:focus {
-  text-decoration: none;
-}
-#tasks div.column div.title input.column-name:hover {
-  cursor: text;
-  -webkit-text-decoration: underline dotted #909090;
-          text-decoration: underline dotted #909090;
-}
 #tasks div.column div.title input.column-name:hover ~ svg.edit-column {
   background-color: #eeeeee;
 }
 #tasks div.column div.title input.column-name:focus ~ svg, #tasks div.column div.title input.column-name:active ~ svg, #tasks div.column div.title input.column-name:hover ~ svg {
   visibility: visible;
 }
-#tasks div.column div.title svg {
-  position: relative;
-  background-color: #fafafa;
-  visibility: hidden;
-}
-#tasks div.column div.title svg.edit-column {
-  margin-right: 6px;
-  right: 42px;
-}
-#tasks div.column div.title svg.edit-column:hover ~ div.tooltip#edit {
-  visibility: visible;
-  opacity: 1;
-}
-#tasks div.column div.title svg.delete-column {
-  right: 12px;
-}
-#tasks div.column div.title svg.delete-column:hover ~ div.tooltip#delete {
-  visibility: visible;
-  opacity: 1;
-}
-#tasks div.column div.title svg.edit-column, #tasks div.column div.title svg.delete-column {
-  position: absolute;
-  min-width: 14px;
-  background-color: #fafafa;
-  padding: 8px;
-  border-radius: 4px;
-}
-#tasks div.column div.title svg:hover {
-  background-color: #eeeeee;
-}
-#tasks div.column div.title svg.disabled path {
-  fill: #cccccc;
-}
-#tasks div.column div.title svg.disabled:hover {
-  background-color: #fafafa;
-}
-#tasks div.column div.title svg.disabled:hover ~ div.tooltip {
-  display: none;
-}
 #tasks div.column div.title div.tooltip {
   font-size: 12px;
-  visibility: hidden;
   opacity: 0;
-  width: 100px;
+  width: 104px;
   background-color: #303030;
   color: #fefefe;
   text-align: center;
@@ -258,7 +207,8 @@ body main .tab.active::before {
   padding: 6px 0;
   position: absolute;
   z-index: 1;
-  transition: all 0.2s ease-out;
+  transition-property: opacity;
+  transition-duration: 0.2s;
 }
 #tasks div.column div.title div.tooltip#edit {
   right: 14px;
@@ -277,6 +227,45 @@ body main .tab.active::before {
   border-width: 5px;
   border-style: solid;
   border-color: #303030 transparent transparent transparent;
+}
+#tasks div.column div.title svg {
+  position: relative;
+  background-color: #fafafa;
+  visibility: hidden;
+}
+#tasks div.column div.title svg.edit-column {
+  margin-right: 6px;
+  right: 42px;
+}
+#tasks div.column div.title svg.edit-column:hover ~ div.tooltip#edit {
+  opacity: 1;
+}
+#tasks div.column div.title svg.delete-column {
+  right: 12px;
+}
+#tasks div.column div.title svg.delete-column:hover ~ div.tooltip#delete {
+  opacity: 1;
+}
+#tasks div.column div.title svg.edit-column, #tasks div.column div.title svg.delete-column {
+  position: absolute;
+  min-width: 14px;
+  background-color: #fafafa;
+  padding: 8px;
+  border-radius: 4px;
+}
+#tasks div.column div.title svg:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+#tasks div.column div.title svg.disabled path {
+  fill: #cccccc;
+}
+#tasks div.column div.title svg.disabled:hover {
+  cursor: initial;
+  background-color: #fafafa;
+}
+#tasks div.column div.title svg.disabled:hover ~ div.tooltip {
+  display: none;
 }
 #tasks div.column div.cards {
   width: auto;
@@ -314,6 +303,13 @@ body main .tab.active::before {
   margin: 16px 0;
   scroll-behavior: smooth;
   scroll-snap-align: start;
+}
+#tasks div.column div.cards article.card *:hover {
+  cursor: initial;
+}
+#tasks div.column div.cards article.card:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 #tasks div.column div.cards article.card:first-of-type {
   margin: 2px 0 0 0;

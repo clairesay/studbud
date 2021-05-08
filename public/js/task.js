@@ -22,6 +22,22 @@ class Task {
         return this.id
     }
 
+    updateColumnDelete() {
+        
+        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+        allDeleteColumnButtons.forEach( function(button) {
+            let columns = document.getElementsByClassName('column')
+            let column = button.parentElement.parentElement
+            let cards = column.querySelectorAll('.card')
+    
+            if (columns.length > 3 && cards.length == 0) {
+                button.classList.remove('disabled')
+            } else if (columns.length <= 3 || cards.length > 0) {
+                button.classList.add('disabled')
+            }
+        })
+    }
+
     // this creates a new card and applies it to the kanban board
     createCard(n) {
         // initialising new elements
@@ -93,6 +109,8 @@ class Task {
                 cardContainers[index].appendChild(card)
             }
         })
+
+        this.updateColumnDelete();
     }
 }
 

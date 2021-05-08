@@ -1,4 +1,4 @@
-21321
+21335
 99C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-longhand\dist\lib\numValues.js121436361000000000 0
 74C:\Users\clair\OneDrive\Documents\studbud\node_modules\hash.js\.travis.yml121436361000000000 0
 107C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-modules\node_modules\color-name\package.json132643002022157098 0
@@ -70,7 +70,7 @@
 89C:\Users\clair\OneDrive\Documents\studbud\node_modules\uncss\node_modules\chalk\readme.md121436361000000000 0
 117C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-discard-comments\node_modules\postcss\lib\processor.js121436361000000000 0
 104C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-normalize-unicode\node_modules\color-name132643002020788774 1
-59C:\Users\clair\OneDrive\Documents\studbud\public\index.html132649259330809052 0
+59C:\Users\clair\OneDrive\Documents\studbud\public\index.html132649457194665237 0
 65C:\Users\clair\OneDrive\Documents\studbud\node_modules\randomfill132643002017265467 1
 76C:\Users\clair\OneDrive\Documents\studbud\node_modules\rgb-regex\.travis.yml130673040540000000 0
 99C:\Users\clair\OneDrive\Documents\studbud\node_modules\xml-name-validator\lib\xml-name-validator.js131071466070000000 0
@@ -88,7 +88,7 @@
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\serve-handler\package.json132643002015099661 0
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\types\lib\comments\inheritLeadingComments.js121012626000000000 0
 88C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-discard-comments\dist\lib132643001858920901 1
-46C:\Users\clair\OneDrive\Documents\studbud\dist132649260283220416 1
+46C:\Users\clair\OneDrive\Documents\studbud\dist132649461112338931 1
 118C:\Users\clair\OneDrive\Documents\studbud\node_modules\resolve\test\resolver\multirepo\packages\package-a\package.json121436361000000000 0
 72C:\Users\clair\OneDrive\Documents\studbud\node_modules\crypto-browserify132643002002833962 1
 83C:\Users\clair\OneDrive\Documents\studbud\node_modules\css-tree\lib\lexer\search.js121436361000000000 0
@@ -141,7 +141,7 @@
 69C:\Users\clair\OneDrive\Documents\studbud\node_modules\node-gyp-build132643002029055158 1
 84C:\Users\clair\OneDrive\Documents\studbud\node_modules\es-abstract\2020\ToNumeric.js121436361000000000 0
 115C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-reduce-transforms\node_modules\color-name\.npmignore130800019150000000 0
-59C:\Users\clair\OneDrive\Documents\studbud\public\js\task.js132649092600797316 0
+59C:\Users\clair\OneDrive\Documents\studbud\public\js\task.js132649452061831482 0
 67C:\Users\clair\OneDrive\Documents\studbud\node_modules\regexpu-core132643002006893707 1
 79C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-replace-symbols\lib132643001893444489 1
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\stylehacks\node_modules\postcss\lib\previous-map.js121436361000000000 0
@@ -291,7 +291,7 @@
 97C:\Users\clair\OneDrive\Documents\studbud\node_modules\caniuse-lite\data\features\documenthead.js121436361000000000 0
 113C:\Users\clair\OneDrive\Documents\studbud\node_modules\jsdom\lib\jsdom\living\nodes\ElementCSSInlineStyle-impl.js121436361000000000 0
 73C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\stage\4.js121436361000000000 0
-76C:\Users\clair\OneDrive\Documents\studbud\public\scss\components\kanban.scss132649260171546331 0
+76C:\Users\clair\OneDrive\Documents\studbud\public\scss\components\kanban.scss132649437452618257 0
 59C:\Users\clair\OneDrive\Documents\studbud\node_modules\open132643002027612108 1
 111C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-unique-selectors\node_modules\color-name\LICENSE130953959930000000 0
 134C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-normalize-display-values\node_modules\postcss\docs\guidelines\plugin.md121436361000000000 0
@@ -330,13 +330,13 @@
 120C:\Users\clair\OneDrive\Documents\studbud\node_modules\regenerate-unicode-properties\General_Category\Space_Separator.js121436361000000000 0
 91C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\types\lib\constants\generated132643001859573095 1
 72C:\Users\clair\OneDrive\Documents\studbud\node_modules\type-is\README.md132636186647756904 0
-66C:\Users\clair\OneDrive\Documents\studbud\public\js\column-form.js132649259133606957 0
+66C:\Users\clair\OneDrive\Documents\studbud\public\js\column-form.js132649452210581594 0
 93C:\Users\clair\OneDrive\Documents\studbud\node_modules\@nodelib\fs.scandir\out\types\index.js121436361000000000 0
 77C:\Users\clair\OneDrive\Documents\studbud\node_modules\relateurl\package.json132643002017009915 0
 109C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\plugin-proposal-class-static-block\package.json132643001997111028 0
 79C:\Users\clair\OneDrive\Documents\studbud\node_modules\restore-cursor\readme.md121436361000000000 0
 93C:\Users\clair\OneDrive\Documents\studbud\node_modules\ajv\lib\refs\json-schema-draft-06.json121436361000000000 0
-61C:\Users\clair\OneDrive\Documents\studbud\public\js\column.js132649259251483930 0
+61C:\Users\clair\OneDrive\Documents\studbud\public\js\column.js132649456023231205 0
 62C:\Users\clair\OneDrive\Documents\studbud\public\js\content.js132647771939396957 0
 88C:\Users\clair\OneDrive\Documents\studbud\node_modules\es-abstract\2020\BigInt\divide.js121436361000000000 0
 58C:\Users\clair\OneDrive\Documents\studbud\node_modules\ora132643002002661601 1
@@ -370,7 +370,7 @@
 118C:\Users\clair\OneDrive\Documents\studbud\node_modules\cssnano-preset-default\node_modules\postcss\lib\previous-map.js121436361000000000 0
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\internals\create-property-descriptor.js121436361000000000 0
 111C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-normalize-display-values\node_modules\color-name132643002022266943 1
-61C:\Users\clair\OneDrive\Documents\studbud\public\js\kanban.js132649245737407125 0
+61C:\Users\clair\OneDrive\Documents\studbud\public\js\kanban.js132649461110304400 0
 91C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\es\array\virtual\iterator.js121436361000000000 0
 87C:\Users\clair\OneDrive\Documents\studbud\node_modules\asn1.js\lib\asn1\encoders\der.js121436361000000000 0
 90C:\Users\clair\OneDrive\Documents\studbud\node_modules\url\node_modules\punycode\README.md130539749990000000 0
@@ -385,7 +385,7 @@
 78C:\Users\clair\OneDrive\Documents\studbud\node_modules\lodash\_baseIsRegExp.js121436361000000000 0
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-longhand\dist\lib\decl\padding.js121436361000000000 0
 65C:\Users\clair\OneDrive\Documents\studbud\public\js\responsive.js132642996793067668 0
-64C:\Users\clair\OneDrive\Documents\studbud\public\js\task-form.js132649226852929765 0
+64C:\Users\clair\OneDrive\Documents\studbud\public\js\task-form.js132649441185057038 0
 83C:\Users\clair\OneDrive\Documents\studbud\node_modules\resolve\test\node_path\x\aaa132643001881166627 1
 113C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\plugin-proposal-optional-catch-binding\lib\index.js121012626000000000 0
 64C:\Users\clair\OneDrive\Documents\studbud\node_modules\nth-check132643002027795917 1
@@ -2720,7 +2720,7 @@
 109C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-normalize-display-values\node_modules\has-flag132643002022236883 1
 65C:\Users\clair\OneDrive\Documents\studbud\node_modules\slice-ansi132643002015159500 1
 67C:\Users\clair\OneDrive\Documents\studbud\node_modules\domutils\lib132643001897955398 1
-69C:\Users\clair\OneDrive\Documents\studbud\dist\open-link.f0b6ebd6.svg132649229730322581 0
+69C:\Users\clair\OneDrive\Documents\studbud\dist\open-link.f0b6ebd6.svg132649448877914677 0
 86C:\Users\clair\OneDrive\Documents\studbud\node_modules\svgo\plugins\removeEmptyText.js121436361000000000 0
 62C:\Users\clair\OneDrive\Documents\studbud\node_modules\wcwidth132643002002661601 1
 92C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\modules\es.number.to-fixed.js121436361000000000 0
@@ -3391,6 +3391,7 @@
 115C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-ordered-values\node_modules\postcss\lib\container.js121436361000000000 0
 116C:\Users\clair\OneDrive\Documents\studbud\node_modules\@parcel\workers\test\integration\workerfarm\reverse-handle.js121436361000000000 0
 67C:\Users\clair\OneDrive\Documents\studbud\node_modules\wcwidth\test132643001843113374 1
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.a18ea22b.js132649448959224698 0
 73C:\Users\clair\OneDrive\Documents\studbud\node_modules\lodash\property.js121436361000000000 0
 101C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-unique-selectors\node_modules\has-flag132643002019105881 1
 76C:\Users\clair\OneDrive\Documents\studbud\node_modules\wcwidth\test\index.js130510792860000000 0
@@ -4780,7 +4781,7 @@
 78C:\Users\clair\OneDrive\Documents\studbud\node_modules\cssom\lib\StyleSheet.js121436361000000000 0
 86C:\Users\clair\OneDrive\Documents\studbud\node_modules\is-unicode-supported\index.d.ts121436361000000000 0
 71C:\Users\clair\OneDrive\Documents\studbud\node_modules\terser\README.md121436361000000000 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\index.d7a8e4fc.js132649260283149862 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.d7a8e4fc.js132649461112234314 0
 70C:\Users\clair\OneDrive\Documents\studbud\node_modules\acorn-walk\dist132643001908193335 1
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\browserify-aes\.travis.yml121436361000000000 0
 79C:\Users\clair\OneDrive\Documents\studbud\node_modules\terser\tools\domprops.js121436361000000000 0
@@ -5866,6 +5867,7 @@
 72C:\Users\clair\OneDrive\Documents\studbud\node_modules\pn\test\timers.js131594848620000000 0
 73C:\Users\clair\OneDrive\Documents\studbud\node_modules\asynckit\README.md131104024990000000 0
 79C:\Users\clair\OneDrive\Documents\studbud\node_modules\resolve\test\node_path\y132643001885527327 1
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.169c653c.js.map132649417532624758 0
 69C:\Users\clair\OneDrive\Documents\studbud\node_modules\sha.js\sha1.js132643001863692741 0
 78C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\es\parse-int.js121436361000000000 0
 103C:\Users\clair\OneDrive\Documents\studbud\node_modules\css-modules-loader-core\node_modules\postcss\lib132643001903468445 1
@@ -6004,7 +6006,7 @@
 97C:\Users\clair\OneDrive\Documents\studbud\node_modules\cssstyle\lib\properties\borderLeftWidth.js121436361000000000 0
 88C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\es\promise\all-settled.js121436361000000000 0
 79C:\Users\clair\OneDrive\Documents\studbud\node_modules\object.pick\package.json132643002027444390 0
-63C:\Users\clair\OneDrive\Documents\studbud\dist\add.5758ee3e.svg132649260281923399 0
+63C:\Users\clair\OneDrive\Documents\studbud\dist\add.5758ee3e.svg132649461112071766 0
 105C:\Users\clair\OneDrive\Documents\studbud\node_modules\serve-handler\node_modules\range-parser\HISTORY.md131092732340000000 0
 114C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-normalize-charset\node_modules\postcss\lib\parse.js121436361000000000 0
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\es-abstract\2017\GetPrototypeFromConstructor.js121436361000000000 0
@@ -6787,6 +6789,7 @@
 111C:\Users\clair\OneDrive\Documents\studbud\node_modules\regenerate-unicode-properties\Script_Extensions\Batak.js121436361000000000 0
 71C:\Users\clair\OneDrive\Documents\studbud\node_modules\for-in\README.md131035641890000000 0
 113C:\Users\clair\OneDrive\Documents\studbud\node_modules\regenerate-unicode-properties\Script_Extensions\Bengali.js121436361000000000 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.83387d4c.js132649417532574590 0
 131C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\preset-modules\src\plugins\transform-edge-default-parameters\index.js121436361000000000 0
 114C:\Users\clair\OneDrive\Documents\studbud\node_modules\regenerate-unicode-properties\Script_Extensions\Buginese.js121436361000000000 0
 111C:\Users\clair\OneDrive\Documents\studbud\node_modules\regenerate-unicode-properties\Script_Extensions\Buhid.js121436361000000000 0
@@ -10710,6 +10713,7 @@
 69C:\Users\clair\OneDrive\Documents\studbud\node_modules\pako\lib\utils132643001890732735 1
 115C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-minify-font-values\node_modules\color-name\README.md131339336430000000 0
 71C:\Users\clair\OneDrive\Documents\studbud\node_modules\lodash\sortBy.js121436361000000000 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.05a25e75.js132649448959303511 0
 82C:\Users\clair\OneDrive\Documents\studbud\node_modules\@parcel\source-map\src\napi132643001889863070 1
 113C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-minify-font-values\node_modules\color-name\test.js131446304190000000 0
 121C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-minify-font-values\node_modules\color-convert\CHANGELOG.md121436361000000000 0
@@ -10794,7 +10798,7 @@
 139C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-rules\node_modules\postcss-selector-parser\dist\selectors\container.js121436361000000000 0
 136C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-rules\node_modules\postcss-selector-parser\dist\selectors\guards.js121436361000000000 0
 137C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-rules\node_modules\postcss-selector-parser\dist\selectors\nesting.js121436361000000000 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\index.8e0a979d.js132649260283139877 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.8e0a979d.js132649461112203221 0
 134C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-rules\node_modules\postcss-selector-parser\dist\selectors\node.js121436361000000000 0
 136C:\Users\clair\OneDrive\Documents\studbud\node_modules\postcss-merge-rules\node_modules\postcss-selector-parser\dist\selectors\pseudo.js121436361000000000 0
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\@parcel\optimizer-htmlnano132643002000094503 1
@@ -13866,6 +13870,7 @@
 104C:\Users\clair\OneDrive\Documents\studbud\node_modules\jsdom\lib\jsdom\living\generated\ProgressEvent.js121436361000000000 0
 66C:\Users\clair\OneDrive\Documents\studbud\node_modules\@types\node132643002044092798 1
 112C:\Users\clair\OneDrive\Documents\studbud\node_modules\jsdom\lib\jsdom\living\generated\ScrollLogicalPosition.js121436361000000000 0
+69C:\Users\clair\OneDrive\Documents\studbud\dist\index.83f82731.css.map132649448959396091 0
 70C:\Users\clair\OneDrive\Documents\studbud\node_modules\fault\readme.md121436361000000000 0
 104C:\Users\clair\OneDrive\Documents\studbud\node_modules\jsdom\lib\jsdom\living\generated\ScrollOptions.js121436361000000000 0
 108C:\Users\clair\OneDrive\Documents\studbud\node_modules\jsdom\lib\jsdom\living\generated\ScrollRestoration.js121436361000000000 0
@@ -14199,7 +14204,7 @@
 76C:\Users\clair\OneDrive\Documents\studbud\node_modules\is-descriptor\LICENSE131452119970000000 0
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\is-descriptor\node_modules132643001939869495 1
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\is-descriptor\package.json132643002032533213 0
-69C:\Users\clair\OneDrive\Documents\studbud\dist\index.0c72b7db.css.map132649260283200481 0
+69C:\Users\clair\OneDrive\Documents\studbud\dist\index.0c72b7db.css.map132649461112299073 0
 89C:\Users\clair\OneDrive\Documents\studbud\node_modules\is-descriptor\node_modules\kind-of132643002032901435 1
 90C:\Users\clair\OneDrive\Documents\studbud\node_modules\cssstyle\lib\CSSStyleDeclaration.js121436361000000000 0
 95C:\Users\clair\OneDrive\Documents\studbud\node_modules\caniuse-lite\data\features\matchmedia.js121436361000000000 0
@@ -14383,6 +14388,7 @@
 90C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\ansi-styles132643002033251141 1
 84C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\chalk132643002033197359 1
 89C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\color-name132643002033262751 1
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.169c653c.js132649417532584563 0
 86C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\postcss132643002015119609 1
 93C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\supports-color132643002033197359 1
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\icss-utils\node_modules\supports-color\index.js121436361000000000 0
@@ -14557,7 +14563,7 @@
 83C:\Users\clair\OneDrive\Documents\studbud\node_modules\css-tree\lib\syntax\function132643001890427486 1
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\htmlparser2\node_modules\domutils\lib\legacy.js121436361000000000 0
 91C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\stable\number\parse-float.js121436361000000000 0
-71C:\Users\clair\OneDrive\Documents\studbud\dist\black-close.940ac3ce.svg132649229730332555 0
+71C:\Users\clair\OneDrive\Documents\studbud\dist\black-close.940ac3ce.svg132649448877904715 0
 110C:\Users\clair\OneDrive\Documents\studbud\node_modules\htmlparser2\node_modules\domutils\lib\manipulation.d.ts121436361000000000 0
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\htmlparser2\node_modules\domutils\lib\querying.d.ts121436361000000000 0
 110C:\Users\clair\OneDrive\Documents\studbud\node_modules\htmlparser2\node_modules\domutils\lib\querying.d.ts.map121436361000000000 0
@@ -14842,6 +14848,7 @@
 74C:\Users\clair\OneDrive\Documents\studbud\node_modules\core-js\es\instance132643001923657863 1
 90C:\Users\clair\OneDrive\Documents\studbud\node_modules\highlight.js\lib\languages\cmake.js121436361000000000 0
 97C:\Users\clair\OneDrive\Documents\studbud\node_modules\highlight.js\lib\languages\coffeescript.js121436361000000000 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.05a25e75.js.map132649448959478406 0
 75C:\Users\clair\OneDrive\Documents\studbud\node_modules\esutils\package.json132643002035762136 0
 90C:\Users\clair\OneDrive\Documents\studbud\node_modules\highlight.js\lib\languages\crmsh.js121436361000000000 0
 85C:\Users\clair\OneDrive\Documents\studbud\node_modules\@parcel\optimizer-htmlnano\lib132643001838928703 1
@@ -19050,7 +19057,7 @@
 76C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\index.js130764194370000000 0
 80C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\package.json132643002042173000 0
 72C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\test132643001907501434 1
-57C:\Users\clair\OneDrive\Documents\studbud\dist\index.html132649260283139877 0
+57C:\Users\clair\OneDrive\Documents\studbud\dist\index.html132649461112203221 0
 82C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\test\filter.js130764193040000000 0
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\test\holes.js130764193040000000 0
 80C:\Users\clair\OneDrive\Documents\studbud\node_modules\array-filter\test\self.js130764193040000000 0
@@ -19104,7 +19111,7 @@
 83C:\Users\clair\OneDrive\Documents\studbud\node_modules\alphanum-sort\lib\compare.js130883751990000000 0
 81C:\Users\clair\OneDrive\Documents\studbud\node_modules\alphanum-sort\lib\index.js130883761080000000 0
 76C:\Users\clair\OneDrive\Documents\studbud\node_modules\ajv\.tonic_example.js121436361000000000 0
-65C:\Users\clair\OneDrive\Documents\studbud\dist\index.0c72b7db.css132649260283149862 0
+65C:\Users\clair\OneDrive\Documents\studbud\dist\index.0c72b7db.css132649461112203221 0
 66C:\Users\clair\OneDrive\Documents\studbud\node_modules\ajv\LICENSE121436361000000000 0
 86C:\Users\clair\OneDrive\Documents\studbud\node_modules\@types\node\globals.global.d.ts132640074850000000 0
 71C:\Users\clair\OneDrive\Documents\studbud\node_modules\ajv\package.json132643002004310119 0
@@ -20680,7 +20687,7 @@
 98C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\runtime\helpers\esm\objectSpread2.js121012626000000000 0
 113C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\runtime\helpers\esm\objectWithoutPropertiesLoose.js121012626000000000 0
 94C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\runtime\helpers\esm\package.json121012626000000000 0
-71C:\Users\clair\OneDrive\Documents\studbud\dist\black-close.cf81a7ab.svg132649260282409359 0
+71C:\Users\clair\OneDrive\Documents\studbud\dist\black-close.cf81a7ab.svg132649461112051522 0
 98C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\runtime\helpers\esm\readOnlyError.js121012626000000000 0
 99C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\runtime\helpers\esm\setPrototypeOf.js121012626000000000 0
 102C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-compilation-targets\lib\pretty.js121012626000000000 0
@@ -21022,7 +21029,7 @@
 94C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-plugin-utils\lib\index.js121012626000000000 0
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-optimise-call-expression\lib\index.js121012626000000000 0
 94C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-module-transforms\LICENSE121012626000000000 0
-67C:\Users\clair\OneDrive\Documents\studbud\dist\favicon.3fb3ebf1.svg132649260281923399 0
+67C:\Users\clair\OneDrive\Documents\studbud\dist\favicon.3fb3ebf1.svg132649461112061502 0
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-module-transforms\lib\rewrite-this.js121012626000000000 0
 93C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-module-imports\README.md121012626000000000 0
 106C:\Users\clair\OneDrive\Documents\studbud\node_modules\@babel\helper-module-imports\lib\import-injector.js121012626000000000 0
@@ -21302,21 +21309,28 @@
 68C:\Users\clair\OneDrive\Documents\studbud\node_modules\.bin\uuid.ps1132643002063364478 0
 65C:\Users\clair\OneDrive\Documents\studbud\node_modules\.bin\which132643002063526210 0
 69C:\Users\clair\OneDrive\Documents\studbud\node_modules\.bin\which.ps1132643002063526210 0
-63C:\Users\clair\OneDrive\Documents\studbud\dist\add.fabb0a86.svg132649229730252782 0
-67C:\Users\clair\OneDrive\Documents\studbud\dist\favicon.306d5725.svg132649229730262743 0
+63C:\Users\clair\OneDrive\Documents\studbud\dist\add.fabb0a86.svg132649448877379638 0
+67C:\Users\clair\OneDrive\Documents\studbud\dist\favicon.306d5725.svg132649448877443537 0
 68C:\Users\clair\OneDrive\Documents\studbud\dist\index.01d84d38.js.map132649229774898077 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\index.05443c22.js132649260283149862 0
-68C:\Users\clair\OneDrive\Documents\studbud\dist\index.05443c22.js.map132649260283190507 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\index.31794082.js132649229774838222 0
-68C:\Users\clair\OneDrive\Documents\studbud\dist\index.31794082.js.map132649229774898077 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.05443c22.js132649461112223246 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.05443c22.js.map132649461112299073 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.31794082.js132649448959323602 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.31794082.js.map132649448959488385 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.3ac88126.js132649448959224698 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.3ac88126.js.map132649448959406050 0
 65C:\Users\clair\OneDrive\Documents\studbud\dist\index.4f6744c7.css132649229774838222 0
 68C:\Users\clair\OneDrive\Documents\studbud\dist\index.677e47f8.js.map132649229774898077 0
-68C:\Users\clair\OneDrive\Documents\studbud\dist\index.8e0a979d.js.map132649260283200481 0
+65C:\Users\clair\OneDrive\Documents\studbud\dist\index.7b71b7ab.css132649417532574590 0
+69C:\Users\clair\OneDrive\Documents\studbud\dist\index.7b71b7ab.css.map132649417532624758 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.83387d4c.js.map132649417532624758 0
+65C:\Users\clair\OneDrive\Documents\studbud\dist\index.83f82731.css132649448959224698 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.8e0a979d.js.map132649461112309031 0
 64C:\Users\clair\OneDrive\Documents\studbud\dist\index.9f9145c6.js132649229774838222 0
 68C:\Users\clair\OneDrive\Documents\studbud\dist\index.9f9145c6.js.map132649229774888100 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\index.bbc4550b.js132649260283149862 0
-68C:\Users\clair\OneDrive\Documents\studbud\dist\index.bbc4550b.js.map132649260283210455 0
-68C:\Users\clair\OneDrive\Documents\studbud\dist\index.d7a8e4fc.js.map132649260283210455 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\logo.597434b7.svg132649229730242792 0
-64C:\Users\clair\OneDrive\Documents\studbud\dist\logo.cb4b0752.svg132649260281911585 0
-69C:\Users\clair\OneDrive\Documents\studbud\dist\open-link.c3adc51b.svg132649260282409359 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.a18ea22b.js.map132649448959425158 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\index.bbc4550b.js132649461112233137 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.bbc4550b.js.map132649461112319026 0
+68C:\Users\clair\OneDrive\Documents\studbud\dist\index.d7a8e4fc.js.map132649461112319026 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\logo.597434b7.svg132649448877443537 0
+64C:\Users\clair\OneDrive\Documents\studbud\dist\logo.cb4b0752.svg132649461112061502 0
+69C:\Users\clair\OneDrive\Documents\studbud\dist\open-link.c3adc51b.svg132649461112039580 0

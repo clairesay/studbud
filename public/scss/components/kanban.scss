@@ -94,18 +94,18 @@
                 text-decoration: underline dotted transparent;
 
                 &.column-name {
-                    &:hover {
-                        cursor: text;
-                        text-decoration: underline dotted $dark-grey;
+                    // &:hover {
+                    //     cursor: text;
+                    //     text-decoration: underline dotted $dark-grey;
 
-                        // & ~ svg.edit-icon {
-                        //     background-color: $light-grey;
-                        // }
-                    }
+                    //     // & ~ svg.edit-icon {
+                    //     //     background-color: $light-grey;
+                    //     // }
+                    // }
 
-                    &:focus {
-                        text-decoration: none;
-                    }
+                    // &:focus {
+                    //     text-decoration: none;
+                    // }
     
                     &:hover ~ svg.edit-column {
                         background-color: $light-grey;
@@ -119,6 +119,43 @@
                 }
             }
 
+            div.tooltip {
+                font-size: 12px;
+                // visibility: hidden;
+                opacity: 0;
+                width: 104px;
+                background-color: $black;
+                color: $white;
+                text-align: center;
+                border-radius: $mini-radius;
+                padding: 6px 0;
+                position: absolute;
+                z-index: 1;
+                transition-property: opacity;
+                transition-duration: 0.2s;
+
+                &#edit {
+                    right: 14px;
+                    top: -28px; 
+                }
+
+                &#delete {
+                    right: -22px;
+                    top: -28px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: $black transparent transparent transparent;
+                }
+            }
+
             svg {
                 position: relative;
                 
@@ -129,7 +166,6 @@
                     margin-right: 6px;
                     right: 42px;
                     &:hover ~ div.tooltip#edit {
-                        visibility: visible;
                         opacity: 1
                     }
                 }
@@ -137,7 +173,6 @@
                     right: 12px;
 
                     &:hover ~ div.tooltip#delete {
-                        visibility: visible;
                         opacity: 1
                     }
                 }
@@ -164,49 +199,12 @@
                 }
 
                 &.disabled:hover {
-                    background-color: $dark-white;
                     cursor: initial;
+                    background-color:$dark-white;
                     
                     &~ div.tooltip {
                         display: none;
                     }
-                }
-            }
-
-            div.tooltip {
-                font-size: 12px;
-                visibility: hidden;
-                opacity: 0;
-                width: 100px;
-                background-color: $black;
-                color: $white;
-                text-align: center;
-                border-radius: $mini-radius;
-                padding: 6px 0;
-                position: absolute;
-                z-index: 1;
-                transition: all 0.2s ease-out;
-                // transition-delay: 1.5s;
-
-                &#edit {
-                    right: 14px;
-                    top: -28px; 
-                }
-
-                &#delete {
-                    right: -22px;
-                    top: -28px;
-                }
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    top: 100%;
-                    left: 50%;
-                    margin-left: -5px;
-                    border-width: 5px;
-                    border-style: solid;
-                    border-color: $black transparent transparent transparent;
                 }
             }
 

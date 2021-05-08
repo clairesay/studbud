@@ -53,17 +53,49 @@ cardContainers.forEach(function(element) {
             var body = document.getElementsByTagName('body')[0]
             body.style.cursor = 'initial'
             countCards()
+
+            // ADD COLUMN DELETE UPDATE
+            let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+            allDeleteColumnButtons.forEach( function(button) {
+                let columns = document.getElementsByClassName('column')
+                let column = button.parentElement.parentElement
+                let cards = column.querySelectorAll('.card')
+        
+                if (columns.length > 3 && cards.length == 0) {
+                    button.classList.remove('disabled')
+                } else if (columns.length <= 3 || cards.length > 0) {
+                    button.classList.add('disabled')
+                }
+            })
         },
 	});
 })
 
 // setting sortable functionality to the columns with the sortable.js library
+var deviceSize
+////////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////
+function mediaQuery(x) {
+    if (x.matches) { // If media query matches
+      deviceSize = 'mobile'
+    } else {
+      deviceSize = 'desktop'
+    }
+}
+
+var x = window.matchMedia("(max-width: 700px)")
+mediaQuery(x) // Call listener function at run time
+x.addEventListener('change', mediaQuery) // Attach listener function on state changes
+
 var tasks = document.getElementById('tasks')
-new Sortable(tasks, {
-    animation: 150,
-    swapThreshold: 0.8,
-    ghostClass: 'ghost-column',
-    chosenClass: 'chosen-column',
-    dragClass: "sortable-drag",
-    forceFallback: true
-});
+if (deviceSize == 'mobile') {
+
+} else {
+    new Sortable(tasks, {
+        animation: 150,
+        swapThreshold: 0.8,
+        ghostClass: 'ghost-column',
+        chosenClass: 'chosen-column',
+        dragClass: "sortable-drag",
+        forceFallback: true
+    });
+}

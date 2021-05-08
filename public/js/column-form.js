@@ -91,12 +91,18 @@ columnTitles.forEach(function(columnTitle) {
     let columnNameInput = columnTitle.querySelector('input.column-name')
 
     editColumnButton.addEventListener('click', function() {
+        // columnNameInput.removeAttribute('disabled')
         columnNameInput.focus()
+    })
+    columnNameInput.addEventListener('change', function(event) {
+        updateColumnNames();
+        console.log('changed')
     })
     columnNameInput.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             columnNameInput.blur()
         }
+        updateColumnNames();
     })
     editColumnButton.addEventListener('mouseover', function() {
         editColumnButton.parentElement.appendChild(columnEditToolTip)
