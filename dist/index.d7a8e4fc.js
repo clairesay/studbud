@@ -446,6 +446,24 @@ var _column = require('./column');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _columnDefault = _parcelHelpers.interopDefault(_column);
 var _kanban = require('./kanban');
+// import * as columnValidate from './column-validate'
+// var validator = new FormValidator('column', [{
+// name: 'columnName',
+// display: 'Column Name',
+// rules: 'min_length[8]'
+// }], function(errors, event) {
+// alert('bro')
+// if (errors.length > 0) {
+// // Show the errors
+// var displayErrors = document.getElementById('selfRegMessage');
+// var errorString = '';
+// for (var i = 0; i < errors.length; i++) {
+// errorString += errors[i].message + '<br />';
+// }
+// displayErrors.innerHTML = errorString;
+// }
+// });
+// console.log(validator)
 const createTaskForm = document.getElementById('create-task-form');
 function updateColumnNames() {
   let columnNames = document.querySelectorAll('.column-name');

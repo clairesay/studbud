@@ -1,5 +1,26 @@
 import Column from './column'
 import * as kanbanA from './kanban'
+// import * as columnValidate from './column-validate'
+// var validator = new FormValidator('column', [{
+//     name: 'columnName',
+//     display: 'Column Name',
+//     rules: 'min_length[8]'
+//   }], function(errors, event) {
+//       alert('bro')
+//       if (errors.length > 0) {
+//         // Show the errors
+        
+//         var displayErrors = document.getElementById('selfRegMessage');
+//         var errorString = '';        
+//         for (var i = 0; i < errors.length; i++) {
+//           errorString += errors[i].message + '<br />';
+//         }
+//         displayErrors.innerHTML = errorString;
+//       }
+//   });
+
+//   console.log(validator)
+
 
 const createTaskForm = document.getElementById('create-task-form')
 function updateColumnNames() {

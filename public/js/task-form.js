@@ -65,7 +65,7 @@ function autoFillTaskDetails(object) {
             // taskStatus
             let statuses = createTaskForm.querySelector('select[name=status]');
             statuses.value = object.parentElement.parentElement.parentElement.querySelector('div.title input.column-name').value
-            
+
             // taskPriorityRating
             if (thisTask.priorityRating == 'Low') {
                 taskDetails[3].checked = true
@@ -87,6 +87,13 @@ function autoFillTaskDetails(object) {
         }
     })
 }
+
+var tags = document.querySelector('input[name=subject]')
+// TAGIFYING
+var tagify1 = new Tagify(tags, {
+    whitelist : ['INFO1110', 'COMP2000']
+}) 
+// 
 
 // getting all of the task details inputted by the user
 function getTaskDetails(taskDetails) {
