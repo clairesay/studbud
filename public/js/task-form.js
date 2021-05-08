@@ -95,7 +95,8 @@ function getTaskDetails(taskDetails) {
     name = taskDetails[0].value;
     description = taskDetails[1].value;
     subject = taskDetails[2].value;
-    var statuses = createTaskForm.querySelector('select[name=status]');
+    
+    let statuses = createTaskForm.querySelector('select[name=status]');
     status = statuses.value;
 
     // checking the radios 

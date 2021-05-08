@@ -467,6 +467,9 @@ const contentCreateButtonsContainer = document.getElementById('content-buttons')
 const taskCreateButtons = document.querySelectorAll('#task-buttons button.create')
 const contentCreateButtons = document.querySelectorAll('#content-buttons button.create')
 
+const tasks = document.getElementById('tasks')
+const content = document.getElementById('content')
+
 // setting which one is option first
 displayMain('tasks')
 
@@ -478,14 +481,16 @@ function displayMain(option) {
         main.appendChild(document.getElementById('tasks'))
         tasksTab.classList.add('active')
         contentTab.classList.remove('active')
-    
+        tasks.style.visibility = 'visible'
+        content.style.visibility = 'hidden'
         taskCreateButtonsContainer.style.display = 'flex'
         contentCreateButtonsContainer.style.display = 'none'
     } else if (option == 'content') {
         main.appendChild(document.getElementById('content'))
         tasksTab.classList.remove('active')
         contentTab.classList.add('active')
-    
+        tasks.style.visibility = 'hidden'
+        content.style.visibility = 'visible'
         taskCreateButtonsContainer.style.display = 'none'
         contentCreateButtonsContainer.style.display = 'flex'
     }

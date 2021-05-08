@@ -5,15 +5,15 @@ export function countCards() {
         columns = document.querySelectorAll('.column'),
         cards = document.getElementsByClassName('card')
 
-    const emptyStateMessage = document.getElementById('empty-state-message')
+    // const emptyStateMessage = document.getElementById('empty-state-message')
         
-    // if there are no cards, add an empty state
-    if (cards.length == 0) {
-        columns[0].appendChild(emptyStateMessage)
-        emptyStateMessage.style.display = 'flex';
-    } else {
-        emptyStateMessage.style.display = 'none';
-    }
+    // // if there are no cards, add an empty state
+    // if (cards.length == 0) {
+    //     columns[0].appendChild(emptyStateMessage)
+    //     emptyStateMessage.style.display = 'flex';
+    // } else {
+    //     emptyStateMessage.style.display = 'none';
+    // }
 
     // writing the total number of cards at the head of each column
     total.forEach(function count(object, index) {
@@ -37,8 +37,21 @@ cardContainers.forEach(function(element) {
 		swapThreshold: 0.65,
         ghostClass: 'ghost-card',
         chosenClass: 'chosen-card',
+        dragClass: "sortable-drag",
         forceFallback: true,
+        onStart: function (/**Event*/evt) {
+            var itemEl = evt.item;
+            itemEl.style.cursor = 'grabbing'
+
+            var body = document.getElementsByTagName('body')[0]
+            body.style.cursor = 'grabbing'
+            evt.oldIndex;  // element index within parent
+        },
         onEnd: function (evt) {
+            var itemEl = evt.item;
+            itemEl.style.cursor = 'grab'
+            var body = document.getElementsByTagName('body')[0]
+            body.style.cursor = 'initial'
             countCards()
         },
 	});
@@ -51,5 +64,6 @@ new Sortable(tasks, {
     swapThreshold: 0.8,
     ghostClass: 'ghost-column',
     chosenClass: 'chosen-column',
+    dragClass: "sortable-drag",
     forceFallback: true
 });

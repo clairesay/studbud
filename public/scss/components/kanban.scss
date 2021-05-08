@@ -38,6 +38,9 @@
 
         border-radius: $big-radius;
         background-color: $light-grey;
+        // transition: all 0.2s ease-out;
+        box-shadow:0px 0px 0px 1px #0e131809 inset;
+        // filter: drop-shadow(0 0 2px #30303018);
 
         &.column:first-of-type {
             margin-left: 36px;
@@ -46,6 +49,15 @@
         &.column:last-of-type {
             margin-right: 36px;
         }
+
+        &:hover {
+            // cursor: grab;
+            // filter: drop-shadow(0 0 2px #30303036);
+        }
+
+        // *:hover {
+        //     cursor: initial;
+        // }
 
         div.title {
             z-index: 2;
@@ -57,6 +69,11 @@
             background-color: $dark-white;
             padding: 12px 14px;
             border-radius: $big-radius;
+            position: relative;
+
+            &:hover svg {
+                visibility: visible;
+            }
 
             h3,input {
                 font-weight: 500;
@@ -64,21 +81,34 @@
                 color: $dark-grey;
             }
 
+            h3 {
+                position: absolute;
+                right: 12px;
+            }
+
             input {
-                width: auto;
+                width: calc(100% - 80px);
                 background-color: transparent;
                 border: none;
                 padding: 2px;
                 text-decoration: underline dotted transparent;
 
-                &:focus {
-                    text-decoration: none;
-                }
-
                 &.column-name {
                     &:hover {
                         cursor: text;
                         text-decoration: underline dotted $dark-grey;
+
+                        // & ~ svg.edit-icon {
+                        //     background-color: $light-grey;
+                        // }
+                    }
+
+                    &:focus {
+                        text-decoration: none;
+                    }
+    
+                    &:hover ~ svg.edit-column {
+                        background-color: $light-grey;
                     }
 
                     &:focus ~ svg,
@@ -91,9 +121,93 @@
 
             svg {
                 position: relative;
-                right: -24px;
-                background-color: $white;
+                
+                background-color: $dark-white;
                 visibility: hidden;
+
+                &.edit-column {
+                    margin-right: 6px;
+                    right: 42px;
+                    &:hover ~ div.tooltip#edit {
+                        visibility: visible;
+                        opacity: 1
+                    }
+                }
+                &.delete-column {
+                    right: 12px;
+
+                    &:hover ~ div.tooltip#delete {
+                        visibility: visible;
+                        opacity: 1
+                    }
+                }
+
+                
+                &.edit-column,
+                &.delete-column {
+                    position: absolute;
+                    min-width: 14px;
+
+                    background-color: $dark-white;
+                    
+                    padding: 8px;
+                    border-radius: $mini-radius;
+                }
+
+                &:hover {
+                    background-color: $light-grey;
+                    cursor: pointer;
+                }
+
+                &.disabled path {
+                    fill: $grey
+                }
+
+                &.disabled:hover {
+                    background-color: $dark-white;
+                    cursor: initial;
+                    
+                    &~ div.tooltip {
+                        display: none;
+                    }
+                }
+            }
+
+            div.tooltip {
+                font-size: 12px;
+                visibility: hidden;
+                opacity: 0;
+                width: 100px;
+                background-color: $black;
+                color: $white;
+                text-align: center;
+                border-radius: $mini-radius;
+                padding: 6px 0;
+                position: absolute;
+                z-index: 1;
+                transition: all 0.2s ease-out;
+                // transition-delay: 1.5s;
+
+                &#edit {
+                    right: 14px;
+                    top: -28px; 
+                }
+
+                &#delete {
+                    right: -22px;
+                    top: -28px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: $black transparent transparent transparent;
+                }
             }
 
         }
@@ -135,6 +249,14 @@
                 scroll-behavior: smooth;
                 scroll-snap-align: start;
 
+                *:hover {
+                    cursor: initial;
+                }
+    
+                &:hover {
+                    cursor: grab;
+                }
+
                 &:first-of-type {
                     margin: 2px 0 0 0;
                 }
@@ -163,6 +285,12 @@
     }
 }
 
+// div.time-icon {
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 10px;
+// }
+
 // SCROLLABLE CARD MODIFICATIONS
 .chosen-card {
     background-color: $white;
@@ -171,6 +299,17 @@
 .sortable-fallback {
     opacity: 1 !important;
 }
+
+.sortable-drag {
+    cursor: grabbing;
+    // cursor: move !important; /* fallback: no `url()` support or images disabled */
+	// cursor: -webkit-grabbing !important; /* Chrome 1-21, Safari 4+ */
+	// cursor:    -moz-grabbing !important; /* Firefox 1.5-26 */
+	// cursor:         grabbing !important; /* W3C standards syntax, should come least */
+}
+// .draggable-cursor * {
+
+// }
 
 .ghost-card, .ghost-column {
     opacity: 0.5;

@@ -41,10 +41,21 @@ class Task {
         editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
           </svg>`
-        timeIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9.99 3.05176e-05C4.47 3.05176e-05 0 4.48003 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48003 15.52 3.05176e-05 9.99 3.05176e-05ZM10 18C5.58 18 2 14.42 2 10C2 5.58003 5.58 2.00003 10 2.00003C14.42 2.00003 18 5.58003 18 10C18 14.42 14.42 18 10 18Z" fill="#909090"/>
-        <path d="M10.5 5.00003H9V11L14.25 14.15L15 12.92L10.5 10.25V5.00003Z" fill="#909090"/>
-        </svg>`
+        // timeIcon.classList.add('time-icon')
+        timeIcon.style.width = '12px'
+        timeIcon.style.height = '12px'
+        timeIcon.style.borderRadius = '12px'
+        if (this.priorityRating == 'Low') {
+            timeIcon.style.backgroundColor = '#70B815'
+        } else if (this.priorityRating == 'Mid') {
+            timeIcon.style.backgroundColor = '#E5C44C'
+        } else if (this.priorityRating == 'High') {
+            timeIcon.style.backgroundColor = '#F59273'
+        }
+        // timeIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        // <path d="M9.99 3.05176e-05C4.47 3.05176e-05 0 4.48003 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48003 15.52 3.05176e-05 9.99 3.05176e-05ZM10 18C5.58 18 2 14.42 2 10C2 5.58003 5.58 2.00003 10 2.00003C14.42 2.00003 18 5.58003 18 10C18 14.42 14.42 18 10 18Z" fill="#909090"/>
+        // <path d="M10.5 5.00003H9V11L14.25 14.15L15 12.92L10.5 10.25V5.00003Z" fill="#909090"/>
+        // </svg>`
         card.classList.add('card')
         card.setAttribute('id', 't-' + n)
         subjectTag.classList.add('tag')

@@ -42,6 +42,7 @@ function createNewSortable() {
         swapThreshold: 0.65,
         ghostClass: 'ghost-card',
         chosenClass: 'chosen-card',
+        dragClass: "sortable-drag",
         forceFallback: true,
         onEnd: function (evt) {
             kanbanA.countCards()
@@ -79,3 +80,66 @@ columnSubmitButton.addEventListener('click', function (event) {
 
     createNewSortable();
 })
+
+// //////////// COLUMN BUTTONS
+const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
+const columnEditToolTip = document.querySelector('div.tooltip#edit')
+const columnTitles = document.querySelectorAll('div.title')
+columnTitles.forEach(function(columnTitle) {
+    let editColumnButton = columnTitle.querySelector('svg.edit-column')
+    let deleteColumnButton = columnTitle.querySelector('svg.delete-column')
+    let columnNameInput = columnTitle.querySelector('input.column-name')
+
+    editColumnButton.addEventListener('click', function() {
+        columnNameInput.focus()
+    })
+    columnNameInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            columnNameInput.blur()
+        }
+    })
+    editColumnButton.addEventListener('mouseover', function() {
+        editColumnButton.parentElement.appendChild(columnEditToolTip)
+    })
+
+    deleteColumnButton.addEventListener('click', function() {
+        let columns = document.getElementsByClassName('column')
+        let column = columnTitle.parentElement
+        let cards = column.querySelectorAll('.card')
+        if (columns.length > 3 && cards.length == 0) {
+            column.remove()
+            updateColumnNames()
+        }
+    })
+
+    deleteColumnButton.addEventListener('mouseover', function() {
+        let columns = document.getElementsByClassName('column')
+        let column = columnTitle.parentElement
+        let cards = column.querySelectorAll('.card')
+        deleteColumnButton.parentElement.appendChild(columnDeleteToolTip)
+        if (columns.length > 3 && cards.length == 0) {
+            deleteColumnButton.classList.remove('disabled')
+        } else if (columns.length <= 3 || cards.length > 0) {
+            deleteColumnButton.classList.add('disabled')
+        }
+    })
+})
+
+// var 
+// let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+// allDeleteColumnButtons.forEach(function(button) {
+//     button.addEventListener('mouseover', function() {
+//         let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+//         allDeleteColumnButtons.forEach( function(button) {
+//             let columns = document.getElementsByClassName('column')
+//             let column = button.parentElement.parentElement
+//             let cards = column.querySelectorAll('.card')
+    
+//             if (columns.length > 3 && cards.length == 0) {
+//                 button.classList.remove('disabled')
+//             } else if (columns.length <= 3 || cards.length > 0) {
+//                 button.classList.add('disabled')
+//             }
+//         })
+//     })
+// })
