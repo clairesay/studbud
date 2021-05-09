@@ -39,15 +39,28 @@
         <button id="content-tab" class="tab">Content</button>
         <button id="tasks-tab" class="tab">Tasks</button>
         <section id="content">
-            <button id="filter-by" class="button" type="button">Filter by</button>
-            <div class="tags"></div>
+            <!-- <button id="filter-by" class="button" type="button">Filter by</button>
+            <div class="tags"></div> -->
             <div class="group">
                 <div class="group-title">
-                    <input class="group-name" value="INFO1110"></input>
+                    <div>
+                        <input class="group-name" value="Ungrouped" disabled></input>
+                        <svg class="edit-column" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z"
+                                fill="#909090" />
+                        </svg>
+                        <svg class="delete-column disabled" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"/>
+                        </svg>
+                    </div>
+
+
                     <h3 class="open-link"><img src="images/open-link.svg"></h3>
+                
                 </div>
                 <div class="tiles">
-                    <article class="tile">
+                    <!-- <article class="tile">
                         <h4>Content Title</4>
                             <hr />
                             <p>Content Description</p>
@@ -82,7 +95,7 @@
                             <hr />
                             <p>Content Description</p>
                             <a>Link to the resource</a>
-                    </article>
+                    </article> -->
                 </div>
             </div>
         </section>
@@ -177,20 +190,19 @@
             <input type="text" name="link" placeholder="Paste the resource link here"></input>
 
             <!-- SUBJECT -->
-            <label for="subject">Subject</label>
+            <!-- <label for="subject">Subject</label>
             <input type="text" name="subject" list="subject">
             <datalist id="subject">
-                <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
-                <!-- <option value="Boston">
-          <option value="Cambridge"> -->
-            </datalist>
+
+            </datalist> -->
         </section>
         <aside>
             <label for="group">Group</label>
             <select name="group">
-                <option value="INFO1110">INFO1110</option>
+                <option value="None">None</option>
+                <!-- <option value="INFO1110">INFO1110</option>
                 <option value="COMP2823">COMP2823</option>
-                <option value="SOFT2201">SOFT2201</option>
+                <option value="SOFT2201">SOFT2201</option> -->
                 <!-- populate this with all the existing columns -->
                 <!-- <option value="ready"></option> -->
             </select>
@@ -203,6 +215,17 @@
         <button id="edit-content-delete" class="button primary" type="button">Delete</button>
 
 
+    </form>
+    <form id="add-group-form" name="group">
+        <h1>Add a group</h1>
+
+        <label for="groupName">Group Name</label>
+        <input type="text" name="groupName" placeholder="What is this group for?" autofocus></input>
+        <p>TIP: Create your groups based on topics, or even subjects!
+        </p>
+        <button id="add-group-submit" class="button primary" type="submit">Save</button>
+        <button id="add-group-cancel" class="button primary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="images/black-close.svg"></button>
     </form>
     <form id="create-task-form">
         <h1>Create a task</h1>
@@ -276,6 +299,7 @@
     <script src="js/column-form.js"></script>
 
     <script src="js/content-form.js"></script>
+    <script src="js/group-form.js"></script>
 
 </body>
 

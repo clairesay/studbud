@@ -1,5 +1,5 @@
 class Column {
-    constructor(id, name, deleteFunction) {
+    constructor(id, name) {
         this.id = id;
         this.name = name;
     }

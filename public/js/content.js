@@ -40,12 +40,15 @@ class Content {
         card.appendChild(editIcon)
 
         let currentGroup = this.group
-        groupNames.forEach(function setGroup(object, index) {
-            if (object.value == currentGroup) {
-                cards[index].appendChild(card)
-            }
-        })
-
+        if (this.group == 'None') {
+            cards[0].appendChild(card)
+        } else {
+            groupNames.forEach(function setGroup(object, index) {
+                if (object.value == currentGroup) {
+                    cards[index].appendChild(card)
+                }
+            })
+        }
     }
 }
 

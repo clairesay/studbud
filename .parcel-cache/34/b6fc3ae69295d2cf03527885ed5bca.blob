@@ -1,0 +1,55 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+class Group {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  createGroup() {
+    // creating the column
+    let group = document.querySelector('div.column');
+    group = group.cloneNode(true);
+    let groupName = group.querySelector('input.group-name');
+    groupName.value = this.name;
+    let editButton = group.querySelector('svg.edit-group');
+    let deleteButton = group.querySelector('svg.delete-group');
+    let tiles = column.querySelectorAll('.tile');
+    tiles.forEach(function (tile) {
+      tile.remove();
+    });
+    // let column = document.createElement('div')
+    // column.classList.add('column')
+    // let title = document.createElement('div')
+    // title.classList.add('title')
+    // let columnName = document.createElement('input')
+    // columnName.classList.add('column-name')
+    // columnName.value = this.name
+    // let editButton = document.querySelector('svg.edit-column')
+    // editButton = editButton.cloneNode(true)
+    // let deleteButton = document.querySelector('svg.delete-column')
+    // deleteButton = deleteButton.cloneNode(true)
+    // let total = document.createElement('h3')
+    // total.classList.add('total')
+    // total.textContent = 0;
+    // let cards = document.createElement('div')
+    // cards.classList.add('cards')
+    // title.appendChild(columnName)
+    // title.appendChild(total)
+    // title.appendChild(editButton)
+    // title.appendChild(deleteButton)
+    // column.appendChild(title)
+    // column.appendChild(cards)
+    let content = document.getElementById('content');
+    content.appendChild(group);
+    // this.editColumn(editButton)
+    // this.deleteColumn(deleteButton)
+    // this.updateColumns()
+    // smooth scroll to the new column
+    group.scrollTo({
+      top: content.clientHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+}
+exports.default = Group;

@@ -1,4 +1,6 @@
 import Content from './content'
+import * as countTiles from './count-tiles'
+
 var tags = document.querySelector('input[name=subject]')
 // TAGIFYING
 var tagify1 = new Tagify(tags, {
@@ -107,6 +109,7 @@ contentDeleteButton.addEventListener('click', function(event) {
     }
     openContentForm()
     reupdate()
+    countTiles.countTiles()
 })
 contentSaveButton.addEventListener('click', function(event) {
     event.preventDefault()
@@ -141,6 +144,7 @@ contentSaveButton.addEventListener('click', function(event) {
       content.createCard(content.addContent());
 
       openContentForm()
+      countTiles.countTiles()
     //   overlayToggle = false;
     //   modalBackground.style.display = 'none'
     //   createContentForm.classList.remove('active')

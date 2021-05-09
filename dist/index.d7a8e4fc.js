@@ -583,7 +583,7 @@ columnTitles.forEach(function (columnTitle) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Column {
-  constructor(id, name, deleteFunction) {
+  constructor(id, name) {
     this.id = id;
     this.name = name;
   }

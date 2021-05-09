@@ -1,0 +1,71 @@
+var _group = require('./group');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _groupDefault = _parcelHelpers.interopDefault(_group);
+const createContentForm = document.getElementById('create-content-form');
+function updateGroupNames() {
+  let groupNames = document.querySelectorAll('.group-name');
+  let groups = createContentorm.querySelector('select[name=group]');
+  groups.innerHTML = '';
+  groupNames.forEach(function (object) {
+    let newOption = document.createElement('option');
+    newOption.textContent = object.value;
+    newOption.value = object.value;
+    statuses.appendChild(newOption);
+  });
+}
+updateGroupNames();
+const modalBackground = document.getElementById('modal-background');
+const addGroupForm = document.getElementById('add-group-form');
+var newGroupToggle = false;
+const newGroup = document.getElementById('new-group');
+function toggleGroupForm() {
+  if (newGroupToggle == false) {
+    addGroupForm.classList.add('active');
+    newGroupToggle = true;
+    modalBackground.style.display = 'flex';
+  } else if (newGroupToggle == true) {
+    addGroupForm.classList.remove('active');
+    addGroupForm.reset();
+    newGroupToggle = false;
+    modalBackground.style.display = 'none';
+  }
+}
+// function createNewSortable() {
+// let newCard = document.querySelectorAll('.cards')
+// newCard = newCard[newCard.length - 1]
+// new Sortable(newCard, {
+// group: 'nested',
+// animation: 200,
+// swapThreshold: 0.65,
+// ghostClass: 'ghost-card',
+// chosenClass: 'chosen-card',
+// dragClass: "sortable-drag",
+// forceFallback: true,
+// onEnd: function (evt) {
+// kanbanA.countCards()
+// }
+// })
+// }
+// adding an event listener to bring up the form
+newGroup.addEventListener('click', toggleGroupForm);
+// adding an event listener for submitting the column
+const groupCancelButton = document.getElementById('add-group-cancel');
+const groupCloseButton = groupCancelButton.nextElementSibling;
+// columnCancelButton.querySelector('~ button.form-close')
+groupCancelButton.addEventListener('click', function () {
+  toggleGroupForm();
+});
+groupCloseButton.addEventListener('click', function () {
+  toggleGroupForm();
+});
+const groupSubmitButton = document.getElementById('add-group-submit');
+groupSubmitButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  let id = Date.now();
+  let name = addGroupForm.querySelector('input').value;
+  console.log(name);
+  let group = new _groupDefault.default(id, name);
+  group.createGroup();
+  // updateColumnNames()
+  toggleGroupForm();
+});

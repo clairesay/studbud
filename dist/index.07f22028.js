@@ -445,6 +445,7 @@ id) /*: string*/
 var _content = require('./content');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _contentDefault = _parcelHelpers.interopDefault(_content);
+var _countTiles = require('./count-tiles');
 var tags = document.querySelector('input[name=subject]');
 // TAGIFYING
 var tagify1 = new Tagify(tags, {
@@ -545,6 +546,7 @@ contentDeleteButton.addEventListener('click', function (event) {
   }
   openContentForm();
   reupdate();
+  _countTiles.countTiles();
 });
 contentSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
@@ -574,6 +576,7 @@ contentSaveButton.addEventListener('click', function (event) {
   content = new _contentDefault.default(contentID, contentTitle, contentDescription, contentLink, contentSubject, contentGroup, contentList);
   content.createCard(content.addContent());
   openContentForm();
+  _countTiles.countTiles();
   // overlayToggle = false;
   // modalBackground.style.display = 'none'
   // createContentForm.classList.remove('active')
@@ -581,7 +584,7 @@ contentSaveButton.addEventListener('click', function (event) {
   reupdate();
 });
 
-},{"./content":"7gsTB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7gsTB":[function(require,module,exports) {
+},{"./content":"7gsTB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./count-tiles":"293G8"}],"7gsTB":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Content {
@@ -615,14 +618,44 @@ class Content {
     card.appendChild(link);
     card.appendChild(editIcon);
     let currentGroup = this.group;
-    groupNames.forEach(function setGroup(object, index) {
-      if (object.value == currentGroup) {
-        cards[index].appendChild(card);
-      }
-    });
+    if (this.group == 'None') {
+      cards[0].appendChild(card);
+    } else {
+      groupNames.forEach(function setGroup(object, index) {
+        if (object.value == currentGroup) {
+          cards[index].appendChild(card);
+        }
+      });
+    }
   }
 }
 exports.default = Content;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"293G8":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "countTiles", function () {
+  return countTiles;
+});
+function countTiles() {
+  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles'), groups = document.querySelectorAll('.group'), tiles = document.getElementsByClassName('tile');
+  // writing the total number of cards at the head of each column
+  total.forEach(function count(object, index) {
+    let tileCount = 0;
+    for (let i = 0; i < tileContainers[index].querySelectorAll('.tile').length; i++) {
+      if (tileContainers[index].querySelectorAll('.tile')[i].classList.length == 1) {
+        tileCount += 1;
+      }
+    }
+    if (tileCount == 0) {
+      total[index].textContent = 'Try adding content to this group.';
+    } else if (tileCount == 1) {
+      total[index].textContent = 'Open ' + tileCount + ' link';
+    } else {
+      total[index].textContent = 'Open ' + tileCount + ' links';
+    }
+  });
+}
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["7BtEn","2SnbP"], "2SnbP", "parcelRequirec526")
 
