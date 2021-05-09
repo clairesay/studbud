@@ -90,8 +90,7 @@ groupSubmitButton.addEventListener('click', function (event) {
 
 // //////////// COLUMN BUTTONS
 function groupEditDeleteFunctionality() {
-    const groupDeleteToolTip = document.querySelector('div.group-tooltip#delete')
-    const groupEditToolTip = document.querySelector('div.group-tooltip#edit')
+
     const groupTitles = document.querySelectorAll('div.group-title')
     groupTitles.forEach(function(groupTitle) {
         let editGroupButton = groupTitle.querySelector('svg.edit-group')
@@ -113,7 +112,18 @@ function groupEditDeleteFunctionality() {
             updateGroupNames();
         })
         editGroupButton.addEventListener('mouseover', function() {
-            editGroupButton.parentElement.parentElement.appendChild(groupEditToolTip)
+            let groupEditToolTip = document.querySelector('div.tooltip#edit-group')
+
+            if (groupEditToolTip === null) {
+                let newToolTip = document.createElement('div')
+                newToolTip.setAttribute('id', 'edit-group')
+                newToolTip.classList.add('tooltip')
+                newToolTip.textContent = 'Rename group'
+                editGroupButton.parentElement.appendChild(newToolTip)
+            } else {
+                editGroupButton.parentElement.appendChild(groupEditToolTip)
+            }
+            
         })
     
         deleteGroupButton.addEventListener('click', function() {
@@ -130,10 +140,22 @@ function groupEditDeleteFunctionality() {
             let groups = document.getElementsByClassName('group')
             let group = groupTitle.parentElement
             let tiles = group.querySelectorAll('.tile')
-            deleteGroupButton.parentElement.parentElement.appendChild(groupDeleteToolTip)
-            if (group.length > 1 && tiles.length == 0) {
+            // console.log()
+            let groupDeleteToolTip = document.querySelector('div.tooltip#delete-group')
+
+            if (groupDeleteToolTip === null) {
+                let newToolTip = document.createElement('div')
+                newToolTip.setAttribute('id', 'delete-group')
+                newToolTip.classList.add('tooltip')
+                newToolTip.textContent = 'Delete group'
+                deleteGroupButton.parentElement.appendChild(newToolTip)
+            } else {
+                deleteGroupButton.parentElement.appendChild(groupDeleteToolTip)
+            }
+
+            if (groups.length > 1 && tiles.length == 0) {
                 deleteGroupButton.classList.remove('disabled')
-            } else if (group.length <= 1 || tiles.length > 0) {
+            } else if (groups.length <= 1 || tiles.length > 0) {
                 deleteColumnButton.classList.add('disabled')
             }
         })

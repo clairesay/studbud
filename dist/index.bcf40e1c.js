@@ -521,8 +521,6 @@ groupSubmitButton.addEventListener('click', function (event) {
 });
 // //////////// COLUMN BUTTONS
 function groupEditDeleteFunctionality() {
-  const groupDeleteToolTip = document.querySelector('div.group-tooltip#delete');
-  const groupEditToolTip = document.querySelector('div.group-tooltip#edit');
   const groupTitles = document.querySelectorAll('div.group-title');
   groupTitles.forEach(function (groupTitle) {
     let editGroupButton = groupTitle.querySelector('svg.edit-group');
@@ -543,7 +541,16 @@ function groupEditDeleteFunctionality() {
       updateGroupNames();
     });
     editGroupButton.addEventListener('mouseover', function () {
-      editGroupButton.parentElement.parentElement.appendChild(groupEditToolTip);
+      let groupEditToolTip = document.querySelector('div.tooltip#edit-group');
+      if (groupEditToolTip === null) {
+        let newToolTip = document.createElement('div');
+        newToolTip.setAttribute('id', 'edit-group');
+        newToolTip.classList.add('tooltip');
+        newToolTip.textContent = 'Rename group';
+        editGroupButton.parentElement.appendChild(newToolTip);
+      } else {
+        editGroupButton.parentElement.appendChild(groupEditToolTip);
+      }
     });
     deleteGroupButton.addEventListener('click', function () {
       let groups = document.getElementsByClassName('group');
@@ -558,17 +565,27 @@ function groupEditDeleteFunctionality() {
       let groups = document.getElementsByClassName('group');
       let group = groupTitle.parentElement;
       let tiles = group.querySelectorAll('.tile');
-      deleteGroupButton.parentElement.parentElement.appendChild(groupDeleteToolTip);
-      if (group.length > 1 && tiles.length == 0) {
+      // console.log()
+      let groupDeleteToolTip = document.querySelector('div.tooltip#delete-group');
+      if (groupDeleteToolTip === null) {
+        let newToolTip = document.createElement('div');
+        newToolTip.setAttribute('id', 'delete-group');
+        newToolTip.classList.add('tooltip');
+        newToolTip.textContent = 'Delete group';
+        deleteGroupButton.parentElement.appendChild(newToolTip);
+      } else {
+        deleteGroupButton.parentElement.appendChild(groupDeleteToolTip);
+      }
+      if (groups.length > 1 && tiles.length == 0) {
         deleteGroupButton.classList.remove('disabled');
-      } else if (group.length <= 1 || tiles.length > 0) {
+      } else if (groups.length <= 1 || tiles.length > 0) {
         deleteColumnButton.classList.add('disabled');
       }
     });
   });
 }
 
-},{"./group":"271l5","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./count-tiles":"293G8"}],"271l5":[function(require,module,exports) {
+},{"./group":"271l5","./count-tiles":"293G8","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"271l5":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Group {
@@ -608,7 +625,13 @@ class Group {
     // <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"/>
     // </svg>`
     let editButton = group.querySelector('svg.edit-group');
+    editButton.classList.remove('first');
     let deleteButton = group.querySelector('svg.delete-group');
+    deleteButton.classList.remove('first');
+    // let toolTips = group.querySelectorAll('.tooltip')
+    // toolTips.forEach(function(toolTip) {
+    // toolTip.remove();
+    // })
     let tiles = group.querySelectorAll('.tile');
     tiles.forEach(function (tile) {
       tile.remove();

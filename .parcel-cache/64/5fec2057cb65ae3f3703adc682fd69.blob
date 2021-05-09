@@ -387,9 +387,6 @@ body main .tab.active::before {
   flex-direction: column;
   margin: 36px;
 }
-#content div.group:first-of-type svg {
-  display: none;
-}
 #content div.group div.group-title {
   display: flex;
   justify-content: space-between;
@@ -407,14 +404,67 @@ body main .tab.active::before {
   background-color: transparent;
   border: none;
   padding: 2px;
-  text-decoration: underline dotted transparent;
-}
-#content div.group div.group-title input:focus {
-  text-decoration: none;
 }
 #content div.group div.group-title input:hover {
   cursor: text;
-  text-decoration: underline dotted #909090;
+}
+#content div.group div.group-title input:hover ~ svg.edit-group {
+  background-color: #eeeeee;
+}
+#content div.group div.group-title div {
+  display: flex;
+  position: relative;
+}
+#content div.group div.group-title div svg.first {
+  display: none;
+}
+#content div.group div.group-title div svg {
+  padding: 8px;
+  border-radius: 4px;
+}
+#content div.group div.group-title div svg:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+#content div.group div.group-title div svg.edit-group {
+  margin-right: 6px;
+}
+#content div.group div.group-title div svg.edit-group:hover ~ div.tooltip#edit {
+  opacity: 1;
+}
+#content div.group div.group-title div svg.delete-group:hover ~ div.tooltip#delete {
+  opacity: 1;
+}
+#content div.group div.group-title div div.tooltip {
+  font-size: 12px;
+  top: -32px;
+  opacity: 0;
+  width: 104px;
+  background-color: #303030;
+  color: #fefefe;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+}
+#content div.group div.group-title div div.tooltip#edit {
+  right: 0px;
+}
+#content div.group div.group-title div div.tooltip#delete {
+  right: -37px;
+}
+#content div.group div.group-title div div.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #303030 transparent transparent transparent;
 }
 #content div.group div.tiles {
   display: flex;

@@ -43,8 +43,14 @@ class Group {
 
 
         let editButton = group.querySelector('svg.edit-group')
+        editButton.classList.remove('first')
         let deleteButton = group.querySelector('svg.delete-group')
+        deleteButton.classList.remove('first')
 
+        // let toolTips = group.querySelectorAll('.tooltip') 
+        // toolTips.forEach(function(toolTip) {
+        //     toolTip.remove();
+        // })
 
         let tiles = group.querySelectorAll('.tile')
         tiles.forEach(function (tile) {

@@ -29,13 +29,6 @@
         flex-direction: column;
         margin: 36px;
 
-        &:first-of-type {
-            svg {
-
-                display: none;
-            }
-        }
-
         div.group-title {
             display: flex;
             justify-content: space-between;
@@ -55,17 +48,159 @@
                 background-color: transparent;
                 border: none;
                 padding: 2px;
-                text-decoration: underline dotted transparent;
-
-                &:focus {
-                    text-decoration: none;
-                }
 
                 &:hover {
                     cursor: text;
-                    text-decoration: underline dotted $dark-grey;
+
+                    & ~ svg.edit-group {
+                        background-color: $light-grey;
+                    }
                 }
             }
+
+            div {
+                display: flex;
+                position: relative;
+
+                svg.first {
+                    display: none
+                }
+
+                svg {
+                    padding: 8px;
+                    border-radius: $mini-radius;
+                    // display: flex;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $light-grey;
+                    }
+                    &.edit-group {
+                        margin-right: 6px;
+
+                        &:hover ~ div.tooltip#edit-group {
+                            opacity: 1
+                        }
+                    }
+
+                    &.delete-group {
+
+                        &:hover ~ div.tooltip#delete-group {
+                            opacity: 1
+                        }
+                    }
+                }
+
+                div.tooltip {
+                    font-size: 12px;
+                    // visibility: hidden;
+                    top: -32px;
+                    opacity: 0;
+                    width: 104px;
+                    background-color: $black;
+                    color: $white;
+                    text-align: center;
+                    border-radius: $mini-radius;
+                    padding: 6px 0;
+                    position: absolute;
+                    z-index: 1;
+                    transition-property: opacity;
+                    transition-duration: 0.2s;
+    
+                    &#edit-group {
+                        right: 0px;
+                    }
+                    &#delete-group {
+                        right: -37px;
+                    }
+
+                    // &#edit {
+                    //     right: 14px;
+                    //     top: -28px; 
+                    // }
+    
+                    // &#delete {
+                    //     right: -22px;
+                    //     top: -28px;
+                    // }
+    
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: $black transparent transparent transparent;
+                    }
+                }
+            }
+                // &.edit-column {
+                //     margin-right: 6px;
+                //     right: 42px;
+                //     &:hover ~ div.tooltip#edit {
+                //         opacity: 1
+                //     }
+                // }
+                // &.delete-column {
+                //     right: 12px;
+
+                //     &:hover ~ div.tooltip#delete {
+                //         opacity: 1
+                //     }
+                // }
+
+            // svg {
+            //         position: relative;
+                    
+            //         background-color: $dark-white;
+            //         visibility: hidden;
+    
+            //         &.edit-group {
+            //             margin-right: 6px;
+            //             right: 42px;
+            //             &:hover ~ div.tooltip#edit-group {
+            //                 opacity: 1
+            //             }
+            //         }
+            //         &.delete-group {
+            //             right: 12px;
+    
+            //             &:hover ~ div.tooltip#delete-group {
+            //                 opacity: 1
+            //             }
+            //         }
+    
+                    
+            //         &.edit-column,
+            //         &.delete-column {
+            //             position: absolute;
+            //             min-width: 14px;
+    
+            //             background-color: $dark-white;
+                        
+            //             padding: 8px;
+            //             border-radius: $mini-radius;
+            //         }
+    
+            //         &:hover {
+            //             background-color: $light-grey;
+            //             cursor: pointer;
+            //         }
+    
+            //         &.disabled path {
+            //             fill: $grey
+            //         }
+    
+            //         &.disabled:hover {
+            //             cursor: initial;
+            //             background-color:$dark-white;
+                        
+            //             &~ div.tooltip {
+            //                 display: none;
+            //             }
+            //         }
+            //     }
     
         }
 
@@ -87,9 +222,10 @@
                 filter: drop-shadow(0 0 2px #30303018);
 
                 svg {
-    
                     display: flex;
                 }
+
+            
             }
         }
     }
