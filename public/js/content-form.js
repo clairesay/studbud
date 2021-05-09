@@ -66,7 +66,7 @@ function autoFillContentDetails(object) {
             //link
             contentDetails[2].value = thisContent.link
             //subject
-            contentDetails[3].value = thisContent.subject
+            // contentDetails[3].value = thisContent.subject
             //group
             let group = createContentForm.querySelector('select[name=group]');
             group.value = object.parentElement.parentElement.parentElement.querySelector('div.group-title input.group-name').value
@@ -113,7 +113,7 @@ contentDeleteButton.addEventListener('click', function(event) {
 })
 contentSaveButton.addEventListener('click', function(event) {
     event.preventDefault()
-    let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentSubject, contentGroup;
+    let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentGroup;
     // //
     if (createContentForm.classList.contains('update')) {
         contentID = parseInt(contentSaveButton.value)
@@ -135,16 +135,17 @@ contentSaveButton.addEventListener('click', function(event) {
       contentTitle = contentDetails[0].value
       contentDescription = contentDetails[1].value
       contentLink = contentDetails[2].value
-      contentSubject = contentDetails[3].value
+    //   contentSubject = contentDetails[3].value
 
       let groups = createContentForm.querySelector('select[name=group]')
       contentGroup = groups.value
 
-      content = new Content(contentID, contentTitle, contentDescription, contentLink, contentSubject, contentGroup, contentList)
+      content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList)
       content.createCard(content.addContent());
 
       openContentForm()
       countTiles.countTiles()
+      countTiles.openGroupLinks()
     //   overlayToggle = false;
     //   modalBackground.style.display = 'none'
     //   createContentForm.classList.remove('active')

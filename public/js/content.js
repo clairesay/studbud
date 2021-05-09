@@ -1,9 +1,9 @@
 class Content {
-    constructor(id, title, description, link, subject, group, contentList) {
+    constructor(id, title, description, link, group, contentList) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.subject = subject;
+        // this.subject = subject;
         this.group = group;
         this.link = link;
         this.contentList = contentList;
@@ -21,13 +21,33 @@ class Content {
             title = document.createElement('h4'),
             description = document.createElement('p'),
             link = document.createElement('a'),
-            editIcon = document.createElement('a');
+            linkIcon = document.createElement('svg'),
+            editIcon = document.createElement('a'),
+            line = document.createElement('HR');
 
         card.setAttribute('id', 'c-' + this.id)
         card.classList.add('tile')
         title.textContent = this.title
         description.textContent = this.description
-        link.textContent = this.link
+
+        
+       
+        if (this.link.includes('https://') || this.link.includes('http://')) {
+            link.textContent = this.link
+            link.setAttribute('href', this.link)
+        } else {
+            
+            link.textContent = 'https://' + this.link
+            link.setAttribute('href', 'https://' + this.link)
+        }  
+        link.classList.add('external-link')
+        link.setAttribute('target', '_blank')
+        link.appendChild(linkIcon)
+
+        linkIcon.innerHTML = `<svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.9 5.00003C1.9 3.29003 3.29 1.90003 5 1.90003H9V3.05176e-05H5C2.24 3.05176e-05 0 2.24003 0 5.00003C0 7.76003 2.24 10 5 10H9V8.10003H5C3.29 8.10003 1.9 6.71003 1.9 5.00003ZM6 6.00003H14V4.00003H6V6.00003ZM15 3.05176e-05H11V1.90003H15C16.71 1.90003 18.1 3.29003 18.1 5.00003C18.1 6.71003 16.71 8.10003 15 8.10003H11V10H15C17.76 10 20 7.76003 20 5.00003C20 2.24003 17.76 3.05176e-05 15 3.05176e-05Z" fill="#909090"/>
+        </svg>
+        `
 
         editIcon.classList.add('edit-content')
         editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,6 +56,8 @@ class Content {
 
         card.appendChild(title)
         card.appendChild(description)
+        card.appendChild(line)
+
         card.appendChild(link)
         card.appendChild(editIcon)
 

@@ -515,6 +515,7 @@ groupSubmitButton.addEventListener('click', function (event) {
   // updateColumnNames()
   toggleGroupForm();
   updateGroupNames();
+  _countTiles.openGroupLinks();
   _countTiles.countTiles();
 });
 
@@ -542,8 +543,6 @@ class Group {
     let group = document.querySelector('div.group');
     group = group.cloneNode(true);
     let groupName = group.querySelector('input.group-name');
-    // console.log(groupName)
-    // console.log()
     groupName.value = this.name;
     groupName.removeAttribute('disabled');
     let editButton = group.querySelector('svg.edit-group');

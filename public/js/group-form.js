@@ -79,11 +79,16 @@ groupSubmitButton.addEventListener('click', function (event) {
 
     // updateColumnNames()
 
+
     toggleGroupForm()
     updateGroupNames()
+    countTiles.openGroupLinks()
     countTiles.countTiles()
     // createNewSortable();
 })
+
+// /// OPEN LINKS //
+// open
 
 // // //////////// COLUMN BUTTONS
 // const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
@@ -134,3 +139,4 @@ groupSubmitButton.addEventListener('click', function (event) {
 //         }
 //     })
 // })
+

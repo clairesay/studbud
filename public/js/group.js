@@ -22,8 +22,7 @@ class Group {
         group = group.cloneNode(true)
 
         let groupName = group.querySelector('input.group-name')
-        // console.log(groupName)
-        // console.log()
+
         groupName.value = this.name;
         groupName.removeAttribute('disabled')
         let editButton = group.querySelector('svg.edit-group')

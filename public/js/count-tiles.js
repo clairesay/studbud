@@ -21,3 +21,29 @@ export function countTiles() {
         
     })
 }
+
+export function openGroupLinks() {
+    let groupLinks = document.querySelectorAll('h3.open-link')
+    groupLinks.forEach(function(groupLink) {
+        groupLink.style.backgroundColor = 'green'
+        if (groupLink.getAttribute('listener') !== 'true') {
+            groupLink.style.color = '#FFDD88'
+            groupLink.addEventListener('click', function() {
+                let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link')
+                
+                links.forEach(function(link) {
+                    let url = link.getAttribute('href')
+                    if (url.includes('https://') || url.includes('http://')) {
+                        window.open(url)
+                    } else {
+                        url = 'https://' + url
+                        window.open(url)
+                    }  
+                })
+            })
+            groupLink.setAttribute('listener', 'true')
+        }
+    })
+}
+
+openGroupLinks()
