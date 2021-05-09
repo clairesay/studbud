@@ -517,7 +517,56 @@ groupSubmitButton.addEventListener('click', function (event) {
   updateGroupNames();
   _countTiles.openGroupLinks();
   _countTiles.countTiles();
+  groupEditDeleteFunctionality();
 });
+// //////////// COLUMN BUTTONS
+function groupEditDeleteFunctionality() {
+  const groupDeleteToolTip = document.querySelector('div.group-tooltip#delete');
+  const groupEditToolTip = document.querySelector('div.group-tooltip#edit');
+  const groupTitles = document.querySelectorAll('div.group-title');
+  groupTitles.forEach(function (groupTitle) {
+    let editGroupButton = groupTitle.querySelector('svg.edit-group');
+    let deleteGroupButton = groupTitle.querySelector('svg.delete-group');
+    let groupNameInput = groupTitle.querySelector('input.group-name');
+    editGroupButton.addEventListener('click', function () {
+      // columnNameInput.removeAttribute('disabled')
+      groupNameInput.focus();
+    });
+    groupNameInput.addEventListener('change', function (event) {
+      updateGroupNames();
+      console.log('changed');
+    });
+    groupNameInput.addEventListener('keyup', function (event) {
+      if (event.key === 'Enter') {
+        groupNameInput.blur();
+      }
+      updateGroupNames();
+    });
+    editGroupButton.addEventListener('mouseover', function () {
+      editGroupButton.parentElement.parentElement.appendChild(groupEditToolTip);
+    });
+    deleteGroupButton.addEventListener('click', function () {
+      let groups = document.getElementsByClassName('group');
+      let group = groupTitle.parentElement;
+      let tiles = group.querySelectorAll('.tile');
+      if (groups.length > 1 && tiles.length == 0) {
+        group.remove();
+        updateGroupNames();
+      }
+    });
+    deleteGroupButton.addEventListener('mouseover', function () {
+      let groups = document.getElementsByClassName('group');
+      let group = groupTitle.parentElement;
+      let tiles = group.querySelectorAll('.tile');
+      deleteGroupButton.parentElement.parentElement.appendChild(groupDeleteToolTip);
+      if (group.length > 1 && tiles.length == 0) {
+        deleteGroupButton.classList.remove('disabled');
+      } else if (group.length <= 1 || tiles.length > 0) {
+        deleteColumnButton.classList.add('disabled');
+      }
+    });
+  });
+}
 
 },{"./group":"271l5","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./count-tiles":"293G8"}],"271l5":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
@@ -545,6 +594,19 @@ class Group {
     let groupName = group.querySelector('input.group-name');
     groupName.value = this.name;
     groupName.removeAttribute('disabled');
+    // let interactiveContainer = groupName.parentElement
+    // groupName = document.createElement('input')
+    // groupName.classList.add('group-name')
+    // groupName.value = this.name;
+    // interactiveContainer.innerHTML =  groupName + `
+    // <svg class="edit-group" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    // <path
+    // d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z"
+    // fill="#909090" />
+    // </svg>
+    // <svg class="delete-group" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    // <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"/>
+    // </svg>`
     let editButton = group.querySelector('svg.edit-group');
     let deleteButton = group.querySelector('svg.delete-group');
     let tiles = group.querySelectorAll('.tile');

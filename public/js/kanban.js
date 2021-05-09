@@ -29,47 +29,55 @@ export function countCards() {
 countCards()
 
 // Setting sortable functionality to the cards with the sortable.js library
-var cardContainers = document.querySelectorAll('.cards')
-cardContainers.forEach(function(element) {
-    new Sortable(element, {
-		group: 'nested',
-		animation: 200,
-		swapThreshold: 0.65,
-        ghostClass: 'ghost-card',
-        chosenClass: 'chosen-card',
-        dragClass: "sortable-drag",
-        forceFallback: true,
-        onStart: function (/**Event*/evt) {
-            var itemEl = evt.item;
-            itemEl.style.cursor = 'grabbing'
+export function sortability() {
+    let cardContainers = document.querySelectorAll('.cards')
+    console.log('number of cardContainers is' + cardContainers.length)
+    cardContainers.forEach(function(element) {
+        new Sortable(element, {
+            group: 'nested',
+            animation: 200,
+            swapThreshold: 0.65,
+            ghostClass: 'ghost-card',
+            chosenClass: 'chosen-card',
+            dragClass: "sortable-drag",
+            forceFallback: true,
+            onStart: function (/**Event*/evt) {
+                let itemEl = evt.item;
+                itemEl.style.cursor = 'grabbing'
 
-            var body = document.getElementsByTagName('body')[0]
-            body.style.cursor = 'grabbing'
-            evt.oldIndex;  // element index within parent
-        },
-        onEnd: function (evt) {
-            var itemEl = evt.item;
-            itemEl.style.cursor = 'grab'
-            var body = document.getElementsByTagName('body')[0]
-            body.style.cursor = 'initial'
-            countCards()
+                let body = document.getElementsByTagName('body')[0]
+                body.style.cursor = 'grabbing'
+                evt.oldIndex;  // element index within parent
+            },
+            onEnd: function (evt) {
 
-            // ADD COLUMN DELETE UPDATE
-            let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-            allDeleteColumnButtons.forEach( function(button) {
-                let columns = document.getElementsByClassName('column')
-                let column = button.parentElement.parentElement
-                let cards = column.querySelectorAll('.card')
-        
-                if (columns.length > 3 && cards.length == 0) {
-                    button.classList.remove('disabled')
-                } else if (columns.length <= 3 || cards.length > 0) {
-                    button.classList.add('disabled')
-                }
-            })
-        },
-	});
-})
+                let itemEl = evt.item;
+                itemEl.style.cursor = 'grab'
+                let body = document.getElementsByTagName('body')[0]
+                body.style.cursor = 'initial'
+
+                countCards()
+                // ADD COLUMN DELETE UPDATE
+                let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+                allDeleteColumnButtons.forEach( function(button) {
+                    let columns = document.getElementsByClassName('column')
+                    let column = button.parentElement.parentElement
+                    let cards = column.querySelectorAll('.card')
+                    
+                    if (columns.length > 3 && cards.length == 0) {
+                        button.classList.remove('disabled')
+                    } else if (columns.length <= 3) {
+                        button.classList.add('disabled') 
+                    } else if (cards.length > 0) {
+                        button.classList.add('disabled')
+                        
+                    }
+                })
+            },
+        });
+    })
+}
+sortability()
 
 // setting sortable functionality to the columns with the sortable.js library
 var deviceSize

@@ -24,6 +24,7 @@ function toggleTaskForm(type) {
         taskSaveButton.value = ''
 
         kanban.countCards()
+        kanban.sortability()
     }
 }
 

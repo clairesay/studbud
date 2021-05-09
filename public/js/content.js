@@ -57,9 +57,10 @@ class Content {
         card.appendChild(title)
         card.appendChild(description)
         card.appendChild(line)
-
+        
         card.appendChild(link)
         card.appendChild(editIcon)
+        
 
         let currentGroup = this.group
         if (this.group == 'None') {

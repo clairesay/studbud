@@ -467,6 +467,7 @@ function toggleTaskForm(type) {
     createTaskForm.reset();
     taskSaveButton.value = '';
     _kanban.countCards();
+    _kanban.sortability();
   }
 }
 // adding event listeners to edit buttons
@@ -765,6 +766,9 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "countCards", function () {
   return countCards;
 });
+_parcelHelpers.export(exports, "sortability", function () {
+  return sortability;
+});
 function countCards() {
   let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
   // const emptyStateMessage = document.getElementById('empty-state-message')
@@ -787,46 +791,51 @@ function countCards() {
   });
 }
 countCards();
-// Setting sortable functionality to the cards with the sortable.js library
-var cardContainers = document.querySelectorAll('.cards');
-cardContainers.forEach(function (element) {
-  new Sortable(element, {
-    group: 'nested',
-    animation: 200,
-    swapThreshold: 0.65,
-    ghostClass: 'ghost-card',
-    chosenClass: 'chosen-card',
-    dragClass: "sortable-drag",
-    forceFallback: true,
-    onStart: function (/**Event*/
-    evt) {
-      var itemEl = evt.item;
-      itemEl.style.cursor = 'grabbing';
-      var body = document.getElementsByTagName('body')[0];
-      body.style.cursor = 'grabbing';
-      evt.oldIndex;
-    },
-    onEnd: function (evt) {
-      var itemEl = evt.item;
-      itemEl.style.cursor = 'grab';
-      var body = document.getElementsByTagName('body')[0];
-      body.style.cursor = 'initial';
-      countCards();
-      // ADD COLUMN DELETE UPDATE
-      let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
-      allDeleteColumnButtons.forEach(function (button) {
-        let columns = document.getElementsByClassName('column');
-        let column = button.parentElement.parentElement;
-        let cards = column.querySelectorAll('.card');
-        if (columns.length > 3 && cards.length == 0) {
-          button.classList.remove('disabled');
-        } else if (columns.length <= 3 || cards.length > 0) {
-          button.classList.add('disabled');
-        }
-      });
-    }
+function sortability() {
+  let cardContainers = document.querySelectorAll('.cards');
+  console.log('number of cardContainers is' + cardContainers.length);
+  cardContainers.forEach(function (element) {
+    new Sortable(element, {
+      group: 'nested',
+      animation: 200,
+      swapThreshold: 0.65,
+      ghostClass: 'ghost-card',
+      chosenClass: 'chosen-card',
+      dragClass: "sortable-drag",
+      forceFallback: true,
+      onStart: function (/**Event*/
+      evt) {
+        let itemEl = evt.item;
+        itemEl.style.cursor = 'grabbing';
+        let body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'grabbing';
+        evt.oldIndex;
+      },
+      onEnd: function (evt) {
+        let itemEl = evt.item;
+        itemEl.style.cursor = 'grab';
+        let body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'initial';
+        countCards();
+        // ADD COLUMN DELETE UPDATE
+        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
+        allDeleteColumnButtons.forEach(function (button) {
+          let columns = document.getElementsByClassName('column');
+          let column = button.parentElement.parentElement;
+          let cards = column.querySelectorAll('.card');
+          if (columns.length > 3 && cards.length == 0) {
+            button.classList.remove('disabled');
+          } else if (columns.length <= 3) {
+            button.classList.add('disabled');
+          } else if (cards.length > 0) {
+            button.classList.add('disabled');
+          }
+        });
+      }
+    });
   });
-});
+}
+sortability();
 // setting sortable functionality to the columns with the sortable.js library
 var deviceSize;
 // //////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////

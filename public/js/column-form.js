@@ -67,6 +67,7 @@ function createNewSortable() {
         forceFallback: true,
         onEnd: function (evt) {
             kanbanA.countCards()
+            // kanbanA.sortability()
         }
     })
 }
@@ -100,6 +101,7 @@ columnSubmitButton.addEventListener('click', function (event) {
     toggleColumnForm()
 
     createNewSortable();
+    // kanbanA.sortability()
 })
 
 // //////////// COLUMN BUTTONS
@@ -130,6 +132,7 @@ columnTitles.forEach(function(columnTitle) {
     })
 
     deleteColumnButton.addEventListener('click', function() {
+        // alert('original button clicked')
         let columns = document.getElementsByClassName('column')
         let column = columnTitle.parentElement
         let cards = column.querySelectorAll('.card')
@@ -137,9 +140,22 @@ columnTitles.forEach(function(columnTitle) {
             column.remove()
             updateColumnNames()
         }
+        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+        allDeleteColumnButtons.forEach( function(button) {
+            let columns = document.getElementsByClassName('column')
+            let column = button.parentElement.parentElement
+            let cards = column.querySelectorAll('.card')
+    
+            if (columns.length > 3 && cards.length == 0) {
+                button.classList.remove('disabled')
+            } else if (columns.length <= 3 || cards.length > 0) {
+                button.classList.add('disabled')
+            }
+        })
     })
 
     deleteColumnButton.addEventListener('mouseover', function() {
+        // alert('original button hovered')
         let columns = document.getElementsByClassName('column')
         let column = columnTitle.parentElement
         let cards = column.querySelectorAll('.card')

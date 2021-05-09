@@ -84,59 +84,58 @@ groupSubmitButton.addEventListener('click', function (event) {
     updateGroupNames()
     countTiles.openGroupLinks()
     countTiles.countTiles()
+    groupEditDeleteFunctionality()
     // createNewSortable();
 })
 
-// /// OPEN LINKS //
-// open
-
-// // //////////// COLUMN BUTTONS
-// const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
-// const columnEditToolTip = document.querySelector('div.tooltip#edit')
-// const columnTitles = document.querySelectorAll('div.title')
-// columnTitles.forEach(function(columnTitle) {
-//     let editColumnButton = columnTitle.querySelector('svg.edit-column')
-//     let deleteColumnButton = columnTitle.querySelector('svg.delete-column')
-//     let columnNameInput = columnTitle.querySelector('input.column-name')
-
-//     editColumnButton.addEventListener('click', function() {
-//         // columnNameInput.removeAttribute('disabled')
-//         columnNameInput.focus()
-//     })
-//     columnNameInput.addEventListener('change', function(event) {
-//         updateColumnNames();
-//         console.log('changed')
-//     })
-//     columnNameInput.addEventListener('keyup', function(event) {
-//         if (event.key === 'Enter') {
-//             columnNameInput.blur()
-//         }
-//         updateColumnNames();
-//     })
-//     editColumnButton.addEventListener('mouseover', function() {
-//         editColumnButton.parentElement.appendChild(columnEditToolTip)
-//     })
-
-//     deleteColumnButton.addEventListener('click', function() {
-//         let columns = document.getElementsByClassName('column')
-//         let column = columnTitle.parentElement
-//         let cards = column.querySelectorAll('.card')
-//         if (columns.length > 3 && cards.length == 0) {
-//             column.remove()
-//             updateColumnNames()
-//         }
-//     })
-
-//     deleteColumnButton.addEventListener('mouseover', function() {
-//         let columns = document.getElementsByClassName('column')
-//         let column = columnTitle.parentElement
-//         let cards = column.querySelectorAll('.card')
-//         deleteColumnButton.parentElement.appendChild(columnDeleteToolTip)
-//         if (columns.length > 3 && cards.length == 0) {
-//             deleteColumnButton.classList.remove('disabled')
-//         } else if (columns.length <= 3 || cards.length > 0) {
-//             deleteColumnButton.classList.add('disabled')
-//         }
-//     })
-// })
-
+// //////////// COLUMN BUTTONS
+function groupEditDeleteFunctionality() {
+    const groupDeleteToolTip = document.querySelector('div.group-tooltip#delete')
+    const groupEditToolTip = document.querySelector('div.group-tooltip#edit')
+    const groupTitles = document.querySelectorAll('div.group-title')
+    groupTitles.forEach(function(groupTitle) {
+        let editGroupButton = groupTitle.querySelector('svg.edit-group')
+        let deleteGroupButton = groupTitle.querySelector('svg.delete-group')
+        let groupNameInput = groupTitle.querySelector('input.group-name')
+    
+        editGroupButton.addEventListener('click', function() {
+            // columnNameInput.removeAttribute('disabled')
+            groupNameInput.focus()
+        })
+        groupNameInput.addEventListener('change', function(event) {
+            updateGroupNames();
+            console.log('changed')
+        })
+        groupNameInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                groupNameInput.blur()
+            }
+            updateGroupNames();
+        })
+        editGroupButton.addEventListener('mouseover', function() {
+            editGroupButton.parentElement.parentElement.appendChild(groupEditToolTip)
+        })
+    
+        deleteGroupButton.addEventListener('click', function() {
+            let groups = document.getElementsByClassName('group')
+            let group = groupTitle.parentElement
+            let tiles = group.querySelectorAll('.tile')
+            if (groups.length > 1 && tiles.length == 0) {
+                group.remove()
+                updateGroupNames()
+            }
+        })
+    
+        deleteGroupButton.addEventListener('mouseover', function() {
+            let groups = document.getElementsByClassName('group')
+            let group = groupTitle.parentElement
+            let tiles = group.querySelectorAll('.tile')
+            deleteGroupButton.parentElement.parentElement.appendChild(groupDeleteToolTip)
+            if (group.length > 1 && tiles.length == 0) {
+                deleteGroupButton.classList.remove('disabled')
+            } else if (group.length <= 1 || tiles.length > 0) {
+                deleteColumnButton.classList.add('disabled')
+            }
+        })
+    })
+}

@@ -89,6 +89,7 @@ class Column {
     deleteColumn(deleteColumnButton) {
         // allow delete functionality for most columns as long as there are at least 3 and there are no cards in the column
         deleteColumnButton.addEventListener('click', function() {
+            alert('new delete button clicked')
             let columns = document.getElementsByClassName('column')
             let column = deleteColumnButton.parentElement.parentElement
             let cards = column.querySelectorAll('.card')

@@ -558,6 +558,7 @@ columnTitles.forEach(function (columnTitle) {
     editColumnButton.parentElement.appendChild(columnEditToolTip);
   });
   deleteColumnButton.addEventListener('click', function () {
+    // alert('original button clicked')
     let columns = document.getElementsByClassName('column');
     let column = columnTitle.parentElement;
     let cards = column.querySelectorAll('.card');
@@ -565,8 +566,20 @@ columnTitles.forEach(function (columnTitle) {
       column.remove();
       updateColumnNames();
     }
+    let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
+    allDeleteColumnButtons.forEach(function (button) {
+      let columns = document.getElementsByClassName('column');
+      let column = button.parentElement.parentElement;
+      let cards = column.querySelectorAll('.card');
+      if (columns.length > 3 && cards.length == 0) {
+        button.classList.remove('disabled');
+      } else if (columns.length <= 3 || cards.length > 0) {
+        button.classList.add('disabled');
+      }
+    });
   });
   deleteColumnButton.addEventListener('mouseover', function () {
+    // alert('original button hovered')
     let columns = document.getElementsByClassName('column');
     let column = columnTitle.parentElement;
     let cards = column.querySelectorAll('.card');
@@ -661,6 +674,7 @@ class Column {
   deleteColumn(deleteColumnButton) {
     // allow delete functionality for most columns as long as there are at least 3 and there are no cards in the column
     deleteColumnButton.addEventListener('click', function () {
+      alert('new delete button clicked');
       let columns = document.getElementsByClassName('column');
       let column = deleteColumnButton.parentElement.parentElement;
       let cards = column.querySelectorAll('.card');
