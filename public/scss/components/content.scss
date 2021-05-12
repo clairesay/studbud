@@ -3,7 +3,7 @@
 #content {
     display: flex;
     flex-direction: column;
-    overflow: hidden auto;
+    overflow: scroll auto;
 
     // SCROLLBAR
     &::-webkit-scrollbar {
@@ -11,13 +11,13 @@
     }
 
     &::-webkit-scrollbar-track {
-        background: $dark-white; /* color of the tracking area */
+        background: $light-grey; /* color of the tracking area */
     }
 
     &::-webkit-scrollbar-thumb {
         background-color: $grey; /* color of the scroll thumb */
         border-radius: $big-radius; /* roundness of the scroll thumb */
-        border: 4px solid $dark-white; /* creates padding around scroll thumb */
+        border: 4px solid $light-grey; /* creates padding around scroll thumb */
     }
     
     &::-webkit-scrollbar-thumb:hover {

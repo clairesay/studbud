@@ -1,0 +1,15 @@
+const timeToolsOverlay = document.getElementById('time')
+        const timeSelector = document.getElementById('time-selector')
+        const dropdown = document.getElementById('dropdown')
+        dropdown.addEventListener('click', toggleTimeMenu)
+        timeMenuToggleOpen = false
+        function toggleTimeMenu(){
+            console.log('bro')
+            if (timeMenuToggleOpen == false) {
+                timeSelector.classList = 'open'
+                timeMenuToggleOpen = true
+            } else if (timeMenuToggleOpen == true) {
+                timeSelector.classList = 'close'
+                timeMenuToggleOpen = false
+            }
+        }

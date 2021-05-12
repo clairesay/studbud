@@ -1,0 +1,43 @@
+.pop-up {
+    position: absolute;
+    bottom: 17px;
+    width: 280px;
+    height: 300px;
+    background-color: $white;
+    border-radius: $big-radius $big-radius 0 0;
+    padding: 16px;
+    filter: drop-shadow(0 0 2px #30303018);
+
+    &#time {
+        right: 336px;
+
+        #dropdown {
+            background-color: darkorchid;
+        }
+        
+        #time-selector.open {
+            h3:hover {
+                background-color: darkturquoise;
+            }
+        }
+
+        #time-selector.close > h3:last-child {
+            display: none
+        }
+
+        #time-selector.open > h3:last-child {
+            display: flex;
+        }
+
+        #stopwatch, #pomodoro {
+            display: none;
+            &.active {
+                display: flex;
+            }
+        }
+    }
+
+    &#music {
+        right: 12px;
+    }
+}

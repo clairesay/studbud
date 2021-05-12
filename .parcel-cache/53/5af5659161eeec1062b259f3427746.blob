@@ -1,0 +1,21 @@
+const timeToolsOverlay = document.getElementById('time')
+        const timeSelector = document.getElementById('time-selector')
+        const dropdown = document.getElementById('dropdown')
+        
+        timeMenuToggleOpen = false
+        function toggleTimeMenu() {
+            console.log('bro')
+            if (timeMenuToggleOpen == false) {
+                timeSelector.classList = 'open'
+                timeMenuToggleOpen = true
+            } else if (timeMenuToggleOpen == true) {
+                timeSelector.classList = 'close'
+                timeMenuToggleOpen = false
+            }
+        }
+        dropdown.addEventListener('click', toggleTimeMenu)
+
+        const stopwatch = document.getElementById('stopwatch')
+        const stopwatchSelector = document.getElementById('stopwatch-select')
+        const pomodoro = document.getElementById('pomodoro')
+        const pomodoroSelector = document.getElementById('pomodoro-select')

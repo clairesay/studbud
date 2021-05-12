@@ -352,14 +352,14 @@ body main .tab.active::before {
 #content {
   display: flex;
   flex-direction: column;
-  overflow: hidden auto;
+  overflow: scroll auto;
 }
 #content::-webkit-scrollbar {
   width: 18px;
   /* width of the entire scrollbar */
 }
 #content::-webkit-scrollbar-track {
-  background: #fafafa;
+  background: #eeeeee;
   /* color of the tracking area */
 }
 #content::-webkit-scrollbar-thumb {
@@ -367,7 +367,7 @@ body main .tab.active::before {
   /* color of the scroll thumb */
   border-radius: 16px;
   /* roundness of the scroll thumb */
-  border: 4px solid #fafafa;
+  border: 4px solid #eeeeee;
   /* creates padding around scroll thumb */
 }
 #content::-webkit-scrollbar-thumb:hover {
@@ -1165,5 +1165,39 @@ form label .false-radio span {
 }
 .tagify__dropdown__item:active {
   filter: brightness(105%);
+}
+.pop-up {
+  position: absolute;
+  bottom: 17px;
+  width: 280px;
+  height: 300px;
+  background-color: #fefefe;
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+  filter: drop-shadow(0 0 2px #30303018);
+}
+.pop-up#time {
+  right: 336px;
+}
+.pop-up#time #dropdown {
+  background-color: darkorchid;
+}
+.pop-up#time #time-selector.open h3:hover {
+  background-color: darkturquoise;
+}
+.pop-up#time #time-selector.close > h3:last-child {
+  display: none;
+}
+.pop-up#time #time-selector.open > h3:last-child {
+  display: flex;
+}
+.pop-up#time #stopwatch, .pop-up#time #pomodoro {
+  display: none;
+}
+.pop-up#time #stopwatch.active, .pop-up#time #pomodoro.active {
+  display: flex;
+}
+.pop-up#music {
+  right: 12px;
 }
 /*# sourceMappingURL=index.0c72b7db.css.map */

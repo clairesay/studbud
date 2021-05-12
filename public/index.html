@@ -176,9 +176,45 @@
             </div>
         </section>
 
-
     </main>
 
+    <section id="time" class="pop-up">
+        <nav>
+            <img src="images/time.svg">
+            <div id="dropdown">
+                <div id="time-selector" class="close">
+                    <h3 id="stopwatch-select">Stopwatch</h3>
+                    <h3 id="pomodoro-select">Pomodoro</h3>
+                </div>
+
+                <!-- <div style="position: absolute">
+                    <h3>Stopwatch</h3>
+                    <h3>Pomodoro</h3>
+                </div> -->
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#909090" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>   
+            </div>
+            <button class="button icon">
+                <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"/>
+                    <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"/>
+                </svg>   
+            </button>
+        </nav>
+        <article id="stopwatch">
+            <h1><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
+            <div>
+                <button class="button primary">Start</button>
+                <button class="button secondary" disabled>Reset</button>
+            </div>
+            <h3>Feeling speedy? Time it!</h3>
+        </article>
+        <article id="pomodoro">
+
+        </article>
+    </section>
+    <section id="music" class="pop-up"></section>
     <div id="modal-background" class="background"></div>
     <form id="create-content-form">
         <h1>Add content</h1>
@@ -296,7 +332,51 @@
         <button id="add-column-cancel" class="button primary" type="button">Cancel</button>
         <button class="close-form" type="reset"><img src="images/black-close.svg"></button>
     </form>
+    <script>
+        
+        const timeToolsOverlay = document.getElementById('time')
+        const timeSelector = document.getElementById('time-selector')
+        const dropdown = document.getElementById('dropdown')
+        
+        timeMenuToggleOpen = false
+        function toggleTimeMenu() {
+            if (timeMenuToggleOpen == false) {
+                timeSelector.classList = 'open'
+                timeMenuToggleOpen = true
+            } else if (timeMenuToggleOpen == true) {
+                timeSelector.classList = 'close'
+                timeMenuToggleOpen = false
+            }
+        }
+        dropdown.addEventListener('click', toggleTimeMenu)
 
+        const stopwatch = document.getElementById('stopwatch')
+        const stopwatchSelector = document.getElementById('stopwatch-select')
+        const pomodoro = document.getElementById('pomodoro')
+        const pomodoroSelector = document.getElementById('pomodoro-select')
+
+        stopwatchSelector.addEventListener('click', function() {
+            timeSelector.appendChild(pomodoroSelector)
+            setTimerType()
+        })
+        pomodoroSelector.addEventListener('click', function() {
+            timeSelector.appendChild(stopwatchSelector)
+            setTimerType()
+        })
+
+        function setTimerType() {
+            let currentTimer = timeSelector.querySelector(':first-child')
+            if (currentTimer.id == 'stopwatch-select') {
+                stopwatch.classList.add('active')
+                pomodoro.classList.remove('active')
+            } else if (currentTimer.id == 'pomodoro-select') {
+                stopwatch.classList.remove('active')
+                pomodoro.classList.add('active')
+            }
+        }
+        setTimerType()
+
+    </script>
     <script src="main.js"></script>
 
     <script src="js/task-form.js"></script>
