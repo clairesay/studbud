@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.1.1/tagify.min.js" integrity="sha512-V/mrpehNcIkQ5rszd9LwfBujHn0FJkHO0hBQc059gH5LWg1Tsnt7xphn7Z5jaDiq/xyLU4/BXi5jJauqM4PhlQ==" crossorigin="anonymous"></script>
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validate-js/2.0.1/validate.min.js" integrity="sha512-8GLIg5ayTvD6F9ML/cSRMD19nHqaLPWxISikfc5hsMJyX7Pm+IIbHlhBDY2slGisYLBqiVNVll+71CYDD5RBqA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <link rel="icon" href="/favicon.3fb3ebf1.svg">
 </head>
 
@@ -217,6 +218,7 @@
                 <button class="secondary icon add">+</button>
             </div>
             <!-- <div> -->
+            <div id="timeline"><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div></div>
             <button class="button primary start-stop">Start</button>
 
             <!-- </div> -->
@@ -224,6 +226,8 @@
                 <h1 style="display: block; width: 100%;
 "><span class="minutes">00</span>:<span class="seconds">00</span>
                 </h1>
+
+                
             </div>
         </article>
     </section>
@@ -486,12 +490,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"6OD4I":[function(require,module,exports) {
+})({"6w3f1":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "5d94355818286aa3fb0ba0b53e316bb0";
+module.bundle.HMR_BUNDLE_ID = "27f8bcfc6f15396595acd3f45475fb15";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -787,7 +791,7 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"3xDtO":[function(require,module,exports) {
+},{}],"5X2Vn":[function(require,module,exports) {
 const timeToolsOverlay = document.getElementById('time')
         const timeSelector = document.getElementById('time-selector')
         const dropdown = document.getElementById('dropdown')
@@ -852,10 +856,12 @@ const timeToolsOverlay = document.getElementById('time')
             milli = 0
             sec = 0
             min = 0
-            minutes.textContent = min.toString()
-            seconds.textContent = sec.toString()
-            milliseconds.textContent = milli.toString()
+            offset = 0
+            minutes.textContent = (min).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            seconds.textContent = (sec).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            milliseconds.textContent = (milli).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
             // if (stopwatchOff == true) {
+                stopwatchStart.textContent = 'Start'
             stopwatchReset.disabled = false
             stopwatchOff = false
             clearInterval(intervals)
@@ -864,37 +870,124 @@ const timeToolsOverlay = document.getElementById('time')
 
             dropdown.addEventListener('click', toggleTimeMenu)
         })
-
+        var stopwatchOn = false;
+        var start, currentTime, delta, stringify;
+        var offset = 0;
         stopwatchStart.addEventListener('click', function () {
             static = false;
+            
             if (stopwatchOff == true) {
+                
                 clearInterval(intervals)
                 // stopwatchReset.disabled = false
                 stopwatchStart.textContent = 'Start'
                 stopwatchOff = false
+                
+                offset = parseInt(milli)*10
             } else if (stopwatchOff == false) {
+                
+                // if (stopwatchOn == false) {
+                    start = Date.now()
+                    // start += offset;
+                    // offset = 0;
+                //     stopwatchOn = true
+                // }
+                // var 
+                // making sure there are always 2 digitshttps://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers
                 incrementUp()
                 function incrementUp() {
-                    if (milli == 1000) {
+                    // var time = moment().toDate();  // This will return a copy of the Date that the moment uses
+
+                    // time.setHours(0);
+                    // time.setMinutes(0);
+                    // time.setSeconds(0);
+                    // time.setMilliseconds(0);
+                    currentTime = Date.now()
+
+                    // var delta = currentTime - start; // milliseconds elapsed since start
+                    delta = currentTime - start + offset
+                    stringify = (delta).toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false})
+                    // var time = delta /1000
+                    // sec = delta/1000
+                    // if (delta != undefined) {
+                    // if (delta.length == 4) {
+                        // milli = delta
+                       milli =  stringify[0] + stringify[1]
+                    // }
+                    
+                    // }
+                    
+                    if (delta >= 1000) {
+                        start += 1000
                         sec += 1
-                        milli = 0
-                    } else {
-                        milli += 10
                     }
                     if (sec == 60) {
                         sec = 0
                         min += 1
                     }
-                    if (min == 60) {
-                        // set false
+                    // if (sec >= 5) {
+                    //     start += 5000
+                    // }
+                    // if (sec >= 60) {
+                    //     start += 60000
+                    //     min += 1
+                    // }
+                    // if (sec >= 5) {
+                        
+                    // }
+                    // if (delta >= 1000) {
+                    //     var currentTime = Date.now()
+                    //     var delta = currentTime - start; // milliseconds elapsed since start
+                    // }
+                    // var seconder = Math.floor(milli / 1000); // in seconds
+                    // milli = moment().milliseconds();
+                    // sec = moment().seconds()
+                    // min = moment().minutes()
+                    // milli = delta;
+                    // if (milli >= 1000) {
+                    //     milli -= 1000;
+                    // }
+                    
+                    // if (milli >= 1000) {
+                    //     // milli = 0
+                    //     // milli = delta
+                    //     milli -= 1000
+                    //     // milli = 0
+                    //     sec = seconder
+                    // } else {
+                    //     milli = delta;
+                    // }
+                    if (sec >= 60) {
+                        // sec = 0
                     }
+                    // if (milli == 1000) {
+                    //     sec += 1
+                    //     milli = 0
+                    // } else {
+                    //     milli += 10
+                    // }
+                    // if (sec == 60) {
+                    //     sec = 0
+                    //     min += 1
+                    // }
+                    // if (min == 60) {
+                    //     // set false
+                    // }
                 }
+
                 intervals = setInterval(function () {
-                    minutes.textContent = min.toString()
-                    seconds.textContent = sec.toString()
-                    milliseconds.textContent = milli.toString()
+                    minutes.textContent = (min).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                    seconds.textContent = (sec).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                    milliseconds.textContent = (milli).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+
                     incrementUp()
-                }, 10);
+                }, 10); // update about every second
+                // intervals = setInterval(function () {
+                //     minutes.textContent = min.toString()
+                //     seconds.textContent = sec.toString()
+                //     milliseconds.textContent = milli.toString()
+                //     incrementUp()
+                // }, 10);
                 stopwatchReset.disabled = false
                 stopwatchStart.textContent = 'Stop'
                 // disable the timer dropdown
@@ -932,12 +1025,12 @@ const timeToolsOverlay = document.getElementById('time')
             }
         }
 
-        var workMin = 25,
-            workSec = 0
+        var workMin = 0,
+            workSec = 10
         var workMinutes = document.querySelector('#pomodoro #work .minutes')
         var workSeconds = document.querySelector('#pomodoro #work .seconds')
-        var breakMin = 5,
-            breakSec = 0
+        var breakMin = 0,
+            breakSec = 5
         var breakMinutes = document.querySelector('#pomodoro #break .minutes')
         var breakSeconds = document.querySelector('#pomodoro #break .seconds')
         const workButtons = document.querySelector('#pomodoro #work')
@@ -953,7 +1046,7 @@ const timeToolsOverlay = document.getElementById('time')
 
         var pomoMin = workMin
         var pomoSec = workSec
-        pomoMinutes.textContent = pomoMin.toString()
+        pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
         // pomoSeconds.textContent = pomoSec.toString()
 
         var pomoOff = false
@@ -965,17 +1058,22 @@ const timeToolsOverlay = document.getElementById('time')
         workButtons.style.display = 'flex'
         breakButtons.style.display = 'flex'
         timer.style.display = 'none'
+        var timeline = document.getElementById('timeline')
+        const loadSpans = document.querySelectorAll('#pomodoro div.length > div')
+        const allSpans = document.querySelectorAll('#pomodoro div > div.length')
+        // var timelineLength = timeline.clientWidth;
         pomoStartStop.addEventListener('click', function () {
-        // reference for pomo intervals https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
+            // reference for pomo intervals https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
             if (pomoOff == true) {
                 pomoMin = workMin
                 pomoSec = workSec
-                pomoMinutes.textContent = pomoMin.toString()
-                pomoSeconds.textContent = pomoSec.toString()
+                pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
                 static = true;
                 clearInterval(pomoIntervals)
                 pomoStartStop.textContent = 'Start'
                 dropdown.addEventListener('click', toggleTimeMenu)
+                // timeline.style.display = 'flex'
                 workButtons.style.display = 'flex'
                 breakButtons.style.display = 'flex'
                 timer.style.display = 'none'
@@ -983,38 +1081,69 @@ const timeToolsOverlay = document.getElementById('time')
                 pomoOff = false
             } else if (pomoOff == false) {
                 static = false;
+
+
+                let fullTime = workSec + workMin*60;
+                console.log(fullTime)
+                let fullWidth = allSpans[0].getBoundingClientRect().width
+                console.log(sessions)
+                console.log(fullWidth)
+                // let percent = fullWidth/fullTime/fullWidth * 100
+                let percent = fullWidth/fullTime
+                console.log(percent)
+
                 function incrementDown() {
                     if (pomoMin == 0 && pomoSec == 0) {
                         // pomoMinutes.textContent = pomoMin.toString()
                         // pomoSeconds.textContent = pomoSec.toString()
- 
+                        if (phase == 'work') {
+                            fullTime = workSec + workMin*60
+                        } else if (phase == 'break') {
+                            fullTime = breakSec + breakMin*60
+                        }
+                        fullWidth = allSpans[sessions + 1].style.width
+                        
+                        percent = fullWidth/fullTime
                         sessions += 1
                         pomodoroTimer()
+
                     } else if (pomoSec == 0) {
                         pomoMin -= 1
                         pomoSec = 59
                     } else {
                         pomoSec -= 1
                     }
+                    
 
+                    fullWidth -= percent
+                    if (sessions < 5) {
+                        loadSpans[sessions].style.width = fullWidth + 'px'
+                    }
+                    
+                    // (pomoSec + 60 * pomoMin)/fullTime + 'px'
                 }
+                // timeline.style.display = 'none'
                 workButtons.style.display = 'none'
                 breakButtons.style.display = 'none'
                 timer.style.display = 'flex'
                 // incrementDown()
                 pomoIntervals = setInterval(function () {
                     incrementDown()
-                    pomoMinutes.textContent = pomoMin.toString()
-                    pomoSeconds.textContent = pomoSec.toString()
+                    pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                    pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
                     // 3
-                    
+
                 }, 1000);
                 pomoStartStop.textContent = 'Stop'
                 dropdown.removeEventListener('click', toggleTimeMenu)
                 pomoOff = true
             }
         })
-
+        
+        const workSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n + 1)')
+        
+        const breakSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n )')
+        
         function pomoTime(operator, mode) {
 
             if (mode == 'work') {
@@ -1033,16 +1162,35 @@ const timeToolsOverlay = document.getElementById('time')
             }
             pomoMin = workMin
             // pomoSec = workSec
-            
-            pomoMinutes.textContent = pomoMin.toString()
+
+            pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
             // pomoSeconds.textContent = pomoSec.toString()
             // console.log(pomoMinutes)
-            workMinutes.textContent = workMin
-            breakMinutes.textContent = breakMin
-
+            workMinutes.textContent = (workMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            breakMinutes.textContent = (breakMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            pomoLength()
         }
-        workMinutes.textContent = workMin
-        breakMinutes.textContent = breakMin
+        pomoLength()
+        function pomoLength() {
+            
+            // SETTING THE PIPELINE
+            let total = workMin * 3 + breakMin * 2
+            // console.log(timelineLength)
+            let timelineLength = 248
+            let workLength = workMin/total * timelineLength
+            let breakLength = breakMin/total * timelineLength
+            
+            workSpans.forEach(function(span) {
+                span.style.width = workLength + 'px';
+                console.log(span.style.width)
+            })
+            
+            breakSpans.forEach(function(span) {
+                span.style.width = breakLength + 'px';
+            })
+        }
+        workMinutes.textContent = (workMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+        breakMinutes.textContent = (breakMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
         var phase = 'break'
         var sessions = 0
         function pomodoroTimer() {
@@ -1052,7 +1200,7 @@ const timeToolsOverlay = document.getElementById('time')
                     pomoMin = workMin
                     pomoSec = workSec
                     phase = 'break'
-                    
+
                 }
 
                 else if (phase == 'break') {
@@ -1060,22 +1208,20 @@ const timeToolsOverlay = document.getElementById('time')
                     pomoSec = breakSec
                     phase = 'work'
                 }
-                
+
+            } else if (sessions == 5) {
+                pomoMin = 30
+                pomoSec = 0
+                phase = 'finalbreak'
             } else {
                 clearInterval(pomoIntervals)
                 pomoOff = false;
+                workButtons.style.display = 'flex'
+                breakButtons.style.display = 'flex'
+                timer.style.display = 'none'
             }
-            // sessions += 1
-
-
-
-
-            // set the screen to the massive countdown
-            // start button becomes stop button
-            // increment the meters to reflect the timers - --- - --- -
-            // at the end of the timer: what happens?
         }
-},{}]},["6OD4I","3xDtO"], "3xDtO", "parcelRequirec526")
+},{}]},["6w3f1","5X2Vn"], "5X2Vn", "parcelRequirec526")
 
 </script>
     <script src="/index.8e0a979d.js"></script>

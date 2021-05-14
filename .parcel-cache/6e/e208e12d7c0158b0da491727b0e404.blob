@@ -1219,3 +1219,22 @@ form label .false-radio span {
 .pop-up[state=peek] {
   height: 72px;
 }
+#pomodoro #timeline {
+  width: 248px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  position: relative;
+}
+#pomodoro #timeline div {
+  background-color: salmon;
+  border: solid 2px black;
+  height: 20px;
+}
+#pomodoro #timeline div div {
+  height: 20px;
+  width: 0;
+  background-color: blue;
+  border: none;
+}

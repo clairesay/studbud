@@ -69,3 +69,28 @@
     height: 72px;
 
 }
+
+#pomodoro {
+    // width: 100%;
+    #timeline {
+        width: 248px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        background-color: red;
+        position: relative;
+        div {
+            background-color: salmon;
+            border: solid 2px black;
+            height: 20px;
+            // width: 20px;
+            div {
+                height: 20px;
+                width: 0;
+                background-color: blue;
+                border: none;
+            }
+        }
+    }
+
+}
