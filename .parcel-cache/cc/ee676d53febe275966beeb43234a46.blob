@@ -1,0 +1,256 @@
+const timeToolsOverlay = document.getElementById('time')
+        const timeSelector = document.getElementById('time-selector')
+        const dropdown = document.getElementById('dropdown')
+
+        timeMenuToggleOpen = false
+        function toggleTimeMenu() {
+            if (timeMenuToggleOpen == false) {
+                timeSelector.classList = 'open'
+                timeMenuToggleOpen = true
+            } else if (timeMenuToggleOpen == true) {
+                timeSelector.classList = 'close'
+                timeMenuToggleOpen = false
+            }
+        }
+        dropdown.addEventListener('click', toggleTimeMenu)
+
+        const stopwatch = document.getElementById('stopwatch')
+        const stopwatchSelector = document.getElementById('stopwatch-select')
+        const pomodoro = document.getElementById('pomodoro')
+        const pomodoroSelector = document.getElementById('pomodoro-select')
+
+        stopwatchSelector.addEventListener('click', function () {
+            timeSelector.appendChild(pomodoroSelector)
+            setTimerType()
+        })
+        pomodoroSelector.addEventListener('click', function () {
+            timeSelector.appendChild(stopwatchSelector)
+            setTimerType()
+        })
+
+        function setTimerType() {
+            let currentTimer = timeSelector.querySelector(':first-child')
+            if (currentTimer.id == 'stopwatch-select') {
+                stopwatch.classList.add('active')
+                pomodoro.classList.remove('active')
+            } else if (currentTimer.id == 'pomodoro-select') {
+                stopwatch.classList.remove('active')
+                pomodoro.classList.add('active')
+            }
+        }
+        setTimerType()
+
+
+        var minutes = document.querySelector('#stopwatch .minutes')
+        // minutes = minutes.textContent = '00'
+        var min = 0
+        var seconds = document.querySelector('#stopwatch .seconds')
+        // seconds = seconds.textContent = '00'
+        var sec = 0
+        var milliseconds = document.querySelector('#stopwatch .milliseconds')
+        // milliseconds = milliseconds.textContent = '00'
+        var milli = 0
+
+        const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
+        const stopwatchReset = document.querySelector('#stopwatch button.reset')
+        var stopwatchOff = false
+        var intervals;
+        var static = true
+        stopwatchReset.addEventListener('click', function () {
+            // stop the stopwatch
+            // continue the stopwatch even while the user is in a different tab?
+            milli = 0
+            sec = 0
+            min = 0
+            minutes.textContent = min.toString()
+            seconds.textContent = sec.toString()
+            milliseconds.textContent = milli.toString()
+            // if (stopwatchOff == true) {
+            stopwatchReset.disabled = false
+            stopwatchOff = false
+            clearInterval(intervals)
+            static = true
+            // }
+
+            dropdown.addEventListener('click', toggleTimeMenu)
+        })
+
+        stopwatchStart.addEventListener('click', function () {
+            static = false;
+            if (stopwatchOff == true) {
+                clearInterval(intervals)
+                // stopwatchReset.disabled = false
+                stopwatchStart.textContent = 'Start'
+                stopwatchOff = false
+            } else if (stopwatchOff == false) {
+                incrementUp()
+                function incrementUp() {
+                    if (milli == 1000) {
+                        sec += 1
+                        milli = 0
+                    } else {
+                        milli += 10
+                    }
+                    if (sec == 60) {
+                        sec = 0
+                        min += 1
+                    }
+                    if (min == 60) {
+                        // set false
+                    }
+                }
+                intervals = setInterval(function () {
+                    minutes.textContent = min.toString()
+                    seconds.textContent = sec.toString()
+                    milliseconds.textContent = milli.toString()
+                    incrementUp()
+                }, 10);
+                stopwatchReset.disabled = false
+                stopwatchStart.textContent = 'Stop'
+                // disable the timer dropdown
+                dropdown.removeEventListener('click', toggleTimeMenu)
+                stopwatchOff = true
+
+            }
+        })
+
+        const timePopUp = document.getElementById('time')
+        const musicPopUp = document.getElementById('music')
+
+        timePopUp.setAttribute('state', 'standby')
+        musicPopUp.setAttribute('state', 'standby')
+
+        var popUpIcons = document.querySelectorAll('.pop-up[state=standby] nav img')
+        var collapseButtons = document.querySelectorAll('.pop-up nav button.collapse')
+        popUpIcons.forEach(function (icon) {
+            icon.addEventListener('click', popUpState)
+        })
+        collapseButtons.forEach(function (button) {
+            button.addEventListener('click', popUpState)
+        })
+
+        // if something is running, allow for a third state!
+        function popUpState() {
+            if (timePopUp.getAttribute('state') == 'standby') {
+                timePopUp.setAttribute('state', 'active')
+            } else if (timePopUp.getAttribute('state') == 'peek') {
+                timePopUp.setAttribute('state', 'active')
+            } else if (timePopUp.getAttribute('state') == 'active' && static == true) {
+                timePopUp.setAttribute('state', 'standby')
+            } else if (timePopUp.getAttribute('state') == 'active') {
+                timePopUp.setAttribute('state', 'peek')
+            }
+        }
+
+        var workMin = 0,
+            workSec = 3
+        var workMinutes = document.querySelector('#pomodoro #work .minutes')
+        var workSeconds = document.querySelector('#pomodoro #work .seconds')
+        var breakMin = 0,
+            breakSec = 3
+        var breakMinutes = document.querySelector('#pomodoro #break .minutes')
+        var breakSeconds = document.querySelector('#pomodoro #break .seconds')
+
+        const workAdd = document.querySelector('#pomodoro #work button.add')
+        const workSubtract = document.querySelector('#pomodoro #work button.subtract')
+        const breakAdd = document.querySelector('#pomodoro #break button.add')
+        const breakSubtract = document.querySelector('#pomodoro #break button.subtract')
+        const pomoStartStop = document.querySelector('#pomodoro button.start-stop')
+        var pomoMinutes = document.querySelector('#pomodoro #timer .minutes')
+        var pomoSeconds = document.querySelector('#pomodoro #timer .seconds')
+
+        var pomoMin = workMin,
+            pomoSec = workSec
+
+        var pomoOff = false
+        var pomoIntervals
+        workAdd.addEventListener('click', () => pomoTime('add', 'work'))
+        workSubtract.addEventListener('click', () => pomoTime('subtract', 'work'))
+        breakAdd.addEventListener('click', () => pomoTime('add', 'break'))
+        breakSubtract.addEventListener('click', () => pomoTime('subtract', 'break'))
+        pomoStartStop.addEventListener('click', function () {
+            static = false;
+            if (pomoOff == true) {
+                clearInterval(pomoIntervals)
+                pomoOff = false
+            } else if (pomoOff == false) {
+                function incrementDown() {
+
+                    if (pomoSec == 0) {
+                        pomoMin -= 1
+                        pomoSec = 59
+                    } else {
+                        pomoSec -= 1
+                    }
+                    if (pomoMin == 0 && pomoSec == 0) {
+                        console.log('pomoSec')
+                        pomoMinutes.textContent = pomoMin.toString()
+                        pomoSeconds.textContent = pomoSec.toString()
+                        console.log(pomoMinutes.textContent = pomoMin.toString())
+                        sessions += 1
+                        pomodoroTimer()
+                    }
+                }
+                // incrementDown()
+                pomoIntervals = setInterval(function () {
+                    
+                    pomoMinutes.textContent = pomoMin.toString()
+                    pomoSeconds.textContent = pomoSec.toString()
+                    incrementDown()
+                }, 1000);
+                incrementDown()
+                pomoOff = true
+            }
+        })
+
+        function pomoTime(operator, mode) {
+
+            if (mode == 'work') {
+                if (operator == 'add' && workMin < 60) {
+                    workMin += 5
+                } else if (operator == 'subtract' && workMin > 5) {
+                    workMin -= 5
+                }
+            } else if (mode == 'break') {
+
+                if (operator == 'add' && breakMin < 20) {
+                    breakMin += 5
+                } else if (operator == 'subtract' && breakMin > 5) {
+                    breakMin -= 5
+                }
+            }
+
+            workMinutes.textContent = workMin
+            breakMinutes.textContent = breakMin
+
+        }
+
+        var phase = 'work'
+        var sessions = 0
+        function pomodoroTimer() {
+            if (sessions < 5) {
+                console.log(phase)
+                if (phase == 'work') {
+                    pomoMin = workMin
+                    pomoSec = workSec
+                    phase = 'break'
+                    
+                }
+
+                else if (phase == 'break') {
+                    pomoMin = breakMin
+                    pomoSec = breakSec
+                    phase = 'work'
+                }
+                
+            }
+            // sessions += 1
+
+
+
+
+            // set the screen to the massive countdown
+            // start button becomes stop button
+            // increment the meters to reflect the timers - --- - --- -
+            // at the end of the timer: what happens?
+        }

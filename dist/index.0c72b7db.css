@@ -1176,6 +1176,9 @@ form label .false-radio span {
   padding: 16px;
   filter: drop-shadow(0 0 2px #30303018);
 }
+.pop-up button.icon {
+  padding: 12px;
+}
 .pop-up#time {
   right: 336px;
 }
@@ -1199,5 +1202,21 @@ form label .false-radio span {
 }
 .pop-up#music {
   right: 12px;
+}
+.pop-up[state=standby] {
+  height: 72px;
+  width: 36px;
+}
+.pop-up[state=standby]#time {
+  right: 92px;
+}
+.pop-up[state=standby] * {
+  display: none;
+}
+.pop-up[state=standby] nav, .pop-up[state=standby] nav img {
+  display: flex;
+}
+.pop-up[state=peek] {
+  height: 72px;
 }
 /*# sourceMappingURL=index.0c72b7db.css.map */

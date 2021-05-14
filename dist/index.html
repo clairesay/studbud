@@ -37,8 +37,8 @@
         <button id="content-tab" class="tab">Content</button>
         <button id="tasks-tab" class="tab">Tasks</button>
         <section id="content">
-            
-            
+
+
             <!-- <button id="filter-by" class="button" type="button">Filter by</button>
             <div class="tags"></div> -->
             <div class="group">
@@ -57,7 +57,7 @@
 
 
                     <h3 class="open-link"><img src="/open-link.c3adc51b.svg"></h3>
-                
+
                 </div>
                 <div class="tiles">
                     <!-- <article class="tile">
@@ -121,9 +121,9 @@
                         <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
                     </svg>
                     <div id="delete" class="tooltip">Delete column</div>
+
                     
-                
-                    
+
                 </div>
                 <div class="cards">
                 </div>
@@ -141,7 +141,7 @@
                     </svg>
 
                     
-                    
+
 
                 </div>
                 <div class="cards">
@@ -183,25 +183,48 @@
                 </div> -->
                 <svg width="10" height="6" viewbox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L5 5L9 1" stroke="#909090" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>   
+                </svg>
             </div>
-            <button class="button icon">
+            <button class="button icon collapse">
                 <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
                     <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
-                </svg>   
+                </svg>
             </button>
         </nav>
         <article id="stopwatch">
-            <h1><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
+            <h1 style="display: block; width: 100%;
+"><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
             <div>
-                <button class="button primary">Start</button>
-                <button class="button secondary" disabled="">Reset</button>
+                <button class="button primary start-stop">Start</button>
+                <button class="button secondary reset">Reset</button>
             </div>
             <h3>Feeling speedy? Time it!</h3>
         </article>
         <article id="pomodoro">
+            <div id="work">
+                <button class="secondary icon subtract">-</button>
+                <h1 style="display: block; width: 100%;
+"><span class="minutes">00</span>:<span class="seconds">00</span>
+                </h1>
+                <button class="secondary icon add">+</button>
+            </div>
+            <div id="break">
+                <button class="secondary icon subtract">-</button>
+                <h1 style="display: block; width: 100%;
+"><span class="minutes">00</span>:<span class="seconds">00</span>
+                </h1>
+                <button class="secondary icon add">+</button>
+            </div>
+            <!-- <div> -->
+            <button class="button primary start-stop">Start</button>
 
+            <!-- </div> -->
+            <div id="timer">
+                <h1 style="display: block; width: 100%;
+"><span class="minutes">00</span>:<span class="seconds">00</span>
+                </h1>
+            </div>
         </article>
     </section>
     <section id="music" class="pop-up"></section>
@@ -463,12 +486,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"4owYw":[function(require,module,exports) {
+})({"6OD4I":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "30703518185227be53704516771f9e3f";
+module.bundle.HMR_BUNDLE_ID = "5d94355818286aa3fb0ba0b53e316bb0";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -764,11 +787,11 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"5KZf3":[function(require,module,exports) {
+},{}],"3xDtO":[function(require,module,exports) {
 const timeToolsOverlay = document.getElementById('time')
         const timeSelector = document.getElementById('time-selector')
         const dropdown = document.getElementById('dropdown')
-        
+
         timeMenuToggleOpen = false
         function toggleTimeMenu() {
             if (timeMenuToggleOpen == false) {
@@ -786,11 +809,11 @@ const timeToolsOverlay = document.getElementById('time')
         const pomodoro = document.getElementById('pomodoro')
         const pomodoroSelector = document.getElementById('pomodoro-select')
 
-        stopwatchSelector.addEventListener('click', function() {
+        stopwatchSelector.addEventListener('click', function () {
             timeSelector.appendChild(pomodoroSelector)
             setTimerType()
         })
-        pomodoroSelector.addEventListener('click', function() {
+        pomodoroSelector.addEventListener('click', function () {
             timeSelector.appendChild(stopwatchSelector)
             setTimerType()
         })
@@ -806,7 +829,232 @@ const timeToolsOverlay = document.getElementById('time')
             }
         }
         setTimerType()
-},{}]},["4owYw","5KZf3"], "5KZf3", "parcelRequirec526")
+
+
+        var minutes = document.querySelector('#stopwatch .minutes')
+        // minutes = minutes.textContent = '00'
+        var min = 0
+        var seconds = document.querySelector('#stopwatch .seconds')
+        // seconds = seconds.textContent = '00'
+        var sec = 0
+        var milliseconds = document.querySelector('#stopwatch .milliseconds')
+        // milliseconds = milliseconds.textContent = '00'
+        var milli = 0
+
+        const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
+        const stopwatchReset = document.querySelector('#stopwatch button.reset')
+        var stopwatchOff = false
+        var intervals;
+        var static = true
+        stopwatchReset.addEventListener('click', function () {
+            // stop the stopwatch
+            // continue the stopwatch even while the user is in a different tab?
+            milli = 0
+            sec = 0
+            min = 0
+            minutes.textContent = min.toString()
+            seconds.textContent = sec.toString()
+            milliseconds.textContent = milli.toString()
+            // if (stopwatchOff == true) {
+            stopwatchReset.disabled = false
+            stopwatchOff = false
+            clearInterval(intervals)
+            static = true
+            // }
+
+            dropdown.addEventListener('click', toggleTimeMenu)
+        })
+
+        stopwatchStart.addEventListener('click', function () {
+            static = false;
+            if (stopwatchOff == true) {
+                clearInterval(intervals)
+                // stopwatchReset.disabled = false
+                stopwatchStart.textContent = 'Start'
+                stopwatchOff = false
+            } else if (stopwatchOff == false) {
+                incrementUp()
+                function incrementUp() {
+                    if (milli == 1000) {
+                        sec += 1
+                        milli = 0
+                    } else {
+                        milli += 10
+                    }
+                    if (sec == 60) {
+                        sec = 0
+                        min += 1
+                    }
+                    if (min == 60) {
+                        // set false
+                    }
+                }
+                intervals = setInterval(function () {
+                    minutes.textContent = min.toString()
+                    seconds.textContent = sec.toString()
+                    milliseconds.textContent = milli.toString()
+                    incrementUp()
+                }, 10);
+                stopwatchReset.disabled = false
+                stopwatchStart.textContent = 'Stop'
+                // disable the timer dropdown
+                dropdown.removeEventListener('click', toggleTimeMenu)
+                stopwatchOff = true
+
+            }
+        })
+
+        const timePopUp = document.getElementById('time')
+        const musicPopUp = document.getElementById('music')
+
+        timePopUp.setAttribute('state', 'standby')
+        musicPopUp.setAttribute('state', 'standby')
+
+        var popUpIcons = document.querySelectorAll('.pop-up[state=standby] nav img')
+        var collapseButtons = document.querySelectorAll('.pop-up nav button.collapse')
+        popUpIcons.forEach(function (icon) {
+            icon.addEventListener('click', popUpState)
+        })
+        collapseButtons.forEach(function (button) {
+            button.addEventListener('click', popUpState)
+        })
+
+        // if something is running, allow for a third state!
+        function popUpState() {
+            if (timePopUp.getAttribute('state') == 'standby') {
+                timePopUp.setAttribute('state', 'active')
+            } else if (timePopUp.getAttribute('state') == 'peek') {
+                timePopUp.setAttribute('state', 'active')
+            } else if (timePopUp.getAttribute('state') == 'active' && static == true) {
+                timePopUp.setAttribute('state', 'standby')
+            } else if (timePopUp.getAttribute('state') == 'active') {
+                timePopUp.setAttribute('state', 'peek')
+            }
+        }
+
+        var workMin = 25,
+            workSec = 0
+        var workMinutes = document.querySelector('#pomodoro #work .minutes')
+        var workSeconds = document.querySelector('#pomodoro #work .seconds')
+        var breakMin = 5,
+            breakSec = 0
+        var breakMinutes = document.querySelector('#pomodoro #break .minutes')
+        var breakSeconds = document.querySelector('#pomodoro #break .seconds')
+
+        const workAdd = document.querySelector('#pomodoro #work button.add')
+        const workSubtract = document.querySelector('#pomodoro #work button.subtract')
+        const breakAdd = document.querySelector('#pomodoro #break button.add')
+        const breakSubtract = document.querySelector('#pomodoro #break button.subtract')
+        const pomoStartStop = document.querySelector('#pomodoro button.start-stop')
+        var pomoMinutes = document.querySelector('#pomodoro #timer .minutes')
+        var pomoSeconds = document.querySelector('#pomodoro #timer .seconds')
+
+        var pomoMin = workMin,
+            pomoSec = workSec
+
+        var pomoOff = false
+        var pomoIntervals
+        workAdd.addEventListener('click', () => pomoTime('add', 'work'))
+        workSubtract.addEventListener('click', () => pomoTime('subtract', 'work'))
+        breakAdd.addEventListener('click', () => pomoTime('add', 'break'))
+        breakSubtract.addEventListener('click', () => pomoTime('subtract', 'break'))
+        pomoStartStop.addEventListener('click', function () {
+            
+            if (pomoOff == true) {
+                static = true;
+                clearInterval(pomoIntervals)
+                pomoStartStop.textContent = 'Start'
+                dropdown.addEventListener('click', toggleTimeMenu)
+                pomoOff = false
+            } else if (pomoOff == false) {
+                static = false;
+                function incrementDown() {
+                    if (pomoMin == 0 && pomoSec == 0) {
+                        // pomoMinutes.textContent = pomoMin.toString()
+                        // pomoSeconds.textContent = pomoSec.toString()
+ 
+                        sessions += 1
+                        pomodoroTimer()
+                    } else if (pomoSec == 0) {
+                        pomoMin -= 1
+                        pomoSec = 59
+                    } else {
+                        pomoSec -= 1
+                    }
+
+                }
+                // incrementDown()
+                pomoIntervals = setInterval(function () {
+                    incrementDown()
+                    pomoMinutes.textContent = pomoMin.toString()
+                    pomoSeconds.textContent = pomoSec.toString()
+                    // 3
+                    
+                }, 1000);
+                pomoStartStop.textContent = 'Stop'
+                dropdown.removeEventListener('click', toggleTimeMenu)
+                pomoOff = true
+            }
+        })
+
+        function pomoTime(operator, mode) {
+
+            if (mode == 'work') {
+                if (operator == 'add' && workMin < 60) {
+                    workMin += 5
+                } else if (operator == 'subtract' && workMin > 5) {
+                    workMin -= 5
+                }
+            } else if (mode == 'break') {
+
+                if (operator == 'add' && breakMin < 20) {
+                    breakMin += 5
+                } else if (operator == 'subtract' && breakMin > 5) {
+                    breakMin -= 5
+                }
+            }
+            pomoMin = workMin
+            pomoSec = workSec
+
+            workMinutes.textContent = workMin
+            breakMinutes.textContent = breakMin
+
+        }
+        workMinutes.textContent = workMin
+        breakMinutes.textContent = breakMin
+        var phase = 'break'
+        var sessions = 0
+        function pomodoroTimer() {
+            if (sessions < 5) {
+                console.log(phase)
+                if (phase == 'work') {
+                    pomoMin = workMin
+                    pomoSec = workSec
+                    phase = 'break'
+                    
+                }
+
+                else if (phase == 'break') {
+                    pomoMin = breakMin
+                    pomoSec = breakSec
+                    phase = 'work'
+                }
+                
+            } else {
+                clearInterval(pomoIntervals)
+                pomoOff = false;
+            }
+            // sessions += 1
+
+
+
+
+            // set the screen to the massive countdown
+            // start button becomes stop button
+            // increment the meters to reflect the timers - --- - --- -
+            // at the end of the timer: what happens?
+        }
+},{}]},["6OD4I","3xDtO"], "3xDtO", "parcelRequirec526")
 
 </script>
     <script src="/index.8e0a979d.js"></script>

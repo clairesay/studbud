@@ -8,6 +8,10 @@
     padding: 16px;
     filter: drop-shadow(0 0 2px #30303018);
 
+    button.icon {
+        padding: 12px;
+    }
+
     &#time {
         right: 336px;
 
@@ -40,4 +44,28 @@
     &#music {
         right: 12px;
     }
+}
+
+.pop-up[state=standby] {
+    height: 72px;
+    width: 36px;
+
+    &#time {
+        right: 92px;
+    }
+
+    * {
+        display: none
+    }
+
+    nav, nav img {
+        display: flex;
+    }
+
+
+}
+
+.pop-up[state=peek] {
+    height: 72px;
+
 }
