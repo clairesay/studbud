@@ -940,7 +940,9 @@ const timeToolsOverlay = document.getElementById('time')
             breakSec = 0
         var breakMinutes = document.querySelector('#pomodoro #break .minutes')
         var breakSeconds = document.querySelector('#pomodoro #break .seconds')
-
+        const workButtons = document.querySelector('#pomodoro #work')
+        const breakButtons = document.querySelector('#pomodoro #break')
+        const timer = document.querySelector('#pomodoro div#timer')
         const workAdd = document.querySelector('#pomodoro #work button.add')
         const workSubtract = document.querySelector('#pomodoro #work button.subtract')
         const breakAdd = document.querySelector('#pomodoro #break button.add')
@@ -949,8 +951,10 @@ const timeToolsOverlay = document.getElementById('time')
         var pomoMinutes = document.querySelector('#pomodoro #timer .minutes')
         var pomoSeconds = document.querySelector('#pomodoro #timer .seconds')
 
-        var pomoMin = workMin,
-            pomoSec = workSec
+        var pomoMin = workMin
+        var pomoSec = workSec
+        pomoMinutes.textContent = pomoMin.toString()
+        // pomoSeconds.textContent = pomoSec.toString()
 
         var pomoOff = false
         var pomoIntervals
@@ -958,13 +962,24 @@ const timeToolsOverlay = document.getElementById('time')
         workSubtract.addEventListener('click', () => pomoTime('subtract', 'work'))
         breakAdd.addEventListener('click', () => pomoTime('add', 'break'))
         breakSubtract.addEventListener('click', () => pomoTime('subtract', 'break'))
+        workButtons.style.display = 'flex'
+        breakButtons.style.display = 'flex'
+        timer.style.display = 'none'
         pomoStartStop.addEventListener('click', function () {
-            
+        // reference for pomo intervals https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
             if (pomoOff == true) {
+                pomoMin = workMin
+                pomoSec = workSec
+                pomoMinutes.textContent = pomoMin.toString()
+                pomoSeconds.textContent = pomoSec.toString()
                 static = true;
                 clearInterval(pomoIntervals)
                 pomoStartStop.textContent = 'Start'
                 dropdown.addEventListener('click', toggleTimeMenu)
+                workButtons.style.display = 'flex'
+                breakButtons.style.display = 'flex'
+                timer.style.display = 'none'
+
                 pomoOff = false
             } else if (pomoOff == false) {
                 static = false;
@@ -983,6 +998,9 @@ const timeToolsOverlay = document.getElementById('time')
                     }
 
                 }
+                workButtons.style.display = 'none'
+                breakButtons.style.display = 'none'
+                timer.style.display = 'flex'
                 // incrementDown()
                 pomoIntervals = setInterval(function () {
                     incrementDown()
@@ -1014,8 +1032,11 @@ const timeToolsOverlay = document.getElementById('time')
                 }
             }
             pomoMin = workMin
-            pomoSec = workSec
-
+            // pomoSec = workSec
+            
+            pomoMinutes.textContent = pomoMin.toString()
+            // pomoSeconds.textContent = pomoSec.toString()
+            // console.log(pomoMinutes)
             workMinutes.textContent = workMin
             breakMinutes.textContent = breakMin
 
