@@ -446,12 +446,15 @@ var _group = require('./group');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _groupDefault = _parcelHelpers.interopDefault(_group);
 var _countTiles = require('./count-tiles');
+// begin by updating how many tiles there are in the groups
 _countTiles.countTiles();
 const createContentForm = document.getElementById('create-content-form');
+// updating the group names that a card can be organised in, if any change happens to the group names
 function updateGroupNames() {
   let groupNames = document.querySelectorAll('.group-name');
   let groups = createContentForm.querySelector('select[name=group]');
   groups.innerHTML = '';
+  // for all of the group names, we'll want to update the select options
   groupNames.forEach(function (object) {
     let newOption = document.createElement('option');
     newOption.textContent = object.value;
@@ -464,6 +467,7 @@ const modalBackground = document.getElementById('modal-background');
 const addGroupForm = document.getElementById('add-group-form');
 var newGroupToggle = false;
 const newGroup = document.getElementById('new-group');
+// opening/closing the 'add a new group' form
 function toggleGroupForm() {
   if (newGroupToggle == false) {
     addGroupForm.classList.add('active');
@@ -476,50 +480,35 @@ function toggleGroupForm() {
     modalBackground.style.display = 'none';
   }
 }
-// function createNewSortable() {
-// let newCard = document.querySelectorAll('.cards')
-// newCard = newCard[newCard.length - 1]
-// new Sortable(newCard, {
-// group: 'nested',
-// animation: 200,
-// swapThreshold: 0.65,
-// ghostClass: 'ghost-card',
-// chosenClass: 'chosen-card',
-// dragClass: "sortable-drag",
-// forceFallback: true,
-// onEnd: function (evt) {
-// kanbanA.countCards()
-// }
-// })
-// }
 // adding an event listener to bring up the form
 newGroup.addEventListener('click', toggleGroupForm);
-// adding an event listener for submitting the column
+// adding event listeners to close the form without saving any input
 const groupCancelButton = document.getElementById('add-group-cancel');
 const groupCloseButton = groupCancelButton.nextElementSibling;
-// columnCancelButton.querySelector('~ button.form-close')
 groupCancelButton.addEventListener('click', function () {
   toggleGroupForm();
 });
 groupCloseButton.addEventListener('click', function () {
   toggleGroupForm();
 });
+// adding an event listener for submitting the column
 const groupSubmitButton = document.getElementById('add-group-submit');
 groupSubmitButton.addEventListener('click', function (event) {
   event.preventDefault();
+  // setting an id and name
   let id = Date.now();
   let name = addGroupForm.querySelector('input').value;
-  console.log(name);
+  // create new object in group class
   let group = new _groupDefault.default(id, name);
   group.createGroup();
-  // updateColumnNames()
+  // reset states
   toggleGroupForm();
   updateGroupNames();
   _countTiles.openGroupLinks();
   _countTiles.countTiles();
   groupEditDeleteFunctionality();
 });
-// //////////// COLUMN BUTTONS
+// allow for each group's edit and delete functionality
 function groupEditDeleteFunctionality() {
   const groupTitles = document.querySelectorAll('div.group-title');
   groupTitles.forEach(function (groupTitle) {
@@ -527,7 +516,6 @@ function groupEditDeleteFunctionality() {
     let deleteGroupButton = groupTitle.querySelector('svg.delete-group');
     let groupNameInput = groupTitle.querySelector('input.group-name');
     editGroupButton.addEventListener('click', function () {
-      // columnNameInput.removeAttribute('disabled')
       groupNameInput.focus();
     });
     groupNameInput.addEventListener('change', function (event) {
@@ -565,7 +553,6 @@ function groupEditDeleteFunctionality() {
       let groups = document.getElementsByClassName('group');
       let group = groupTitle.parentElement;
       let tiles = group.querySelectorAll('.tile');
-      // console.log()
       let groupDeleteToolTip = document.querySelector('div.tooltip#delete-group');
       if (groupDeleteToolTip === null) {
         let newToolTip = document.createElement('div');

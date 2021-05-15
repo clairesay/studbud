@@ -22,8 +22,8 @@ class Task {
         return this.id
     }
 
+    // making sure the column 'deletable' status is updated when a new card is added.
     updateColumnDelete() {
-        
         let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
         allDeleteColumnButtons.forEach( function(button) {
             let columns = document.getElementsByClassName('column')
@@ -57,7 +57,7 @@ class Task {
         editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
           </svg>`
-        // timeIcon.classList.add('time-icon')
+        // time icon has been replaced with a priority rating
         timeIcon.style.width = '12px'
         timeIcon.style.height = '12px'
         timeIcon.style.borderRadius = '12px'

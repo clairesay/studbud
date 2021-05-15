@@ -6,24 +6,14 @@ class Column {
 
     // updates column on hover
     updateColumns() {
-        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-        allDeleteColumnButtons.forEach( function(button) {
-            let columns = document.getElementsByClassName('column')
-            let column = button.parentElement.parentElement
-            let cards = column.querySelectorAll('.card')
-    
-            if (columns.length > 3 && cards.length == 0) {
-                button.classList.remove('disabled')
-            } else if (columns.length <= 3 || cards.length > 0) {
-                button.classList.add('disabled')
-            }
-        })
+        this.updateDeleteButton()
 
-        // REMOVING OPTIONS FROM DROPDOWN FOR STATUSES
+        // updating options from task form dropdown when a columns are renamed or deleted
         const createTaskForm = document.getElementById('create-task-form')
-        // function updateColumnNames() {
+        
         let columnNames = document.querySelectorAll('.column-name')
         let statuses = createTaskForm.querySelector('select[name=status]');
+        // clear all statuses, then for re-populate
         statuses.innerHTML = ''
         columnNames.forEach(function (object) {
             let newOption = document.createElement('option')
@@ -33,25 +23,41 @@ class Column {
         })
     }
 
-    editColumn(editColumnButton) {
+    updateDeleteButton() {
+        // updating delete button functionality for all buttons - this function is reused where possible
+        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
+        allDeleteColumnButtons.forEach(function (button) {
+            let columns = document.getElementsByClassName('column')
+            let column = button.parentElement.parentElement
+            let cards = column.querySelectorAll('.card')
 
+            if (columns.length > 3 && cards.length == 0) {
+                button.classList.remove('disabled')
+            } else if (columns.length <= 3 || cards.length > 0) {
+                button.classList.add('disabled')
+            }
+        })
+    }
+
+    editColumn(editColumnButton) {
+        // reusable function for event listeners below
         function updateColumns() {
+            // updating options from task form dropdown when a columns are renamed or deleted
             let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-            allDeleteColumnButtons.forEach( function(button) {
+            allDeleteColumnButtons.forEach(function (button) {
                 let columns = document.getElementsByClassName('column')
                 let column = button.parentElement.parentElement
                 let cards = column.querySelectorAll('.card')
-        
+    
                 if (columns.length > 3 && cards.length == 0) {
                     button.classList.remove('disabled')
                 } else if (columns.length <= 3 || cards.length > 0) {
                     button.classList.add('disabled')
                 }
             })
-    
-            // REMOVING OPTIONS FROM DROPDOWN FOR STATUSES
+
+            // updating delete button functionality for all buttons
             const createTaskForm = document.getElementById('create-task-form')
-            // function updateColumnNames() {
             let columnNames = document.querySelectorAll('.column-name')
             let statuses = createTaskForm.querySelector('select[name=status]');
             statuses.innerHTML = ''
@@ -62,56 +68,60 @@ class Column {
                 statuses.appendChild(newOption)
             })
         }
-       
+
+        // everytime the title is edited, update the value and refresh all edit and delete button statuses 
         let column = editColumnButton.parentElement
         let columnNameInput = column.querySelector('input.column-name')
-        columnNameInput.addEventListener('change', function(event) {
+        columnNameInput.addEventListener('change', function (event) {
             updateColumns()
         })
-        columnNameInput.addEventListener('keyup', function(event) {
+        columnNameInput.addEventListener('keyup', function (event) {
             if (event.key === 'Enter') {
                 columnNameInput.blur()
             }
             updateColumns()
         })
-        
-        editColumnButton.addEventListener('click', function() {
-            // columnNameInput.setAttribute('disabled', true)
+
+        // focus on input for renaming
+        editColumnButton.addEventListener('click', function () {
             columnNameInput.focus()
         })
-
+        // setting the tooltip
         const columnEditToolTip = document.querySelector('div.tooltip#edit')
-        editColumnButton.addEventListener('mouseover', function() {
+        editColumnButton.addEventListener('mouseover', function () {
             editColumnButton.parentElement.appendChild(columnEditToolTip)
         })
     }
 
     deleteColumn(deleteColumnButton) {
         // allow delete functionality for most columns as long as there are at least 3 and there are no cards in the column
-        deleteColumnButton.addEventListener('click', function() {
+        deleteColumnButton.addEventListener('click', function () {
             let columns = document.getElementsByClassName('column')
             let column = deleteColumnButton.parentElement.parentElement
             let cards = column.querySelectorAll('.card')
+            // check for more than 3 columns, and no cards within the column
             if (columns.length > 3 && cards.length == 0) {
                 column.remove()
-                // this.updateColumns();
+
                 /////////////
+                // updating status of all the edit and delete buttons when the delete button is clicked
                 let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-                allDeleteColumnButtons.forEach( function(button) {
+                allDeleteColumnButtons.forEach(function (button) {
                     let columns = document.getElementsByClassName('column')
                     let column = button.parentElement.parentElement
                     let cards = column.querySelectorAll('.card')
-            
+
                     if (columns.length > 3 && cards.length == 0) {
                         button.classList.remove('disabled')
                     } else if (columns.length <= 3 || cards.length > 0) {
                         button.classList.add('disabled')
                     }
                 })
-        
+
                 // REMOVING OPTIONS FROM DROPDOWN FOR STATUSES
                 const createTaskForm = document.getElementById('create-task-form')
-                // function updateColumnNames() {
+                
+                // updating the options in the task form dropdown 
                 let columnNames = document.querySelectorAll('.column-name')
                 let statuses = createTaskForm.querySelector('select[name=status]');
                 statuses.innerHTML = ''
@@ -126,7 +136,8 @@ class Column {
 
         // update tooltip
         const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
-        deleteColumnButton.addEventListener('mouseover', function() {
+        // adding event listeners for appropriate functionality on mouse over
+        deleteColumnButton.addEventListener('mouseover', function () {
             deleteColumnButton.parentElement.appendChild(columnDeleteToolTip)
             let columns = document.getElementsByClassName('column')
             let column = deleteColumnButton.parentElement.parentElement
@@ -152,6 +163,7 @@ class Column {
 
         let total = column.querySelector('h3.total')
         total.textContent = 0;
+        // remove any existing cards inside the column
         let cards = column.querySelectorAll('.card')
         cards.forEach(function (card) {
             card.remove()
@@ -160,6 +172,7 @@ class Column {
         let tasks = document.getElementById('tasks')
         tasks.appendChild(column)
 
+        // update the buttons to enable delete and edit status
         this.editColumn(editButton)
         this.deleteColumn(deleteButton)
         this.updateColumns()

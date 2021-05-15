@@ -72,6 +72,7 @@ columnCloseButton.addEventListener('click', function() {
 // submitting column
 const columnSubmitButton = document.getElementById('add-column-submit')
 columnSubmitButton.addEventListener('click', function (event) {
+    event.preventDefault()
     let id = Date.now()
     let name = addColumnForm.querySelector('input').value
 
@@ -123,12 +124,14 @@ columnTitles.forEach(function(columnTitle) {
             column.remove()
             updateColumnNames()
         }
+        // updating the 'disabled' visual of each delete icon
         let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
         allDeleteColumnButtons.forEach( function(button) {
             let columns = document.getElementsByClassName('column')
             let column = button.parentElement.parentElement
             let cards = column.querySelectorAll('.card')
-    
+            
+            //if there are cards inside the column, or there are only 3 columns, delete is disabled. 
             if (columns.length > 3 && cards.length == 0) {
                 button.classList.remove('disabled')
             } else if (columns.length <= 3 || cards.length > 0) {

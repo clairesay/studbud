@@ -35,6 +35,7 @@ export function openGroupLinks() {
                 let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link')
                 links.forEach(function(link) {
                     let url = link.getAttribute('href')
+                    // ensuring the link is to a valid external site
                     if (url.includes('https://') || url.includes('http://')) {
                         window.open(url)
                     } else {

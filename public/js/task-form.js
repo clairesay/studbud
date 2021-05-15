@@ -56,6 +56,7 @@ function autoFillTaskDetails(object) {
     let objectId = object.parentElement.id;
     objectId = objectId.replace('t-', '')
 
+    // for each element in the task list already
     taskList.forEach(function(task) {
 
         let thisTask = task
