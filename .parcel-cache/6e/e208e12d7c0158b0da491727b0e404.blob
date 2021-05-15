@@ -1199,6 +1199,7 @@ form label .false-radio span {
 }
 .pop-up#time #stopwatch.active, .pop-up#time #pomodoro.active {
   display: flex;
+  flex-direction: column;
 }
 .pop-up#music {
   right: 12px;
@@ -1223,13 +1224,13 @@ form label .false-radio span {
   width: 248px;
   height: 20px;
   display: flex;
+  gap: 4px;
   justify-content: space-between;
   background-color: red;
   position: relative;
 }
 #pomodoro #timeline div {
   background-color: salmon;
-  border: solid 2px black;
   height: 20px;
 }
 #pomodoro #timeline div div {
@@ -1237,4 +1238,30 @@ form label .false-radio span {
   width: 0;
   background-color: blue;
   border: none;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+#final-load {
+  width: 248px;
+  height: 20px;
+  background-color: black;
+}
+#final-load div {
+  background-color: purple;
+}
+@-webkit-keyframes load-spans {
+  from {
+    width: 0;
+  }
+  to {
+    width: inherit;
+  }
+}
+@keyframes load-spans {
+  from {
+    width: 0;
+  }
+  to {
+    width: inherit;
+  }
 }

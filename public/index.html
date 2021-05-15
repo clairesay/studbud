@@ -241,26 +241,28 @@
         </article>
         <article id="pomodoro">
             <div id="work">
-                <button class="secondary icon subtract">-</button>
+                <button class="button secondary icon subtract">-</button>
                 <h1 style="display: block; width: 100%;"><span class="minutes">00</span>:<span class="seconds">00</span>
                 </h1>
-                <button class="secondary icon add">+</button>
+                <button class="button secondary icon add">+</button>
             </div>
             <div id="break">
-                <button class="secondary icon subtract">-</button>
+                <button class="button secondary icon subtract">-</button>
                 <h1 style="display: block; width: 100%;"><span class="minutes">00</span>:<span class="seconds">00</span>
                 </h1>
-                <button class="secondary icon add">+</button>
+                <button class="button secondary icon add">+</button>
             </div>
+            <button id="reset-pomo" class="button secondary">Reset</button>
             <!-- <div> -->
             <div id="timeline"><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div><div class="length"><div></div></div></div>
+            <div id="final-load" class="length"><div></div></div>
             <button class="button primary start-stop">Start</button>
 
             <!-- </div> -->
             <div id="timer">
                 <h1 style="display: block; width: 100%;"><span class="minutes">00</span>:<span class="seconds">00</span>
                 </h1>
-
+                <h3 id="pomo-status"></h3>
                 
             </div>
         </article>
@@ -618,12 +620,12 @@
             }
         }
 
-        var workMin = 0,
-            workSec = 10
+        var workMin = 25,
+            workSec = 0
         var workMinutes = document.querySelector('#pomodoro #work .minutes')
         var workSeconds = document.querySelector('#pomodoro #work .seconds')
-        var breakMin = 0,
-            breakSec = 5
+        var breakMin = 5,
+            breakSec = 0
         var breakMinutes = document.querySelector('#pomodoro #break .minutes')
         var breakSeconds = document.querySelector('#pomodoro #break .seconds')
         const workButtons = document.querySelector('#pomodoro #work')
@@ -654,6 +656,18 @@
         var timeline = document.getElementById('timeline')
         const loadSpans = document.querySelectorAll('#pomodoro div.length > div')
         const allSpans = document.querySelectorAll('#pomodoro div > div.length')
+        const finalLoadSpanContainer = document.querySelector('#pomodoro div#final-load')
+        const finalLoadSpan = document.querySelector('#pomodoro div#final-load div')
+        console.log(finalLoadSpan)
+        const resetPomo = document.getElementById('reset-pomo')
+        resetPomo.addEventListener('click', function() {
+            pomoMin = 25
+            workMin = 25
+            breakMin = 5
+            workMinutes.textContent = (25).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            breakMinutes.textContent = (5).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+            pomoLength()
+        })
         // var timelineLength = timeline.clientWidth;
         pomoStartStop.addEventListener('click', function () {
             // reference for pomo intervals https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
@@ -672,32 +686,25 @@
                 timer.style.display = 'none'
 
                 pomoOff = false
+                loadSpans.forEach(function(span) {
+                    span.style.animation = ''
+                    // span.style.
+                    // span.style.backgroundColor = 'green'
+                    // span.classList.remove('active')
+                })
+                finalLoadSpan.style.animation = 'none'
+                phase = 'break'
+                sessions = 0
+                pomodoroTimer('static')
             } else if (pomoOff == false) {
                 static = false;
 
 
-                let fullTime = workSec + workMin*60;
-                console.log(fullTime)
-                let fullWidth = allSpans[0].getBoundingClientRect().width
-                console.log(sessions)
-                console.log(fullWidth)
-                // let percent = fullWidth/fullTime/fullWidth * 100
-                let percent = fullWidth/fullTime
-                console.log(percent)
-
                 function incrementDown() {
                     if (pomoMin == 0 && pomoSec == 0) {
-                        // pomoMinutes.textContent = pomoMin.toString()
-                        // pomoSeconds.textContent = pomoSec.toString()
-                        if (phase == 'work') {
-                            fullTime = workSec + workMin*60
-                        } else if (phase == 'break') {
-                            fullTime = breakSec + breakMin*60
-                        }
-                        fullWidth = allSpans[sessions + 1].style.width
-                        
-                        percent = fullWidth/fullTime
+                       
                         sessions += 1
+                        
                         pomodoroTimer()
 
                     } else if (pomoSec == 0) {
@@ -706,14 +713,6 @@
                     } else {
                         pomoSec -= 1
                     }
-                    
-
-                    fullWidth -= percent
-                    if (sessions < 5) {
-                        loadSpans[sessions].style.width = fullWidth + 'px'
-                    }
-                    
-                    // (pomoSec + 60 * pomoMin)/fullTime + 'px'
                 }
                 // timeline.style.display = 'none'
                 workButtons.style.display = 'none'
@@ -730,7 +729,9 @@
                 pomoStartStop.textContent = 'Stop'
                 dropdown.removeEventListener('click', toggleTimeMenu)
                 pomoOff = true
+                pomodoroTimer()
             }
+            
         })
         
         const workSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n + 1)')
@@ -738,19 +739,19 @@
         const breakSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n )')
         
         function pomoTime(operator, mode) {
-
+            let incrementValue = 5
             if (mode == 'work') {
                 if (operator == 'add' && workMin < 60) {
-                    workMin += 5
+                    workMin += incrementValue
                 } else if (operator == 'subtract' && workMin > 5) {
-                    workMin -= 5
+                    workMin -= incrementValue
                 }
             } else if (mode == 'break') {
 
                 if (operator == 'add' && breakMin < 20) {
-                    breakMin += 5
+                    breakMin += incrementValue
                 } else if (operator == 'subtract' && breakMin > 5) {
-                    breakMin -= 5
+                    breakMin -= incrementValue
                 }
             }
             pomoMin = workMin
@@ -769,7 +770,7 @@
             // SETTING THE PIPELINE
             let total = workMin * 3 + breakMin * 2
             // console.log(timelineLength)
-            let timelineLength = 248
+            let timelineLength = 232
             let workLength = workMin/total * timelineLength
             let breakLength = breakMin/total * timelineLength
             
@@ -784,12 +785,22 @@
         }
         workMinutes.textContent = (workMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
         breakMinutes.textContent = (breakMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-        var phase = 'break'
+        var phase = 'work'
         var sessions = 0
-        function pomodoroTimer() {
+        const pomoStatus = document.getElementById('pomo-status')
+        function pomodoroTimer(mode) {
+
+            // alert('called')
+            if (phase == 'finalbreak') {
+                // reset everything
+            }
+            pomoStatus.textContent = phase;
             if (sessions < 5) {
                 console.log(phase)
-                if (phase == 'work') {
+                
+                
+
+                    if (phase == 'work') {
                     pomoMin = workMin
                     pomoSec = workSec
                     phase = 'break'
@@ -802,19 +813,73 @@
                     phase = 'work'
                 }
 
+
+
+                let fullTime;
+
+
+                if (phase == 'work') {
+                    fullTime = workSec + workMin*60
+                    
+                } else if (phase == 'break') {
+                    fullTime = breakSec + breakMin*60
+                }
+                
+                // loadSpans[sessions].style.transitionDuration = fullTime + 's'
+                // loadSpans[sessions].style.backgroundColor = 'grey'
+                if (mode == 'static') {
+                    loadSpans[sessions].style.animation = 'none'
+                } else {
+                    loadSpans[sessions].style.animation = 'load-spans ' + fullTime + 's ' + 'linear forwards'
+                }
+                
+                loadSpans[sessions].classList.add('active')
+                finalLoadSpanContainer.style.display = 'none'
+                timeline.style.display = 'flex'
             } else if (sessions == 5) {
                 pomoMin = 30
                 pomoSec = 0
                 phase = 'finalbreak'
+                let fullTime = pomoMin*60 + pomoSec
+                finalLoadSpanContainer.style.display = 'flex'
+                timeline.style.display = 'none'
+                finalLoadSpan.style.animation = 'load-spans ' + fullTime + 's ' + 'linear forwards'
+                finalLoadSpan.classList.add('active')
             } else {
+                finalLoadSpanContainer.style.display = 'none'
+                timeline.style.display = 'flex'
+                pomoMin = workMin
+                pomoSec = workSec
+                pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                static = true;
                 clearInterval(pomoIntervals)
+                pomoStartStop.textContent = 'Start'
+                dropdown.addEventListener('click', toggleTimeMenu)
+                // timeline.style.display = 'flex'
+                workButtons.style.display = 'flex'
+                breakButtons.style.display = 'flex'
+                timer.style.display = 'none'
+
+                pomoOff = false
+                loadSpans.forEach(function(span) {
+                    span.style.animation = ''
+                })
+                finalLoadSpan.style.animation = 'none'
+                phase = 'work'
+                sessions = 0
+                // pomodoroTimer('static')
+                clearInterval(pomoIntervals)
+                
                 pomoOff = false;
                 workButtons.style.display = 'flex'
                 breakButtons.style.display = 'flex'
                 timer.style.display = 'none'
             }
+
         }
 
+        
 
     </script>
     <script src="main.js"></script>
