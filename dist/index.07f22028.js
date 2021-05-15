@@ -446,12 +446,7 @@ var _content = require('./content');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _contentDefault = _parcelHelpers.interopDefault(_content);
 var _countTiles = require('./count-tiles');
-var tags = document.querySelector('input[name=subject]');
-// TAGIFYING
-var tagify1 = new Tagify(tags, {
-  whitelist: ['INFO1110', 'COMP2000']
-});
-// 
+// declaring relevant variables
 const newContent = document.getElementById('new-content');
 const createContentForm = document.getElementById('create-content-form');
 var overlayToggle = false;
@@ -459,7 +454,9 @@ const modalBackground = document.getElementById('modal-background');
 newContent.addEventListener('click', function () {
   openContentForm();
 });
+// open content form (may be prepopulated or blank)
 function openContentForm(type) {
+  // if updating existing content, set type update
   if (type == 'update') {
     createContentForm.querySelector('h1').textContent = 'Edit an existing task';
     createContentForm.classList.add('update');
@@ -467,6 +464,7 @@ function openContentForm(type) {
     createContentForm.querySelector('h1').textContent = 'Create a new task';
     createContentForm.classList.remove('update');
   }
+  // show/hide
   if (overlayToggle == false) {
     createContentForm.classList.add('active');
     overlayToggle = true;
@@ -489,14 +487,17 @@ function reupdate() {
       editButton.addEventListener('click', addAutoFill);
       editButton.setAttribute('listener', 'true');
     }
+    // autofill existing details into form
     function addAutoFill() {
       autoFillContentDetails(editButton);
     }
   });
 }
 function autoFillContentDetails(object) {
+  // get id of content card
   let objectId = object.parentElement.id;
   objectId = objectId.replace('c-', '');
+  // for each item, get the value and set to the for inputs
   contentList.forEach(function (content) {
     let thisContent = content;
     if (thisContent.id == objectId) {
@@ -512,16 +513,19 @@ function autoFillContentDetails(object) {
       // group
       let group = createContentForm.querySelector('select[name=group]');
       group.value = object.parentElement.parentElement.parentElement.querySelector('div.group-title input.group-name').value;
+      // open up the form with updated content
       contentSaveButton.value = thisContent.id;
       openContentForm('update');
     }
   });
 }
+// array where we store all the content
 var contentList = [];
 const contentSaveButton = document.getElementById('content-save');
 const contentCancelButton = document.getElementById('edit-content-cancel');
 const contentCloseButton = contentCancelButton.nextElementSibling;
 const contentDeleteButton = document.getElementById('edit-content-delete');
+// cancel/close without saving
 contentCancelButton.addEventListener('click', function (event) {
   event.preventDefault();
   openContentForm();
@@ -532,9 +536,11 @@ contentCloseButton.addEventListener('click', function (event) {
   openContentForm();
   reupdate();
 });
+// delete this card
 contentDeleteButton.addEventListener('click', function (event) {
   event.preventDefault();
   let contentID = parseInt(contentSaveButton.value);
+  // iterate to find match in ID and delete that one
   for (let i = 0; i < contentList.length; i++) {
     var oldContent = contentList[i];
     if (oldContent.id == contentID) {
@@ -548,10 +554,11 @@ contentDeleteButton.addEventListener('click', function (event) {
   reupdate();
   _countTiles.countTiles();
 });
+// save the content
 contentSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
   let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentGroup;
-  // //
+  // if updating, look for content with same id value
   if (createContentForm.classList.contains('update')) {
     contentID = parseInt(contentSaveButton.value);
     for (let i = 0; i < contentList.length; i++) {
@@ -566,29 +573,28 @@ contentSaveButton.addEventListener('click', function (event) {
   } else {
     contentID = Date.now();
   }
+  // extract values from input form
   contentDetails = createContentForm.querySelectorAll('form input');
   contentTitle = contentDetails[0].value;
   contentDescription = contentDetails[1].value;
   contentLink = contentDetails[2].value;
-  // contentSubject = contentDetails[3].value
   let groups = createContentForm.querySelector('select[name=group]');
   contentGroup = groups.value;
+  // create new object in class
   content = new _contentDefault.default(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList);
   content.createCard(content.addContent());
+  // update tile count and group links
   openContentForm();
   _countTiles.countTiles();
   _countTiles.openGroupLinks();
-  // overlayToggle = false;
-  // modalBackground.style.display = 'none'
-  // createContentForm.classList.remove('active')
-  // createContentForm.reset()
   reupdate();
 });
 
-},{"./content":"7gsTB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./count-tiles":"293G8"}],"7gsTB":[function(require,module,exports) {
+},{"./content":"7gsTB","./count-tiles":"293G8","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7gsTB":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Content {
+  // declare variables
   constructor(id, title, description, link, group, contentList) {
     this.id = id;
     this.title = title;
@@ -598,10 +604,12 @@ class Content {
     this.link = link;
     this.contentList = contentList;
   }
+  /*add content to array*/
   addContent() {
     this.contentList.push(this);
     return this.id;
   }
+  /*create new card with relevant elements*/
   createCard(n) {
     let groupNames = document.querySelectorAll('.group-name');
     let cards = document.querySelectorAll('.tiles'), card = document.createElement('article'), title = document.createElement('h4'), description = document.createElement('p'), link = document.createElement('a'), linkIcon = document.createElement('svg'), editIcon = document.createElement('a'), line = document.createElement('HR');
@@ -609,6 +617,7 @@ class Content {
     card.classList.add('tile');
     title.textContent = this.title;
     description.textContent = this.description;
+    // fix links pending invalid nature
     if (this.link.includes('https://') || this.link.includes('http://')) {
       link.textContent = this.link;
       link.setAttribute('href', this.link);
@@ -616,9 +625,11 @@ class Content {
       link.textContent = 'https://' + this.link;
       link.setAttribute('href', 'https://' + this.link);
     }
+    // set attribute for 'open in new tab' functionality
     link.classList.add('external-link');
     link.setAttribute('target', '_blank');
     link.appendChild(linkIcon);
+    // add icons
     linkIcon.innerHTML = `<svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.9 5.00003C1.9 3.29003 3.29 1.90003 5 1.90003H9V3.05176e-05H5C2.24 3.05176e-05 0 2.24003 0 5.00003C0 7.76003 2.24 10 5 10H9V8.10003H5C3.29 8.10003 1.9 6.71003 1.9 5.00003ZM6 6.00003H14V4.00003H6V6.00003ZM15 3.05176e-05H11V1.90003H15C16.71 1.90003 18.1 3.29003 18.1 5.00003C18.1 6.71003 16.71 8.10003 15 8.10003H11V10H15C17.76 10 20 7.76003 20 5.00003C20 2.24003 17.76 3.05176e-05 15 3.05176e-05Z" fill="#909090"/>
         </svg>
@@ -627,11 +638,13 @@ class Content {
     editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
           </svg>`;
+    // append elements to the card
     card.appendChild(title);
     card.appendChild(description);
     card.appendChild(line);
     card.appendChild(link);
     card.appendChild(editIcon);
+    // add card to relevant group, or to 'Ungrouped' as the default
     let currentGroup = this.group;
     if (this.group == 'None') {
       cards[0].appendChild(card);
@@ -656,8 +669,9 @@ _parcelHelpers.export(exports, "openGroupLinks", function () {
   return openGroupLinks;
 });
 function countTiles() {
-  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles'), groups = document.querySelectorAll('.group'), tiles = document.getElementsByClassName('tile');
+  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles');
   // writing the total number of cards at the head of each column
+  // counts how many resource cards there are in each list
   total.forEach(function count(object, index) {
     let tileCount = 0;
     for (let i = 0; i < tileContainers[index].querySelectorAll('.tile').length; i++) {
@@ -665,6 +679,7 @@ function countTiles() {
         tileCount += 1;
       }
     }
+    // if the tilecount is empty, cannot open links
     if (tileCount == 0) {
       total[index].textContent = 'Try adding content to this group.';
     } else if (tileCount == 1) {
@@ -676,10 +691,12 @@ function countTiles() {
 }
 function openGroupLinks() {
   let groupLinks = document.querySelectorAll('h3.open-link');
+  // for each group link
   groupLinks.forEach(function (groupLink) {
     groupLink.style.backgroundColor = 'green';
     if (groupLink.getAttribute('listener') !== 'true') {
       groupLink.style.color = '#FFDD88';
+      // add an event listener so that on click, it opens up all links in child element
       groupLink.addEventListener('click', function () {
         let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link');
         links.forEach(function (link) {

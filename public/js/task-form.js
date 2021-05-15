@@ -1,6 +1,12 @@
 import Task from './task'
 import * as kanban from './kanban'
 
+var tags = document.querySelector('input[name=subject]')
+// TAGIFYING
+var tagify1 = new Tagify(tags, {
+    whitelist: ['INFO1110', 'COMP2000']
+})
+
 // opening or closing the task form and changing its type
 function toggleTaskForm(type) {
     // check if its an update form if so, reword, and show corresponding buttons :)

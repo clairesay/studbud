@@ -4,6 +4,7 @@ class Column {
         this.name = name;
     }
 
+    // updates column on hover
     updateColumns() {
         let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
         allDeleteColumnButtons.forEach( function(button) {
@@ -30,7 +31,6 @@ class Column {
             newOption.value = object.value
             statuses.appendChild(newOption)
         })
-        // }
     }
 
     editColumn(editColumnButton) {
@@ -121,10 +121,10 @@ class Column {
                     newOption.value = object.value
                     statuses.appendChild(newOption)
                 })
-                ////////////
             }
         })
 
+        // update tooltip
         const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
         deleteColumnButton.addEventListener('mouseover', function() {
             deleteColumnButton.parentElement.appendChild(columnDeleteToolTip)
@@ -140,9 +140,8 @@ class Column {
         })
     }
 
-
     createColumn() {
-        // creating the column
+        // duplicating existing columns and tweaking some elements to make it unique
         let column = document.querySelector('div.column')
         column = column.cloneNode(true)
 
@@ -158,36 +157,6 @@ class Column {
             card.remove()
         })
 
-        // let column = document.createElement('div')
-        // column.classList.add('column')
-        // let title = document.createElement('div')
-        // title.classList.add('title')
-        // let columnName = document.createElement('input')
-        // columnName.classList.add('column-name')
-        // columnName.value = this.name
-
-        // let editButton = document.querySelector('svg.edit-column')
-        // editButton = editButton.cloneNode(true)
-        
-        // let deleteButton = document.querySelector('svg.delete-column')
-        // deleteButton = deleteButton.cloneNode(true)
-
-        // let total = document.createElement('h3')
-        // total.classList.add('total')
-        // total.textContent = 0;
-        // let cards = document.createElement('div')
-        // cards.classList.add('cards')
-    
-        // title.appendChild(columnName)
-
-        // title.appendChild(total)
-        // title.appendChild(editButton)
-
-        // title.appendChild(deleteButton)
-
-        // column.appendChild(title)
-        // column.appendChild(cards)
-
         let tasks = document.getElementById('tasks')
         tasks.appendChild(column)
 
@@ -202,7 +171,6 @@ class Column {
             behavior: 'smooth'
         })
     }
-
 }
 
 export default Column

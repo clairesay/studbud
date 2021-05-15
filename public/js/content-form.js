@@ -1,19 +1,16 @@
 import Content from './content'
 import * as countTiles from './count-tiles'
 
-var tags = document.querySelector('input[name=subject]')
-// TAGIFYING
-var tagify1 = new Tagify(tags, {
-    whitelist : ['INFO1110', 'COMP2000']
-}) 
-// 
+// declaring relevant variables
 const newContent = document.getElementById('new-content')
 const createContentForm = document.getElementById('create-content-form')
 var overlayToggle = false
 const modalBackground = document.getElementById('modal-background')
-newContent.addEventListener('click', function() {openContentForm()})
+newContent.addEventListener('click', function () { openContentForm() })
 
+// open content form (may be prepopulated or blank)
 function openContentForm(type) {
+    // if updating existing content, set type update
     if (type == 'update') {
         createContentForm.querySelector('h1').textContent = 'Edit an existing task'
         createContentForm.classList.add('update')
@@ -21,6 +18,7 @@ function openContentForm(type) {
         createContentForm.querySelector('h1').textContent = 'Create a new task'
         createContentForm.classList.remove('update')
     }
+    // show/hide
     if (overlayToggle == false) {
         createContentForm.classList.add('active')
         overlayToggle = true
@@ -36,6 +34,7 @@ function openContentForm(type) {
 
 // adding event listeners to edit buttons 
 function reupdate() {
+
     // each card has an edit button that allows users to reaccess and update task details
     let editButtons = document.querySelectorAll('.edit-content')
     editButtons.forEach(function (editButton) {
@@ -45,6 +44,8 @@ function reupdate() {
             editButton.addEventListener('click', addAutoFill)
             editButton.setAttribute('listener', 'true')
         }
+
+        // autofill existing details into form
         function addAutoFill() {
             autoFillContentDetails(editButton)
         }
@@ -52,10 +53,12 @@ function reupdate() {
 }
 
 function autoFillContentDetails(object) {
+    // get id of content card
     let objectId = object.parentElement.id;
     objectId = objectId.replace('c-', '')
 
-    contentList.forEach(function(content) {
+    // for each item, get the value and set to the for inputs
+    contentList.forEach(function (content) {
         let thisContent = content;
         if (thisContent.id == objectId) {
             let contentDetails = createContentForm.querySelectorAll('form input');
@@ -67,37 +70,43 @@ function autoFillContentDetails(object) {
             contentDetails[2].value = thisContent.link
             //subject
             // contentDetails[3].value = thisContent.subject
+
             //group
             let group = createContentForm.querySelector('select[name=group]');
             group.value = object.parentElement.parentElement.parentElement.querySelector('div.group-title input.group-name').value
 
+            // open up the form with updated content
             contentSaveButton.value = thisContent.id
             openContentForm('update')
-
         }
     })
 }
 
+// array where we store all the content
 var contentList = [];
 
 const contentSaveButton = document.getElementById('content-save')
 const contentCancelButton = document.getElementById('edit-content-cancel')
 const contentCloseButton = contentCancelButton.nextElementSibling
 const contentDeleteButton = document.getElementById('edit-content-delete')
-contentCancelButton.addEventListener('click', function(event) {
+
+// cancel/close without saving
+contentCancelButton.addEventListener('click', function (event) {
     event.preventDefault()
     openContentForm()
     reupdate()
 })
-contentCloseButton.addEventListener('click', function(event) {
+contentCloseButton.addEventListener('click', function (event) {
     event.preventDefault()
     openContentForm()
     reupdate()
 })
 
-contentDeleteButton.addEventListener('click', function(event) {
+// delete this card
+contentDeleteButton.addEventListener('click', function (event) {
     event.preventDefault()
     let contentID = parseInt(contentSaveButton.value)
+    // iterate to find match in ID and delete that one
     for (let i = 0; i < contentList.length; i++) {
         var oldContent = contentList[i]
         if (oldContent.id == contentID) {
@@ -111,10 +120,12 @@ contentDeleteButton.addEventListener('click', function(event) {
     reupdate()
     countTiles.countTiles()
 })
-contentSaveButton.addEventListener('click', function(event) {
+
+// save the content
+contentSaveButton.addEventListener('click', function (event) {
     event.preventDefault()
     let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentGroup;
-    // //
+    // if updating, look for content with same id value
     if (createContentForm.classList.contains('update')) {
         contentID = parseInt(contentSaveButton.value)
         for (let i = 0; i < contentList.length; i++) {
@@ -126,29 +137,27 @@ contentSaveButton.addEventListener('click', function(event) {
                 contentSaveButton.value = ''
             }
         }
+    // otherwise, generate one
     } else {
         contentID = Date.now()
     }
 
-    
-      contentDetails = createContentForm.querySelectorAll('form input');
-      contentTitle = contentDetails[0].value
-      contentDescription = contentDetails[1].value
-      contentLink = contentDetails[2].value
-    //   contentSubject = contentDetails[3].value
+    // extract values from input form
+    contentDetails = createContentForm.querySelectorAll('form input');
+    contentTitle = contentDetails[0].value
+    contentDescription = contentDetails[1].value
+    contentLink = contentDetails[2].value
 
-      let groups = createContentForm.querySelector('select[name=group]')
-      contentGroup = groups.value
+    let groups = createContentForm.querySelector('select[name=group]')
+    contentGroup = groups.value
 
-      content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList)
-      content.createCard(content.addContent());
+    // create new object in class
+    content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList)
+    content.createCard(content.addContent());
 
-      openContentForm()
-      countTiles.countTiles()
-      countTiles.openGroupLinks()
-    //   overlayToggle = false;
-    //   modalBackground.style.display = 'none'
-    //   createContentForm.classList.remove('active')
-    //   createContentForm.reset()
+    // update tile count and group links
+    openContentForm()
+    countTiles.countTiles()
+    countTiles.openGroupLinks()
     reupdate()
 })

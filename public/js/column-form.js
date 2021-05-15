@@ -1,28 +1,9 @@
 import Column from './column'
 import * as kanbanA from './kanban'
-// import * as columnValidate from './column-validate'
-// var validator = new FormValidator('column', [{
-//     name: 'columnName',
-//     display: 'Column Name',
-//     rules: 'min_length[8]'
-//   }], function(errors, event) {
-//       alert('bro')
-//       if (errors.length > 0) {
-//         // Show the errors
-        
-//         var displayErrors = document.getElementById('selfRegMessage');
-//         var errorString = '';        
-//         for (var i = 0; i < errors.length; i++) {
-//           errorString += errors[i].message + '<br />';
-//         }
-//         displayErrors.innerHTML = errorString;
-//       }
-//   });
-
-//   console.log(validator)
-
 
 const createTaskForm = document.getElementById('create-task-form')
+
+// updates all column names after renaming
 function updateColumnNames() {
     let columnNames = document.querySelectorAll('.column-name')
     let statuses = createTaskForm.querySelector('select[name=status]');
@@ -41,6 +22,7 @@ const addColumnForm = document.getElementById('add-column-form')
 var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
 
+// toggle hide/show
 function toggleColumnForm() {
     if (newColumnToggle == false) {
         addColumnForm.classList.add('active')
@@ -54,6 +36,7 @@ function toggleColumnForm() {
     }
 }
 
+// enable sortable functionality for column
 function createNewSortable() {
     let newCard = document.querySelectorAll('.cards')
     newCard = newCard[newCard.length - 1]
@@ -67,7 +50,6 @@ function createNewSortable() {
         forceFallback: true,
         onEnd: function (evt) {
             kanbanA.countCards()
-            // kanbanA.sortability()
         }
     })
 }
@@ -78,7 +60,8 @@ newColumn.addEventListener('click', toggleColumnForm)
 // adding an event listener for submitting the column
 const columnCancelButton = document.getElementById('add-column-cancel')
 const columnCloseButton = columnCancelButton.nextElementSibling
-// columnCancelButton.querySelector('~ button.form-close')
+
+// closing the column without saving
 columnCancelButton.addEventListener('click', function() {
     toggleColumnForm()
 })
@@ -86,10 +69,9 @@ columnCloseButton.addEventListener('click', function() {
     toggleColumnForm()
 })
 
+// submitting column
 const columnSubmitButton = document.getElementById('add-column-submit')
 columnSubmitButton.addEventListener('click', function (event) {
-    event.preventDefault();
-
     let id = Date.now()
     let name = addColumnForm.querySelector('input').value
 
@@ -101,38 +83,39 @@ columnSubmitButton.addEventListener('click', function (event) {
     toggleColumnForm()
 
     createNewSortable();
-    // kanbanA.sortability()
 })
 
-// //////////// COLUMN BUTTONS
+// //////////// COLUMN DELETE and EDIT BUTTONS
 const columnDeleteToolTip = document.querySelector('div.tooltip#delete')
 const columnEditToolTip = document.querySelector('div.tooltip#edit')
 const columnTitles = document.querySelectorAll('div.title')
+// for all the columns
 columnTitles.forEach(function(columnTitle) {
     let editColumnButton = columnTitle.querySelector('svg.edit-column')
     let deleteColumnButton = columnTitle.querySelector('svg.delete-column')
     let columnNameInput = columnTitle.querySelector('input.column-name')
 
+    // focus when clicked
     editColumnButton.addEventListener('click', function() {
-        // columnNameInput.removeAttribute('disabled')
         columnNameInput.focus()
     })
+    // on change, reupdate all column names
     columnNameInput.addEventListener('change', function(event) {
         updateColumnNames();
-        console.log('changed')
     })
+    // 'save' column name
     columnNameInput.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             columnNameInput.blur()
         }
         updateColumnNames();
     })
+    // tooltip on hover
     editColumnButton.addEventListener('mouseover', function() {
         editColumnButton.parentElement.appendChild(columnEditToolTip)
     })
-
+    // delete columns as long as there are more than 3 and there are no cards within it
     deleteColumnButton.addEventListener('click', function() {
-        // alert('original button clicked')
         let columns = document.getElementsByClassName('column')
         let column = columnTitle.parentElement
         let cards = column.querySelectorAll('.card')
@@ -154,8 +137,8 @@ columnTitles.forEach(function(columnTitle) {
         })
     })
 
+    // updating 'disabled' status for icons on hover
     deleteColumnButton.addEventListener('mouseover', function() {
-        // alert('original button hovered')
         let columns = document.getElementsByClassName('column')
         let column = columnTitle.parentElement
         let cards = column.querySelectorAll('.card')
@@ -167,22 +150,3 @@ columnTitles.forEach(function(columnTitle) {
         }
     })
 })
-
-// var 
-// let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-// allDeleteColumnButtons.forEach(function(button) {
-//     button.addEventListener('mouseover', function() {
-//         let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
-//         allDeleteColumnButtons.forEach( function(button) {
-//             let columns = document.getElementsByClassName('column')
-//             let column = button.parentElement.parentElement
-//             let cards = column.querySelectorAll('.card')
-    
-//             if (columns.length > 3 && cards.length == 0) {
-//                 button.classList.remove('disabled')
-//             } else if (columns.length <= 3 || cards.length > 0) {
-//                 button.classList.add('disabled')
-//             }
-//         })
-//     })
-// })

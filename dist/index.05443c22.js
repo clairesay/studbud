@@ -446,6 +446,11 @@ var _task = require('./task');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _taskDefault = _parcelHelpers.interopDefault(_task);
 var _kanban = require('./kanban');
+var tags = document.querySelector('input[name=subject]');
+// TAGIFYING
+var tagify1 = new Tagify(tags, {
+  whitelist: ['INFO1110', 'COMP2000']
+});
 // opening or closing the task form and changing its type
 function toggleTaskForm(type) {
   // check if its an update form if so, reword, and show corresponding buttons :)

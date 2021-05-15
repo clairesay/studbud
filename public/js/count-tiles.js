@@ -1,9 +1,8 @@
 export function countTiles() {
     let total = document.querySelectorAll('.open-link'),
-        tileContainers = document.querySelectorAll('.tiles'),
-        groups = document.querySelectorAll('.group'),
-        tiles = document.getElementsByClassName('tile')
+        tileContainers = document.querySelectorAll('.tiles');
     // writing the total number of cards at the head of each column
+    // counts how many resource cards there are in each list
     total.forEach(function count(object, index) {
         let tileCount = 0;
         for (let i = 0; i < tileContainers[index].querySelectorAll('.tile').length; i ++) {
@@ -11,26 +10,29 @@ export function countTiles() {
                 tileCount += 1
             }
         }
+        // if the tilecount is empty, cannot open links
         if (tileCount == 0) {
             total[index].textContent = 'Try adding content to this group.';
+        // otherwise, enable group link opening
         } else if (tileCount == 1) {
             total[index].textContent = 'Open ' + tileCount + ' link';
         } else {
             total[index].textContent = 'Open ' + tileCount + ' links';
         }
-        
     })
 }
 
+// open all links within a group
 export function openGroupLinks() {
     let groupLinks = document.querySelectorAll('h3.open-link')
+    // for each group link
     groupLinks.forEach(function(groupLink) {
         groupLink.style.backgroundColor = 'green'
         if (groupLink.getAttribute('listener') !== 'true') {
             groupLink.style.color = '#FFDD88'
+            // add an event listener so that on click, it opens up all links in child element
             groupLink.addEventListener('click', function() {
                 let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link')
-                
                 links.forEach(function(link) {
                     let url = link.getAttribute('href')
                     if (url.includes('https://') || url.includes('http://')) {

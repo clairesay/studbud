@@ -446,25 +446,8 @@ var _column = require('./column');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _columnDefault = _parcelHelpers.interopDefault(_column);
 var _kanban = require('./kanban');
-// import * as columnValidate from './column-validate'
-// var validator = new FormValidator('column', [{
-// name: 'columnName',
-// display: 'Column Name',
-// rules: 'min_length[8]'
-// }], function(errors, event) {
-// alert('bro')
-// if (errors.length > 0) {
-// // Show the errors
-// var displayErrors = document.getElementById('selfRegMessage');
-// var errorString = '';
-// for (var i = 0; i < errors.length; i++) {
-// errorString += errors[i].message + '<br />';
-// }
-// displayErrors.innerHTML = errorString;
-// }
-// });
-// console.log(validator)
 const createTaskForm = document.getElementById('create-task-form');
+// updates all column names after renaming
 function updateColumnNames() {
   let columnNames = document.querySelectorAll('.column-name');
   let statuses = createTaskForm.querySelector('select[name=status]');
@@ -481,6 +464,7 @@ const modalBackground = document.getElementById('modal-background');
 const addColumnForm = document.getElementById('add-column-form');
 var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
+// toggle hide/show
 function toggleColumnForm() {
   if (newColumnToggle == false) {
     addColumnForm.classList.add('active');
@@ -493,6 +477,7 @@ function toggleColumnForm() {
     modalBackground.style.display = 'none';
   }
 }
+// enable sortable functionality for column
 function createNewSortable() {
   let newCard = document.querySelectorAll('.cards');
   newCard = newCard[newCard.length - 1];
@@ -514,16 +499,16 @@ newColumn.addEventListener('click', toggleColumnForm);
 // adding an event listener for submitting the column
 const columnCancelButton = document.getElementById('add-column-cancel');
 const columnCloseButton = columnCancelButton.nextElementSibling;
-// columnCancelButton.querySelector('~ button.form-close')
+// closing the column without saving
 columnCancelButton.addEventListener('click', function () {
   toggleColumnForm();
 });
 columnCloseButton.addEventListener('click', function () {
   toggleColumnForm();
 });
+// submitting column
 const columnSubmitButton = document.getElementById('add-column-submit');
 columnSubmitButton.addEventListener('click', function (event) {
-  event.preventDefault();
   let id = Date.now();
   let name = addColumnForm.querySelector('input').value;
   let col = new _columnDefault.default(id, name);
@@ -532,33 +517,36 @@ columnSubmitButton.addEventListener('click', function (event) {
   toggleColumnForm();
   createNewSortable();
 });
-// //////////// COLUMN BUTTONS
+// //////////// COLUMN DELETE and EDIT BUTTONS
 const columnDeleteToolTip = document.querySelector('div.tooltip#delete');
 const columnEditToolTip = document.querySelector('div.tooltip#edit');
 const columnTitles = document.querySelectorAll('div.title');
+// for all the columns
 columnTitles.forEach(function (columnTitle) {
   let editColumnButton = columnTitle.querySelector('svg.edit-column');
   let deleteColumnButton = columnTitle.querySelector('svg.delete-column');
   let columnNameInput = columnTitle.querySelector('input.column-name');
+  // focus when clicked
   editColumnButton.addEventListener('click', function () {
-    // columnNameInput.removeAttribute('disabled')
     columnNameInput.focus();
   });
+  // on change, reupdate all column names
   columnNameInput.addEventListener('change', function (event) {
     updateColumnNames();
-    console.log('changed');
   });
+  // 'save' column name
   columnNameInput.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
       columnNameInput.blur();
     }
     updateColumnNames();
   });
+  // tooltip on hover
   editColumnButton.addEventListener('mouseover', function () {
     editColumnButton.parentElement.appendChild(columnEditToolTip);
   });
+  // delete columns as long as there are more than 3 and there are no cards within it
   deleteColumnButton.addEventListener('click', function () {
-    // alert('original button clicked')
     let columns = document.getElementsByClassName('column');
     let column = columnTitle.parentElement;
     let cards = column.querySelectorAll('.card');
@@ -578,8 +566,8 @@ columnTitles.forEach(function (columnTitle) {
       }
     });
   });
+  // updating 'disabled' status for icons on hover
   deleteColumnButton.addEventListener('mouseover', function () {
-    // alert('original button hovered')
     let columns = document.getElementsByClassName('column');
     let column = columnTitle.parentElement;
     let cards = column.querySelectorAll('.card');
@@ -600,6 +588,7 @@ class Column {
     this.id = id;
     this.name = name;
   }
+  /*updates column on hover*/
   updateColumns() {
     let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
     allDeleteColumnButtons.forEach(function (button) {
@@ -706,6 +695,7 @@ class Column {
         });
       }
     });
+    // update tooltip
     const columnDeleteToolTip = document.querySelector('div.tooltip#delete');
     deleteColumnButton.addEventListener('mouseover', function () {
       deleteColumnButton.parentElement.appendChild(columnDeleteToolTip);
@@ -720,7 +710,7 @@ class Column {
     });
   }
   createColumn() {
-    // creating the column
+    // duplicating existing columns and tweaking some elements to make it unique
     let column = document.querySelector('div.column');
     column = column.cloneNode(true);
     let columnName = column.querySelector('input.column-name');
@@ -733,28 +723,6 @@ class Column {
     cards.forEach(function (card) {
       card.remove();
     });
-    // let column = document.createElement('div')
-    // column.classList.add('column')
-    // let title = document.createElement('div')
-    // title.classList.add('title')
-    // let columnName = document.createElement('input')
-    // columnName.classList.add('column-name')
-    // columnName.value = this.name
-    // let editButton = document.querySelector('svg.edit-column')
-    // editButton = editButton.cloneNode(true)
-    // let deleteButton = document.querySelector('svg.delete-column')
-    // deleteButton = deleteButton.cloneNode(true)
-    // let total = document.createElement('h3')
-    // total.classList.add('total')
-    // total.textContent = 0;
-    // let cards = document.createElement('div')
-    // cards.classList.add('cards')
-    // title.appendChild(columnName)
-    // title.appendChild(total)
-    // title.appendChild(editButton)
-    // title.appendChild(deleteButton)
-    // column.appendChild(title)
-    // column.appendChild(cards)
     let tasks = document.getElementById('tasks');
     tasks.appendChild(column);
     this.editColumn(editButton);

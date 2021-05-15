@@ -1,0 +1,407 @@
+const timeToolsOverlay = document.getElementById('time')
+const timeSelector = document.getElementById('time-selector')
+const dropdown = document.getElementById('dropdown')
+var timeMenuToggleOpen = false
+
+function toggleTimeMenu() {
+    if (timeMenuToggleOpen == false) {
+        timeSelector.classList = 'open'
+        timeMenuToggleOpen = true
+    } else if (timeMenuToggleOpen == true) {
+        timeSelector.classList = 'close'
+        timeMenuToggleOpen = false
+    }
+}
+dropdown.addEventListener('click', toggleTimeMenu)
+
+const stopwatch = document.getElementById('stopwatch')
+const stopwatchSelector = document.getElementById('stopwatch-select')
+const pomodoro = document.getElementById('pomodoro')
+const pomodoroSelector = document.getElementById('pomodoro-select')
+
+stopwatchSelector.addEventListener('click', function () {
+    timeSelector.appendChild(pomodoroSelector)
+    setTimerType()
+})
+pomodoroSelector.addEventListener('click', function () {
+    timeSelector.appendChild(stopwatchSelector)
+    setTimerType()
+})
+
+function setTimerType() {
+    let currentTimer = timeSelector.querySelector(':first-child')
+    if (currentTimer.id == 'stopwatch-select') {
+        stopwatch.classList.add('active')
+        pomodoro.classList.remove('active')
+    } else if (currentTimer.id == 'pomodoro-select') {
+        stopwatch.classList.remove('active')
+        pomodoro.classList.add('active')
+    }
+}
+
+setTimerType()
+
+// Popup tab activity
+const timePopUp = document.getElementById('time')
+const musicPopUp = document.getElementById('music')
+
+timePopUp.setAttribute('state', 'standby')
+musicPopUp.setAttribute('state', 'standby')
+
+var popUpIcons = document.querySelectorAll('.pop-up[state=standby] nav img')
+var collapseButtons = document.querySelectorAll('.pop-up nav button.collapse')
+popUpIcons.forEach(function (icon) {
+    icon.addEventListener('click', popUpState)
+})
+collapseButtons.forEach(function (button) {
+    button.addEventListener('click', popUpState)
+})
+
+// if something is running, allow for a third state!
+function popUpState() {
+    if (timePopUp.getAttribute('state') == 'standby') {
+        timePopUp.setAttribute('state', 'active')
+    } else if (timePopUp.getAttribute('state') == 'peek') {
+        timePopUp.setAttribute('state', 'active')
+    } else if (timePopUp.getAttribute('state') == 'active' && static == true) {
+        timePopUp.setAttribute('state', 'standby')
+    } else if (timePopUp.getAttribute('state') == 'active') {
+        timePopUp.setAttribute('state', 'peek')
+    }
+}
+
+// STOPWATCH FUNCTIONALITY
+var minutes = document.querySelector('#stopwatch .minutes')
+var min = 0
+var seconds = document.querySelector('#stopwatch .seconds')
+var sec = 0
+var milliseconds = document.querySelector('#stopwatch .milliseconds')
+var milli = 0
+
+const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
+const stopwatchReset = document.querySelector('#stopwatch button.reset')
+
+var stopwatchOff = false
+var intervals;
+var static = true
+
+stopwatchReset.addEventListener('click', function () {
+    // stop the stopwatch
+    milli = sec = min = offset = 0
+    minutes.textContent = round(min)
+    seconds.textContent = round(sec)
+    milliseconds.textContent = round(milli)
+    stopwatchStart.textContent = 'Start'
+    stopwatchReset.disabled = false
+    stopwatchOff = false
+    static = true
+    clearInterval(intervals)
+    
+    dropdown.addEventListener('click', toggleTimeMenu)
+})
+
+var stopwatchOn = false;
+var start, currentTime, elapsedTime, stringify;
+var offset = 0;
+stopwatchStart.addEventListener('click', function () {
+    static = false;
+
+    if (stopwatchOff == true) {
+        clearInterval(intervals)
+        stopwatchStart.textContent = 'Start'
+        stopwatchOff = false
+        offset = parseInt(milli) * 10
+
+    } else if (stopwatchOff == false) {
+
+        start = Date.now()
+
+        incrementUp()
+        function incrementUp() {
+
+            currentTime = Date.now()
+            elapsedTime = currentTime - start + offset
+            // making sure there are always 2 digits https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers
+            stringify = (elapsedTime).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })
+            milli = stringify[0] + stringify[1]
+
+            if (elapsedTime >= 1000) {
+                start += 1000
+                sec += 1
+            }
+            if (sec == 60) {
+                sec = 0
+                min += 1
+            }
+        }
+
+        intervals = setInterval(function () {
+            minutes.textContent = round(min)
+            seconds.textContent = round(sec)
+            milliseconds.textContent = round(milli)
+            incrementUp()
+
+        }, 10); // update every 10 milliseconds
+
+        stopwatchReset.disabled = false
+        stopwatchStart.textContent = 'Stop'
+        // disable the timer dropdown
+        dropdown.removeEventListener('click', toggleTimeMenu)
+        stopwatchOff = true
+
+    }
+})
+
+function round(value) {
+    return (value).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+}
+
+
+
+var workMin = 25,
+    workSec = 0,
+    breakMin = 5,
+    breakSec = 0,
+    workMinutes = document.querySelector('#pomodoro #work .minutes'),
+    workSeconds = document.querySelector('#pomodoro #work .seconds'),
+    breakMinutes = document.querySelector('#pomodoro #break .minutes'),
+    breakSeconds = document.querySelector('#pomodoro #break .seconds');
+
+const workButtons = document.querySelector('#pomodoro #work'),
+    breakButtons = document.querySelector('#pomodoro #break'),
+    timer = document.querySelector('#pomodoro div#timer'),
+    workAdd = document.querySelector('#pomodoro #work button.add'),
+    workSubtract = document.querySelector('#pomodoro #work button.subtract'),
+    breakAdd = document.querySelector('#pomodoro #break button.add'),
+    breakSubtract = document.querySelector('#pomodoro #break button.subtract'),
+    pomoStartStop = document.querySelector('#pomodoro button.start-stop');
+
+var pomoMin = workMin,
+    pomoSec = workSec,
+    pomoMinutes = document.querySelector('#pomodoro #timer .minutes'),
+    pomoSeconds = document.querySelector('#pomodoro #timer .seconds');
+
+pomoMinutes.textContent = round(pomoMin)
+
+
+var pomoIntervals,
+    pomoOff = false;
+
+workAdd.addEventListener('click', () => pomoTime('add', 'work'))
+workSubtract.addEventListener('click', () => pomoTime('subtract', 'work'))
+breakAdd.addEventListener('click', () => pomoTime('add', 'break'))
+breakSubtract.addEventListener('click', () => pomoTime('subtract', 'break'))
+workButtons.style.display = 'flex'
+breakButtons.style.display = 'flex'
+timer.style.display = 'none'
+
+var timeline = document.getElementById('timeline')
+const loadSpans = document.querySelectorAll('#pomodoro div.length > div')
+const allSpans = document.querySelectorAll('#pomodoro div > div.length')
+const finalLoadSpanContainer = document.querySelector('#pomodoro div#final-load')
+const finalLoadSpan = document.querySelector('#pomodoro div#final-load div')
+console.log(finalLoadSpan)
+const resetPomo = document.getElementById('reset-pomo')
+resetPomo.addEventListener('click', function () {
+    pomoMin = 25
+    workMin = 25
+    breakMin = 5
+    workMinutes.textContent = (25).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    breakMinutes.textContent = (5).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    pomoLength()
+})
+
+pomoStartStop.addEventListener('click', function () {
+    // reference for pomo intervals https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
+    if (pomoOff == true) {
+        pomoMin = workMin
+        pomoSec = workSec
+        pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        static = true;
+        clearInterval(pomoIntervals)
+        pomoStartStop.textContent = 'Start'
+        dropdown.addEventListener('click', toggleTimeMenu)
+        // timeline.style.display = 'flex'
+        workButtons.style.display = 'flex'
+        breakButtons.style.display = 'flex'
+        timer.style.display = 'none'
+
+        pomoOff = false
+        loadSpans.forEach(function (span) {
+            span.style.animation = ''
+
+        })
+        finalLoadSpan.style.animation = 'none'
+        phase = 'break'
+        sessions = 0
+        pomodoroTimer('static')
+    } else if (pomoOff == false) {
+        static = false;
+
+
+        function incrementDown() {
+            if (pomoMin == 0 && pomoSec == 0) {
+
+                sessions += 1
+
+                pomodoroTimer()
+
+            } else if (pomoSec == 0) {
+                pomoMin -= 1
+                pomoSec = 59
+            } else {
+                pomoSec -= 1
+            }
+        }
+
+        workButtons.style.display = 'none'
+        breakButtons.style.display = 'none'
+        timer.style.display = 'flex'
+
+        pomoIntervals = setInterval(function () {
+            incrementDown()
+            pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+            pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+
+        }, 1000);
+        pomoStartStop.textContent = 'Stop'
+        dropdown.removeEventListener('click', toggleTimeMenu)
+        pomoOff = true
+        pomodoroTimer()
+    }
+
+})
+
+const workSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n + 1)')
+
+const breakSpans = document.querySelectorAll('#pomodoro div > div.length:nth-child(2n )')
+
+function pomoTime(operator, mode) {
+    let incrementValue = 5
+    if (mode == 'work') {
+        if (operator == 'add' && workMin < 60) {
+            workMin += incrementValue
+        } else if (operator == 'subtract' && workMin > 5) {
+            workMin -= incrementValue
+        }
+    } else if (mode == 'break') {
+
+        if (operator == 'add' && breakMin < 20) {
+            breakMin += incrementValue
+        } else if (operator == 'subtract' && breakMin > 5) {
+            breakMin -= incrementValue
+        }
+    }
+    pomoMin = workMin
+    pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    workMinutes.textContent = (workMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    breakMinutes.textContent = (breakMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    pomoLength()
+}
+pomoLength()
+function pomoLength() {
+
+    // SETTING THE PIPELINE
+    let total = workMin * 3 + breakMin * 2
+    let timelineLength = 232
+    let workLength = workMin / total * timelineLength
+    let breakLength = breakMin / total * timelineLength
+
+    workSpans.forEach(function (span) {
+        span.style.width = workLength + 'px';
+    })
+
+    breakSpans.forEach(function (span) {
+        span.style.width = breakLength + 'px';
+    })
+}
+workMinutes.textContent = (workMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+breakMinutes.textContent = (breakMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+var phase = 'work'
+var sessions = 0
+const pomoStatus = document.getElementById('pomo-status')
+function pomodoroTimer(mode) {
+    pomoStatus.textContent = phase;
+    if (sessions < 5) {
+        console.log(phase)
+
+
+
+        if (phase == 'work') {
+            pomoMin = workMin
+            pomoSec = workSec
+            phase = 'break'
+
+        }
+
+        else if (phase == 'break') {
+            pomoMin = breakMin
+            pomoSec = breakSec
+            phase = 'work'
+        }
+
+
+
+        let fullTime;
+
+
+        if (phase == 'work') {
+            fullTime = workSec + workMin * 60
+
+        } else if (phase == 'break') {
+            fullTime = breakSec + breakMin * 60
+        }
+
+        if (mode == 'static') {
+            loadSpans[sessions].style.animation = 'none'
+        } else {
+            loadSpans[sessions].style.animation = 'load-spans ' + fullTime + 's ' + 'linear forwards'
+        }
+
+        loadSpans[sessions].classList.add('active')
+        finalLoadSpanContainer.style.display = 'none'
+        timeline.style.display = 'flex'
+    } else if (sessions == 5) {
+        pomoMin = 30
+        pomoSec = 0
+        phase = 'finalbreak'
+        let fullTime = pomoMin * 60 + pomoSec
+        finalLoadSpanContainer.style.display = 'flex'
+        timeline.style.display = 'none'
+        finalLoadSpan.style.animation = 'load-spans ' + fullTime + 's ' + 'linear forwards'
+        finalLoadSpan.classList.add('active')
+    } else {
+        finalLoadSpanContainer.style.display = 'none'
+        timeline.style.display = 'flex'
+        pomoMin = workMin
+        pomoSec = workSec
+        pomoMinutes.textContent = (pomoMin).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        pomoSeconds.textContent = (pomoSec).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        static = true;
+        clearInterval(pomoIntervals)
+        pomoStartStop.textContent = 'Start'
+        dropdown.addEventListener('click', toggleTimeMenu)
+
+        workButtons.style.display = 'flex'
+        breakButtons.style.display = 'flex'
+        timer.style.display = 'none'
+
+        pomoOff = false
+        loadSpans.forEach(function (span) {
+            span.style.animation = ''
+        })
+        finalLoadSpan.style.animation = 'none'
+        phase = 'work'
+        sessions = 0
+
+        clearInterval(pomoIntervals)
+
+        pomoOff = false;
+        workButtons.style.display = 'flex'
+        breakButtons.style.display = 'flex'
+        timer.style.display = 'none'
+    }
+
+}
+
