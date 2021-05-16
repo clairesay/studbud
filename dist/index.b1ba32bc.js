@@ -487,35 +487,6 @@ function setTimerType() {
 
 setTimerType()
 
-// Popup tab activity
-const timePopUp = document.getElementById('time')
-const musicPopUp = document.getElementById('music')
-
-timePopUp.setAttribute('state', 'standby')
-musicPopUp.setAttribute('state', 'standby')
-
-var popUpIcons = document.querySelectorAll('.pop-up[state=standby] nav img')
-var collapseButtons = document.querySelectorAll('.pop-up nav button.collapse')
-popUpIcons.forEach(function (icon) {
-    icon.addEventListener('click', popUpState)
-})
-collapseButtons.forEach(function (button) {
-    button.addEventListener('click', popUpState)
-})
-
-// alternate states of the pop-up tab
-function popUpState() {
-    if (timePopUp.getAttribute('state') == 'standby') {
-        timePopUp.setAttribute('state', 'active')
-    } else if (timePopUp.getAttribute('state') == 'peek') {
-        timePopUp.setAttribute('state', 'active')
-    } else if (timePopUp.getAttribute('state') == 'active' && static == true) {
-        timePopUp.setAttribute('state', 'standby')
-    } else if (timePopUp.getAttribute('state') == 'active') {
-        timePopUp.setAttribute('state', 'peek')
-    }
-}
-
 // STOPWATCH FUNCTIONALITY
 var min = sec = milli = 0,
     minutes = document.querySelector('#stopwatch .minutes'),
@@ -526,8 +497,10 @@ const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
 const stopwatchReset = document.querySelector('#stopwatch button.reset')
 
 var stopwatchOn = false,
-    static = true,
+    static,
     intervals;
+
+window.static = static;
 
 // resetting the stopwatch
 stopwatchReset.addEventListener('click', function () {

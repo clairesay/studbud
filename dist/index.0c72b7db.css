@@ -53,6 +53,16 @@ table {
 }
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
+li {
+  display: flex;
+  border: 2px solid black;
+}
+li.active {
+  background-color: pink;
+}
+li img {
+  width: 48px;
+}
 body {
   background-color: #fefefe;
 }
@@ -1175,6 +1185,7 @@ form label .false-radio span {
   border-radius: 16px 16px 0 0;
   padding: 16px;
   filter: drop-shadow(0 0 2px #30303018);
+  z-index: 3;
 }
 .pop-up button.icon {
   padding: 12px;

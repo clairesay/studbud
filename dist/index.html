@@ -9,8 +9,9 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/index.0c72b7db.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.css" integrity="sha512-ig9FCe92nesnwlWGl9mrk85kB35I29wg6kfP17X0qX2B6GAxS4tKK8QhcTgojdsjOEZRlmaawo49uerBGt6O+Q==" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js" integrity="sha512-zFBRHWZWLXx6ktE7EtT+5RXM5UA+S1V9JHHocTPdKdQbRuNSgq6IFDzYbV1q6fst/1kdz5W7OwZKjyZ6bzE/iA==" crossorigin="anonymous"></script>
     <!-- <link href="https://{{cdn}}/prism@v1.x/themes/prism.css" rel="stylesheet" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.1.1/tagify.min.js" integrity="sha512-V/mrpehNcIkQ5rszd9LwfBujHn0FJkHO0hBQc059gH5LWg1Tsnt7xphn7Z5jaDiq/xyLU4/BXi5jJauqM4PhlQ==" crossorigin="anonymous"></script>
@@ -202,7 +203,44 @@
             </div>
         </article>
     </section>
-    <section id="music" class="pop-up"></section>
+    <section id="music" class="pop-up">
+        <nav>
+            <img src="/time.2337bf3b.svg">
+            <button class="button icon collapse" type="button">
+                <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
+                    <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <div id="current">
+            <img src="/index.html">
+            <h1 class="title"></h1>
+            <h3 class="artist"></h3>
+        </div>
+        <audio crossorigin="" playsinline="">
+        </audio>
+        <button id="previous" type="button">
+            <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0L3.5 6L12 12L12 0ZM2 12L2 0H0L0 12H2Z" fill="#303030"></path>
+            </svg>
+
+        </button>
+        <button id="next" type="button">
+            <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 12L8.5 6L0 0V12ZM10 0V12H12V0H10Z" fill="#303030"></path>
+            </svg>
+
+        </button>
+        <button id="shuffle" type="button">
+            Shuffle
+        </button>
+        <h3>Up next</h3>
+        <ul class="playlist">
+
+        </ul>
+    </section>
     <div id="modal-background" class="background"></div>
     <form id="create-content-form" novalidate="">
         <h1>Add content</h1>
@@ -319,6 +357,8 @@
     <script src="/index.bcf40e1c.js"></script>
 
     <script src="/index.b1ba32bc.js"></script>
+    <script src="/index.61a69f93.js"></script>
+    <script src="/index.479e99b9.js"></script>
 
 </body>
 

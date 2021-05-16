@@ -1,0 +1,12 @@
+li {
+    display: flex;
+    border: 2px solid black;
+}
+
+li.active {
+    background-color: pink;
+}
+
+li img {
+    width: 48px;
+}
