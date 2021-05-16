@@ -1,11 +1,38 @@
 import Task from './task'
 import * as kanban from './kanban'
 
-var tags = document.querySelector('input[name=subject]')
-// TAGIFYING
-var tagify1 = new Tagify(tags, {
-    whitelist: ['INFO1110', 'COMP2000']
-})
+var subjectsList = []
+// subject should not duplicate
+
+// var tags = document.querySelector('input[name=subject]')
+// // TAGIFYING
+// var tagify1 = new Tagify(tags, {
+//     maxTags           : 1,
+//     mode : "select",
+//     whitelist: subjectsList,
+//     dropdown : {
+//         classname     : "color-blue",
+//         enabled       : 0,              // show the dropdown immediately on focus
+//         maxItems      : 5,
+//         position      : "text",         // place the dropdown near the typed text
+//         closeOnSelect : false,          // keep the dropdown open after selecting a suggestion
+//         highlightFirst: true
+//     }
+// })
+
+// function to generate a random colour
+// https://yaireo.github.io/tagify/#section-mix
+function getRandomColor(){
+    function rand(min, max) {
+        return min + Math.random() * (max - min);
+    }
+
+    var h = rand(1, 360)|0,
+        s = rand(40, 70)|0,
+        l = rand(65, 72)|0;
+
+    return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+}
 
 // opening or closing the task form and changing its type
 function toggleTaskForm(type) {
@@ -190,13 +217,17 @@ taskSaveButton.addEventListener('click', function (event) {
     let taskDetails = createTaskForm.querySelectorAll('form input');
     // get all of the user input in the input fields
     let task = getTaskDetails(taskDetails)
-
+    
     // create a new task using the task class
     let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList)
     // append to taskList and create new card with task
     newTask.createCard(newTask.addTask());
 
+    // append subject to subject list
+    subjectsList.push(task.subject)
+
     // close the form and add event listeners to any new items
+    console.log(subjectsList)
     toggleTaskForm()
     reupdate()
 })

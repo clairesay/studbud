@@ -22,7 +22,8 @@ class Content {
         let cards = document.querySelectorAll('.tiles'),
             card = document.createElement('article'),
             title = document.createElement('h4'),
-            description = document.createElement('p'),
+            descriptionContainer = document.createElement('pre'),
+            description = document.createElement('code'),
             link = document.createElement('a'),
             linkIcon = document.createElement('svg'),
             editIcon = document.createElement('a'),
@@ -31,8 +32,9 @@ class Content {
         card.setAttribute('id', 'c-' + this.id)
         card.classList.add('tile')
         title.textContent = this.title
+        // description.classList.add('class="language-css"')
         description.textContent = this.description
-
+        descriptionContainer.appendChild(description)
         // fix links pending invalid nature
         if (this.link.includes('https://') || this.link.includes('http://')) {
             link.textContent = this.link
@@ -59,7 +61,7 @@ class Content {
 
         // append elements to the card
         card.appendChild(title)
-        card.appendChild(description)
+        card.appendChild(descriptionContainer)
         card.appendChild(line)
         
         card.appendChild(link)
@@ -76,6 +78,7 @@ class Content {
                 }
             })
         }
+        hljs.highlightAll();
     }
 }
 

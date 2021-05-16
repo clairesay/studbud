@@ -612,11 +612,13 @@ class Content {
   /*create new card with relevant elements*/
   createCard(n) {
     let groupNames = document.querySelectorAll('.group-name');
-    let cards = document.querySelectorAll('.tiles'), card = document.createElement('article'), title = document.createElement('h4'), description = document.createElement('p'), link = document.createElement('a'), linkIcon = document.createElement('svg'), editIcon = document.createElement('a'), line = document.createElement('HR');
+    let cards = document.querySelectorAll('.tiles'), card = document.createElement('article'), title = document.createElement('h4'), descriptionContainer = document.createElement('pre'), description = document.createElement('code'), link = document.createElement('a'), linkIcon = document.createElement('svg'), editIcon = document.createElement('a'), line = document.createElement('HR');
     card.setAttribute('id', 'c-' + this.id);
     card.classList.add('tile');
     title.textContent = this.title;
+    // description.classList.add('class="language-css"')
     description.textContent = this.description;
+    descriptionContainer.appendChild(description);
     // fix links pending invalid nature
     if (this.link.includes('https://') || this.link.includes('http://')) {
       link.textContent = this.link;
@@ -640,7 +642,7 @@ class Content {
           </svg>`;
     // append elements to the card
     card.appendChild(title);
-    card.appendChild(description);
+    card.appendChild(descriptionContainer);
     card.appendChild(line);
     card.appendChild(link);
     card.appendChild(editIcon);
@@ -655,6 +657,7 @@ class Content {
         }
       });
     }
+    hljs.highlightAll();
   }
 }
 exports.default = Content;
