@@ -445,7 +445,8 @@ id) /*: string*/
 // Popup tab activity
 const timePopUp = document.getElementById('time')
 const musicPopUp = document.getElementById('music')
-var static = true
+// var static = true
+var timeStatic, musicStatic;
 // window.static = static
 
 timePopUp.setAttribute('state', 'standby')
@@ -462,12 +463,15 @@ collapseButtons.forEach(function (button, index) {
 
 // alternate states of the pop-up tab
 function popUpState(index) {
-    var popUp;
+    var popUp, static;
     if (index == 0) {
         popUp = timePopUp
+        static = timeStatic
     } else if (index == 1) {
         popUp = musicPopUp
+        static = musicStatic
     }
+    console.log(static)
     if (popUp.getAttribute('state') == 'standby') {
         popUp.setAttribute('state', 'active')
     } else if (popUp.getAttribute('state') == 'peek') {

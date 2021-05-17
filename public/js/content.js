@@ -33,8 +33,11 @@ class Content {
         card.classList.add('tile')
         title.textContent = this.title
         // description.classList.add('class="language-css"')
-        description.textContent = this.description
-        descriptionContainer.appendChild(description)
+        if (this.description.length > 0) {
+            description.textContent = this.description
+            descriptionContainer.appendChild(description)
+        }
+
         // fix links pending invalid nature
         if (this.link.includes('https://') || this.link.includes('http://')) {
             link.textContent = this.link

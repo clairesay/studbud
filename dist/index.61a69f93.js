@@ -463,7 +463,7 @@ var songs = [
         album_art: 'screenshot.jpg'
     },
     {
-        source: 'track.mp3',
+        source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
         title: '19th Floor',
         artist: 'Bobby Richards',
         album_art: 'file.jpg'
@@ -528,14 +528,33 @@ nextButton.addEventListener('click', function () {
     playTrack(songIndex)
 })
 
+// if hitting shuffle, this randomises the song array's order.
 shuffleButton.addEventListener('click', function () {
-    // if hitting shuffle, first song can be anything but the current song
-    // randomise the array's order!
+    // shuffling array src: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    for (i = songs.length - 1; i > 0; i --) {
+        // generate random number
+        var j = Math.floor(Math.random() * (i + 1))
+        // assign the current item to a random
+        var temporaryValue = songs[i]
+        songs[i] = songs[j]
+        songs[j] = temporaryValue
+    }
+
+    // re-populate the playlist
+    playlistContainer.innerHTML = ''
+    addMusic()
+    // play the first song
+    playTrack(0)
 })
 
 var currentIndex;
 // function to play a track
 function playTrack(n, mode) {
+    // if we are at the end of the playlist, stop playing. 
+    if (n == songs.length) {
+        currentIndex = n = 0
+        mode = 'initial'
+    }
     // adding the appropriate style to the item that is currently playing
     tracks[n].classList.add('active')
     // and removing that class to absolutely everything else
@@ -571,19 +590,32 @@ function playTrack(n, mode) {
         ],
 
     };
-
-    // if we are initialising, don't play any music
+    // if we are initialising, don't play any music, otherwise, play and set static status to false
     if (mode != 'initial') {
+        musicStatic = false;
         player.play();
     }
 
 }
 playTrack(0, 'initial')
 
-        // if music paused, when user shrinks the container, it goes into standby mode
-        // otherwise, if the music continues to play, it goes into peek mode.
-        // if the user is in peek mode and pauses it, the music player should remain in peek mode until
-        // it is opened and actually paused by the user. 
+// events https://github.com/sampotts/plyr#events
+player.on('playing', () => {
+    musicStatic = false
+})
+player.on('pause', () => {
+    musicStatic = true
+})
+player.on('ended', () => {
+    playTrack(currentIndex + 1)
+    musicStatic = true
+});
+
+
+    // if music paused, when user shrinks the container, it goes into standby mode
+    // otherwise, if the music continues to play, it goes into peek mode.
+    // if the user is in peek mode and pauses it, the music player should remain in peek mode until
+    // it is opened and actually paused by the user. 
 
 
 

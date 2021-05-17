@@ -497,10 +497,10 @@ const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
 const stopwatchReset = document.querySelector('#stopwatch button.reset')
 
 var stopwatchOn = false,
-    static,
+    timeStatic,
     intervals;
 
-window.static = static;
+window.timeStatic = timeStatic;
 
 // resetting the stopwatch
 stopwatchReset.addEventListener('click', function () {
@@ -515,7 +515,7 @@ stopwatchReset.addEventListener('click', function () {
     // enable button clicking
     stopwatchReset.disabled = false
     stopwatchOn = false
-    static = true
+    timeStatic = true
     // turn off counting
     clearInterval(intervals)
 
@@ -527,7 +527,7 @@ var start, currentTime, elapsedTime, stringify;
 var offset = 0;
 // stopwatch start/stop button
 stopwatchStart.addEventListener('click', function () {
-    static = false;
+    timeStatic = false;
 
     // if the stopwatch is on, we want to turn this off
     if (stopwatchOn == true) {
@@ -644,7 +644,7 @@ pomoStartStop.addEventListener('click', function () {
     // if pomo is on, turn it off
     if (pomoOn == true) {
         // // both timers are inactive
-        // static = true;
+        // timeStatic = true;
         // // reset the pomo time
         // pomoMin = workMin
         // pomoSec = workSec
@@ -679,7 +679,7 @@ pomoStartStop.addEventListener('click', function () {
 
     } else if (pomoOn == false) {
         // timer is active
-        static = false;
+        timeStatic = false;
         // increment downwards
         function incrementDown() {
             if (pomoMin == 0 && pomoSec == 0) {
@@ -820,7 +820,7 @@ function pomodoroTimer(mode) {
         
     } else {
         // otherwise, the pomodoro has ended - reset everything
-        // static = true;
+        // timeStatic = true;
         finalLoadSpanContainer.style.display = 'none'
         timeline.style.display = 'flex'
         // pomoMin = workMin
@@ -851,7 +851,7 @@ function pomodoroTimer(mode) {
 
 function endPomo() {
 // both timers are inactive
-static = true;
+timeStatic = true;
 // reset the pomo time
 pomoMin = workMin
 pomoSec = workSec
