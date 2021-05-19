@@ -29,6 +29,17 @@
         flex-direction: column;
         margin: 36px;
 
+        h3.open-link {
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: $dark-grey;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
         div.group-title {
             display: flex;
             justify-content: space-between;
@@ -221,8 +232,75 @@
                 
                 filter: drop-shadow(0 0 2px #30303018);
 
+                a.edit-content {
+                    padding: 6px;
+                    position: absolute;
+                    top: 12px;
+                    right: 16px;
+                    opacity: 0.4;
+                    
+                    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $dark-white;
+                        border-radius: $mini-radius;
+                        opacity: 1;
+                        
+                    }
+                    svg:hover, path:hover {
+                        // cursor:pointer
+                    }
+                }
+
                 svg {
                     display: flex;
+                }
+
+                h3 {
+                    width: 85%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;                  
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin: 4px 0 16px 0;
+                }
+
+                pre {
+                    font-size: 14px;
+                    line-height: 20px;
+                    margin-bottom: 12px;
+                    code {
+                        white-space: pre-wrap;
+                        text-overflow: ellipsis;
+                        border-radius: $mini-radius;
+                        overflow-wrap: break-word;
+                        word-wrap: break-word;
+                        word-break: break-all;
+                        padding: 12px;
+                    }
+                }
+
+                hr {
+                    border: none;
+                    border-top: 2px solid $light-grey;
+                }
+
+                a.external-link {
+                    color: $dark-grey;
+                    margin: 12px 0 4px 0;
+                    font-size: 14px;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: flex-end;
+                    align-items: center;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: break-all;
+
+                    svg {
+                        padding-right: 6px;
+                    }
                 }
 
             

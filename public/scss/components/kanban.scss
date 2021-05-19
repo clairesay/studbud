@@ -263,6 +263,84 @@
                 &:last-child {
                     margin-bottom: 24px;
                 }
+
+                .edit {
+                    padding: 6px;
+                    position: absolute;
+                    top: 12px;
+                    right: 16px;
+                    opacity: 0.4;
+                    
+                    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $dark-white;
+                        border-radius: $mini-radius;
+                        opacity: 1;
+                        
+                    }
+                    svg:hover, path:hover {
+                        // cursor:pointer
+                    }
+                }
+
+                h3 {
+                    margin-top: 4px;
+                    width: 85%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+                span.subject {
+                    font-size: 12px;
+                    padding: 3px 17px;
+                    margin: 12px 0;
+                    border-radius: $big-radius;
+                    text-transform: uppercase;
+                    border: 1.2px solid $black;
+                    & ~ h3 {
+                        margin: 16px 0 8px 0;
+                    }
+                }
+
+                div.time-details {
+                    display: flex;
+                }
+
+                p {
+                    margin: 8px 0 16px 0;
+                    font-size: 14px;
+                }
+                hr {
+                    border: none;
+                    border-top: 2px solid $light-grey;
+                }
+                div.time-details {
+                    padding-top: 6px;
+                    display: flex;
+                    align-items: center;
+                    
+
+                    h4 {
+                        padding-left: 12px;
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: $dark-grey;
+                        text-transform: uppercase;
+                    }
+                    span.time {
+                        font-weight: 500;
+                        font-size: 12px;
+                        margin-left: auto;
+                        color: $dark-grey;
+                        padding: 4px 18px;
+                        border-radius: $big-radius;
+                        background-color: $light-grey;
+                    }
+                }
+
             }
         }
 

@@ -21,7 +21,7 @@ class Content {
         let groupNames = document.querySelectorAll('.group-name')
         let cards = document.querySelectorAll('.tiles'),
             card = document.createElement('article'),
-            title = document.createElement('h4'),
+            title = document.createElement('h3'),
             descriptionContainer = document.createElement('pre'),
             description = document.createElement('code'),
             link = document.createElement('a'),

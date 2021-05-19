@@ -623,7 +623,7 @@ class Content {
   /*create new card with relevant elements*/
   createCard(n) {
     let groupNames = document.querySelectorAll('.group-name');
-    let cards = document.querySelectorAll('.tiles'), card = document.createElement('article'), title = document.createElement('h4'), descriptionContainer = document.createElement('pre'), description = document.createElement('code'), link = document.createElement('a'), linkIcon = document.createElement('svg'), editIcon = document.createElement('a'), line = document.createElement('HR');
+    let cards = document.querySelectorAll('.tiles'), card = document.createElement('article'), title = document.createElement('h3'), descriptionContainer = document.createElement('pre'), description = document.createElement('code'), link = document.createElement('a'), linkIcon = document.createElement('svg'), editIcon = document.createElement('a'), line = document.createElement('HR');
     card.setAttribute('id', 'c-' + this.id);
     card.classList.add('tile');
     title.textContent = this.title;
@@ -697,7 +697,7 @@ function countTiles() {
     }
     // if the tilecount is empty, cannot open links
     if (tileCount == 0) {
-      total[index].textContent = 'Try adding content to this group.';
+      total[index].textContent = '';
     } else if (tileCount == 1) {
       total[index].textContent = 'Open ' + tileCount + ' link';
     } else {
@@ -709,9 +709,7 @@ function openGroupLinks() {
   let groupLinks = document.querySelectorAll('h3.open-link');
   // for each group link
   groupLinks.forEach(function (groupLink) {
-    groupLink.style.backgroundColor = 'green';
     if (groupLink.getAttribute('listener') !== 'true') {
-      groupLink.style.color = '#FFDD88';
       // add an event listener so that on click, it opens up all links in child element
       groupLink.addEventListener('click', function () {
         let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link');

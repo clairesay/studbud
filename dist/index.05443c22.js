@@ -476,10 +476,10 @@ function getRandomColor() {
 function toggleTaskForm(type) {
   // check if its an update form if so, reword, and show corresponding buttons :)
   if (type == 'update') {
-    createTaskForm.querySelector('h1').textContent = 'Edit an existing task';
+    createTaskForm.querySelector('h1').textContent = 'Edit task';
     createTaskForm.classList.add('update');
   } else {
-    createTaskForm.querySelector('h1').textContent = 'Create a new task';
+    createTaskForm.querySelector('h1').textContent = 'Create new task';
     createTaskForm.classList.remove('update');
   }
   if (formVisible == false) {
@@ -660,7 +660,7 @@ _parcelHelpers.defineInteropFlag(exports);
 class Task {
   // this is what it's made of
   constructor(id, name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate, taskList) {
-    // constructor(id, name, description, dueDate, priorityRating, estimatedTime, completionStatus, saveStatus) {
+    this.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     this.id = id;
     this.name = name;
     this.description = description;
@@ -726,17 +726,35 @@ class Task {
     title.textContent = this.name;
     description.textContent = this.description;
     subjectTag.textContent = this.subject;
-    dueDate.textContent = this.dueDate;
-    timeTag.textContent = this.estimatedTimeHr + this.estimatedTimeMin;
+    if (this.dueDate.length != 0) {
+      let dueDateElements = this.dueDate.split('-');
+      let month = this.months[parseInt(dueDateElements[1]) - 1];
+      let day = dueDateElements[2];
+      dueDate.textContent = 'Due ' + day + ' ' + month;
+    } else {
+      dueDate.textContent = '';
+    }
+    // concatenating hour and minute estimated time durations
+    if (this.estimatedTimeHr > 0 && this.estimatedTimeMin > 0) {
+      timeTag.textContent = this.estimatedTimeHr + ' HR ' + this.estimatedTimeMin + ' MIN';
+    } else if (this.estimatedTimeHr == 0 && this.estimatedTimeMin > 0) {
+      timeTag.textContent = this.estimatedTimeMin + ' MIN';
+    } else if (this.estimatedTimeHr > 0 && this.estimatedTimeMin == 0) {
+      timeTag.textContent = this.estimatedTimeHr + ' HR';
+    } else {
+      timeTag.textContent = '∞';
+    }
     // appending time details to time div
+    timeDetails.appendChild(timeIcon);
     timeDetails.appendChild(dueDate);
     timeDetails.appendChild(timeTag);
     // appending everything to whole div
-    card.appendChild(subjectTag);
+    if (this.subject.length != 0) {
+      card.appendChild(subjectTag);
+    }
     card.appendChild(title);
     card.appendChild(description);
     card.appendChild(line);
-    card.appendChild(timeIcon);
     card.appendChild(timeDetails);
     card.appendChild(editIcon);
     // appending card to column

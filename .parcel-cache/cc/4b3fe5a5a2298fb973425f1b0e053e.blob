@@ -336,6 +336,71 @@ body main .tab.active::before {
 #tasks div.column div.cards article.card:last-child {
   margin-bottom: 24px;
 }
+#tasks div.column div.cards article.card .edit {
+  padding: 6px;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  opacity: 0.4;
+}
+#tasks div.column div.cards article.card .edit:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+  border-radius: 4px;
+  opacity: 1;
+}
+#tasks div.column div.cards article.card h3 {
+  margin-top: 4px;
+  width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: 500;
+}
+#tasks div.column div.cards article.card span.subject {
+  font-size: 12px;
+  padding: 3px 17px;
+  margin: 12px 0;
+  border-radius: 16px;
+  text-transform: uppercase;
+  border: 1.2px solid #303030;
+}
+#tasks div.column div.cards article.card span.subject ~ h3 {
+  margin: 16px 0 8px 0;
+}
+#tasks div.column div.cards article.card div.time-details {
+  display: flex;
+}
+#tasks div.column div.cards article.card p {
+  margin: 8px 0 16px 0;
+  font-size: 14px;
+}
+#tasks div.column div.cards article.card hr {
+  border: none;
+  border-top: 2px solid #eeeeee;
+}
+#tasks div.column div.cards article.card div.time-details {
+  padding-top: 6px;
+  display: flex;
+  align-items: center;
+}
+#tasks div.column div.cards article.card div.time-details h4 {
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #909090;
+  text-transform: uppercase;
+}
+#tasks div.column div.cards article.card div.time-details span.time {
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: auto;
+  color: #909090;
+  padding: 4px 18px;
+  border-radius: 16px;
+  background-color: #eeeeee;
+}
 #tasks div.column div#empty-state-message {
   flex-direction: column;
   position: absolute;
@@ -399,6 +464,12 @@ body main .tab.active::before {
   display: flex;
   flex-direction: column;
   margin: 36px;
+}
+#content div.group h3.open-link {
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #909090;
 }
 #content div.group div.group-title {
   display: flex;
@@ -494,8 +565,63 @@ body main .tab.active::before {
   background-color: #fefefe;
   filter: drop-shadow(0 0 2px #30303018);
 }
+#content div.group div.tiles article.tile a.edit-content {
+  padding: 6px;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  opacity: 0.4;
+}
+#content div.group div.tiles article.tile a.edit-content:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+  border-radius: 4px;
+  opacity: 1;
+}
 #content div.group div.tiles article.tile svg {
   display: flex;
+}
+#content div.group div.tiles article.tile h3 {
+  width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 4px 0 16px 0;
+}
+#content div.group div.tiles article.tile pre {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+#content div.group div.tiles article.tile pre code {
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 12px;
+}
+#content div.group div.tiles article.tile hr {
+  border: none;
+  border-top: 2px solid #eeeeee;
+}
+#content div.group div.tiles article.tile a.external-link {
+  color: #909090;
+  margin: 12px 0 4px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+#content div.group div.tiles article.tile a.external-link svg {
+  padding-right: 6px;
 }
 
 .button {
@@ -553,14 +679,6 @@ body main .tab.active::before {
   z-index: 5;
 }
 
-.edit {
-  padding: 18px;
-}
-.edit:hover {
-  background-color: greenyellow;
-  cursor: pointer;
-}
-
 form {
   z-index: 8;
   display: none;
@@ -568,9 +686,8 @@ form {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   padding: 36px;
   flex-direction: column;
   background-color: #fefefe;
@@ -580,12 +697,44 @@ form {
 form.active {
   display: flex;
 }
-form#create-task-form section {
+form#add-column-form, form#add-group-form {
+  max-width: 360px;
+}
+form#add-column-form input, form#add-group-form input {
+  width: auto;
+}
+form#add-column-form p, form#add-group-form p {
+  font-size: 12px;
+  color: #909090;
+  margin: 24px 0 12px 0;
+}
+form#add-column-form .form-button-container, form#add-group-form .form-button-container {
+  padding-top: 18px;
+  margin-right: 0;
+}
+form#add-column-form .form-button-container button.primary, form#add-group-form .form-button-container button.primary {
+  margin-right: 0;
+}
+form section {
   display: grid;
   grid-template-columns: 4fr 3fr 2px;
   column-gap: 24px;
 }
-form#create-task-form section select {
+form section div:first-child input {
+  width: 80%;
+}
+form section div:first-child textarea {
+  width: 80%;
+  border: none;
+  padding: 12px;
+  resize: vertical;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+  border-radius: 4px;
+}
+form section div:first-child textarea:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+}
+form select {
   appearance: none;
   padding: 12px;
   width: 70%;
@@ -593,73 +742,17 @@ form#create-task-form section select {
   border: none;
   filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
 }
-form#create-task-form section label[for=taskEstimatedTimeMin] {
-  position: relative;
-  left: -10px;
-}
-form#create-task-form section label[for=taskEstimatedTimeHr], form#create-task-form section label[for=taskEstimatedTimeMin] {
-  margin: 0;
-  padding: 0;
-  display: initial;
-  width: 70px;
-}
-form#create-task-form section label[for=taskEstimatedTimeHr] span, form#create-task-form section label[for=taskEstimatedTimeMin] span {
-  position: relative;
-  right: 60px;
-}
-form#create-task-form section input {
-  width: 60%;
-}
-form#create-task-form section input[name=taskEstimatedTimeHr], form#create-task-form section input[name=taskEstimatedTimeMin] {
-  font-size: 16px;
-  width: 70px;
-}
-form#create-task-form section input[type=radio] {
-  display: none;
-}
-form#create-task-form section input[type=radio] ~ span {
-  padding: 14px 18px;
-  display: flex;
-  border-radius: 4px;
-  background-color: #fefefe;
-  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
-}
-form#create-task-form section input[type=radio] ~ span:hover {
+form select:hover {
   filter: drop-shadow(0 0 2px #30303048);
+  cursor: pointer;
 }
-form#create-task-form section input[type=radio] ~ span div {
-  width: 12px;
-  height: 12px;
-  border-radius: 12px;
-  margin-right: 8px;
-}
-form#create-task-form section input[type=radio]:checked ~ span {
-  background-color: #303030;
-  color: #fefefe;
-}
-form#create-task-form section label.false-radio {
-  margin: 0;
-  padding: 0;
-}
-form#create-task-form section div:first-child input {
-  width: 80%;
-}
-form#create-task-form section div:first-child textarea {
-  width: 85%;
-  border: none;
-  padding: 12px;
-  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
-}
-form#create-task-form section div:first-child textarea:hover {
-  filter: drop-shadow(0 0 2px #30303048);
-}
-form#create-task-form .form-button-container {
+form .form-button-container {
   display: flex;
   flex-direction: row-reverse;
-  padding-top: 24px;
+  padding-top: 36px;
   margin-right: 10px;
 }
-form#create-task-form button {
+form .form-button-container button {
   align-self: flex-end;
 }
 form h1 {
@@ -692,10 +785,44 @@ form input {
   filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
   border-radius: 4px;
   padding: 12px;
+  font-size: 14px;
+  width: 60%;
+}
+form input:hover {
+  filter: drop-shadow(0 0 2px #30303048);
 }
 form input:focus {
   border: none;
   filter: drop-shadow(0 0 2px #30303048);
+}
+form input[name=taskEstimatedTimeHr], form input[name=taskEstimatedTimeMin] {
+  font-size: 14px;
+  width: 70px;
+}
+form input[type=radio] {
+  display: none;
+}
+form input[type=radio] ~ span {
+  font-size: 14px;
+  padding: 12px 18px;
+  display: flex;
+  border-radius: 4px;
+  background-color: #fefefe;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+}
+form input[type=radio] ~ span:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+  cursor: pointer;
+}
+form input[type=radio] ~ span div {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  margin-right: 8px;
+}
+form input[type=radio]:checked ~ span {
+  background-color: #303030;
+  color: #fefefe;
 }
 form .radio-container {
   display: flex;
@@ -709,20 +836,35 @@ form label {
   margin: 24px 0 4px 0;
   color: #909090;
 }
+form label[for=taskEstimatedTimeMin] {
+  position: relative;
+  left: -10px;
+}
+form label[for=taskEstimatedTimeHr], form label[for=taskEstimatedTimeMin] {
+  margin: 0;
+  padding: 0;
+  display: initial;
+  width: 70px;
+}
+form label[for=taskEstimatedTimeHr] span, form label[for=taskEstimatedTimeMin] span {
+  position: relative;
+  right: 60px;
+}
 form label[for=taskPriorityRating] {
   display: flex;
   flex-direction: column;
 }
-form label .false-radio:hover {
+form label.false-radio {
+  margin: 0;
+  padding: 0;
+}
+form label.false-radio:hover {
   cursor: pointer;
 }
-form label .false-radio:hover span {
-  color: #303030;
-}
-form label .false-radio span {
+form label.false-radio span {
   background-color: #fefefe;
   color: #909090;
-  padding: 16px;
+  padding: 14px;
 }
 
 @media only screen and (max-width: 700px) {

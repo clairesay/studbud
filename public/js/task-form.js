@@ -38,10 +38,10 @@ function getRandomColor(){
 function toggleTaskForm(type) {
     // check if its an update form if so, reword, and show corresponding buttons :)
     if (type == 'update') {
-        createTaskForm.querySelector('h1').textContent = 'Edit an existing task'
+        createTaskForm.querySelector('h1').textContent = 'Edit task'
         createTaskForm.classList.add('update')
     } else {
-        createTaskForm.querySelector('h1').textContent = 'Create a new task'
+        createTaskForm.querySelector('h1').textContent = 'Create new task'
         createTaskForm.classList.remove('update')
     }
 

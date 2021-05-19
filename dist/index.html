@@ -248,10 +248,10 @@
         <section>
             <div>
         <label for="contentTitle">Title</label>
-        <input type="text" name="contentTitle" placeholder="What's this content about?" autofocus="" required="">
+        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus="" required="">
 
         <label for="conceptDescription">Concept Description</label>
-        <textarea type="text" name="conceptDescription" maxlength="150" placeholder="In a few sentences, how would you explain the concept to a newbie?" required=""></textarea>
+        <textarea type="text" name="conceptDescription" maxlength="150" placeholder="Include a short code example here." required=""></textarea>
 
         <label for="link">Link</label>
         <input type="text" name="link" placeholder="Paste the resource link here" required="">
@@ -274,11 +274,11 @@
 
     </form>
     <form id="add-group-form" name="group" novalidate="">
-        <h1>Add a group</h1>
+        <h1>Create a group</h1>
 
         <label for="groupName">Group Name</label>
         <input type="text" name="groupName" placeholder="What is this group for?" autofocus="" required="">
-        <p>TIP: Create your groups based on topics, or even subjects!
+        <p>TIP: Create your groups based on topics, or even subjects.
         </p>
         <div class="form-button-container">
             <button id="add-group-submit" class="button primary" type="submit">Save</button>
@@ -294,11 +294,11 @@
             <input type="text" name="taskName" placeholder="What's the task called?" pattern=".{1,}" autofocus="" required="">
 
             <label for="taskDescription">Task Description</label>
-            <textarea type="text" name="taskDescription" maxlength="150" placeholder="How can I complete this task?" required=""></textarea>
+            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?" required=""></textarea>
 
             <!-- SUBJECT -->
             <label for="subject">Subject</label>
-            <input type="text" name="subject" list="subject" required="">
+            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" required="">
             <datalist id="subject">
                 <option>INFO1110</option>
                 <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
@@ -365,7 +365,7 @@
 
         <label for="columnName">Column Name</label>
         <input type="text" name="columnName" placeholder="What is this column for?" autofocus="" required="">
-        <p>TIP: Name the column after a status, like 'In-Progress' so you can categorise your tasks based on completion.
+        <p>TIP: Name the column after a status, like 'In Progress' so you can categorise tasks against completion.
         </p>
         <div class="form-button-container">
         <button id="add-column-submit" class="button primary" type="submit">Save</button>
