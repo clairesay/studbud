@@ -497,10 +497,10 @@ const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
 const stopwatchReset = document.querySelector('#stopwatch button.reset')
 
 var stopwatchOn = false,
-    timeStatic,
     intervals;
 
-window.timeStatic = timeStatic;
+
+// window.timeStatic = timeStatic;
 
 // resetting the stopwatch
 stopwatchReset.addEventListener('click', function () {
@@ -515,7 +515,8 @@ stopwatchReset.addEventListener('click', function () {
     // enable button clicking
     stopwatchReset.disabled = false
     stopwatchOn = false
-    timeStatic = true
+    timeToolsOverlay.setAttribute('static', 'true')
+    // timeStatic = true
     // turn off counting
     clearInterval(intervals)
 
@@ -527,7 +528,8 @@ var start, currentTime, elapsedTime, stringify;
 var offset = 0;
 // stopwatch start/stop button
 stopwatchStart.addEventListener('click', function () {
-    timeStatic = false;
+    timeToolsOverlay.setAttribute('static', 'false')
+    // timeStatic = false;
 
     // if the stopwatch is on, we want to turn this off
     if (stopwatchOn == true) {
@@ -679,7 +681,9 @@ pomoStartStop.addEventListener('click', function () {
 
     } else if (pomoOn == false) {
         // timer is active
-        timeStatic = false;
+        timeToolsOverlay.setAttribute('static', 'false')
+        // timeStatic = false;
+        
         // increment downwards
         function incrementDown() {
             if (pomoMin == 0 && pomoSec == 0) {
@@ -851,7 +855,8 @@ function pomodoroTimer(mode) {
 
 function endPomo() {
 // both timers are inactive
-timeStatic = true;
+timeToolsOverlay.setAttribute('static', 'true')
+// timeStatic = true;
 // reset the pomo time
 pomoMin = workMin
 pomoSec = workSec

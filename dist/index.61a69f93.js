@@ -478,6 +478,7 @@ const nextButton = musicPlayer.querySelector('#next')
 const shuffleButton = musicPlayer.querySelector('#shuffle')
 
 var tracks;
+    // musicStatic = true;
 // autopopulating the playlist based on the music available
 function addMusic() {
     // for each of the songs, create a list item and populate with semantic elements
@@ -592,7 +593,8 @@ function playTrack(n, mode) {
     };
     // if we are initialising, don't play any music, otherwise, play and set static status to false
     if (mode != 'initial') {
-        musicStatic = false;
+        musicPlayer.setAttribute('static', 'false')
+        // musicStatic = false;
         player.play();
     }
 
@@ -601,14 +603,17 @@ playTrack(0, 'initial')
 
 // events https://github.com/sampotts/plyr#events
 player.on('playing', () => {
-    musicStatic = false
+    musicPlayer.setAttribute('static', 'false')
+    // musicStatic = false
 })
 player.on('pause', () => {
-    musicStatic = true
+    musicPlayer.setAttribute('static', 'true')
+    // musicStatic = true
 })
 player.on('ended', () => {
     playTrack(currentIndex + 1)
-    musicStatic = true
+    musicPlayer.setAttribute('static', 'true')
+    // musicStatic = true
 });
 
 

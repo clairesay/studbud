@@ -446,7 +446,7 @@ id) /*: string*/
 const timePopUp = document.getElementById('time')
 const musicPopUp = document.getElementById('music')
 // var static = true
-var timeStatic, musicStatic;
+
 // window.static = static
 
 timePopUp.setAttribute('state', 'standby')
@@ -466,17 +466,18 @@ function popUpState(index) {
     var popUp, static;
     if (index == 0) {
         popUp = timePopUp
-        static = timeStatic
+        // static = timeStatic
     } else if (index == 1) {
         popUp = musicPopUp
-        static = musicStatic
+        // static = musicStatic
     }
-    console.log(static)
+    // console.log(index)
+    // console.log(static)
     if (popUp.getAttribute('state') == 'standby') {
         popUp.setAttribute('state', 'active')
     } else if (popUp.getAttribute('state') == 'peek') {
         popUp.setAttribute('state', 'active')
-    } else if (popUp.getAttribute('state') == 'active' && static == true) {
+    } else if (popUp.getAttribute('state') == 'active' && popUp.getAttribute('static') == 'true') {
         popUp.setAttribute('state', 'standby')
     } else if (popUp.getAttribute('state') == 'active') {
         popUp.setAttribute('state', 'peek')
