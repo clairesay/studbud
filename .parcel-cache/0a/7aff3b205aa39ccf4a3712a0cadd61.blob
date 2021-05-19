@@ -499,6 +499,7 @@ body main .tab.active::before {
 }
 
 .button {
+  min-width: 96px;
   padding: 12px 18px;
   border-radius: 4px;
   font-weight: 500;
@@ -525,12 +526,20 @@ body main .tab.active::before {
 }
 .button.primary.icon {
   display: none;
+  min-width: auto;
 }
 .button.secondary {
   background-color: #eeeeee;
 }
-.button.secondary.hover {
+.button.secondary:hover {
   background-color: #dddddd;
+}
+.button.danger {
+  background-color: #e56b45;
+  color: #fefefe;
+}
+.button.danger:hover {
+  background-color: #e56b45dc;
 }
 
 .background {
@@ -556,20 +565,125 @@ form {
   z-index: 8;
   display: none;
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
   width: 80%;
-  height: 80%;
-  top: calc(10% - 18px);
-  left: calc(10% - 18px);
+  left: 50%;
+  transform: translate(-50%, 0);
   padding: 36px;
   flex-direction: column;
   background-color: #fefefe;
   border-radius: 16px;
+  max-width: 720px;
 }
 form.active {
   display: flex;
 }
+form#add-column-form, form#add-group-form {
+  max-width: 360px;
+}
+form#create-task-form section, form#create-content-form section, form#add-column-form section, form#add-group-form section {
+  display: grid;
+  grid-template-columns: 4fr 3fr 2px;
+  column-gap: 24px;
+}
+form#create-task-form section select, form#create-content-form section select, form#add-column-form section select, form#add-group-form section select {
+  appearance: none;
+  padding: 12px;
+  width: 70%;
+  border-radius: 4px;
+  border: none;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+}
+form#create-task-form section select:hover, form#create-content-form section select:hover, form#add-column-form section select:hover, form#add-group-form section select:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+  cursor: pointer;
+}
+form#create-task-form section select option:hover, form#create-content-form section select option:hover, form#add-column-form section select option:hover, form#add-group-form section select option:hover {
+  cursor: pointer;
+}
+form#create-task-form section label[for=taskEstimatedTimeMin], form#create-content-form section label[for=taskEstimatedTimeMin], form#add-column-form section label[for=taskEstimatedTimeMin], form#add-group-form section label[for=taskEstimatedTimeMin] {
+  position: relative;
+  left: -10px;
+}
+form#create-task-form section label[for=taskEstimatedTimeHr], form#create-task-form section label[for=taskEstimatedTimeMin], form#create-content-form section label[for=taskEstimatedTimeHr], form#create-content-form section label[for=taskEstimatedTimeMin], form#add-column-form section label[for=taskEstimatedTimeHr], form#add-column-form section label[for=taskEstimatedTimeMin], form#add-group-form section label[for=taskEstimatedTimeHr], form#add-group-form section label[for=taskEstimatedTimeMin] {
+  margin: 0;
+  padding: 0;
+  display: initial;
+  width: 70px;
+}
+form#create-task-form section label[for=taskEstimatedTimeHr] span, form#create-task-form section label[for=taskEstimatedTimeMin] span, form#create-content-form section label[for=taskEstimatedTimeHr] span, form#create-content-form section label[for=taskEstimatedTimeMin] span, form#add-column-form section label[for=taskEstimatedTimeHr] span, form#add-column-form section label[for=taskEstimatedTimeMin] span, form#add-group-form section label[for=taskEstimatedTimeHr] span, form#add-group-form section label[for=taskEstimatedTimeMin] span {
+  position: relative;
+  right: 60px;
+}
+form#create-task-form section input, form#create-content-form section input, form#add-column-form section input, form#add-group-form section input {
+  width: 60%;
+}
+form#create-task-form section input:hover, form#create-content-form section input:hover, form#add-column-form section input:hover, form#add-group-form section input:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+}
+form#create-task-form section input[name=taskEstimatedTimeHr], form#create-task-form section input[name=taskEstimatedTimeMin], form#create-content-form section input[name=taskEstimatedTimeHr], form#create-content-form section input[name=taskEstimatedTimeMin], form#add-column-form section input[name=taskEstimatedTimeHr], form#add-column-form section input[name=taskEstimatedTimeMin], form#add-group-form section input[name=taskEstimatedTimeHr], form#add-group-form section input[name=taskEstimatedTimeMin] {
+  font-size: 16px;
+  width: 70px;
+}
+form#create-task-form section input[type=radio], form#create-content-form section input[type=radio], form#add-column-form section input[type=radio], form#add-group-form section input[type=radio] {
+  display: none;
+}
+form#create-task-form section input[type=radio] ~ span, form#create-content-form section input[type=radio] ~ span, form#add-column-form section input[type=radio] ~ span, form#add-group-form section input[type=radio] ~ span {
+  padding: 14px 18px;
+  display: flex;
+  border-radius: 4px;
+  background-color: #fefefe;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+}
+form#create-task-form section input[type=radio] ~ span:hover, form#create-content-form section input[type=radio] ~ span:hover, form#add-column-form section input[type=radio] ~ span:hover, form#add-group-form section input[type=radio] ~ span:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+  cursor: pointer;
+}
+form#create-task-form section input[type=radio] ~ span div, form#create-content-form section input[type=radio] ~ span div, form#add-column-form section input[type=radio] ~ span div, form#add-group-form section input[type=radio] ~ span div {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  margin-right: 8px;
+}
+form#create-task-form section input[type=radio]:checked ~ span, form#create-content-form section input[type=radio]:checked ~ span, form#add-column-form section input[type=radio]:checked ~ span, form#add-group-form section input[type=radio]:checked ~ span {
+  background-color: #303030;
+  color: #fefefe;
+}
+form#create-task-form section label.false-radio, form#create-content-form section label.false-radio, form#add-column-form section label.false-radio, form#add-group-form section label.false-radio {
+  margin: 0;
+  padding: 0;
+}
+form#create-task-form section div:first-child input, form#create-content-form section div:first-child input, form#add-column-form section div:first-child input, form#add-group-form section div:first-child input {
+  width: 80%;
+}
+form#create-task-form section div:first-child textarea, form#create-content-form section div:first-child textarea, form#add-column-form section div:first-child textarea, form#add-group-form section div:first-child textarea {
+  width: 80%;
+  border: none;
+  padding: 12px;
+  resize: vertical;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+  border-radius: 4px;
+}
+form#create-task-form section div:first-child textarea:hover, form#create-content-form section div:first-child textarea:hover, form#add-column-form section div:first-child textarea:hover, form#add-group-form section div:first-child textarea:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+}
+form#create-task-form .form-button-container, form#create-content-form .form-button-container, form#add-column-form .form-button-container, form#add-group-form .form-button-container {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 24px;
+  margin-right: 10px;
+}
+form#create-task-form button, form#create-content-form button, form#add-column-form button, form#add-group-form button {
+  align-self: flex-end;
+}
+form h1 {
+  font-size: 24px;
+  font-weight: 500;
+}
 form button#edit-task-delete, form button#edit-content-delete {
   display: none;
+  margin-right: auto;
 }
 form button.close-form {
   position: absolute;
@@ -590,7 +704,7 @@ form.update button#edit-task-delete, form.update button#edit-content-delete {
 }
 form input {
   border: none;
-  filter: drop-shadow(0 0 2px #30303018);
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
   border-radius: 4px;
   padding: 12px;
 }
@@ -598,19 +712,21 @@ form input:focus {
   border: none;
   filter: drop-shadow(0 0 2px #30303048);
 }
-form input[type=radio] {
-  width: 0;
-}
-form input[type=radio]:checked ~ span {
-  background-color: #303030;
-  color: #fefefe;
+form .radio-container {
+  display: flex;
+  gap: 12px;
 }
 form label {
   display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-left: 12px;
+  margin: 24px 0 4px 0;
+  color: #909090;
 }
 form label[for=taskPriorityRating] {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 form label .false-radio:hover {
   cursor: pointer;

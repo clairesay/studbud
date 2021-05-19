@@ -21,29 +21,161 @@
     }
 }
 
-
 // FORM
 form {
     z-index: 8;
 
     display: none;
     position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     width: 80%;
-    height: 80%;
-    top: calc(10% - 18px);
-    left: calc(10% - 18px);
+    left: 50%;
+    transform: translate(-50%, 0);
     padding: 36px;
     flex-direction: column;
     background-color: $white;
     border-radius: $big-radius;
 
+    max-width: 720px;
+
     &.active {
         display: flex;
     }
 
+    &#add-column-form, &#add-group-form {
+        max-width:360px;
+        // input {
+        //     max-width: 224px;
+        // }
+    }
+    &#create-task-form, &#create-content-form, &#add-column-form, &#add-group-form {
+        section {
+            display: grid;
+            grid-template-columns: 4fr 3fr 2px;
+            column-gap: 24px;
+
+            select {
+                appearance: none;
+                // -moz-appearance: none;
+                // -webkit-appearance: none;
+                padding: 12px;
+                width: 70%;
+                border-radius: $mini-radius;
+                border: none;
+                filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+                &:hover {
+                    filter: drop-shadow(0 0 2px #30303048);
+                    cursor: pointer;
+                }
+                option:hover {
+                    cursor: pointer;
+                }
+            }
+
+            label[for=taskEstimatedTimeMin] {
+                position: relative;
+                left: -10px;
+            }
+            label[for=taskEstimatedTimeHr],label[for=taskEstimatedTimeMin] {
+                margin:0; 
+                padding: 0;
+                display: initial;
+                width: 70px;
+                span {
+                    position: relative;
+                    right: 60px;
+                }
+            }
+
+            input {
+                width: 60%;
+                &:hover {
+                    filter: drop-shadow(0 0 2px #30303048);
+                }
+
+                &[name=taskEstimatedTimeHr],
+                &[name=taskEstimatedTimeMin] {
+                    font-size: 16px;
+                    width: 70px;
+                }
+
+                &[type=radio] {
+                    // width: 0;
+                    // margin: 0;
+                    display:none;
+                    ~ span {
+                        padding: 14px 18px;
+                        display: flex;
+                        border-radius: $mini-radius;
+                        background-color: $white;
+                        filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+
+                        &:hover {
+                            filter: drop-shadow(0 0 2px #30303048);
+                            cursor: pointer;
+                        }
+
+                        div {
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 12px;
+                            
+                            margin-right: 8px;
+                        }
+
+                    }
+                    &:checked ~ span {
+                        background-color: $black;
+                        color: $white;
+                    }
+                }
+            }
+            label.false-radio {
+                margin: 0;
+                padding: 0;
+            }
+
+            div:first-child {
+                input {
+                    width: 80%;
+                }
+                textarea {
+                    width: 80%;
+                    border: none;
+                    padding: 12px;
+                    resize: vertical;
+                    filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+                    border-radius: $mini-radius;
+                    &:hover {
+                        filter: drop-shadow(0 0 2px #30303048);
+                    }
+                }
+                
+            }
+        }
+
+        .form-button-container {
+            display: flex;
+            flex-direction: row-reverse;
+            padding-top: 24px;
+            margin-right: 10px;
+        }
+        button {
+            align-self: flex-end;
+        }
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
     button {
-        &#edit-task-delete, &#edit-content-delete {
+        &#edit-task-delete,
+        &#edit-content-delete {
             display: none;
+            margin-right: auto;
         }
 
         &.close-form {
@@ -66,16 +198,16 @@ form {
 
     &.update {
         button {
-            &#edit-task-delete, &#edit-content-delete {
+            &#edit-task-delete,
+            &#edit-content-delete {
                 display: flex;
             }
-        } 
-
+        }
     }
 
     input {
         border: none;
-        filter: drop-shadow(0 0 2px #30303018);
+        filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
         border-radius: $mini-radius;
         padding: 12px;
 
@@ -83,23 +215,36 @@ form {
             border: none;
             filter: drop-shadow(0 0 2px #30303048);
         }
+    }
 
-        &[type="radio"] {
-            width: 0;
+    .radio-container {
+        display: flex;
+        gap: 12px;
 
-            &:checked ~ span {
-                background-color: $black;
-                color: $white;
-            }
-        }
+        // div {
+        //     &:nth-of-type(1) {
+        //         background-color: rgb(112, 184, 21);
+        //     }
+        //     &:nth-of-type(2) {
+        //         background-color: rgb(229, 196, 76);
+        //     }
+        //     &:nth-of-type(3) {
+        //         background-color: rgb(245, 146, 115);
+        //     }
+        // }
     }
 
     label {
         display: block;
-        
+        font-size: 12px;
+        text-transform: uppercase;
+        padding-left: 12px;
+        margin: 24px 0 4px 0;
+        color: $dark-grey;
+
         &[for="taskPriorityRating"] {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
         }
 
         .false-radio {

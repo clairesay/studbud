@@ -45,7 +45,7 @@ class Content {
         } else {
             link.textContent = 'https://' + this.link
             link.setAttribute('href', 'https://' + this.link)
-        }  
+        }
 
         // set attribute for 'open in new tab' functionality
         link.classList.add('external-link')
@@ -66,10 +66,10 @@ class Content {
         card.appendChild(title)
         card.appendChild(descriptionContainer)
         card.appendChild(line)
-        
+
         card.appendChild(link)
         card.appendChild(editIcon)
-        
+
         // add card to relevant group, or to 'Ungrouped' as the default
         let currentGroup = this.group
         if (this.group == 'None') {

@@ -89,13 +89,14 @@ function autoFillTaskDetails(object) {
         let thisTask = task
         if (thisTask.id == objectId) {
             let taskDetails = createTaskForm.querySelectorAll('form input');
-
+            let textArea = createTaskForm.querySelector('textarea')
             // taskName
             taskDetails[0].value = thisTask.name
             // taskDescription
-            taskDetails[1].value = thisTask.description
+            textArea.value = thisTask.description
+            // taskDetails[].value = thisTask.description
             // taskSubject 
-            taskDetails[2].value = thisTask.subject
+            taskDetails[1].value = thisTask.subject
 
             // taskStatus
             let statuses = createTaskForm.querySelector('select[name=status]');
@@ -103,19 +104,19 @@ function autoFillTaskDetails(object) {
 
             // taskPriorityRating
             if (thisTask.priorityRating == 'Low') {
-                taskDetails[3].checked = true
+                taskDetails[2].checked = true
             } else if (thisTask.priorityRating == 'Mid') {
-                taskDetails[4].checked = true
+                taskDetails[3].checked = true
             } else if (thisTask.priorityRating == 'High') {
-                taskDetails[5].checked = true
+                taskDetails[4].checked = true
             }
             
             // taskEstimatedTimeHr
-            taskDetails[6].value = thisTask.estimatedTimeHr
+            taskDetails[5].value = thisTask.estimatedTimeHr
             // taskEstimatedTimeMin
-            taskDetails[7].value = thisTask.estimatedTimeMin
+            taskDetails[6].value = thisTask.estimatedTimeMin
             // taskDueDate
-            taskDetails[8].value = thisTask.dueDate
+            taskDetails[7].value = thisTask.dueDate
 
             taskSaveButton.value = thisTask.id
             toggleTaskForm('update')
@@ -128,24 +129,26 @@ function getTaskDetails(taskDetails) {
     let name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate;
 
     name = taskDetails[0].value;
-    description = taskDetails[1].value;
-    subject = taskDetails[2].value;
+    let textArea = createTaskForm.querySelector('textarea')
+    description = textArea.value
+    // description = taskDetails[1].value;
+    subject = taskDetails[1].value;
     
     let statuses = createTaskForm.querySelector('select[name=status]');
     status = statuses.value;
 
     // checking the radios 
-    if (taskDetails[3].checked == true) {
+    if (taskDetails[2].checked == true) {
+        priorityRating = taskDetails[2].value
+    } else if (taskDetails[3].checked == true) {
         priorityRating = taskDetails[3].value
     } else if (taskDetails[4].checked == true) {
         priorityRating = taskDetails[4].value
-    } else if (taskDetails[5].checked == true) {
-        priorityRating = taskDetails[5].value
     }
 
-    estimatedTimeHr = taskDetails[6].value;
-    estimatedTimeMin = taskDetails[7].value;
-    dueDate = taskDetails[8].value;
+    estimatedTimeHr = taskDetails[5].value;
+    estimatedTimeMin = taskDetails[6].value;
+    dueDate = taskDetails[7].value;
 
     return {name, description, subject, status, priorityRating, estimatedTimeHr, estimatedTimeMin, dueDate}
 }

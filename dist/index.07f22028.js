@@ -454,14 +454,19 @@ const modalBackground = document.getElementById('modal-background');
 newContent.addEventListener('click', function () {
   openContentForm();
 });
+// should hold all of the user's content in local storage
+// on page load, check how much content ther is in local storage (this should be an array)
+// for each object in the array, create a relevant card
+// populate that card with the relevant details
+// append card to the relevant group
 // open content form (may be prepopulated or blank)
 function openContentForm(type) {
   // if updating existing content, set type update
   if (type == 'update') {
-    createContentForm.querySelector('h1').textContent = 'Edit an existing task';
+    createContentForm.querySelector('h1').textContent = 'Edit existing resource';
     createContentForm.classList.add('update');
   } else {
-    createContentForm.querySelector('h1').textContent = 'Create a new task';
+    createContentForm.querySelector('h1').textContent = 'Add new content';
     createContentForm.classList.remove('update');
   }
   // show/hide
@@ -502,12 +507,14 @@ function autoFillContentDetails(object) {
     let thisContent = content;
     if (thisContent.id == objectId) {
       let contentDetails = createContentForm.querySelectorAll('form input');
+      let textArea = createContentForm.querySelector('textarea');
       // Title
       contentDetails[0].value = thisContent.title;
       // description
-      contentDetails[1].value = thisContent.description;
+      textArea.value = thisContent.description;
+      // contentDetails[1].value = thisContent.description
       // link
-      contentDetails[2].value = thisContent.link;
+      contentDetails[1].value = thisContent.link;
       // subject
       // contentDetails[3].value = thisContent.subject
       // group
@@ -550,6 +557,7 @@ contentDeleteButton.addEventListener('click', function (event) {
       contentSaveButton.value = '';
     }
   }
+  // localStorage.setItem('content', JSON.stringify(contentList))
   openContentForm();
   reupdate();
   _countTiles.countTiles();
@@ -576,14 +584,17 @@ contentSaveButton.addEventListener('click', function (event) {
   // extract values from input form
   contentDetails = createContentForm.querySelectorAll('form input');
   contentTitle = contentDetails[0].value;
-  contentDescription = contentDetails[1].value;
-  contentLink = contentDetails[2].value;
+  let textArea = createContentForm.querySelector('textarea');
+  contentDescription = textArea.value;
+  // contentDescription = contentDetails[1].value
+  contentLink = contentDetails[1].value;
   let groups = createContentForm.querySelector('select[name=group]');
   contentGroup = groups.value;
   // create new object in class
   content = new _contentDefault.default(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList);
   content.createCard(content.addContent());
   // update tile count and group links
+  // localStorage.setItem('content', JSON.stringify(contentList))
   openContentForm();
   _countTiles.countTiles();
   _countTiles.openGroupLinks();
