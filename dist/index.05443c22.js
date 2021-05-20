@@ -446,31 +446,28 @@ var _task = require('./task');
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _taskDefault = _parcelHelpers.interopDefault(_task);
 var _kanban = require('./kanban');
-var subjectsList = [];
+var subjectList = [];
 // subject should not duplicate
-// var tags = document.querySelector('input[name=subject]')
-// // TAGIFYING
-// var tagify1 = new Tagify(tags, {
-// maxTags           : 1,
-// mode : "select",
-// whitelist: subjectsList,
-// dropdown : {
-// classname     : "color-blue",
-// enabled       : 0,              // show the dropdown immediately on focus
-// maxItems      : 5,
-// position      : "text",         // place the dropdown near the typed text
-// closeOnSelect : false,          // keep the dropdown open after selecting a suggestion
-// highlightFirst: true
-// }
-// })
-// function to generate a random colour
-// https://yaireo.github.io/tagify/#section-mix
-function getRandomColor() {
-  function rand(min, max) {
-    return min + Math.random() * (max - min);
-  }
-  var h = rand(1, 360) | 0, s = rand(40, 70) | 0, l = rand(65, 72) | 0;
-  return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+function updateSubjectList() {
+  taskList.forEach(function (task) {
+    let taskSubject = task.subject.trim().toUpperCase();
+    let duplicate = false;
+    for (i in subjectList) {
+      if (subjectList[i] == taskSubject) {
+        duplicate = true;
+      }
+    }
+    if (duplicate == false) {
+      subjectList.push(taskSubject);
+    }
+  });
+  let subjectOptions = document.querySelector('datalist#subject');
+  subjectOptions.innerHTML = '';
+  subjectList.forEach(function (subject) {
+    let option = document.createElement('option');
+    option.textContent = subject;
+    subjectOptions.appendChild(option);
+  });
 }
 // opening or closing the task form and changing its type
 function toggleTaskForm(type) {
@@ -608,6 +605,7 @@ taskDeleteButton.addEventListener('click', function () {
   }
   toggleTaskForm();
   reupdate();
+  updateSubjectList();
 });
 // cancelling the creation of a task or button
 taskCancelButton.addEventListener('click', function () {
@@ -645,12 +643,11 @@ taskSaveButton.addEventListener('click', function (event) {
   let newTask = new _taskDefault.default(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList);
   // append to taskList and create new card with task
   newTask.createCard(newTask.addTask());
-  // append subject to subject list
-  subjectsList.push(task.subject);
   // close the form and add event listeners to any new items
-  console.log(subjectsList);
   toggleTaskForm();
   reupdate();
+  // update subjects
+  updateSubjectList();
 });
 
 },{"./task":"3EAmk","./kanban":"3b9tq","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3EAmk":[function(require,module,exports) {

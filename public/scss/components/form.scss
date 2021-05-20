@@ -12,6 +12,11 @@
     z-index: 5;
 }
 
+// CODE
+code {
+    font-family:'Courier New', Courier, monospace;
+}
+
 // FORM
 form {
     z-index: 8;
@@ -36,7 +41,9 @@ form {
 
     &#add-column-form,
     &#add-group-form {
-        // padding-right: 84px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         max-width: 360px;
         input {
             width:auto;
@@ -76,6 +83,35 @@ form {
                 }
             }
         }
+    }
+    pre {
+        display: flex;
+        width: 80%;
+    }
+    textarea[name="conceptDescription"] {
+        font-family:'Courier New', Courier, monospace;
+        max-height: 30%;
+        height: 100px;
+        color: $white;
+        min-width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+        padding: 12px;
+        background-color: $black;
+        filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        border-radius: $mini-radius;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+        &:hover {
+            filter: drop-shadow(0 0 2px #30303048);
+        }
+    }
+    code:empty:before {
+        content:attr(data-text);
+        color: $grey;
     }
 
     select {

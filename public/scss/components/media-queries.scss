@@ -27,6 +27,14 @@
             max-width: 332px;
         }
     }
+    // FORM
+    // 
+    form {
+        &#add-column-form,
+        &#add-group-form {
+            max-width: 80%;
+        }
+    }
 
     /* /////////// COMPONENTS //////////// */
     // BUTTON
@@ -58,6 +66,7 @@
             &.create {
                 background-color: $white;
                 color: $black;
+                display: none;
                 visibility: hidden;
 
                 &:hover {
@@ -66,6 +75,7 @@
             }
         
             &.active {
+                display: flex;
                 visibility: visible;
             }
         }

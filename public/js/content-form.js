@@ -68,11 +68,11 @@ function autoFillContentDetails(object) {
         let thisContent = content;
         if (thisContent.id == objectId) {
             let contentDetails = createContentForm.querySelectorAll('form input');
-            let textArea = createContentForm.querySelector('textarea')
+            let codeArea = createContentForm.querySelector('textArea')
             //Title
             contentDetails[0].value = thisContent.title
             //description
-            textArea.value = thisContent.description
+            codeArea.value = thisContent.description
             // contentDetails[1].value = thisContent.description
             //link
             contentDetails[1].value = thisContent.link
@@ -87,6 +87,20 @@ function autoFillContentDetails(object) {
             contentSaveButton.value = thisContent.id
             openContentForm('update')
         }
+    })
+}
+
+function enableButtons() {
+    let groups = document.getElementsByClassName('group')
+    let deleteGroupButtons = document.querySelectorAll('svg.delete-group')
+    deleteGroupButtons.forEach(function(deleteGroupButton) {
+        let tiles = deleteGroupButton.parentElement.parentElement.parentElement.querySelectorAll('.tile')
+        if (groups.length > 1 && tiles.length == 0) {
+            deleteGroupButton.classList.remove('disabled')
+        } else if (groups.length <= 1 || tiles.length > 0) {
+            deleteGroupButton.classList.add('disabled')
+        }
+        
     })
 }
 
@@ -128,6 +142,7 @@ contentDeleteButton.addEventListener('click', function (event) {
     openContentForm()
     reupdate()
     countTiles.countTiles()
+    enableButtons()
 })
 
 // save the content
@@ -154,8 +169,8 @@ contentSaveButton.addEventListener('click', function (event) {
     // extract values from input form
     contentDetails = createContentForm.querySelectorAll('form input');
     contentTitle = contentDetails[0].value
-    let textArea = createContentForm.querySelector('textarea')
-    contentDescription = textArea.value
+    let codeArea = createContentForm.querySelector('textarea')
+    contentDescription = codeArea.value
     // contentDescription = contentDetails[1].value 
     contentLink = contentDetails[1].value
 
@@ -172,4 +187,5 @@ contentSaveButton.addEventListener('click', function (event) {
     countTiles.countTiles()
     countTiles.openGroupLinks()
     reupdate()
+    enableButtons()
 })

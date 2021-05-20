@@ -139,8 +139,9 @@ function groupEditDeleteFunctionality() {
             if (groups.length > 1 && tiles.length == 0) {
                 deleteGroupButton.classList.remove('disabled')
             } else if (groups.length <= 1 || tiles.length > 0) {
-                deleteColumnButton.classList.add('disabled')
+                deleteGroupButton.classList.add('disabled')
             }
         })
     })
 }
+

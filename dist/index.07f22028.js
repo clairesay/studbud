@@ -507,11 +507,11 @@ function autoFillContentDetails(object) {
     let thisContent = content;
     if (thisContent.id == objectId) {
       let contentDetails = createContentForm.querySelectorAll('form input');
-      let textArea = createContentForm.querySelector('textarea');
+      let codeArea = createContentForm.querySelector('textArea');
       // Title
       contentDetails[0].value = thisContent.title;
       // description
-      textArea.value = thisContent.description;
+      codeArea.value = thisContent.description;
       // contentDetails[1].value = thisContent.description
       // link
       contentDetails[1].value = thisContent.link;
@@ -523,6 +523,18 @@ function autoFillContentDetails(object) {
       // open up the form with updated content
       contentSaveButton.value = thisContent.id;
       openContentForm('update');
+    }
+  });
+}
+function enableButtons() {
+  let groups = document.getElementsByClassName('group');
+  let deleteGroupButtons = document.querySelectorAll('svg.delete-group');
+  deleteGroupButtons.forEach(function (deleteGroupButton) {
+    let tiles = deleteGroupButton.parentElement.parentElement.parentElement.querySelectorAll('.tile');
+    if (groups.length > 1 && tiles.length == 0) {
+      deleteGroupButton.classList.remove('disabled');
+    } else if (groups.length <= 1 || tiles.length > 0) {
+      deleteGroupButton.classList.add('disabled');
     }
   });
 }
@@ -561,6 +573,7 @@ contentDeleteButton.addEventListener('click', function (event) {
   openContentForm();
   reupdate();
   _countTiles.countTiles();
+  enableButtons();
 });
 // save the content
 contentSaveButton.addEventListener('click', function (event) {
@@ -584,8 +597,8 @@ contentSaveButton.addEventListener('click', function (event) {
   // extract values from input form
   contentDetails = createContentForm.querySelectorAll('form input');
   contentTitle = contentDetails[0].value;
-  let textArea = createContentForm.querySelector('textarea');
-  contentDescription = textArea.value;
+  let codeArea = createContentForm.querySelector('textarea');
+  contentDescription = codeArea.value;
   // contentDescription = contentDetails[1].value
   contentLink = contentDetails[1].value;
   let groups = createContentForm.querySelector('select[name=group]');
@@ -599,6 +612,7 @@ contentSaveButton.addEventListener('click', function (event) {
   _countTiles.countTiles();
   _countTiles.openGroupLinks();
   reupdate();
+  enableButtons();
 });
 
 },{"./content":"7gsTB","./count-tiles":"293G8","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7gsTB":[function(require,module,exports) {
@@ -685,7 +699,9 @@ _parcelHelpers.export(exports, "openGroupLinks", function () {
   return openGroupLinks;
 });
 function countTiles() {
-  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles');
+  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles'), openLinkSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 16H2V2H9V0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.1 18 18 17.1 18 16V9H16V16ZM11 0V2H14.59L4.76 11.83L6.17 13.24L16 3.41V7H18V0H11Z" fill="#909090"/>
+        </svg>`;
   // writing the total number of cards at the head of each column
   // counts how many resource cards there are in each list
   total.forEach(function count(object, index) {
@@ -697,21 +713,23 @@ function countTiles() {
     }
     // if the tilecount is empty, cannot open links
     if (tileCount == 0) {
-      total[index].textContent = '';
+      total[index].innerHTML = '0 links';
     } else if (tileCount == 1) {
-      total[index].textContent = 'Open ' + tileCount + ' link';
+      total[index].innerHTML = 'Open ' + tileCount + ' link' + openLinkSVG;
     } else {
-      total[index].textContent = 'Open ' + tileCount + ' links';
+      total[index].innerHTML = 'Open ' + tileCount + ' links' + openLinkSVG;
     }
   });
 }
 function openGroupLinks() {
+  console.log('grouplinks');
   let groupLinks = document.querySelectorAll('h3.open-link');
   // for each group link
   groupLinks.forEach(function (groupLink) {
-    if (groupLink.getAttribute('listener') !== 'true') {
+    if (groupLink.getAttribute('listener') != 'true') {
       // add an event listener so that on click, it opens up all links in child element
       groupLink.addEventListener('click', function () {
+        console.log('clicked');
         let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link');
         links.forEach(function (link) {
           let url = link.getAttribute('href');

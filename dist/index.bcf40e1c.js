@@ -566,7 +566,7 @@ function groupEditDeleteFunctionality() {
       if (groups.length > 1 && tiles.length == 0) {
         deleteGroupButton.classList.remove('disabled');
       } else if (groups.length <= 1 || tiles.length > 0) {
-        deleteColumnButton.classList.add('disabled');
+        deleteGroupButton.classList.add('disabled');
       }
     });
   });
@@ -575,6 +575,7 @@ function groupEditDeleteFunctionality() {
 },{"./group":"271l5","./count-tiles":"293G8","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"271l5":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
+require("./count-tiles");
 class Group {
   constructor(id, name) {
     this.id = id;
@@ -592,12 +593,14 @@ class Group {
   /*})*/
   /*}*/
   createGroup() {
-    // creating the column
+    // creating the group
     let group = document.querySelector('div.group');
     group = group.cloneNode(true);
     let groupName = group.querySelector('input.group-name');
     groupName.value = this.name;
     groupName.removeAttribute('disabled');
+    let groupLink = group.querySelector('h3.open-link');
+    groupLink.setAttribute('listener', 'false');
     // let interactiveContainer = groupName.parentElement
     // groupName = document.createElement('input')
     // groupName.classList.add('group-name')
@@ -660,6 +663,6 @@ class Group {
 }
 exports.default = Group;
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["1iDMg","4d4Rm"], "4d4Rm", "parcelRequirec526")
+},{"./count-tiles":"293G8","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["1iDMg","4d4Rm"], "4d4Rm", "parcelRequirec526")
 
 //# sourceMappingURL=index.bcf40e1c.js.map

@@ -1,3 +1,5 @@
+import { openGroupLinks } from "./count-tiles";
+
 class Group {
     constructor(id, name) {
         this.id = id;
@@ -17,7 +19,7 @@ class Group {
     // }
 
     createGroup() {
-        // creating the column
+        // creating the group
         let group = document.querySelector('div.group')
         group = group.cloneNode(true)
 
@@ -26,6 +28,8 @@ class Group {
         groupName.value = this.name;
         groupName.removeAttribute('disabled')
 
+        let groupLink = group.querySelector('h3.open-link')
+        groupLink.setAttribute('listener', 'false')
 
         // let interactiveContainer = groupName.parentElement
         // groupName = document.createElement('input')

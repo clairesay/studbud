@@ -288,9 +288,14 @@
         <label for="contentTitle">Title</label>
         <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus required />
 
-        <label for="conceptDescription">Concept Description</label>
-        <textarea type="text" name="conceptDescription" maxlength="150"
-            placeholder="Include a short code example here." required ></textarea>
+        <label for="conceptDescription">Code snippet</label>
+        <pre>
+            <textarea name="conceptDescription" contenteditable="true" maxlength="300"
+            placeholder="Include a short code example here." spellcheck="false"></textarea>
+        </pre>
+
+        <!-- <textarea type="text" name="conceptDescription" maxlength="150"
+            placeholder="Include a short code example here." required ></textarea> -->
 
         <label for="link">Link</label>
         <input type="text" name="link" placeholder="Paste the resource link here" required />
@@ -338,11 +343,8 @@
             <!-- SUBJECT -->
             <label for="subject">Subject</label>
             <input type="text" name="subject" list="subject" placeholder="What subject is it for?" required />
-            <datalist id="subject">
+            <datalist id="subject" autocomplete="off">
                 <option>INFO1110</option>
-                <!-- ON ENTER, TURN THAT SUBJECT INTO A COLOURED TAG -->
-                <!-- <option value="Boston">
-          <option value="Cambridge"> -->
             </datalist>
         </div>
         <div>
@@ -425,7 +427,10 @@
     <script src="js/time.js"></script>
     <script src="js/music.js"></script>
     <script src="js/pop-up.js"></script>
-
+    <script>document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
+        event.preventDefault();
+        document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
+      });</script>
 </body>
 
 </html>

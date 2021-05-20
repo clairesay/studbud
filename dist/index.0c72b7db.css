@@ -458,9 +458,18 @@ body main .tab.active::before {
   font-size: 14px;
   text-transform: uppercase;
   color: #909090;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+#content div.group h3.open-link svg {
+  margin-left: 6px;
 }
 #content div.group h3.open-link:hover {
   cursor: pointer;
+  background-color: #eeeeee;
 }
 #content div.group div.group-title {
   display: flex;
@@ -479,6 +488,7 @@ body main .tab.active::before {
   background-color: transparent;
   border: none;
   padding: 2px;
+  margin-right: 12px;
 }
 #content div.group div.group-title input:hover {
   cursor: text;
@@ -497,7 +507,10 @@ body main .tab.active::before {
   padding: 8px;
   border-radius: 4px;
 }
-#content div.group div.group-title div svg:hover {
+#content div.group div.group-title div svg.disabled path {
+  fill: #cccccc;
+}
+#content div.group div.group-title div svg:not(.disabled):hover {
   cursor: pointer;
   background-color: #eeeeee;
 }
@@ -507,7 +520,7 @@ body main .tab.active::before {
 #content div.group div.group-title div svg.edit-group:hover ~ div.tooltip#edit-group {
   opacity: 1;
 }
-#content div.group div.group-title div svg.delete-group:hover ~ div.tooltip#delete-group {
+#content div.group div.group-title div svg.delete-group:not(.disabled):hover ~ div.tooltip#delete-group {
   opacity: 1;
 }
 #content div.group div.group-title div div.tooltip {
@@ -546,12 +559,18 @@ body main .tab.active::before {
   flex-wrap: wrap;
   margin: -12px;
 }
+#content div.group div.tiles:empty {
+  min-height: 300px;
+}
 #content div.group div.tiles article.tile {
   min-width: 260px;
   max-width: 280px;
   flex: 1 1 280px;
   margin: 12px;
   padding: 16px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   border-radius: 16px;
   background-color: #fefefe;
   filter: drop-shadow(0 0 2px #30303018);
@@ -667,6 +686,9 @@ body main .tab.active::before {
   height: 100vh;
   z-index: 5;
 }
+code {
+  font-family: "Courier New", Courier, monospace;
+}
 form {
   z-index: 8;
   display: none;
@@ -686,6 +708,9 @@ form.active {
   display: flex;
 }
 form#add-column-form, form#add-group-form {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 360px;
 }
 form#add-column-form input, form#add-group-form input {
@@ -722,6 +747,35 @@ form section div:first-child textarea {
 }
 form section div:first-child textarea:hover {
   filter: drop-shadow(0 0 2px #30303048);
+}
+form pre {
+  display: flex;
+  width: 80%;
+}
+form textarea[name=conceptDescription] {
+  font-family: "Courier New", Courier, monospace;
+  max-height: 30%;
+  height: 100px;
+  color: #fefefe;
+  min-width: 100%;
+  max-width: 100%;
+  font-size: 14px;
+  padding: 12px;
+  background-color: #303030;
+  filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+form textarea[name=conceptDescription]:hover {
+  filter: drop-shadow(0 0 2px #30303048);
+}
+form code:empty:before {
+  content: attr(data-text);
+  color: #cccccc;
 }
 form select {
   -webkit-appearance: none;
@@ -882,6 +936,10 @@ form label.false-radio span {
     max-width: 332px;
   }
 
+  form#add-column-form, form#add-group-form {
+    max-width: 80%;
+  }
+
   /* /////////// COMPONENTS //////////// */
   .button-container {
     flex-direction: column;
@@ -906,12 +964,14 @@ form label.false-radio span {
   .button-container .button.create {
     background-color: #fefefe;
     color: #303030;
+    display: none;
     visibility: hidden;
   }
   .button-container .button.create:hover {
     background-color: #eeeeee;
   }
   .button-container .button.active {
+    display: flex;
     visibility: visible;
   }
 }
