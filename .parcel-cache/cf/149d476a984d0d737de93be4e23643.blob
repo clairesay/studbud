@@ -467,7 +467,7 @@ body main .tab.active::before {
 #content div.group h3.open-link svg {
   margin-left: 6px;
 }
-#content div.group h3.open-link:hover {
+#content div.group h3.open-link:not(.link-absent):hover {
   cursor: pointer;
   background-color: #eeeeee;
 }
@@ -1490,77 +1490,62 @@ form label.false-radio span {
   position: absolute;
   bottom: 17px;
   width: 280px;
-  height: 300px;
   background-color: #fefefe;
   border-radius: 16px 16px 0 0;
   padding: 16px;
   filter: drop-shadow(0 0 2px #30303018);
   z-index: 3;
 }
+.pop-up nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.pop-up nav img {
+  margin-left: 12px;
+}
 .pop-up button.icon {
-  padding: 12px;
+  padding: 8px;
+  min-width: auto;
+  margin-left: auto;
+  background-color: #fefefe;
 }
-.pop-up#time {
-  right: 336px;
-}
-.pop-up#time #dropdown {
-  background-color: darkorchid;
-}
-.pop-up#time #time-selector.open h3:hover {
-  background-color: darkturquoise;
-}
-.pop-up#time #time-selector.close > h3:last-child {
-  display: none;
-}
-.pop-up#time #time-selector.open > h3:last-child {
-  display: flex;
-}
-.pop-up#time #stopwatch, .pop-up#time #pomodoro {
-  display: none;
-}
-.pop-up#time #stopwatch.active, .pop-up#time #pomodoro.active {
-  display: flex;
-  flex-direction: column;
+.pop-up button.icon:hover {
+  background-color: #eeeeee;
 }
 .pop-up#music {
   right: 12px;
 }
+.pop-up[state=active]#music nav img {
+  display: none;
+}
 .pop-up[state=standby] {
-  height: 72px;
+  height: 36px;
   width: 36px;
+  display: flex;
 }
 .pop-up[state=standby]#time {
   right: 92px;
+}
+.pop-up[state=standby]#time #stowatch.active, .pop-up[state=standby]#time #stopwatch, .pop-up[state=standby]#time #pomodoro.active, .pop-up[state=standby]#time #pomodoro {
+  display: none;
 }
 .pop-up[state=standby] * {
   display: none;
 }
 .pop-up[state=standby] nav, .pop-up[state=standby] nav img {
   display: flex;
+  margin-left: 0;
+  margin: auto;
 }
 .pop-up[state=peek] {
-  height: 72px;
+  height: 36px;
 }
-#pomodoro #timeline {
-  width: 248px;
-  height: 20px;
-  display: flex;
-  gap: 4px;
-  justify-content: space-between;
-  background-color: red;
-  position: relative;
+#time.pop-up[state=peek] nav .collapse {
+  visibility: hidden;
 }
-#pomodoro #timeline div {
-  background-color: salmon;
-  height: 20px;
-}
-#pomodoro #timeline div div {
-  height: 20px;
-  width: 0;
-  background-color: blue;
-  border: none;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+#time.pop-up[state=peek] #stopwatch, #time.pop-up[state=peek] #pomodoro {
+  display: none;
 }
 #final-load {
   display: none;

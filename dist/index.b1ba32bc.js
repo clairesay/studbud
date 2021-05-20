@@ -512,6 +512,8 @@ stopwatchReset.addEventListener('click', function () {
 
     // reset inner text of button
     stopwatchStart.textContent = 'Start'
+    stopwatchStart.classList.remove('danger')
+    stopwatchStart.classList.add('primary')
     // enable button clicking
     stopwatchReset.disabled = false
     stopwatchOn = false
@@ -535,6 +537,8 @@ stopwatchStart.addEventListener('click', function () {
     if (stopwatchOn == true) {
         clearInterval(intervals)
         stopwatchStart.textContent = 'Start'
+        stopwatchStart.classList.remove('danger')
+        stopwatchStart.classList.add('primary')
         stopwatchOn = false
         offset = parseInt(milli) * 10
 
@@ -573,6 +577,8 @@ stopwatchStart.addEventListener('click', function () {
         stopwatchReset.disabled = false
         // replace text content for relevance
         stopwatchStart.textContent = 'Stop'
+        stopwatchStart.classList.remove('primary')
+        stopwatchStart.classList.add('danger')
         // disable the timer dropdown
         dropdown.removeEventListener('click', toggleTimeMenu)
         stopwatchOn = true
@@ -711,6 +717,8 @@ pomoStartStop.addEventListener('click', function () {
 
         // change timer status
         pomoStartStop.textContent = 'Stop'
+        pomoStartStop.classList.remove('primary')
+        pomoStartStop.classList.add('danger')
         dropdown.removeEventListener('click', toggleTimeMenu)
         pomoOn = true
         pomodoroTimer()
@@ -795,10 +803,10 @@ function pomodoroTimer(mode) {
         // calculate the full time taken for each pomo phase
         let fullTime;
         if (phase == 'work') {
-            fullTime = workSec + workMin * 60
+            fullTime = breakSec + breakMin * 60
 
         } else if (phase == 'break') {
-            fullTime = breakSec + breakMin * 60
+            fullTime = workSec + workMin * 60
         }
 
         // cancel the animations if timer is off
@@ -867,6 +875,8 @@ pomoSeconds.textContent = round(pomoSec)
 clearInterval(pomoIntervals)
 // reset the text
 pomoStartStop.textContent = 'Start'
+pomoStartStop.classList.remove('danger')
+pomoStartStop.classList.add('primary')
 // allow dropdowns
 dropdown.addEventListener('click', toggleTimeMenu)
 

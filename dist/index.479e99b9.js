@@ -455,10 +455,27 @@ musicPopUp.setAttribute('state', 'standby')
 var popUpIcons = document.querySelectorAll('.pop-up[state=standby] nav img')
 var collapseButtons = document.querySelectorAll('.pop-up nav button.collapse')
 popUpIcons.forEach(function (icon, index) {
-    icon.addEventListener('click', function() {popUpState(index)})
+    icon.addEventListener('click', function(event) {
+        event.stopPropagation()
+        popUpState(index)
+    })
 })
 collapseButtons.forEach(function (button, index) {
-    button.addEventListener('click', function() {popUpState(index)})
+    button.addEventListener('click', function(event) {
+        event.stopPropagation()
+        popUpState(index)
+    })
+})
+
+timePopUp.addEventListener('click', function() {
+    if (timePopUp.getAttribute('state') == 'peek' || timePopUp.getAttribute('state') == 'standby') {
+        popUpState(0)
+    }
+})
+musicPopUp.addEventListener('click', function() {
+    if (musicPopUp.getAttribute('state') == 'peek' || musicPopUp.getAttribute('state') == 'standby') {
+        popUpState(1)
+    }
 })
 
 // alternate states of the pop-up tab
@@ -466,13 +483,9 @@ function popUpState(index) {
     var popUp, static;
     if (index == 0) {
         popUp = timePopUp
-        // static = timeStatic
     } else if (index == 1) {
         popUp = musicPopUp
-        // static = musicStatic
     }
-    // console.log(index)
-    // console.log(static)
     if (popUp.getAttribute('state') == 'standby') {
         popUp.setAttribute('state', 'active')
     } else if (popUp.getAttribute('state') == 'peek') {

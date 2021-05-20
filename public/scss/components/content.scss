@@ -43,10 +43,10 @@
             svg {
                 margin-left: 6px;
             }
-            &:hover {
+            &:not(.link-absent):hover {
                 cursor: pointer;
                 background-color: $light-grey;
-                
+  
             }
         }
 

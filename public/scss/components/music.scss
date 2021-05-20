@@ -1,12 +1,116 @@
-li {
-    display: flex;
-    border: 2px solid black;
-}
 
-li.active {
-    background-color: pink;
-}
 
-li img {
-    width: 48px;
+#music {
+    right: 12px;
+
+    h2 {
+        font-size: 18px;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 12px 0;
+        #shuffle {
+            background-color: transparent;
+            svg {
+                padding: 8px;
+                border-radius: $mini-radius;
+                &:hover {
+                    background-color: $light-grey;
+                }
+            }
+        }
+
+    }
+    #current-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            button {
+                background-color: none;
+                padding: 8px;
+            }
+        }
+        .metadata {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            h1.title, h3.artist {
+                font-size: 14px;
+                font-weight: 400;
+            }
+            h3.artist {
+                color: $dark-grey;
+            }
+        }
+    }
+    .playlist {
+        display: grid;
+        row-gap: 12px;
+        height: 100px;
+        overflow-y: auto;
+
+
+                    // SCROLLBAR
+                    &::-webkit-scrollbar {
+                        width: 8px; /* width of the entire scrollbar */
+                    }
+                
+                    &::-webkit-scrollbar-track {
+                        background: transparent; /* color of the tracking area */
+                    }
+                
+                    &::-webkit-scrollbar-thumb {
+                        background-color: $grey; /* color of the scroll thumb */
+                        border-radius: $big-radius; /* roundness of the scroll thumb */
+                        // border: 6px solid $white; /* creates padding around scroll thumb */
+                    }
+                    
+                    &::-webkit-scrollbar-thumb:hover {
+                        background-color: $dark-grey;
+                    }
+
+        li {
+            display: flex;
+            align-items: center;
+    
+            // &:hover {
+    
+            // }
+    
+            h3 {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                font-size: 12px;
+                font-weight: 400;
+                h4 {
+                    color: $dark-grey;
+                    font-size: 12px;
+                    font-weight: 400;
+                }    
+            }
+    
+            &.active{
+                background-color: pink;
+            }
+    
+            img {
+                width: 42px;
+                height: 42px;
+                margin-right: 12px;
+                border-radius: $mini-radius;;
+            }
+        }
+    }
+
+    .plyr--audio .plyr__controls {
+        padding: 0;
+    }
 }

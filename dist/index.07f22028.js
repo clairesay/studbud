@@ -714,10 +714,13 @@ function countTiles() {
     // if the tilecount is empty, cannot open links
     if (tileCount == 0) {
       total[index].innerHTML = '0 links';
+      total[index].classList.add('link-absent');
     } else if (tileCount == 1) {
       total[index].innerHTML = 'Open ' + tileCount + ' link' + openLinkSVG;
+      total[index].classList.remove('link-absent');
     } else {
       total[index].innerHTML = 'Open ' + tileCount + ' links' + openLinkSVG;
+      total[index].classList.remove('link-absent');
     }
   });
 }

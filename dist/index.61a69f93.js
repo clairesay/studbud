@@ -444,7 +444,9 @@ id) /*: string*/
 },{}],"5qt2H":[function(require,module,exports) {
 // Change "{}" to your options:
 // https://github.com/sampotts/plyr/#options
-const player = new Plyr('audio', {});
+const player = new Plyr('audio', {
+    controls: ['progress']
+});
 
 // Expose player so it can be used from the console
 window.player = player;
@@ -454,19 +456,19 @@ var songs = [
         source: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
         title: 'It All Began with a Burst',
         artist: 'Kishi Bashi',
-        album_art: 'meme.png'
+        album_art: 'eagles.jpg'
     },
     {
         source: 'https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3',
         title: 'Deezer Preview',
         artist: 'Deez',
-        album_art: 'screenshot.jpg'
+        album_art: 'fmac.jpg'
     },
     {
         source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
         title: '19th Floor',
         artist: 'Bobby Richards',
-        album_art: 'file.jpg'
+        album_art: 'eagles.jpg'
     },
 ]
 
@@ -476,6 +478,24 @@ const playlistContainer = musicPlayer.querySelector('ul.playlist')
 const previousButton = musicPlayer.querySelector('#previous')
 const nextButton = musicPlayer.querySelector('#next')
 const shuffleButton = musicPlayer.querySelector('#shuffle')
+var playButton = musicPlayer.querySelector('#play-pause')
+playButton.addEventListener('click', function() {
+    player.togglePlay()
+    buttonIcon()
+})
+
+function buttonIcon() {
+    if (player.paused) {
+        playButton.innerHTML = `                      <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0V21L17 10.5L0 0Z" fill="#303030"/>
+        </svg>
+        `
+    } else if (player.playing) {
+        playButton.innerHTML = `    <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 21.5H6V0.5H0V21.5ZM12 0.5V21.5H18V0.5H12Z" fill="#303030"/>
+    </svg>`
+    }
+}
 
 var tracks;
     // musicStatic = true;
@@ -494,9 +514,9 @@ function addMusic() {
         artist.textContent = song.artist
 
         // append each element to the list item, and then the list to the container
+        title.appendChild(artist)
         songListItem.appendChild(albumArt)
         songListItem.appendChild(title)
-        songListItem.appendChild(artist)
         playlistContainer.appendChild(songListItem)
 
         // add event listener
@@ -597,6 +617,7 @@ function playTrack(n, mode) {
         // musicStatic = false;
         player.play();
     }
+    buttonIcon()
 
 }
 playTrack(0, 'initial')

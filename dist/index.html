@@ -127,9 +127,9 @@
 
     </main>
 
-    <section id="time" class="pop-up">
+    <section id="time" class="pop-up" static="true">
         <nav>
-            <img src="/time.2337bf3b.svg">
+            <img src="/timer.cb744305.svg">
             <div id="dropdown">
                 <div id="time-selector" class="close">
                     <h3 id="stopwatch-select">Stopwatch</h3>
@@ -148,30 +148,62 @@
             </button>
         </nav>
         <article id="stopwatch">
-            <h1 style="display: block; width: 100%;
-"><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
+            <h1><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
             <div>
                 <button class="button primary start-stop" type="button">Start</button>
                 <button class="button secondary reset" type="button">Reset</button>
             </div>
-            <h3>Feeling speedy? Time it!</h3>
         </article>
         <article id="pomodoro">
             <div id="work">
-                <button class="button secondary icon subtract" type="button">-</button>
-                <h1 style="display: block; width: 100%;
-"><span class="minutes">00</span>:<span class="seconds">00</span>
-                </h1>
-                <button class="button secondary icon add" type="button">+</button>
+                <h4>Work for:</h4>
+                <div>
+                    <button class="button secondary icon subtract" type="button">
+                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                    <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                    </h1>
+                    <button class="button secondary icon add" type="button">
+                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                </div>
+
             </div>
             <div id="break">
-                <button class="button secondary icon subtract" type="button">-</button>
-                <h1 style="display: block; width: 100%;
-"><span class="minutes">00</span>:<span class="seconds">00</span>
-                </h1>
-                <button class="button secondary icon add" type="button">+</button>
+                <h4>Break for:</h4>
+                <div>
+                    <button class="button secondary icon subtract" type="button">
+                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                    <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                    </h1>
+                    <button class="button secondary icon add" type="button">
+                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
-            <button id="reset-pomo" class="button secondary" type="button">Reset</button>
+            <div id="timer">
+                <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                </h1>
+                <h3 id="pomo-status"></h3>
+
+            </div>
+            <div id="pomo-button-container">
+                <button class="button primary start-stop" type="button">Start</button>
+                <button id="reset-pomo" class="button secondary" type="button">Reset</button>
+            </div>
             <div id="timeline">
                 <div class="length">
                     <div></div>
@@ -192,20 +224,11 @@
             <div id="final-load" class="length">
                 <div></div>
             </div>
-            <button class="button primary start-stop" type="button">Start</button>
-
-            <div id="timer">
-                <h1 style="display: block; width: 100%;
-"><span class="minutes">00</span>:<span class="seconds">00</span>
-                </h1>
-                <h3 id="pomo-status"></h3>
-
-            </div>
         </article>
     </section>
-    <section id="music" class="pop-up">
+    <section id="music" class="pop-up" static="true">
         <nav>
-            <img src="/time.2337bf3b.svg">
+            <img src="/music.d0bb5015.svg">
             <button class="button icon collapse" type="button">
                 <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
@@ -216,27 +239,53 @@
 
         <div id="current">
             <img src="/index.html">
-            <h1 class="title"></h1>
-            <h3 class="artist"></h3>
+            <audio crossorigin="" playsinline="">
+            </audio>
+            <div id="current-controls">
+                <div class="metadata">
+                    <h1 class="title">
+                        <h3 class="artist"></h3>
+                    </h1>
+                </div>
+                <div class="controls">
+                    <button id="previous" type="button">
+                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0L3.5 6L12 12L12 0ZM2 12L2 0H0L0 12H2Z" fill="#303030"></path>
+                        </svg>
+            
+                    </button>
+                    <button id="play-pause" type="button">
+                        <svg width="17" height="21" viewbox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0V21L17 10.5L0 0Z" fill="#303030"></path>
+                            </svg>
+                            
+                        <svg width="18" height="22" viewbox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 21.5H6V0.5H0V21.5ZM12 0.5V21.5H18V0.5H12Z" fill="#303030"></path>
+                        </svg>
+                            
+                    </button>
+                    <button id="next" type="button">
+                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 12L8.5 6L0 0V12ZM10 0V12H12V0H10Z" fill="#303030"></path>
+                        </svg>
+            
+                    </button>
+                </div>
+            </div>
+            
+
         </div>
-        <audio crossorigin="" playsinline="">
-        </audio>
-        <button id="previous" type="button">
-            <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0L3.5 6L12 12L12 0ZM2 12L2 0H0L0 12H2Z" fill="#303030"></path>
-            </svg>
 
-        </button>
-        <button id="next" type="button">
-            <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 12L8.5 6L0 0V12ZM10 0V12H12V0H10Z" fill="#303030"></path>
-            </svg>
 
+
+        <h2>Up next         
+            <button id="shuffle" type="button">
+                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.59 5.17L1.41 0L0 1.41L5.17 6.58L6.59 5.17ZM10.5 0L12.54 2.04L0 14.59L1.41 16L13.96 3.46L16 5.5V0H10.5ZM10.83 9.41L9.42 10.82L12.55 13.95L10.5 16H16V10.5L13.96 12.54L10.83 9.41Z" fill="black"></path>
+                    </svg>
+                    
         </button>
-        <button id="shuffle" type="button">
-            Shuffle
-        </button>
-        <h3>Up next</h3>
+    </h2>
         <ul class="playlist">
 
         </ul>
@@ -534,12 +583,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"2exqb":[function(require,module,exports) {
+})({"5MdkF":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "b1e1c5bc8875f47b1c0c7b0960870332";
+module.bundle.HMR_BUNDLE_ID = "b2b23f5835c4718c3ea083e4502a4ff1";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -835,12 +884,12 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"4qbSr":[function(require,module,exports) {
+},{}],"3fkjM":[function(require,module,exports) {
 document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
         event.preventDefault();
         document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
       });
-},{}]},["2exqb","4qbSr"], "4qbSr", "parcelRequirec526")
+},{}]},["5MdkF","3fkjM"], "3fkjM", "parcelRequirec526")
 
 </script>
 </body>
