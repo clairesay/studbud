@@ -13,7 +13,23 @@
         display: flex;
         align-items: center;
         margin-bottom: 36px;
-
+        h1 {
+            display: none;
+            position: absolute;
+            left: 60px;
+            padding: 12px;
+            font-weight: 500;
+            font-size: 18px;
+            &#peek-status {
+                display: none;
+                left: auto;
+                right: 24px;
+                text-transform: capitalize;
+                font-size: 16px;
+                color: $dark-grey;
+            }
+            
+        }
         img {
             margin-left: 12px;
         }
@@ -37,6 +53,10 @@
             }
         }
     }
+    &#time {
+        nav {
+        }
+    }
 }
 
 .pop-up[state=standby] {
@@ -46,26 +66,31 @@
 
     &#time {
         right: 92px;
+        nav, nav img {
+            display: flex;
+            margin-left: 0;
+            margin: auto;
+        }
         #stowatch.active, #stopwatch, #pomodoro.active, #pomodoro {
             display: none;
+        }
+        *, nav *:not(img) {
+            display: none
         }
     }
 
     &#music {
-        h2, h3 {
-            display: none;
+        nav, nav img {
+            display: flex;
+            margin-left: 0;
+            margin: auto;
+        }
+        *, nav *:not(img) {
+            display: none
         }
     }
 
-    * {
-        display: none
-    }
 
-    nav, nav img {
-        display: flex;
-        margin-left: 0;
-        margin: auto;
-    }
 
 
 }
@@ -77,8 +102,26 @@
         .collapse {
             visibility: hidden;
         }
+        #peek-status {
+            display: flex;
+        }
     }
     #stopwatch, #pomodoro {
+        display: none;
+    }
+}
+#music.pop-up[state=peek] {
+    nav {
+        display: flex;
+        img{
+            display: none;
+        }
+        .collapse {
+            visibility: hidden;
+        }
+    }
+
+    #current, h2, .playlist {
         display: none;
     }
 }
@@ -87,9 +130,9 @@
     display: none;
     width: 248px;
     height: 20px;
-    background-color: black;
+    background-color: $grey;
     div {
-        background-color: purple
+        background-color: $primary;
     }
 }
 

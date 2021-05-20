@@ -446,6 +446,11 @@ id) /*: string*/
 const timeToolsOverlay = document.getElementById('time')
 const timeSelector = document.getElementById('time-selector')
 const dropdown = document.getElementById('dropdown')
+var peekStatusDisplay = document.querySelector('#time nav #peek-status')
+var peekTimeDisplay = document.querySelector('#time nav h1');
+var peekMinutes = peekTimeDisplay.querySelector('span.min')
+var peekSeconds = peekTimeDisplay.querySelector('span.sec')
+
 var timeMenuToggleOpen = false
 
 function toggleTimeMenu() {
@@ -509,6 +514,8 @@ stopwatchReset.addEventListener('click', function () {
     minutes.textContent = round(min)
     seconds.textContent = round(sec)
     milliseconds.textContent = round(milli)
+    peekMinutes.textContent = round(min)
+    peekSeconds.textContent = round(sec)
 
     // reset inner text of button
     stopwatchStart.textContent = 'Start'
@@ -570,6 +577,8 @@ stopwatchStart.addEventListener('click', function () {
             minutes.textContent = round(min)
             seconds.textContent = round(sec)
             milliseconds.textContent = round(milli)
+            peekMinutes.textContent = round(min)
+            peekSeconds.textContent = round(sec)
             incrementUp()
         }, 10); // update every 10 milliseconds
 
@@ -713,6 +722,8 @@ pomoStartStop.addEventListener('click', function () {
             incrementDown()
             pomoMinutes.textContent = round(pomoMin)
             pomoSeconds.textContent = round(pomoSec)
+            peekMinutes.textContent = round(pomoMin)
+            peekSeconds.textContent = round(pomoSec)
         }, 1000);
 
         // change timer status
@@ -787,6 +798,7 @@ breakMinutes.textContent = round(breakMin)
 function pomodoroTimer(mode) {
     // update 'status' for user when pomo time changes
     pomoStatus.textContent = phase;
+    peekStatusDisplay.textContent = phase
     // check sessions
     if (sessions < 5) {
         // alternate between sessions
@@ -870,6 +882,8 @@ pomoMin = workMin
 pomoSec = workSec
 pomoMinutes.textContent = round(pomoMin)
 pomoSeconds.textContent = round(pomoSec)
+peekMinutes.textContent = round(pomoMin)
+peekSeconds.textContent = round(pomoSec)
 
 // stop the countup intervals
 clearInterval(pomoIntervals)

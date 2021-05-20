@@ -140,6 +140,8 @@
                     <path d="M1 1L5 5L9 1" stroke="#909090" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </div>
+            <h1><span class="min"></span>:<span class="sec"></span></h1>
+            <h1 id="peek-status"></h1>
             <button class="button icon collapse" type="button">
                 <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
@@ -254,15 +256,7 @@
                         </svg>
             
                     </button>
-                    <button id="play-pause" type="button">
-                        <svg width="17" height="21" viewbox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0V21L17 10.5L0 0Z" fill="#303030"></path>
-                            </svg>
-                            
-                        <svg width="18" height="22" viewbox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 21.5H6V0.5H0V21.5ZM12 0.5V21.5H18V0.5H12Z" fill="#303030"></path>
-                        </svg>
-                            
+                    <button id="play-pause" type="button">                            
                     </button>
                     <button id="next" type="button">
                         <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -287,8 +281,12 @@
         </button>
     </h2>
         <ul class="playlist">
-
+            
         </ul>
+        <svg id="phantom-play-button" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 25.5L25 21L19 16.5V25.5ZM21 11C15.48 11 11 15.48 11 21C11 26.52 15.48 31 21 31C26.52 31 31 26.52 31 21C31 15.48 26.52 11 21 11ZM21 29C16.59 29 13 25.41 13 21C13 16.59 16.59 13 21 13C25.41 13 29 16.59 29 21C29 25.41 25.41 29 21 29Z" fill="#303030"></path>
+        </svg>
+        
     </section>
     <div id="modal-background" class="background"></div>
     <form id="create-content-form" novalidate="">
@@ -583,12 +581,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"5MdkF":[function(require,module,exports) {
+})({"6bMQr":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "b2b23f5835c4718c3ea083e4502a4ff1";
+module.bundle.HMR_BUNDLE_ID = "215fcd4bccc0358de80c1513ca03f981";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -884,12 +882,12 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"3fkjM":[function(require,module,exports) {
+},{}],"60tEJ":[function(require,module,exports) {
 document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
         event.preventDefault();
         document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
       });
-},{}]},["5MdkF","3fkjM"], "3fkjM", "parcelRequirec526")
+},{}]},["6bMQr","60tEJ"], "60tEJ", "parcelRequirec526")
 
 </script>
 </body>

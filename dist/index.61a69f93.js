@@ -454,21 +454,39 @@ window.player = player;
 var songs = [
     {
         source: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
-        title: 'It All Began with a Burst',
+        title: 'It All Began with a Burst It All Began with a Burst',
         artist: 'Kishi Bashi',
-        album_art: 'eagles.jpg'
+        album_art: 'images/eagles.jpg'
     },
     {
         source: 'https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3',
         title: 'Deezer Preview',
         artist: 'Deez',
-        album_art: 'fmac.jpg'
+        album_art: 'images/fmac.jpg'
     },
     {
         source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
         title: '19th Floor',
         artist: 'Bobby Richards',
-        album_art: 'eagles.jpg'
+        album_art: 'images/eagles.jpg'
+    },
+    {
+        source: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
+        title: 'It All Began with a Burst It All Began with a Burst',
+        artist: 'Kishi Bashi',
+        album_art: 'images/eagles.jpg'
+    },
+    {
+        source: 'https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3',
+        title: 'Deezer Preview',
+        artist: 'Deez',
+        album_art: 'images/fmac.jpg'
+    },
+    {
+        source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
+        title: '19th Floor',
+        artist: 'Bobby Richards',
+        album_art: 'images/eagles.jpg'
     },
 ]
 
@@ -486,14 +504,14 @@ playButton.addEventListener('click', function() {
 
 function buttonIcon() {
     if (player.paused) {
-        playButton.innerHTML = `                      <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0V21L17 10.5L0 0Z" fill="#303030"/>
+        playButton.innerHTML = `<svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0V21L18 10.5L0 0Z" fill="#303030"/>
         </svg>
         `
     } else if (player.playing) {
-        playButton.innerHTML = `    <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 21.5H6V0.5H0V21.5ZM12 0.5V21.5H18V0.5H12Z" fill="#303030"/>
-    </svg>`
+        playButton.innerHTML = `<svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 21H6V0H0V21ZM12 0V21H18V0H12Z" fill="#303030"/>
+        </svg>`
     }
 }
 
@@ -569,6 +587,7 @@ shuffleButton.addEventListener('click', function () {
 })
 
 var currentIndex;
+var phantomPlayButton = document.getElementById('phantom-play-button')
 // function to play a track
 function playTrack(n, mode) {
     // if we are at the end of the playlist, stop playing. 
@@ -583,7 +602,22 @@ function playTrack(n, mode) {
         if (index != n) {
             track.classList.remove('active')
         }
+        if (track.getAttribute('listener') != 'true') {
+            track.addEventListener('mouseover', function() {
+                track.appendChild(phantomPlayButton)
+                if (track.classList.contains('active')) {
+                    phantomPlayButton.style.display = 'none'
+                } else {
+                    phantomPlayButton.style.display = 'flex'
+                }
+
+            })
+            track.setAttribute('listener', 'true')
+        }
+        
     })
+    // moving that track to the bottom of the playlist 
+    playlistContainer.appendChild(tracks[n])
     // updating global variable
     currentIndex = n
     // get the current song object
@@ -625,25 +659,38 @@ playTrack(0, 'initial')
 // events https://github.com/sampotts/plyr#events
 player.on('playing', () => {
     musicPlayer.setAttribute('static', 'false')
-    // musicStatic = false
 })
 player.on('pause', () => {
     musicPlayer.setAttribute('static', 'true')
-    // musicStatic = true
 })
 player.on('ended', () => {
     playTrack(currentIndex + 1)
     musicPlayer.setAttribute('static', 'true')
-    // musicStatic = true
 });
 
+// https://stackoverflow.com/questions/31223341/detecting-scroll-direction
+var lastScrollTop = 0;
+var scrollCount = 0;
+// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+playlistContainer.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+   var st = playlistContainer.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+   if (st > lastScrollTop){
+      scrollCount += 1
+   } else if (st  == 0) {
+      // upscroll code
+    setTimeout(function() {
+        playlistContainer.style.height = '100px';
+    }, 500)
+      
+   }
+   if (scrollCount > 5) {
+      playlistContainer.style.height = '250px';
+      scrollCount = 0
+   } 
 
-    // if music paused, when user shrinks the container, it goes into standby mode
-    // otherwise, if the music continues to play, it goes into peek mode.
-    // if the user is in peek mode and pauses it, the music player should remain in peek mode until
-    // it is opened and actually paused by the user. 
 
-
+   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}, false);
 
 },{}]},["1u20u","5qt2H"], "5qt2H", "parcelRequirec526")
 
