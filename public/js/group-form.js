@@ -27,6 +27,7 @@ var newGroupToggle = false;
 const newGroup = document.getElementById('new-group');
 // opening/closing the 'add a new group' form
 function toggleGroupForm() {
+    validateText.innerHTML = ''
     if (newGroupToggle == false) {
         addGroupForm.classList.add('active')
         newGroupToggle = true
@@ -54,6 +55,7 @@ groupCloseButton.addEventListener('click', function() {
 
 // adding an event listener for submitting the column
 const groupSubmitButton = document.getElementById('add-group-submit')
+var validateText = addGroupForm.querySelector('.validate-message')
 groupSubmitButton.addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -61,6 +63,9 @@ groupSubmitButton.addEventListener('click', function (event) {
     let id = Date.now()
     let name = addGroupForm.querySelector('input').value
 
+    if (name == '') {
+        validateText.innerHTML = 'Please enter a name for this group.'
+    } else {
     // create new object in group class
     let group = new Group(id, name)
     group.createGroup()
@@ -71,6 +76,7 @@ groupSubmitButton.addEventListener('click', function (event) {
     countTiles.openGroupLinks()
     countTiles.countTiles()
     groupEditDeleteFunctionality()
+    }
 })
 
 // allow for each group's edit and delete functionality

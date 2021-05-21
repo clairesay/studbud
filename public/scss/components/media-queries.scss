@@ -30,9 +30,14 @@
     // FORM
     // 
     form {
+
         &#add-column-form,
         &#add-group-form {
             max-width: 80%;
+        }
+        section {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
         }
     }
 
@@ -77,6 +82,25 @@
             &.active {
                 display: flex;
                 visibility: visible;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    form {
+        section {
+            div:first-child, div{
+                input, textarea, pre{
+                    width: calc(100% - 24px)
+                }
+                
+            }
+        }
+        div.form-button-container {
+            margin: 0;
+            button:first-child {
+                margin: 0;
             }
         }
     }

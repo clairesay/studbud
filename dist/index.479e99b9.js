@@ -444,10 +444,13 @@ id) /*: string*/
 },{}],"1Oi4R":[function(require,module,exports) {
 // Popup tab activity
 const timePopUp = document.getElementById('time')
-const musicPopUp = document.getElementById('music')
 var peekTime = document.querySelector('#time nav h1');
 var dropdown = document.querySelector('#dropdown')
 
+const musicPopUp = document.getElementById('music')
+var nav = musicPopUp.querySelector('nav')
+var currentControls = musicPopUp.querySelector('#current-controls')
+var currentContainer = musicPopUp.querySelector('#current')
 // window.static = static
 
 timePopUp.setAttribute('state', 'standby')
@@ -487,38 +490,54 @@ function popUpState(index) {
     } else if (index == 1) {
         popUp = musicPopUp
     }
+    responsivePopUp(popUp)
     if (popUp.getAttribute('state') == 'standby') {
         popUp.setAttribute('state', 'active')
         if (popUp == timePopUp) {
             timePeek(false)
+        } else {
+            musicPeek(false)
         }
     } else if (popUp.getAttribute('state') == 'peek') {
         popUp.setAttribute('state', 'active')
         if (popUp == timePopUp) {
             timePeek(false)
+        } else {
+            musicPeek(false)
         }
     } else if (popUp.getAttribute('state') == 'active' && popUp.getAttribute('static') == 'true') {
         popUp.setAttribute('state', 'standby')
         if (popUp == timePopUp) {
             timePeek(false)
+        } else {
+            musicPeek(false)
         }
     } else if (popUp.getAttribute('state') == 'active') {
         popUp.setAttribute('state', 'peek')
         if (popUp == timePopUp) {
             timePeek(true)
             let dropdownOption = dropdown.querySelector('#time-selector h3')
-            if (dropdownOption.getAttribute('id') == 'pomodoro-select') {
+            if (dropdownOption.getAttribute('id') == 'pomodoro-select' || deviceSize == 'mobile') {
                 dropdown.style.display = 'none'
             } else {
                 dropdown.style.display = 'flex'
             }
+        } else {
+            musicPeek(true)
         }
     }
 
-    if (musicPopUp.getAttribute('state') == 'active' || musicPopUp.getAttribute('state') == 'peek' ) {
-        timePopUp.style.right = '336px';
+    if (musicPopUp.getAttribute('state') == 'active' || musicPopUp.getAttribute('state') == 'peek') {
+        if (deviceSize == 'mobile') {
+            timePopUp.style.right = '254px';
+        } else {
+            timePopUp.style.right = '354px';
+        }
+        
+    } else if (timePopUp.getAttribute('state') == 'active' && deviceSize == 'mobile') {
+        timePopUp.style.right = '0';
     } else {
-        timePopUp.style.right = '92px';
+        timePopUp.style.right = '110px';
     }
 }
 
@@ -537,6 +556,25 @@ function timePeek(bool) {
     }
 
 }
+
+function musicPeek(bool) {
+    if (bool == true) {
+        nav.appendChild(currentControls)
+    } else {
+        currentContainer.appendChild(currentControls)
+    }
+}
+
+function responsivePopUp(popUp) {
+    if (deviceSize == 'mobile') {
+        if (popUp == timePopUp) {
+            musicPopUp.setAttribute('state', 'standby')
+        } else {
+            timePopUp.setAttribute('state', 'standby')
+        }
+    }
+}
+
 },{}]},["3RrTR","1Oi4R"], "1Oi4R", "parcelRequirec526")
 
 //# sourceMappingURL=index.479e99b9.js.map

@@ -466,6 +466,7 @@ var newColumnToggle = false;
 const newColumn = document.getElementById('new-column');
 // toggle hide/show
 function toggleColumnForm() {
+  validateText.innerHTML = '';
   if (newColumnToggle == false) {
     addColumnForm.classList.add('active');
     newColumnToggle = true;
@@ -508,15 +509,20 @@ columnCloseButton.addEventListener('click', function () {
 });
 // submitting column
 const columnSubmitButton = document.getElementById('add-column-submit');
+var validateText = addColumnForm.querySelector('.validate-message');
 columnSubmitButton.addEventListener('click', function (event) {
   event.preventDefault();
   let id = Date.now();
   let name = addColumnForm.querySelector('input').value;
-  let col = new _columnDefault.default(id, name);
-  col.createColumn();
-  updateColumnNames();
-  toggleColumnForm();
-  createNewSortable();
+  if (name == '') {
+    validateText.innerHTML = 'Please enter a name for this column.';
+  } else {
+    let col = new _columnDefault.default(id, name);
+    col.createColumn();
+    updateColumnNames();
+    toggleColumnForm();
+    createNewSortable();
+  }
 });
 // //////////// COLUMN DELETE and EDIT BUTTONS
 const columnDeleteToolTip = document.querySelector('div.tooltip#delete');

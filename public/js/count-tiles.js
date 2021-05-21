@@ -41,19 +41,36 @@ export function openGroupLinks() {
                 let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link')
                 links.forEach(function(link) {
                     let url = link.getAttribute('href')
-                    
-                    // ensuring the link is to a valid external site
-                    if (url.includes('https://') || url.includes('http://')) {
+                    // if (isValidHttpUrl(url)) {
+                    //     window.open(url)
+                    //     alert('continue')
+                    // }
+                    // // ensuring the link is to a valid external site
+                    // if (url.includes('https://') || url.includes('http://')) {
                         window.open(url)
-                    } else {
-                        url = 'https://' + url
-                        window.open(url)
-                    }  
+                    // } else {
+                    //     url = 'https://' + url
+                    //     window.open(url)
+                    // }  
                 })
             })
             groupLink.setAttribute('listener', 'true')
         }
     })
+}
+
+// used a function that tests if a valid js string is a url
+// https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+function isValidHttpUrl(string) {
+    let url;
+    
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;  
+    }
+  
+    return url.protocol === "http:" || url.protocol === "https:";
 }
 
 openGroupLinks()

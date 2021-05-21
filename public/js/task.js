@@ -21,6 +21,9 @@ class Task {
     // this adds tasks to the array taskList
     addTask() {
         this.taskList.push(this);
+        // console.log(this.taskList)
+        // localStorage.setItem('taskList', JSON.stringify(this.taskList))
+        // console.log(localStorage.getItem('taskList'))
         return this.id
     }
 
@@ -71,10 +74,6 @@ class Task {
         } else if (this.priorityRating == 'High') {
             timeIcon.style.backgroundColor = '#F59273'
         }
-        // timeIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        // <path d="M9.99 3.05176e-05C4.47 3.05176e-05 0 4.48003 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48003 15.52 3.05176e-05 9.99 3.05176e-05ZM10 18C5.58 18 2 14.42 2 10C2 5.58003 5.58 2.00003 10 2.00003C14.42 2.00003 18 5.58003 18 10C18 14.42 14.42 18 10 18Z" fill="#909090"/>
-        // <path d="M10.5 5.00003H9V11L14.25 14.15L15 12.92L10.5 10.25V5.00003Z" fill="#909090"/>
-        // </svg>`
         card.classList.add('card')
         card.setAttribute('id', 't-' + n)
         subjectTag.classList.add('tag')

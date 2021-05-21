@@ -173,7 +173,7 @@
                         stroke-linejoin="round" />
                 </svg>
             </div>
-            <h1><span class="min"></span>:<span class="sec"></span></h1>
+            <h1 id="peek-time"><span class="min"></span>:<span class="sec"></span></h1>
             <h1 id="peek-status"></h1>
             <button class="button icon collapse" type="button">
                 <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -195,6 +195,9 @@
             </div>
         </article>
         <article id="pomodoro">
+            <!-- <audio>
+                <source src="audio/alarm.mp3" type="audio/mp3">
+            </audio> -->
             <div id="work">
                 <h4>Work for:</h4>
                 <div>
@@ -330,6 +333,10 @@
         </svg>
         
     </section>
+    <!-- https://freesound.org/people/pan14/sounds/263131/ -->
+    <audio id="alarm-sound" style="width: 0; height: 0;">
+        <source src="audio/reverbbeep.wav" type="audio/mpeg">
+    </audio>
     <div id="modal-background" class="background"></div>
     <form id="create-content-form" novalidate>
        
@@ -359,6 +366,7 @@
             <span style="position: relative;left: -30px;"><img src="images/chevron-down.svg"></span>
         </div>
     </section>
+    <h1 class="validate-message"></h1>
     <div class="form-button-container">
         <button id="content-save" class="button primary" type="submit">Save</button>
         <button id="edit-content-cancel" class="button secondary" type="button">Cancel</button>
@@ -374,6 +382,7 @@
         <input type="text" name="groupName" placeholder="What is this group for?" autofocus required />
         <p>TIP: Create your groups based on topics, or even subjects.
         </p>
+        <h1 class="validate-message"></h1>
         <div class="form-button-container">
             <button id="add-group-submit" class="button primary" type="submit">Save</button>
             <button id="add-group-cancel" class="button secondary" type="button">Cancel</button>
@@ -440,6 +449,7 @@
 
         </div>
     </section>
+    <h1 class="validate-message"></h1>
         <div class="form-button-container">
             <button id="task-save" class="button primary" type="submit">Save</button>
             <button id="edit-task-cancel" class="button secondary" type="button">Cancel</button>
@@ -455,6 +465,7 @@
         <input type="text" name="columnName" placeholder="What is this column for?" autofocus required />
         <p>TIP: Name the column after a status, like 'In Progress' so you can categorise tasks against completion.
         </p>
+        <h1 class="validate-message"></h1>
         <div class="form-button-container">
         <button id="add-column-submit" class="button primary" type="submit">Save</button>
         <button id="add-column-cancel" class="button secondary" type="button">Cancel</button>
@@ -467,6 +478,7 @@
         integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
         crossorigin="anonymous"></script> -->
     <!-- <script>var timeStatic, musicStatic;</script> -->
+    <script>var deviceSize;</script>
     <script src="main.js"></script>
 
     <script src="js/task-form.js"></script>

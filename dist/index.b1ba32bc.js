@@ -610,6 +610,8 @@ var workMin = 25,
     breakMinutes = document.querySelector('#pomodoro #break .minutes'),
     breakSeconds = document.querySelector('#pomodoro #break .seconds');
 
+const pomoAlarm = document.getElementById('alarm-sound')
+
 const workButtons = document.querySelector('#pomodoro #work'),
     breakButtons = document.querySelector('#pomodoro #break'),
     timer = document.querySelector('#pomodoro div#timer'),
@@ -661,34 +663,7 @@ pomoStartStop.addEventListener('click', function () {
     // if pomo is on, turn it off
     if (pomoOn == true) {
         // // both timers are inactive
-        // timeStatic = true;
-        // // reset the pomo time
-        // pomoMin = workMin
-        // pomoSec = workSec
-        // pomoMinutes.textContent = round(pomoMin)
-        // pomoSeconds.textContent = round(pomoSec)
 
-        // // stop the countup intervals
-        // clearInterval(pomoIntervals)
-        // // reset the text
-        // pomoStartStop.textContent = 'Start'
-        // // allow dropdowns
-        // dropdown.addEventListener('click', toggleTimeMenu)
-        
-        // // display/show relevant elements
-        // workButtons.style.display = 'flex'
-        // breakButtons.style.display = 'flex'
-        // timer.style.display = 'none'
-
-        // pomoOn = false
-
-        // // remove animation functions
-        // loadSpans.forEach(function (span) {
-        //     span.style.animation = ''
-        // })
-        // finalLoadSpan.style.animation = 'none'
-        // sessions = 0
-        // reset status
         endPomo()
         phase = 'break'
         
@@ -704,6 +679,7 @@ pomoStartStop.addEventListener('click', function () {
             if (pomoMin == 0 && pomoSec == 0) {
                 sessions += 1
                 pomodoroTimer()
+                pomoAlarm.play()
             } else if (pomoSec == 0) {
                 pomoMin -= 1
                 pomoSec = 59
@@ -843,31 +819,10 @@ function pomodoroTimer(mode) {
         finalLoadSpan.style.animation = 'load-spans ' + fullTime + 's ' + 'linear forwards'
         
     } else {
+        pomoAlarm.play()
         // otherwise, the pomodoro has ended - reset everything
-        // timeStatic = true;
         finalLoadSpanContainer.style.display = 'none'
         timeline.style.display = 'flex'
-        // pomoMin = workMin
-        // pomoSec = workSec
-        // pomoMinutes.textContent = round(pomoMin)
-        // pomoSeconds.textContent = round(pomoSec)
-        
-        // clearInterval(pomoIntervals)
-        // pomoStartStop.textContent = 'Start'
-        // dropdown.addEventListener('click', toggleTimeMenu)
-
-        // workButtons.style.display = 'flex'
-        // breakButtons.style.display = 'flex'
-        // timer.style.display = 'none'
-
-        // pomoOn = false
-        // loadSpans.forEach(function (span) {
-        //     span.style.animation = ''
-        // })
-
-        // finalLoadSpan.style.animation = 'none'
-        
-        // sessions = 0
         endPomo()
         phase = 'work'
     }
@@ -876,7 +831,7 @@ function pomodoroTimer(mode) {
 function endPomo() {
 // both timers are inactive
 timeToolsOverlay.setAttribute('static', 'true')
-// timeStatic = true;
+
 // reset the pomo time
 pomoMin = workMin
 pomoSec = workSec

@@ -442,19 +442,28 @@ id) /*: string*/
 }
 
 },{}],"43dFp":[function(require,module,exports) {
-var deviceSize
+
 ////////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////
-function mediaQuery(x) {
-    if (x.matches) { // If media query matches
-      deviceSize = 'mobile'
+function mediaQueryTablet(query) {
+    if (query.matches) { // If media query matches
+      deviceSize = 'tablet'
     } else {
       deviceSize = 'desktop'
     }
 }
 
-var x = window.matchMedia("(max-width: 700px)")
-mediaQuery(x) // Call listener function at run time
-x.addEventListener('change', mediaQuery) // Attach listener function on state changes
+function mediaQueryMobile(query) {
+    if (query.matches) { // If media query matches
+      deviceSize = 'mobile'
+    }
+}
+
+var tablet = window.matchMedia("(max-width: 700px)")
+mediaQueryTablet(tablet) // Call listener function at run time
+tablet.addEventListener('change', mediaQueryTablet) // Attach listener function on state changes
+var mobile = window.matchMedia("(max-width: 500px)")
+mediaQueryMobile(mobile) // Call listener function at run time
+mobile.addEventListener('change', mediaQueryMobile) // Attach listener function on state changes
 
 
 const main = document.getElementsByTagName('main')[0]
@@ -526,14 +535,14 @@ function contentButtonVisibility() {
         newContent.classList.add('active')
         newGroup.classList.add('active')
         contentButtonVisible = true;
-        if (deviceSize == 'mobile') {
+        if (deviceSize != 'desktop') {
             buttonBackground.style.display = 'flex'
         }
     } else if (contentButtonVisible == true) {
         newContent.classList.remove('active')
         newGroup.classList.remove('active')
         contentButtonVisible = false;
-        if (deviceSize == 'mobile') {
+        if (deviceSize != 'desktop') {
             buttonBackground.style.display = 'none'
         }
     }
@@ -548,18 +557,21 @@ function taskButtonVisibility() {
         newTask.classList.add('active')
         newColumn.classList.add('active')
         taskButtonVisible = true;
-        if (deviceSize == 'mobile') {
+        if (deviceSize != 'desktop') {
             buttonBackground.style.display = 'flex'
         }
     } else if (taskButtonVisible == true) {
         newTask.classList.remove('active')
         newColumn.classList.remove('active')
         taskButtonVisible = false;
-        if (deviceSize == 'mobile') {
+        if (deviceSize != 'desktop') {
             buttonBackground.style.display = 'none'
         }
     }
 }
+
+// MUSIC PLAYER
+// if device is tablet, only allow one tab to open at a time.
 
 // FORMS
 

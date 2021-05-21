@@ -443,6 +443,7 @@ id) /*: string*/
 
 },{}],"5qt2H":[function(require,module,exports) {
 // Change "{}" to your options:
+// Import the URL to an image file
 // https://github.com/sampotts/plyr/#options
 const player = new Plyr('audio', {
     controls: ['progress']
@@ -453,43 +454,80 @@ window.player = player;
 
 var songs = [
     {
-        source: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
-        title: 'It All Began with a Burst It All Began with a Burst',
-        artist: 'Kishi Bashi',
-        album_art: 'images/eagles.jpg'
+        source: 'Amerika.mp3',
+        title: 'Amerika',
+        artist: 'Audiobinger',
+        album_art: 'audiobinger.jpg'
     },
     {
-        source: 'https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3',
-        title: 'Deezer Preview',
-        artist: 'Deez',
-        album_art: 'images/fmac.jpg'
+        source: 'If-I-Could-Remember.mp3',
+        title: 'If I Could Remember',
+        artist: 'Ketsa',
+        album_art: 'images\albumart\Ketsa.jpg'
+    },
+    // {
+    //     source: 'audio\songs\Ketsa - Snow-Dawn.mp3',
+    //     title: 'Snow Dawn',
+    //     artist: 'Ketsa',
+    //     album_art: 'images\albumart\Ketsa.jpg'
+    // },
+    {
+        source: 'Synchronised.mp3',
+        title: 'Synchronised',
+        artist: 'Ketsa',
+        album_art: 'images\albumart\Ketsa.jpg'
     },
     {
-        source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
-        title: '19th Floor',
-        artist: 'Bobby Richards',
-        album_art: 'images/eagles.jpg'
+        source: 'Pray.mp3',
+        title: 'Pray',
+        artist: 'Makaih Beats',
+        album_art: 'images\albumart\makaih Beats.jpg'
     },
     {
-        source: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
-        title: 'It All Began with a Burst It All Began with a Burst',
-        artist: 'Kishi Bashi',
-        album_art: 'images/eagles.jpg'
+        source: 'BEAST.mp3',
+        title: 'BEAST',
+        artist: 'Paul Cesar Beats',
+        album_art: 'images\albumart\paul-cesar-beats.jpg'
     },
     {
-        source: 'https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3',
-        title: 'Deezer Preview',
-        artist: 'Deez',
-        album_art: 'images/fmac.jpg'
+        source: 'COFFEE FI.mp3',
+        title: 'COFFEE FI',
+        artist: 'Paul Cesar Beats',
+        album_art: 'images\albumart\paul-cesar-beats.jpg'
     },
     {
-        source: 'https://cdns-preview-0.dzcdn.net/stream/c-02585dc790f2904c4e870cb3bcecfcf3-8.mp3',
-        title: '19th Floor',
-        artist: 'Bobby Richards',
-        album_art: 'images/eagles.jpg'
+        source: 'Chuckin-It.mp3',
+        title: 'Chuckin It',
+        artist: 'Shaolin Dub',
+        album_art: 'images\albumart\shaolin-dub3.jpg'
+    },
+    {
+        source: 'Dogman.mp3',
+        title: 'Dogman',
+        artist: 'Shaolin Dub',
+        album_art: 'images\albumart\shaolin-dub.jpg'
+    },
+    {
+        source: 'Moods.mp3',
+        title: 'Moods',
+        artist: 'Shaolin Dub',
+        album_art: 'images\albumart\shaolin-dub2.jpg'
+    },
+    {
+        source: 'Point-Pleasant.mp3',
+        title: 'Point Pleasant',
+        artist: 'Shaolin Dub',
+        album_art: 'images\albumart\shaolin-dub.jpg'
+    },
+    {
+        source: 'Empire-of-Light.mp3',
+        title: 'Empire of Light',
+        artist: 'Siddhartha Corsus',
+        album_art: 'images\albumart\siddharthacorsus.jpg'
     },
 ]
 
+console.log(songs)
 const musicPlayer = document.querySelector('#music')
 var audioContainer = musicPlayer.querySelector('audio')
 const playlistContainer = musicPlayer.querySelector('ul.playlist')
@@ -497,7 +535,8 @@ const previousButton = musicPlayer.querySelector('#previous')
 const nextButton = musicPlayer.querySelector('#next')
 const shuffleButton = musicPlayer.querySelector('#shuffle')
 var playButton = musicPlayer.querySelector('#play-pause')
-playButton.addEventListener('click', function() {
+playButton.addEventListener('click', function(event) {
+    event.stopPropagation()
     player.togglePlay()
     buttonIcon()
 })
@@ -545,7 +584,8 @@ function addMusic() {
 addMusic()
 
 // if the user clicks previous butotn 
-previousButton.addEventListener('click', function () {
+previousButton.addEventListener('click', function (event) {
+    event.stopPropagation()
     let songIndex;
     // set the song index to one below, or the last song in the list if the user is at index 0
     if (currentIndex == 0) {
@@ -556,7 +596,8 @@ previousButton.addEventListener('click', function () {
     playTrack(songIndex)
 })
 
-nextButton.addEventListener('click', function () {
+nextButton.addEventListener('click', function (event) {
+    event.stopPropagation()
     let songIndex;
     // set the song index to one above, or the first song in the list if the user is at the last song
     if (currentIndex == songs.length - 1) {
@@ -568,7 +609,8 @@ nextButton.addEventListener('click', function () {
 })
 
 // if hitting shuffle, this randomises the song array's order.
-shuffleButton.addEventListener('click', function () {
+shuffleButton.addEventListener('click', function (event) {
+    event.stopPropagation()
     // shuffling array src: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
     for (i = songs.length - 1; i > 0; i --) {
         // generate random number
@@ -625,8 +667,8 @@ function playTrack(n, mode) {
     // selecting all the current elements
     let currentContainer = document.getElementById('current'),
         currentAlbumArt = currentContainer.querySelector('img'),
-        currentTitle = currentContainer.querySelector('h1.title'),
-        currentArtist = currentContainer.querySelector('h3.artist')
+        currentTitle = document.querySelector('h1.title'),
+        currentArtist = document.querySelector('h3.artist')
 
     // populate the current container with the appropriate elements
     audioContainer.innerHTML = `<source src="` + currentSong.source + `" type="audio/mp3">`

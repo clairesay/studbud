@@ -65,7 +65,7 @@
     display: flex;
 
     &#time {
-        right: 92px;
+        right: 110px;
         nav, nav img {
             display: flex;
             margin-left: 0;
@@ -74,8 +74,11 @@
         #stowatch.active, #stopwatch, #pomodoro.active, #pomodoro {
             display: none;
         }
-        *, nav *:not(img) {
-            display: none
+        *, nav *:not(img), div ~ h1#peek-time{
+            display: none;   
+        }
+        nav h1 {
+            display: none !important
         }
     }
 
@@ -87,6 +90,9 @@
         }
         *, nav *:not(img) {
             display: none
+        }
+        #current-controls {
+            display: none;
         }
     }
 
@@ -112,12 +118,32 @@
 }
 #music.pop-up[state=peek] {
     nav {
+
         display: flex;
+        #current-controls {
+            width: 100%;
+            .metadata {
+                width: 50%;
+                h1.title {
+                    width: 100%;
+                    display: flex;
+                    position: relative;
+                    // max-width: 55%;
+                    padding: 0;
+                    left: 0;
+                }
+            }
+            .controls {
+                position: absolute;
+                right: 18px;
+            }
+        }
+
         img{
             display: none;
         }
         .collapse {
-            visibility: hidden;
+            display: none;
         }
     }
 
@@ -131,6 +157,10 @@
     width: 248px;
     height: 20px;
     background-color: $grey;
+    height: 8px;
+    border-radius: 4px;
+    align-self: center;
+    overflow: clip;
     div {
         background-color: $primary;
     }
@@ -139,4 +169,58 @@
 @keyframes load-spans {
     from {width: 0}
     to {width: inherit}
+}
+
+@media only screen and (max-width: 700px) {
+
+}
+
+@media only screen and (max-width: 500px) {
+    .pop-up[state="peek"] {
+        width: 180px;
+
+        &#time {
+            #dropdown {
+                display: none;
+            }
+        }
+        &#music {
+
+            nav #current-controls {
+                .metadata {
+                    width: 70%;
+                }
+                .controls {
+                    #next, #previous {
+                        display: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .pop-up[state="standby"] {
+        h1#peek-time {
+            display: none;
+        }
+    }
+
+    .pop-up[state="active"]#time, .pop-up[state="active"]#music {
+        position: fixed;
+        z-index: 4;
+        right: 0;
+        width: calc(100vw - 32px);
+        padding: auto;
+
+        #stopwatch {
+            h1 {
+                margin: auto;
+                left: 0;
+            }
+            h1 ~ div {
+                margin: auto;
+            }
+        }
+    }
 }

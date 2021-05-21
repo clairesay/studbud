@@ -54,7 +54,7 @@ table {
 /* INSETS */
 /* box-shadow:0px 0px 0px 1px #0e131809 inset; */
 #music {
-  right: 12px;
+  right: 30px;
 }
 #music h2 {
   font-size: 18px;
@@ -465,7 +465,7 @@ body main .tab.active::before {
   position: relative;
   min-width: 280px;
   max-width: 332px;
-  margin: 36px 18px;
+  margin: 18px 18px 18px 0;
   padding: 18px;
   padding-bottom: 2px;
   scroll-behavior: smooth;
@@ -479,6 +479,12 @@ body main .tab.active::before {
 }
 #tasks div.column.column:last-of-type {
   margin-right: 36px;
+}
+#tasks div.column.column:last-of-type::after {
+  content: "";
+  width: 20px;
+  height: 100px;
+  background-color: blue;
 }
 #tasks div.column div.title {
   z-index: 2;
@@ -518,6 +524,7 @@ body main .tab.active::before {
 }
 #tasks div.column div.title div.tooltip {
   font-size: 12px;
+  justify-content: center;
   opacity: 0;
   width: 104px;
   background-color: #303030;
@@ -635,7 +642,7 @@ body main .tab.active::before {
   margin: 2px 0 0 0;
 }
 #tasks div.column div.cards article.card:last-child {
-  margin-bottom: 24px;
+  margin-bottom: 72px;
 }
 #tasks div.column div.cards article.card .edit {
   padding: 6px;
@@ -834,6 +841,7 @@ body main .tab.active::before {
 }
 #content div.group div.group-title div div.tooltip {
   font-size: 12px;
+  justify-content: center;
   top: -32px;
   opacity: 0;
   width: 104px;
@@ -1030,6 +1038,9 @@ form#add-column-form p, form#add-group-form p {
   color: #909090;
   margin: 24px 0 12px 0;
 }
+form#add-column-form h1.validate-message, form#add-group-form h1.validate-message {
+  margin: 18px 0;
+}
 form#add-column-form .form-button-container, form#add-group-form .form-button-container {
   padding-top: 18px;
   margin-right: 0;
@@ -1112,6 +1123,14 @@ form .form-button-container button {
 form h1 {
   font-size: 24px;
   font-weight: 500;
+}
+form h1.validate-message {
+  font-size: 14px;
+  margin-top: 36px;
+  font-weight: 400;
+  color: #e56b45;
+  text-align: right;
+  padding-right: 26px;
 }
 form button#edit-task-delete, form button#edit-content-delete {
   display: none;
@@ -1248,6 +1267,10 @@ form label.false-radio span {
   form#add-column-form, form#add-group-form {
     max-width: 80%;
   }
+  form section {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
 
   /* /////////// COMPONENTS //////////// */
   .button-container {
@@ -1282,6 +1305,17 @@ form label.false-radio span {
   .button-container .button.active {
     display: flex;
     visibility: visible;
+  }
+}
+@media only screen and (max-width: 500px) {
+  form section div:first-child input, form section div:first-child textarea, form section div:first-child pre, form section div input, form section div textarea, form section div pre {
+    width: calc(100% - 24px);
+  }
+  form div.form-button-container {
+    margin: 0;
+  }
+  form div.form-button-container button:first-child {
+    margin: 0;
   }
 }
 :root {
@@ -1847,7 +1881,7 @@ form label.false-radio span {
   display: flex;
 }
 .pop-up[state=standby]#time {
-  right: 92px;
+  right: 110px;
 }
 .pop-up[state=standby]#time nav, .pop-up[state=standby]#time nav img {
   display: flex;
@@ -1857,8 +1891,11 @@ form label.false-radio span {
 .pop-up[state=standby]#time #stowatch.active, .pop-up[state=standby]#time #stopwatch, .pop-up[state=standby]#time #pomodoro.active, .pop-up[state=standby]#time #pomodoro {
   display: none;
 }
-.pop-up[state=standby]#time *, .pop-up[state=standby]#time nav *:not(img) {
+.pop-up[state=standby]#time *, .pop-up[state=standby]#time nav *:not(img), .pop-up[state=standby]#time div ~ h1#peek-time {
   display: none;
+}
+.pop-up[state=standby]#time nav h1 {
+  display: none !important;
 }
 .pop-up[state=standby]#music nav, .pop-up[state=standby]#music nav img {
   display: flex;
@@ -1866,6 +1903,9 @@ form label.false-radio span {
   margin: auto;
 }
 .pop-up[state=standby]#music *, .pop-up[state=standby]#music nav *:not(img) {
+  display: none;
+}
+.pop-up[state=standby]#music #current-controls {
   display: none;
 }
 .pop-up[state=peek] {
@@ -1883,11 +1923,28 @@ form label.false-radio span {
 #music.pop-up[state=peek] nav {
   display: flex;
 }
+#music.pop-up[state=peek] nav #current-controls {
+  width: 100%;
+}
+#music.pop-up[state=peek] nav #current-controls .metadata {
+  width: 50%;
+}
+#music.pop-up[state=peek] nav #current-controls .metadata h1.title {
+  width: 100%;
+  display: flex;
+  position: relative;
+  padding: 0;
+  left: 0;
+}
+#music.pop-up[state=peek] nav #current-controls .controls {
+  position: absolute;
+  right: 18px;
+}
 #music.pop-up[state=peek] nav img {
   display: none;
 }
 #music.pop-up[state=peek] nav .collapse {
-  visibility: hidden;
+  display: none;
 }
 #music.pop-up[state=peek] #current, #music.pop-up[state=peek] h2, #music.pop-up[state=peek] .playlist {
   display: none;
@@ -1897,6 +1954,10 @@ form label.false-radio span {
   width: 248px;
   height: 20px;
   background-color: #cccccc;
+  height: 8px;
+  border-radius: 4px;
+  align-self: center;
+  overflow: clip;
 }
 #final-load div {
   background-color: #09997f;
@@ -1915,6 +1976,39 @@ form label.false-radio span {
   }
   to {
     width: inherit;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .pop-up[state=peek] {
+    width: 180px;
+  }
+  .pop-up[state=peek]#time #dropdown {
+    display: none;
+  }
+  .pop-up[state=peek]#music nav #current-controls .metadata {
+    width: 70%;
+  }
+  .pop-up[state=peek]#music nav #current-controls .controls #next, .pop-up[state=peek]#music nav #current-controls .controls #previous {
+    display: none;
+  }
+
+  .pop-up[state=standby] h1#peek-time {
+    display: none;
+  }
+
+  .pop-up[state=active]#time, .pop-up[state=active]#music {
+    position: fixed;
+    z-index: 4;
+    right: 0;
+    width: calc(100vw - 32px);
+    padding: auto;
+  }
+  .pop-up[state=active]#time #stopwatch h1, .pop-up[state=active]#music #stopwatch h1 {
+    margin: auto;
+    left: 0;
+  }
+  .pop-up[state=active]#time #stopwatch h1 ~ div, .pop-up[state=active]#music #stopwatch h1 ~ div {
+    margin: auto;
   }
 }
 /*# sourceMappingURL=index.0c72b7db.css.map */
