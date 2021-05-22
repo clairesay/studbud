@@ -25,6 +25,8 @@ const newColumn = document.getElementById('new-column');
 // toggle hide/show
 function toggleColumnForm() {
     validateText.innerHTML = ''
+    let name = addColumnForm.querySelector('input')
+    name.removeAttribute('required')
     if (newColumnToggle == false) {
         addColumnForm.classList.add('active')
         newColumnToggle = true
@@ -76,11 +78,12 @@ var validateText = addColumnForm.querySelector('.validate-message')
 columnSubmitButton.addEventListener('click', function (event) {
     event.preventDefault()
     let id = Date.now()
-    let name = addColumnForm.querySelector('input').value
-    if (name == '') {
+    let name = addColumnForm.querySelector('input')
+    if (name.value == '') {
         validateText.innerHTML = 'Please enter a name for this column.'
+        name.setAttribute('required', 'true')
     } else {
-        let col = new Column(id, name)
+        let col = new Column(id, name.value)
         col.createColumn()
     
         updateColumnNames()

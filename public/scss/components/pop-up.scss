@@ -215,7 +215,7 @@
 
         #stopwatch {
             h1 {
-                margin: auto;
+                margin-left: calc((100% - 225px)/2);
                 left: 0;
             }
             h1 ~ div {

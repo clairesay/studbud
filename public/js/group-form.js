@@ -1,6 +1,57 @@
-import Group from './group'
+// import Group from './group'
 import * as countTiles from './count-tiles'
 
+class Group {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        // this.cards = [];
+    }
+
+    addGroup() { 
+        groupList.push(this)
+        localStorage.setItem('groupList', JSON.stringify(groupList))
+    }
+
+    createGroup() {
+        // creating the group
+        let group = document.querySelector('div.group')
+        group = group.cloneNode(true)
+
+        let groupName = group.querySelector('input.group-name')
+
+        groupName.value = this.name;
+        groupName.removeAttribute('disabled')
+
+        let groupLink = group.querySelector('h3.open-link')
+        groupLink.setAttribute('listener', 'false')
+
+        let editButton = group.querySelector('svg.edit-group')
+        editButton.classList.remove('first')
+        let deleteButton = group.querySelector('svg.delete-group')
+        deleteButton.classList.remove('first')
+
+        let tiles = group.querySelectorAll('.tiles > *')
+        tiles.forEach(function (tile) {
+            tile.remove()
+        })
+ 
+
+        let content = document.getElementById('content')
+        content.appendChild(group)
+
+        // smooth scroll to the new column
+        group.scrollTo({
+            top: content.clientHeight,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }
+
+}
+
+
+var groupList = []
 // begin by updating how many tiles there are in the groups
 countTiles.countTiles()
 
@@ -28,6 +79,8 @@ const newGroup = document.getElementById('new-group');
 // opening/closing the 'add a new group' form
 function toggleGroupForm() {
     validateText.innerHTML = ''
+    let name = addGroupForm.querySelector('input')
+    name.removeAttribute('required')
     if (newGroupToggle == false) {
         addGroupForm.classList.add('active')
         newGroupToggle = true
@@ -61,14 +114,16 @@ groupSubmitButton.addEventListener('click', function (event) {
 
     // setting an id and name
     let id = Date.now()
-    let name = addGroupForm.querySelector('input').value
+    let name = addGroupForm.querySelector('input')
 
-    if (name == '') {
+    if (name.value == '') {
         validateText.innerHTML = 'Please enter a name for this group.'
+        name.setAttribute('required', 'true')
     } else {
     // create new object in group class
-    let group = new Group(id, name)
+    let group = new Group(id, name.value)
     group.createGroup()
+    group.addGroup()
 
     // reset states
     toggleGroupForm()
@@ -151,3 +206,31 @@ function groupEditDeleteFunctionality() {
     })
 }
 
+
+// ////// ON LOAD
+
+// import Content from './content'
+// import Group from './group'
+// import Task from './task'
+// import Column from './column'
+
+// If there are items in local storage - create groups create columns
+// create card for each task in column
+// create tile for each content in group
+
+window.addEventListener('load', function() {
+
+    if (localStorage.getItem('groupList') != null) {
+        let groups = JSON.parse(localStorage.getItem('groupList'));
+        groups.forEach(function(group) {
+            let newGroup = new Group(group.id, group.name)
+            newGroup.createGroup()
+            newGroup.addGroup()
+
+            updateGroupNames()
+            countTiles.openGroupLinks()
+            countTiles.countTiles()
+            groupEditDeleteFunctionality()
+        })
+    }
+})

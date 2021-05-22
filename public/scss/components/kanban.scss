@@ -28,7 +28,7 @@
         position: relative;
         min-width: 280px;
         max-width: 332px;
-
+        width: 300px;
         margin: 18px 18px 18px 0;
         padding: 18px;
         padding-bottom: 2px;
@@ -48,12 +48,6 @@
     
         &.column:last-of-type {
             margin-right: 36px;
-            &::after {
-                content: '';
-                width: 20px;
-                height: 100px;
-                background-color: blue;
-            }
         }
 
         // &:hover {
@@ -271,6 +265,7 @@
                     margin-bottom: 72px;
                 }
 
+
                 .edit {
                     padding: 6px;
                     position: absolute;
@@ -285,9 +280,6 @@
                         border-radius: $mini-radius;
                         opacity: 1;
                         
-                    }
-                    svg:hover, path:hover {
-                        // cursor:pointer
                     }
                 }
 
@@ -405,4 +397,34 @@
         fill: transparent;
         opacity: 0;
     }
+}
+
+
+#empty-state-tasks, #empty-state-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: $big-radius;
+    border: 2px dashed $dark-grey;
+    img {
+        width: 60%;
+        margin: 24px auto;
+    }
+    h3 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    p {
+        color: $dark-grey;
+        margin: 8px 0 16px 0;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+#empty-state-content {
+    min-width: 260px;
+    max-width: 280px;
+    flex: 1 1 280px;
+    margin: 12px;
 }

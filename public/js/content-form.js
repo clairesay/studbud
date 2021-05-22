@@ -105,6 +105,9 @@ newContent.addEventListener('click', function () { openContentForm() })
 // open content form (may be prepopulated or blank)
 function openContentForm(type) {
     validateText.innerHTML = ''
+    let contentDetails = createContentForm.querySelectorAll('form input');
+    contentDetails[0].removeAttribute('required')
+    contentDetails[1].removeAttribute('required')
     // if updating existing content, set type update
     if (type == 'update') {
         createContentForm.querySelector('h1').textContent = 'Edit existing resource'
@@ -237,37 +240,42 @@ contentDeleteButton.addEventListener('click', function (event) {
 contentSaveButton.addEventListener('click', function (event) {
     event.preventDefault()
     let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentGroup;
-    // if updating, look for content with same id value
-    if (createContentForm.classList.contains('update')) {
-        contentID = parseInt(contentSaveButton.value)
-        for (let i = 0; i < contentList.length; i++) {
-            var oldContent = contentList[i]
-            if (oldContent.id == contentID) {
-                contentList.splice(contentList.indexOf(oldContent), 1)
-                let oldTile = document.getElementById('c-' + contentID)
-                oldTile.remove();
-                contentSaveButton.value = ''
-            }
-        }
-    // otherwise, generate one
-    } else {
-        contentID = Date.now()
-    }
-
-    // extract values from input form
-    contentDetails = createContentForm.querySelectorAll('form input');
-    contentTitle = contentDetails[0].value
-    let codeArea = createContentForm.querySelector('textarea')
-    contentDescription = codeArea.value
-    // contentDescription = contentDetails[1].value 
-    contentLink = contentDetails[1].value
-
-    let groups = createContentForm.querySelector('select[name=group]')
-    contentGroup = groups.value
+     // extract values from input form
+     contentDetails = createContentForm.querySelectorAll('form input');
+     contentTitle = contentDetails[0].value
+     let codeArea = createContentForm.querySelector('textarea')
+     contentDescription = codeArea.value
+     // contentDescription = contentDetails[1].value 
+     contentLink = contentDetails[1].value
+ 
+     let groups = createContentForm.querySelector('select[name=group]')
+     contentGroup = groups.value
 
     if (contentTitle == "" || contentLink == "") {
+        contentDetails[0].setAttribute('required', 'true')
+        contentDetails[1].setAttribute('required', 'true')
         validateText.innerHTML = 'Please enter a title and a resource link to save this content.'
+
     } else {
+        
+        // if updating, look for content with same id value
+        if (createContentForm.classList.contains('update')) {
+            contentID = parseInt(contentSaveButton.value)
+            for (let i = 0; i < contentList.length; i++) {
+                var oldContent = contentList[i]
+                if (oldContent.id == contentID) {
+                    contentList.splice(contentList.indexOf(oldContent), 1)
+                    let oldTile = document.getElementById('c-' + contentID)
+                    oldTile.remove();
+                    contentSaveButton.value = ''
+                }
+            }
+        // otherwise, generate one
+        } else {
+            contentID = Date.now()
+        }
+    
+       
     // create new object in class
     content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup)
     content.createCard(content.addContent());
@@ -281,4 +289,9 @@ contentSaveButton.addEventListener('click', function (event) {
     enableButtons()
     }
 
+})
+
+var emptyStateButton = document.querySelector('#empty-state-content button')
+emptyStateButton.addEventListener('click', function() {
+    newContent.click()
 })

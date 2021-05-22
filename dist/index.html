@@ -70,6 +70,12 @@
 
                 </div>
                 <div class="tiles">
+                    <article id="empty-state-content">
+                        <img src="/empty-content.a51d527a.png">
+                        <h3>It’s empty around here.</h3>
+                        <p>Save helpful resource links here before you lose them.</p>
+                        <button class="button primary" type="button">Add content</button>
+                    </article>
                 </div>
             </div>
         </section>
@@ -90,8 +96,16 @@
 
                 </div>
                 <div class="cards">
-                </div>
 
+                    <article id="empty-state-tasks" class="filtered">
+                        <img src="/empty-tasks.9f7154e7.png">
+                        <h3>You have no tasks.</h3>
+                        <p>Hit that big green button when you’re ready for more.</p>
+                        <button class="button primary" type="button">Create task</button>
+                    </article>
+
+                </div>
+                <!-- document.getElementById('task-save').click(); -->
             </div>
             <div class="column">
                 <div class="title">
@@ -302,19 +316,16 @@
         <h1>Add content</h1>
         <section>
             <div>
-        <label for="contentTitle">Title</label>
-        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus="" required="">
+        <label for="contentTitle">Title <span class="required">*</span></label>
+        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus="">
 
         <label for="conceptDescription">Code snippet</label>
         <pre>
-            <textarea name="conceptDescription" contenteditable="true" maxlength="300" placeholder="Include a short code example here." spellcheck="false"></textarea>
+            <textarea name="conceptDescription" contenteditable="true" maxlength="300" placeholder="Paste short reference code here." spellcheck="false"></textarea>
         </pre>
 
-        <!-- <textarea type="text" name="conceptDescription" maxlength="150"
-            placeholder="Include a short code example here." required ></textarea> -->
-
-        <label for="link">Link</label>
-        <input type="text" name="link" placeholder="Paste the resource link here" required="">
+        <label for="link">Link <span class="required">*</span></label>
+        <input type="text" name="link" placeholder="Paste the resource link here">
         </div>
         <div>
             <label for="group">Group</label>
@@ -352,18 +363,16 @@
         <h1>Create a task</h1>
         <section>
             <div>
-            <label for="taskName">Task Name</label>
-            <input type="text" name="taskName" placeholder="What's the task called?" pattern=".{1,}" autofocus="" required="">
+            <label for="taskName">Task Name <span class="required">*</span></label>
+            <input type="text" name="taskName" placeholder="What's the task called?" autofocus="">
 
             <label for="taskDescription">Task Description</label>
-            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?" required=""></textarea>
+            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?"></textarea>
 
             <!-- SUBJECT -->
             <label for="subject">Subject</label>
-            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" required="">
-            <datalist id="subject" autocomplete="off">
-                <option>INFO1110</option>
-            </datalist>
+            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" autocomplete="off">
+            <datalist id="subject"></datalist>
         </div>
         <div>
             <label for="status">Status</label>
@@ -380,7 +389,7 @@
             </label>
             <div class="radio-container">
                 <label class="false-radio">
-                    <input type="radio" name="taskPriorityRating" value="Low" checked="">
+                    <input type="radio" name="taskPriorityRating" value="Low">
                     <span><div style="background-color: rgb(112, 184, 21);
 "></div>Low</span>
                 </label>
@@ -407,7 +416,7 @@
             </label>
 
             <label for="taskDueDate">Due Date</label>
-            <input type="date" name="taskDueDate" required="">
+            <input type="date" name="taskDueDate">
 
         </div>
     </section>
@@ -582,12 +591,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"6Xfnb":[function(require,module,exports) {
+})({"74edU":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "0ecbe5ec3aa81d5d34c52d626ac72280";
+module.bundle.HMR_BUNDLE_ID = "824d6034fd9776d81790eed302d5fba8";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -883,12 +892,13 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"HQbUk":[function(require,module,exports) {
+},{}],"3q9ql":[function(require,module,exports) {
 var deviceSize;
-},{}]},["6Xfnb","HQbUk"], "HQbUk", "parcelRequirec526")
+},{}]},["74edU","3q9ql"], "3q9ql", "parcelRequirec526")
 
 </script>
     <script src="/index.8e0a979d.js"></script>
+
 
     <script src="/index.05443c22.js"></script>
     <script src="/index.d7a8e4fc.js"></script>
@@ -899,6 +909,7 @@ var deviceSize;
     <script src="/index.b1ba32bc.js"></script>
     <script src="/index.61a69f93.js"></script>
     <script src="/index.479e99b9.js"></script>
+    <script src="/index.06fd8301.js"></script>
     <script>// modules are defined as an array
 // [ module function, map of requires ]
 //
@@ -1041,12 +1052,12 @@ var deviceSize;
       this[globalName] = mainExports;
     }
   }
-})({"3HuCw":[function(require,module,exports) {
+})({"3Wjix":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "751fe0a810d080231f068cfd5683c5f2";
+module.bundle.HMR_BUNDLE_ID = "9ae4140fa3db8d13a2af4a5a6e846c22";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -1342,12 +1353,12 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"1ld2V":[function(require,module,exports) {
+},{}],"6Oe64":[function(require,module,exports) {
 document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
         event.preventDefault();
         document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
       });
-},{}]},["3HuCw","1ld2V"], "1ld2V", "parcelRequirec526")
+},{}]},["3Wjix","6Oe64"], "6Oe64", "parcelRequirec526")
 
 </script>
 </body>

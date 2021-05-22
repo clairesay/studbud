@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>StudBud</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Study tool for programmers in training">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="ac2b17b88ef0ab3e3e3316d5a6be3892">
+    <link rel="stylesheet" href="f6fcb1780f0acdc4edfcf7cc14ef5a47">
+    <script src="79c97eec213826b9b61f35b8b9f5a448"></script>
+    <link rel="stylesheet" href="8ac1c4e1b549f32c28d6ef471be7d923" integrity="sha512-ig9FCe92nesnwlWGl9mrk85kB35I29wg6kfP17X0qX2B6GAxS4tKK8QhcTgojdsjOEZRlmaawo49uerBGt6O+Q==" crossorigin="anonymous">
+    <script src="6f387c89e1e57fe6688f05adb0c9102f" integrity="sha512-zFBRHWZWLXx6ktE7EtT+5RXM5UA+S1V9JHHocTPdKdQbRuNSgq6IFDzYbV1q6fst/1kdz5W7OwZKjyZ6bzE/iA==" crossorigin="anonymous"></script>
+    <!-- <link href="https://{{cdn}}/prism@v1.x/themes/prism.css" rel="stylesheet" /> -->
+    <script src="d94f9aa01d9671d8449671126e020f85" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
+    <script src="4c3879c4ffb1af0a9978a03e973969ca" integrity="sha512-V/mrpehNcIkQ5rszd9LwfBujHn0FJkHO0hBQc059gH5LWg1Tsnt7xphn7Z5jaDiq/xyLU4/BXi5jJauqM4PhlQ==" crossorigin="anonymous"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/validate-js/2.0.1/validate.min.js"
+        integrity="sha512-8GLIg5ayTvD6F9ML/cSRMD19nHqaLPWxISikfc5hsMJyX7Pm+IIbHlhBDY2slGisYLBqiVNVll+71CYDD5RBqA=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script> -->
+    <link rel="icon" href="191763d21b3708b74a5b76dbde393de7">
+</head>
+
+<body>
+    <header>
+        <img id="home-link" src="7cfdf8f6153f8e10e79f65d51c7b3590">
+        <div id="button-background" class="background"></div>
+        <article id="task-buttons" class="button-container">
+            <button class="button primary icon" type="button"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+            <button id="new-task" class="button primary create" type="button">Create task</button>
+            <button id="new-column" class="button secondary create" type="button">Add column</button>
+        </article>
+        <article id="content-buttons" class="button-container">
+            <button class="button primary icon" type="button"><img src="e9fd217b7bcd2d651e844f6e0ed154aa"></button>
+            <button id="new-content" class="button primary create" type="button">Add content</button>
+            <button id="new-group" class="button secondary create" type="button">Create group</button>
+        </article>
+
+    </header>
+
+
+    <main>
+        <button id="content-tab" class="tab" type="button">Content</button>
+        <button id="tasks-tab" class="tab" type="button">Tasks</button>
+        <section id="content">
+
+
+            <!-- <button id="filter-by" class="button" type="button">Filter by</button>
+            <div class="tags"></div> -->
+            <div class="group">
+                <div class="group-title">
+                    <div>
+                        <input class="group-name" value="Ungrouped" required="" disabled="">
+                        <svg class="edit-group first" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                        </svg>
+                        <div id="edit-group" class="tooltip">Rename group</div>
+                        <svg class="delete-group first" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
+                        </svg>
+                        <div id="delete-group" class="tooltip">Delete group</div>
+                    </div>
+
+
+                    <h3 class="open-link"><img src="c58c9506186bac9fd55bf86ae102545c"></h3>
+
+                </div>
+                <div class="tiles">
+                </div>
+            </div>
+        </section>
+        <section id="tasks">
+            <div class="column">
+                <div class="title">
+
+                    <input class="column-name" value="To Do" required="">
+                    <h3 class="total"></h3>
+                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    <div id="edit" class="tooltip">Rename column</div>
+                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
+                    </svg>
+                    <div id="delete" class="tooltip">Delete column</div>
+
+                </div>
+                <div class="cards">
+                    <img src="b74d372d85927be6f93e2ee7802cc66d">
+                    <article id="empty-state-tasks" class="card">
+                        <h3>You have no tasks.</h3>
+                        <p>Hit that big green button when you’re ready for more.</p>
+                    </article>
+                    <button type="button">Create task</button>
+                </div>
+
+            </div>
+            <div class="column">
+                <div class="title">
+                    <input class="column-name" value="In Progress" required="">
+                    <h3 class="total"></h3>
+                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
+                    </svg>
+
+                </div>
+                <div class="cards">
+                </div>
+            </div>
+            <div class="column">
+                <div class="title">
+                    <input class="column-name" value="Done" required="">
+                    <h3 class="total"></h3>
+                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
+                    </svg>
+                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
+                    </svg>
+
+                </div>
+                <div class="cards">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <section id="time" class="pop-up" static="true">
+        <nav>
+            <img src="4ab204b6126d141501cc8916d3d6f341">
+            <div id="dropdown">
+                <div id="time-selector" class="close">
+                    <h3 id="stopwatch-select">Stopwatch</h3>
+                    <h3 id="pomodoro-select">Pomodoro</h3>
+                </div>
+
+                <svg width="10" height="6" viewbox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#909090" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <h1 id="peek-time"><span class="min"></span>:<span class="sec"></span></h1>
+            <h1 id="peek-status"></h1>
+            <button class="button icon collapse" type="button">
+                <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
+                    <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
+                </svg>
+            </button>
+        </nav>
+        <article id="stopwatch">
+            <h1><span class="minutes">00</span>:<span class="seconds">00</span>:<span class="milliseconds">00</span></h1>
+            <div>
+                <button class="button primary start-stop" type="button">Start</button>
+                <button class="button secondary reset" type="button">Reset</button>
+            </div>
+        </article>
+        <article id="pomodoro">
+            <!-- <audio>
+                <source src="audio/alarm.mp3" type="audio/mp3">
+            </audio> -->
+            <div id="work">
+                <h4>Work for:</h4>
+                <div>
+                    <button class="button secondary icon subtract" type="button">
+                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                    <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                    </h1>
+                    <button class="button secondary icon add" type="button">
+                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                </div>
+
+            </div>
+            <div id="break">
+                <h4>Break for:</h4>
+                <div>
+                    <button class="button secondary icon subtract" type="button">
+                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
+                            </svg>
+                            
+                    </button>
+                    <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                    </h1>
+                    <button class="button secondary icon add" type="button">
+                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+            <div id="timer">
+                <h1><span class="minutes">00</span>:<span class="seconds">00</span>
+                </h1>
+                <h3 id="pomo-status"></h3>
+
+            </div>
+            <div id="pomo-button-container">
+                <button class="button primary start-stop" type="button">Start</button>
+                <button id="reset-pomo" class="button secondary" type="button">Reset</button>
+            </div>
+            <div id="timeline">
+                <div class="length">
+                    <div></div>
+                </div>
+                <div class="length">
+                    <div></div>
+                </div>
+                <div class="length">
+                    <div></div>
+                </div>
+                <div class="length">
+                    <div></div>
+                </div>
+                <div class="length">
+                    <div></div>
+                </div>
+            </div>
+            <div id="final-load" class="length">
+                <div></div>
+            </div>
+        </article>
+    </section>
+    <section id="music" class="pop-up" static="true">
+        <nav>
+            <img src="d11dd36fcb0ad8627232a94edbfd28f3">
+            <button class="button icon collapse" type="button">
+                <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
+                    <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <div id="current">
+            <img src="00aee38c9e91b3bb99fd64d5064474c6">
+            <audio crossorigin="" playsinline="">
+            </audio>
+            <div id="current-controls">
+                <div class="metadata">
+                    <h1 class="title">
+                        <h3 class="artist"></h3>
+                    </h1>
+                </div>
+                <div class="controls">
+                    <button id="previous" type="button">
+                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0L3.5 6L12 12L12 0ZM2 12L2 0H0L0 12H2Z" fill="#303030"></path>
+                        </svg>
+            
+                    </button>
+                    <button id="play-pause" type="button">                            
+                    </button>
+                    <button id="next" type="button">
+                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 12L8.5 6L0 0V12ZM10 0V12H12V0H10Z" fill="#303030"></path>
+                        </svg>
+            
+                    </button>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+
+        <h2>Up next         
+            <button id="shuffle" type="button">
+                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.59 5.17L1.41 0L0 1.41L5.17 6.58L6.59 5.17ZM10.5 0L12.54 2.04L0 14.59L1.41 16L13.96 3.46L16 5.5V0H10.5ZM10.83 9.41L9.42 10.82L12.55 13.95L10.5 16H16V10.5L13.96 12.54L10.83 9.41Z" fill="black"></path>
+                    </svg>
+                    
+        </button>
+    </h2>
+        <ul class="playlist">
+            
+        </ul>
+        <svg id="phantom-play-button" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 25.5L25 21L19 16.5V25.5ZM21 11C15.48 11 11 15.48 11 21C11 26.52 15.48 31 21 31C26.52 31 31 26.52 31 21C31 15.48 26.52 11 21 11ZM21 29C16.59 29 13 25.41 13 21C13 16.59 16.59 13 21 13C25.41 13 29 16.59 29 21C29 25.41 25.41 29 21 29Z" fill="#303030"></path>
+        </svg>
+        
+    </section>
+    <!-- https://freesound.org/people/pan14/sounds/263131/ -->
+    <audio id="alarm-sound" style="c988b23fc19f575ec2fbd167843c1ca0">
+        <source src="4bbdffdfce8b52a79723d75fcaa2a4f9" type="audio/mpeg">
+    </audio>
+    <div id="modal-background" class="background"></div>
+    <form id="create-content-form" novalidate="">
+       
+        <h1>Add content</h1>
+        <section>
+            <div>
+        <label for="contentTitle">Title <span class="required">*</span></label>
+        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus="">
+
+        <label for="conceptDescription">Code snippet</label>
+        <pre>
+            <textarea name="conceptDescription" contenteditable="true" maxlength="300" placeholder="Paste short reference code here." spellcheck="false"></textarea>
+        </pre>
+
+        <label for="link">Link <span class="required">*</span></label>
+        <input type="text" name="link" placeholder="Paste the resource link here">
+        </div>
+        <div>
+            <label for="group">Group</label>
+            <select name="group">
+                <option value="None">None</option>
+            </select>
+            <span style="4fa3a45d0e81af166a172b57cf46e9b0"><img src="b93754e99ea478e531f3e84c2139773a"></span>
+        </div>
+    </section>
+    <h1 class="validate-message"></h1>
+    <div class="form-button-container">
+        <button id="content-save" class="button primary" type="submit">Save</button>
+        <button id="edit-content-cancel" class="button secondary" type="button">Cancel</button>
+        <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+        <button id="edit-content-delete" class="button danger" type="button">Delete</button>
+        </div>
+
+    </form>
+    <form id="add-group-form" name="group" novalidate="">
+        <h1>Create a group</h1>
+
+        <label for="groupName">Group Name</label>
+        <input type="text" name="groupName" placeholder="What is this group for?" autofocus="" required="">
+        <p>TIP: Create your groups based on topics, or even subjects.
+        </p>
+        <h1 class="validate-message"></h1>
+        <div class="form-button-container">
+            <button id="add-group-submit" class="button primary" type="submit">Save</button>
+            <button id="add-group-cancel" class="button secondary" type="button">Cancel</button>
+            <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+        </div>
+    </form>
+    <form id="create-task-form" novalidate="">
+        <h1>Create a task</h1>
+        <section>
+            <div>
+            <label for="taskName">Task Name <span class="required">*</span></label>
+            <input type="text" name="taskName" placeholder="What's the task called?" autofocus="">
+
+            <label for="taskDescription">Task Description</label>
+            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?"></textarea>
+
+            <!-- SUBJECT -->
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" autocomplete="off">
+            <datalist id="subject"></datalist>
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <div>
+            <select name="status">
+                
+            </select>
+            <span style="e7668c04b4d5040218261b21e9a408b9"><img src="b93754e99ea478e531f3e84c2139773a"></span>
+        </div>
+
+
+            <label for="taskPriorityRating">Priority Level
+            </label>
+            <div class="radio-container">
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="Low">
+                    <span><div style="6e7aad283e177db6052b242fcebc4638"></div>Low</span>
+                </label>
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="Mid">
+                    <span><div style="e493a2a707b87dafe846f5914dc55a53"></div>Mid</span>
+                </label>
+                <label class="false-radio">
+                    <input type="radio" name="taskPriorityRating" value="High">
+                    <span><div style="e735c6ba6f322ab84aa5ed1ab3152178"></div>High</span>
+                </label>
+            </div>
+
+            <label for="taskEstimatedTime">Estimated Time to Complete</label>
+            <label for="taskEstimatedTimeHr">
+                <input type="number" min="0" max="12" step="1" name="taskEstimatedTimeHr" value="0">
+            <span>HR</span>  
+            </label>
+            <label for="taskEstimatedTimeMin">
+            <input type="number" min="0" max="59" step="15" name="taskEstimatedTimeMin" value="0">
+            <span>MIN</span>  
+            </label>
+
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" name="taskDueDate">
+
+        </div>
+    </section>
+    <h1 class="validate-message"></h1>
+        <div class="form-button-container">
+            <button id="task-save" class="button primary" type="submit">Save</button>
+            <button id="edit-task-cancel" class="button secondary" type="button">Cancel</button>
+            <button class="close-form" type="reset"><img src="9ada1a6fcecb621666ac9cf19b041810"></button>
+            <button id="edit-task-delete" class="button danger" type="button">Delete</button>
+        </div>
+    </form>
+
+    <form id="add-column-form" name="column" novalidate="">
+        <h1>Add a column</h1>
+
+        <label for="columnName">Column Name</label>
+        <input type="text" name="columnName" placeholder="What is this column for?" autofocus="" required="">
+        <p>TIP: Name the column after a status, like 'In Progress' so you can categorise tasks against completion.
+        </p>
+        <h1 class="validate-message"></h1>
+        <div class="form-button-container">
+        <button id="add-column-submit" class="button primary" type="submit">Save</button>
+        <button id="add-column-cancel" class="button secondary" type="button">Cancel</button>
+        <button class="close-form" type="button">
+            <img src="9ada1a6fcecb621666ac9cf19b041810">
+        </button>
+        </div>
+    </form>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+        integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+        crossorigin="anonymous"></script> -->
+    <!-- <script>var timeStatic, musicStatic;</script> -->
+    <script data-parcel-key="adc8a809f02691b29a5d1b6a82d036e0">var deviceSize;</script>
+    <script src="956e94fa531b26cb4e5c8ba0473f4981"></script>
+
+
+    <script src="fb8edede0bfb84ccb99e54fac6796a68"></script>
+    <script src="f87277b8ab24e1af2717d62bde9ace8d"></script>
+
+    <script src="021d633403a63eab671725f69e31119f"></script>
+    <script src="5b1999f037ee8741e1e59869399351f5"></script>
+
+    <script src="e9eb16708f1341fa3f07d31a25c873af"></script>
+    <script src="3238ff76db76e0287e49e15f0fa7639a"></script>
+    <script src="d70b06495357e3515ba0ca0a8f891dac"></script>
+    <script src="aa348d1b01b2eeafcdae638667269255"></script>
+    <script data-parcel-key="1907bcf479e541dc7195ef905af42bd4">document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
+        event.preventDefault();
+        document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
+      });</script>
+</body>
+
+</html>
+
+<!-- IF an input tab is active in kanban board, disable rearrangement of kanban columns -->

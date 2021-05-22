@@ -84,6 +84,12 @@
 
                 </div>
                 <div class="tiles">
+                    <article id="empty-state-content">
+                        <img src="images/empty-content.png">
+                        <h3>It’s empty around here.</h3>
+                        <p>Save helpful resource links here before you lose them.</p>
+                        <button class="button primary" type="button">Add content</button>
+                    </article>
                 </div>
             </div>
         </section>
@@ -110,8 +116,16 @@
 
                 </div>
                 <div class="cards">
-                </div>
 
+                    <article id="empty-state-tasks" class="filtered">
+                        <img src="images/empty-tasks.png">
+                        <h3>You have no tasks.</h3>
+                        <p>Hit that big green button when you’re ready for more.</p>
+                        <button class="button primary" type="button">Create task</button>
+                    </article>
+
+                </div>
+                <!-- document.getElementById('task-save').click(); -->
             </div>
             <div class="column">
                 <div class="title">
@@ -343,20 +357,17 @@
         <h1>Add content</h1>
         <section>
             <div>
-        <label for="contentTitle">Title</label>
-        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus required />
+        <label for="contentTitle">Title <span class="required">*</span></label>
+        <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus />
 
         <label for="conceptDescription">Code snippet</label>
         <pre>
             <textarea name="conceptDescription" contenteditable="true" maxlength="300"
-            placeholder="Include a short code example here." spellcheck="false"></textarea>
+            placeholder="Paste short reference code here." spellcheck="false"></textarea>
         </pre>
 
-        <!-- <textarea type="text" name="conceptDescription" maxlength="150"
-            placeholder="Include a short code example here." required ></textarea> -->
-
-        <label for="link">Link</label>
-        <input type="text" name="link" placeholder="Paste the resource link here" required />
+        <label for="link">Link <span class="required">*</span></label>
+        <input type="text" name="link" placeholder="Paste the resource link here" />
         </div>
         <div>
             <label for="group">Group</label>
@@ -393,19 +404,16 @@
         <h1>Create a task</h1>
         <section>
             <div>
-            <label for="taskName">Task Name</label>
-            <input type="text" name="taskName" placeholder="What's the task called?" pattern=".{1,}" autofocus
-                required />
+            <label for="taskName">Task Name <span class="required">*</span></label>
+            <input type="text" name="taskName" placeholder="What's the task called?" autofocus />
 
             <label for="taskDescription">Task Description</label>
-            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?" required ></textarea>
+            <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?" ></textarea>
 
             <!-- SUBJECT -->
             <label for="subject">Subject</label>
-            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" required />
-            <datalist id="subject" autocomplete="off">
-                <option>INFO1110</option>
-            </datalist>
+            <input type="text" name="subject" list="subject" placeholder="What subject is it for?" autocomplete="off" />
+            <datalist id="subject"></datalist>
         </div>
         <div>
             <label for="status">Status</label>
@@ -421,7 +429,7 @@
             </label>
             <div class="radio-container">
                 <label class="false-radio">
-                    <input type="radio" name="taskPriorityRating" value="Low" checked/>
+                    <input type="radio" name="taskPriorityRating" value="Low"/>
                     <span><div style="background-color: rgb(112, 184, 21);"></div>Low</span>
                 </label>
                 <label class="false-radio">
@@ -445,7 +453,7 @@
             </label>
 
             <label for="taskDueDate">Due Date</label>
-            <input type="date" name="taskDueDate" required />
+            <input type="date" name="taskDueDate" />
 
         </div>
     </section>
@@ -481,6 +489,7 @@
     <script>var deviceSize;</script>
     <script src="main.js"></script>
 
+
     <script src="js/task-form.js"></script>
     <script src="js/column-form.js"></script>
 
@@ -490,6 +499,7 @@
     <script src="js/time.js"></script>
     <script src="js/music.js"></script>
     <script src="js/pop-up.js"></script>
+    <script src="js/retrieve.js"></script>
     <script>document.querySelector('[contenteditable]').addEventListener('paste', function (event) {
         event.preventDefault();
         document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));

@@ -302,7 +302,6 @@ table {
   font-size: 36px;
   font-weight: 500;
   padding: 0 24px;
-  width: 108px;
   display: flex;
   justify-content: center;
 }
@@ -343,13 +342,17 @@ table {
 #time #pomodoro #timer {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 #time #pomodoro #timer h1 {
+  padding: 0;
   font-size: 60px;
   font-weight: 500;
+  position: relative;
+  width: max-content;
+  left: calc((100% - 170px)/2);
 }
 #time #pomodoro #timer h3 {
+  margin: auto;
   margin-top: 12px;
   font-weight: 500;
   text-transform: uppercase;
@@ -470,6 +473,7 @@ body main .tab.active::before {
   position: relative;
   min-width: 280px;
   max-width: 332px;
+  width: 300px;
   margin: 18px 18px 18px 0;
   padding: 18px;
   padding-bottom: 2px;
@@ -484,12 +488,6 @@ body main .tab.active::before {
 }
 #tasks div.column.column:last-of-type {
   margin-right: 36px;
-}
-#tasks div.column.column:last-of-type::after {
-  content: "";
-  width: 20px;
-  height: 100px;
-  background-color: blue;
 }
 #tasks div.column div.title {
   z-index: 2;
@@ -744,6 +742,35 @@ body main .tab.active::before {
   color: transparent;
   fill: transparent;
   opacity: 0;
+}
+
+#empty-state-tasks, #empty-state-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px dashed #909090;
+}
+#empty-state-tasks img, #empty-state-content img {
+  width: 60%;
+  margin: 24px auto;
+}
+#empty-state-tasks h3, #empty-state-content h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+#empty-state-tasks p, #empty-state-content p {
+  color: #909090;
+  margin: 8px 0 16px 0;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+#empty-state-content {
+  min-width: 260px;
+  max-width: 280px;
+  flex: 1 1 280px;
+  margin: 12px;
 }
 
 #content {
@@ -1166,11 +1193,13 @@ form input {
   font-size: 14px;
   width: 60%;
 }
+form input:required, form input:required:hover, form input:required:focus {
+  filter: drop-shadow(0 0 2px #e56b45);
+}
 form input:hover {
   filter: drop-shadow(0 0 2px #30303048);
 }
 form input:focus {
-  border: none;
   filter: drop-shadow(0 0 2px #30303048);
 }
 form input[name=taskEstimatedTimeHr], form input[name=taskEstimatedTimeMin] {
@@ -1243,6 +1272,9 @@ form label.false-radio span {
   background-color: #fefefe;
   color: #909090;
   padding: 14px;
+}
+form label span.required {
+  color: #e56b45;
 }
 
 @media only screen and (max-width: 700px) {
@@ -2067,7 +2099,7 @@ form label.false-radio span {
     padding: auto;
   }
   .pop-up[state=active]#time #stopwatch h1, .pop-up[state=active]#music #stopwatch h1 {
-    margin: auto;
+    margin-left: calc((100% - 225px)/2);
     left: 0;
   }
   .pop-up[state=active]#time #stopwatch h1 ~ div, .pop-up[state=active]#music #stopwatch h1 ~ div {

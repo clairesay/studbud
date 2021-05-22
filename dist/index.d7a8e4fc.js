@@ -467,6 +467,8 @@ const newColumn = document.getElementById('new-column');
 // toggle hide/show
 function toggleColumnForm() {
   validateText.innerHTML = '';
+  let name = addColumnForm.querySelector('input');
+  name.removeAttribute('required');
   if (newColumnToggle == false) {
     addColumnForm.classList.add('active');
     newColumnToggle = true;
@@ -513,11 +515,12 @@ var validateText = addColumnForm.querySelector('.validate-message');
 columnSubmitButton.addEventListener('click', function (event) {
   event.preventDefault();
   let id = Date.now();
-  let name = addColumnForm.querySelector('input').value;
-  if (name == '') {
+  let name = addColumnForm.querySelector('input');
+  if (name.value == '') {
     validateText.innerHTML = 'Please enter a name for this column.';
+    name.setAttribute('required', 'true');
   } else {
-    let col = new _columnDefault.default(id, name);
+    let col = new _columnDefault.default(id, name.value);
     col.createColumn();
     updateColumnNames();
     toggleColumnForm();
@@ -738,7 +741,7 @@ class Column {
     let total = column.querySelector('h3.total');
     total.textContent = 0;
     // remove any existing cards inside the column
-    let cards = column.querySelectorAll('.card');
+    let cards = column.querySelectorAll('.cards > *');
     cards.forEach(function (card) {
       card.remove();
     });

@@ -196,11 +196,14 @@ form {
 
         width: 60%;
 
+        &:required, &:required:hover, &:required:focus {
+            filter: drop-shadow(0 0 2px $danger);
+        }
+
         &:hover {
             filter: drop-shadow(0 0 2px #30303048);
         }
         &:focus {
-            border: none;
             filter: drop-shadow(0 0 2px #30303048);
         }
 
@@ -289,6 +292,10 @@ form {
                 color: $dark-grey;
                 padding: 14px;
             }
+        }
+
+        span.required {
+            color: $danger;
         }
     }
 }

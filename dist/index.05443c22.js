@@ -582,6 +582,8 @@ function updateSubjectList() {
 function toggleTaskForm(type) {
   // clearing validate text
   validateText.innerHTML = '';
+  // 
+  createTaskForm.querySelector('input').removeAttribute('required');
   // check if its an update form if so, reword, and show corresponding buttons :)
   if (type == 'update') {
     createTaskForm.querySelector('h1').textContent = 'Edit task';
@@ -731,30 +733,30 @@ var validateText = createTaskForm.querySelector('.validate-message');
 // saving a new task or updating
 taskSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
-  // depends whether we are updating or creating a task
-  let taskID;
-  if (createTaskForm.classList.contains('update')) {
-    taskID = parseInt(taskSaveButton.value);
-    for (let i = 0; i < taskList.length; i++) {
-      var oldTask = taskList[i];
-      if (oldTask.id == taskID) {
-        taskList.splice(taskList.indexOf(oldTask), 1);
-        let oldCard = document.getElementById('t-' + taskID);
-        oldCard.remove();
-        taskSaveButton.value = '';
-      }
-    }
-  } else {
-    taskID = Date.now();
-  }
   // initialising variables
   let taskDetails = createTaskForm.querySelectorAll('form input');
   // get all of the user input in the input fields
   let task = getTaskDetails(taskDetails);
-  console.log(task.name);
   if (task.name == '') {
+    taskDetails[0].setAttribute('required', 'true');
     validateText.innerHTML = 'Please enter a task name to save this task.';
   } else {
+    // depends whether we are updating or creating a task
+    let taskID;
+    if (createTaskForm.classList.contains('update')) {
+      taskID = parseInt(taskSaveButton.value);
+      for (let i = 0; i < taskList.length; i++) {
+        var oldTask = taskList[i];
+        if (oldTask.id == taskID) {
+          taskList.splice(taskList.indexOf(oldTask), 1);
+          let oldCard = document.getElementById('t-' + taskID);
+          oldCard.remove();
+          taskSaveButton.value = '';
+        }
+      }
+    } else {
+      taskID = Date.now();
+    }
     // create a new task using the task class
     let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate);
     // append to taskList and create new card with task
@@ -766,6 +768,10 @@ taskSaveButton.addEventListener('click', function (event) {
     // update subjects
     updateSubjectList();
   }
+});
+var emptyStateButton = document.querySelector('#empty-state-tasks button');
+emptyStateButton.addEventListener('click', function () {
+  newTask.click();
 });
 
 },{"./kanban":"3b9tq"}],"3b9tq":[function(require,module,exports) {
@@ -779,14 +785,15 @@ _parcelHelpers.export(exports, "sortability", function () {
 });
 function countCards() {
   let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
-  // const emptyStateMessage = document.getElementById('empty-state-message')
+  let emptyStateMessage = document.getElementById('empty-state-tasks');
   // // if there are no cards, add an empty state
-  // if (cards.length == 0) {
-  // columns[0].appendChild(emptyStateMessage)
-  // emptyStateMessage.style.display = 'flex';
-  // } else {
-  // emptyStateMessage.style.display = 'none';
-  // }
+  if (cards.length == 0) {
+    cardContainers[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'flex';
+  } else {
+    columns[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'none';
+  }
   // writing the total number of cards at the head of each column
   total.forEach(function count(object, index) {
     let cardCount = 0;
@@ -801,7 +808,6 @@ function countCards() {
 countCards();
 function sortability() {
   let cardContainers = document.querySelectorAll('.cards');
-  console.log('number of cardContainers is' + cardContainers.length);
   cardContainers.forEach(function (element) {
     new Sortable(element, {
       group: 'nested',
@@ -810,6 +816,8 @@ function sortability() {
       ghostClass: 'ghost-card',
       chosenClass: 'chosen-card',
       dragClass: "sortable-drag",
+      filter: '.filtered',
+      // 'filtered' class is not draggable
       forceFallback: true,
       onStart: function (/**Event*/
       evt) {
@@ -861,16 +869,6 @@ mediaQuery(x);
 x.addEventListener('change', mediaQuery);
 // Attach listener function on state changes
 var tasks = document.getElementById('tasks');
-if (deviceSize == 'mobile') {} else {
-  new Sortable(tasks, {
-    animation: 150,
-    swapThreshold: 0.8,
-    ghostClass: 'ghost-column',
-    chosenClass: 'chosen-column',
-    dragClass: "sortable-drag",
-    forceFallback: true
-  });
-}
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5gA8y":[function(require,module,exports) {
 "use strict";

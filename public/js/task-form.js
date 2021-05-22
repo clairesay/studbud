@@ -171,6 +171,9 @@ function updateSubjectList() {
 function toggleTaskForm(type) {
     // clearing validate text
     validateText.innerHTML = ''
+    // 
+    createTaskForm.querySelector('input').removeAttribute('required')
+
     // check if its an update form if so, reword, and show corresponding buttons :)
     if (type == 'update') {
         createTaskForm.querySelector('h1').textContent = 'Edit task'
@@ -336,31 +339,31 @@ var validateText = createTaskForm.querySelector('.validate-message')
 taskSaveButton.addEventListener('click', function (event) {
     event.preventDefault()
 
-    // depends whether we are updating or creating a task
-    let taskID;
-    if (createTaskForm.classList.contains('update')) {
-        taskID = parseInt(taskSaveButton.value)
-        for (let i = 0; i < taskList.length; i++) {
-            var oldTask = taskList[i]
-            if (oldTask.id == taskID) {
-                taskList.splice(taskList.indexOf(oldTask), 1)
-                let oldCard = document.getElementById('t-' + taskID)
-                oldCard.remove();
-                taskSaveButton.value = ''
-            }
-        }
-    } else {
-        taskID = Date.now()
-    }
-
     // initialising variables
     let taskDetails = createTaskForm.querySelectorAll('form input');
     // get all of the user input in the input fields
     let task = getTaskDetails(taskDetails)
-    console.log(task.name)
+
     if (task.name == '') {
+        taskDetails[0].setAttribute('required', 'true')
         validateText.innerHTML = 'Please enter a task name to save this task.'
     } else {
+            // depends whether we are updating or creating a task
+        let taskID;
+        if (createTaskForm.classList.contains('update')) {
+            taskID = parseInt(taskSaveButton.value)
+            for (let i = 0; i < taskList.length; i++) {
+                var oldTask = taskList[i]
+                if (oldTask.id == taskID) {
+                    taskList.splice(taskList.indexOf(oldTask), 1)
+                    let oldCard = document.getElementById('t-' + taskID)
+                    oldCard.remove();
+                    taskSaveButton.value = ''
+                }
+            }
+        } else {
+            taskID = Date.now()
+        }
         // create a new task using the task class
         let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate)
         // append to taskList and create new card with task
@@ -375,3 +378,7 @@ taskSaveButton.addEventListener('click', function (event) {
 
 })
 
+var emptyStateButton = document.querySelector('#empty-state-tasks button')
+emptyStateButton.addEventListener('click', function() {
+    newTask.click()
+})

@@ -1,9 +1,11 @@
 export function countTiles() {
     let total = document.querySelectorAll('.open-link'),
         tileContainers = document.querySelectorAll('.tiles'),
+        tiles = document.querySelectorAll('.tile'),
         openLinkSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16 16H2V2H9V0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.1 18 18 17.1 18 16V9H16V16ZM11 0V2H14.59L4.76 11.83L6.17 13.24L16 3.41V7H18V0H11Z" fill="#909090"/>
         </svg>`;
+    let emptyStateMessage = document.getElementById('empty-state-content')
     // writing the total number of cards at the head of each column
     // counts how many resource cards there are in each list
     total.forEach(function count(object, index) {
@@ -26,6 +28,13 @@ export function countTiles() {
             total[index].classList.remove('link-absent')
         }
     })
+
+    if (tiles.length == 0) {
+        tileContainers[0].appendChild(emptyStateMessage)
+        emptyStateMessage.style.display = 'flex'
+    } else {
+        emptyStateMessage.style.display = 'none'
+    }
 }
 
 // open all links within a group

@@ -3,17 +3,18 @@ export function countCards() {
     let total = document.querySelectorAll('.total'),
         cardContainers = document.querySelectorAll('.cards'),
         columns = document.querySelectorAll('.column'),
-        cards = document.getElementsByClassName('card')
+        cards = document.getElementsByClassName('card');
 
-    // const emptyStateMessage = document.getElementById('empty-state-message')
+    let emptyStateMessage = document.getElementById('empty-state-tasks');
         
     // // if there are no cards, add an empty state
-    // if (cards.length == 0) {
-    //     columns[0].appendChild(emptyStateMessage)
-    //     emptyStateMessage.style.display = 'flex';
-    // } else {
-    //     emptyStateMessage.style.display = 'none';
-    // }
+    if (cards.length == 0) {
+        cardContainers[0].appendChild(emptyStateMessage)
+        emptyStateMessage.style.display = 'flex';
+    } else {
+        columns[0].appendChild(emptyStateMessage)
+        emptyStateMessage.style.display = 'none';
+    }
 
     // writing the total number of cards at the head of each column
     total.forEach(function count(object, index) {
@@ -31,7 +32,6 @@ countCards()
 // Setting sortable functionality to the cards with the sortable.js library
 export function sortability() {
     let cardContainers = document.querySelectorAll('.cards')
-    console.log('number of cardContainers is' + cardContainers.length)
     cardContainers.forEach(function(element) {
         new Sortable(element, {
             group: 'nested',
@@ -40,6 +40,7 @@ export function sortability() {
             ghostClass: 'ghost-card',
             chosenClass: 'chosen-card',
             dragClass: "sortable-drag",
+            filter: '.filtered', // 'filtered' class is not draggable
             forceFallback: true,
             onStart: function (/**Event*/evt) {
                 let itemEl = evt.item;
@@ -95,15 +96,15 @@ mediaQuery(x) // Call listener function at run time
 x.addEventListener('change', mediaQuery) // Attach listener function on state changes
 
 var tasks = document.getElementById('tasks')
-if (deviceSize == 'mobile') {
+// if (deviceSize == 'mobile') {
 
-} else {
-    new Sortable(tasks, {
-        animation: 150,
-        swapThreshold: 0.8,
-        ghostClass: 'ghost-column',
-        chosenClass: 'chosen-column',
-        dragClass: "sortable-drag",
-        forceFallback: true
-    });
-}
+// } else {
+//     new Sortable(tasks, {
+//         animation: 150,
+//         swapThreshold: 0.8,
+//         ghostClass: 'ghost-column',
+//         chosenClass: 'chosen-column',
+//         dragClass: "sortable-drag",
+//         forceFallback: true
+//     });
+// }

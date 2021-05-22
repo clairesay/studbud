@@ -528,6 +528,9 @@ newContent.addEventListener('click', function () {
 // open content form (may be prepopulated or blank)
 function openContentForm(type) {
   validateText.innerHTML = '';
+  let contentDetails = createContentForm.querySelectorAll('form input');
+  contentDetails[0].removeAttribute('required');
+  contentDetails[1].removeAttribute('required');
   // if updating existing content, set type update
   if (type == 'update') {
     createContentForm.querySelector('h1').textContent = 'Edit existing resource';
@@ -645,21 +648,6 @@ contentDeleteButton.addEventListener('click', function (event) {
 contentSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
   let contentDetails, content, contentID, contentTitle, contentDescription, contentLink, contentGroup;
-  // if updating, look for content with same id value
-  if (createContentForm.classList.contains('update')) {
-    contentID = parseInt(contentSaveButton.value);
-    for (let i = 0; i < contentList.length; i++) {
-      var oldContent = contentList[i];
-      if (oldContent.id == contentID) {
-        contentList.splice(contentList.indexOf(oldContent), 1);
-        let oldTile = document.getElementById('c-' + contentID);
-        oldTile.remove();
-        contentSaveButton.value = '';
-      }
-    }
-  } else {
-    contentID = Date.now();
-  }
   // extract values from input form
   contentDetails = createContentForm.querySelectorAll('form input');
   contentTitle = contentDetails[0].value;
@@ -670,8 +658,25 @@ contentSaveButton.addEventListener('click', function (event) {
   let groups = createContentForm.querySelector('select[name=group]');
   contentGroup = groups.value;
   if (contentTitle == "" || contentLink == "") {
+    contentDetails[0].setAttribute('required', 'true');
+    contentDetails[1].setAttribute('required', 'true');
     validateText.innerHTML = 'Please enter a title and a resource link to save this content.';
   } else {
+    // if updating, look for content with same id value
+    if (createContentForm.classList.contains('update')) {
+      contentID = parseInt(contentSaveButton.value);
+      for (let i = 0; i < contentList.length; i++) {
+        var oldContent = contentList[i];
+        if (oldContent.id == contentID) {
+          contentList.splice(contentList.indexOf(oldContent), 1);
+          let oldTile = document.getElementById('c-' + contentID);
+          oldTile.remove();
+          contentSaveButton.value = '';
+        }
+      }
+    } else {
+      contentID = Date.now();
+    }
     // create new object in class
     content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup);
     content.createCard(content.addContent());
@@ -684,6 +689,10 @@ contentSaveButton.addEventListener('click', function (event) {
     enableButtons();
   }
 });
+var emptyStateButton = document.querySelector('#empty-state-content button');
+emptyStateButton.addEventListener('click', function () {
+  newContent.click();
+});
 
 },{"./count-tiles":"293G8"}],"293G8":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
@@ -695,9 +704,10 @@ _parcelHelpers.export(exports, "openGroupLinks", function () {
   return openGroupLinks;
 });
 function countTiles() {
-  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles'), openLinkSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  let total = document.querySelectorAll('.open-link'), tileContainers = document.querySelectorAll('.tiles'), tiles = document.querySelectorAll('.tile'), openLinkSVG = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16 16H2V2H9V0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.1 18 18 17.1 18 16V9H16V16ZM11 0V2H14.59L4.76 11.83L6.17 13.24L16 3.41V7H18V0H11Z" fill="#909090"/>
         </svg>`;
+  let emptyStateMessage = document.getElementById('empty-state-content');
   // writing the total number of cards at the head of each column
   // counts how many resource cards there are in each list
   total.forEach(function count(object, index) {
@@ -719,6 +729,12 @@ function countTiles() {
       total[index].classList.remove('link-absent');
     }
   });
+  if (tiles.length == 0) {
+    tileContainers[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'flex';
+  } else {
+    emptyStateMessage.style.display = 'none';
+  }
 }
 function openGroupLinks() {
   console.log('grouplinks');

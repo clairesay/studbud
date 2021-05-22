@@ -164,7 +164,7 @@ class Column {
         let total = column.querySelector('h3.total')
         total.textContent = 0;
         // remove any existing cards inside the column
-        let cards = column.querySelectorAll('.card')
+        let cards = column.querySelectorAll('.cards > *')
         cards.forEach(function (card) {
             card.remove()
         })
