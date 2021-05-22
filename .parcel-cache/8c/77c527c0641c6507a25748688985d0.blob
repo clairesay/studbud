@@ -520,18 +520,18 @@ function popUpState(index) {
             }
         }
     }
-    // positioning the time pop-up from the right hand side
-    popUpPositioning()
-}
 
-// on mobile/smaller device sizes, the other popUp is forced to be in 'standby' mode to ensure there is space on the screen
-function responsivePopUp(popUp) {
-    if (deviceSize != 'desktop') {
-        if (popUp == timePopUp) {
-            musicPopUp.setAttribute('state', 'standby')
+    // alternate cases
+    if (musicPopUp.getAttribute('state') != 'standby') {
+        if (deviceSize == 'mobile') {
+            timePopUp.style.right = '254px';
         } else {
-            timePopUp.setAttribute('state', 'standby')
+            timePopUp.style.right = '354px';
         }
+    } else if (timePopUp.getAttribute('state') == 'active' && deviceSize == 'mobile') {
+        timePopUp.style.right = '0';
+    } else {
+        timePopUp.style.right = '110px';
     }
 }
 
@@ -559,23 +559,17 @@ function peek(bool, mode) {
     }
 }
 
-// this determines the positioning of the time pop-up 
-function popUpPositioning() {
-    // if the music pop-up is on standby, calculate how far from the right the time pop-up will be 
-    if (musicPopUp.getAttribute('state') != 'standby') {
-        if (deviceSize == 'mobile') {
-            timePopUp.style.right = '254px';
+// on mobile/smaller device sizes, the other popUp is forced to be in 'standby' mode to ensure there is space on the screen
+function responsivePopUp(popUp) {
+    if (deviceSize != 'desktop') {
+        if (popUp == timePopUp) {
+            musicPopUp.setAttribute('state', 'standby')
         } else {
-            timePopUp.style.right = '354px';
+            timePopUp.setAttribute('state', 'standby')
         }
-    // if the time pop-up is active and on mobile, it should open up to full device width and thus position right 0
-    } else if (timePopUp.getAttribute('state') == 'active' && deviceSize == 'mobile') {
-        timePopUp.style.right = '0';
-    // otherwise, we go with default position
-    } else {
-        timePopUp.style.right = '110px';
     }
 }
+
 },{}]},["3RrTR","1Oi4R"], "1Oi4R", "parcelRequirec526")
 
-//# sourceMappingURL=index.479e99b9.js.map
+//# sourceMappingURL=index.HASH_REF_dee279474881b956e970ddae479e99b9.js.map

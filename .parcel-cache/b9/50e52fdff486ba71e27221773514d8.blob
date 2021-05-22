@@ -520,7 +520,7 @@ function popUpState(index) {
             }
         }
     }
-    // positioning the time pop-up from the right hand side
+
     popUpPositioning()
 }
 
@@ -578,4 +578,4 @@ function popUpPositioning() {
 }
 },{}]},["3RrTR","1Oi4R"], "1Oi4R", "parcelRequirec526")
 
-//# sourceMappingURL=index.479e99b9.js.map
+//# sourceMappingURL=index.HASH_REF_dee279474881b956e970ddae479e99b9.js.map

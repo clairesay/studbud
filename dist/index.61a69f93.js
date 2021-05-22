@@ -452,6 +452,7 @@ const player = new Plyr('audio', {
 // Expose player so it can be used from the console
 window.player = player;
 
+// music, artists and album art all drawn from the open source music sight Free Music Archive https://freemusicarchive.org/home
 var songs = [
     {
         source: 'Amerika.mp3',

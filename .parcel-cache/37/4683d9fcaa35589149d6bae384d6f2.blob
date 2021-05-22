@@ -446,7 +446,6 @@ id) /*: string*/
 const timePopUp = document.getElementById('time')
 var peekTime = document.querySelector('#time nav h1');
 var dropdown = document.querySelector('#dropdown')
-var dropdownOption = dropdown.querySelector('#time-selector h3')
 
 const musicPopUp = document.getElementById('music')
 var nav = musicPopUp.querySelector('nav')
@@ -488,54 +487,63 @@ function popUpState(index) {
         popUp = musicPopUp
         mode = 'music'
     }
-
-    // setting responsive alternates in case device size is smaller
     responsivePopUp(popUp)
-
-    // if/else tree to determine the status of the current pop-up being activated
-    // active --> the pop-up tab is open
-    // peek --> users can see a little bit of the timer/music player, but not the whole thing
-    // standby --> the pop-up is reduced to an icon
     if (popUp.getAttribute('state') == 'standby') {
         popUp.setAttribute('state', 'active')
-        // checks for peek modes and alters styles in turn.
         peek(false, mode)
+        // if (popUp == timePopUp) {
+        //     timePeek(false)
+        // } else {
+        //     musicPeek(false)
+        // }
     } else if (popUp.getAttribute('state') == 'peek') {
         popUp.setAttribute('state', 'active')
         peek(false, mode)
+        // if (popUp == timePopUp) {
+        //     timePeek(false)
+        // } else {
+        //     musicPeek(false)
+        // }
     } else if (popUp.getAttribute('state') == 'active' && popUp.getAttribute('static') == 'true') {
         popUp.setAttribute('state', 'standby')
         peek(false, mode)
+        // if (popUp == timePopUp) {
+        //     timePeek(false)
+        // } else {
+        //     musicPeek(false)
+        // }
     } else if (popUp.getAttribute('state') == 'active') {
         popUp.setAttribute('state', 'peek')
         peek(true, mode)
         if (popUp == timePopUp) {
-            // hide the dropdown if it the user is in peek mode, and the selected timer is a pomodoro timer
-            // or if the device is a mobile (in that case there's no space for it)
+            // timePeek(true)
+            let dropdownOption = dropdown.querySelector('#time-selector h3')
             if (dropdownOption.getAttribute('id') == 'pomodoro-select' || deviceSize == 'mobile') {
                 dropdown.style.display = 'none'
-            // otherwise, in stopwatch mode and if the device is bigger than mobile, still show the dropdown
             } else {
                 dropdown.style.display = 'flex'
             }
-        }
+        // } else {
+        //     musicPeek(true)
+        // }
     }
-    // positioning the time pop-up from the right hand side
-    popUpPositioning()
-}
 
-// on mobile/smaller device sizes, the other popUp is forced to be in 'standby' mode to ensure there is space on the screen
-function responsivePopUp(popUp) {
-    if (deviceSize != 'desktop') {
-        if (popUp == timePopUp) {
-            musicPopUp.setAttribute('state', 'standby')
+    if (musicPopUp.getAttribute('state') == 'active' || musicPopUp.getAttribute('state') == 'peek') {
+        if (deviceSize == 'mobile') {
+            timePopUp.style.right = '254px';
         } else {
-            timePopUp.setAttribute('state', 'standby')
+            timePopUp.style.right = '354px';
         }
+        
+    } else if (timePopUp.getAttribute('state') == 'active' && deviceSize == 'mobile') {
+        timePopUp.style.right = '0';
+    } else {
+        timePopUp.style.right = '110px';
     }
 }
 
-// make the appropriate alterations to the pop-up windows
+// 
+
 function peek(bool, mode) {
     if (mode == 'time') {
         dropdown.style.display = 'flex'
@@ -558,24 +566,42 @@ function peek(bool, mode) {
         }
     }
 }
-
-// this determines the positioning of the time pop-up 
-function popUpPositioning() {
-    // if the music pop-up is on standby, calculate how far from the right the time pop-up will be 
-    if (musicPopUp.getAttribute('state') != 'standby') {
-        if (deviceSize == 'mobile') {
-            timePopUp.style.right = '254px';
-        } else {
-            timePopUp.style.right = '354px';
-        }
-    // if the time pop-up is active and on mobile, it should open up to full device width and thus position right 0
-    } else if (timePopUp.getAttribute('state') == 'active' && deviceSize == 'mobile') {
-        timePopUp.style.right = '0';
-    // otherwise, we go with default position
+function timePeek(bool) {
+    dropdown.style.display = 'flex'
+    if (bool == true) {
+        peekTime.style.display = 'flex'
+        dropdown.style.left = 'auto'
+        dropdown.style.right = '0px'
+        dropdown.querySelector('h3').style.color = '#909090'
     } else {
-        timePopUp.style.right = '110px';
+        peekTime.style.display = 'none'
+        dropdown.style.left = '60px'
+        dropdown.style.right = 'auto'
+        dropdown.querySelector('h3').style.color = '#303030'
+    }
+
+}
+
+// moving the location of the music player controls pending if it the music pop-up is in peek mode or normal mode.
+function musicPeek(bool) {
+    if (bool == true) {
+        nav.appendChild(currentControls)
+    } else {
+        currentContainer.appendChild(currentControls)
     }
 }
+
+// on mobile/smaller device sizes, the other popUp is forced to be in 'standby' mode to ensure there is space on the screen
+function responsivePopUp(popUp) {
+    if (deviceSize == 'mobile') {
+        if (popUp == timePopUp) {
+            musicPopUp.setAttribute('state', 'standby')
+        } else {
+            timePopUp.setAttribute('state', 'standby')
+        }
+    }
+}
+
 },{}]},["3RrTR","1Oi4R"], "1Oi4R", "parcelRequirec526")
 
-//# sourceMappingURL=index.479e99b9.js.map
+//# sourceMappingURL=index.HASH_REF_dee279474881b956e970ddae479e99b9.js.map

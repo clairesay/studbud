@@ -76,7 +76,7 @@ function popUpState(index) {
             }
         }
     }
-    // positioning the time pop-up from the right hand side
+
     popUpPositioning()
 }
 
