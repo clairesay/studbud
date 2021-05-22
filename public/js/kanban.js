@@ -6,8 +6,7 @@ export function countCards() {
         cards = document.getElementsByClassName('card');
 
     let emptyStateMessage = document.getElementById('empty-state-tasks');
-        
-    // // if there are no cards, add an empty state
+    // if there are no cards, add an empty state message, otherwise remove it.
     if (cards.length == 0) {
         cardContainers[0].appendChild(emptyStateMessage)
         emptyStateMessage.style.display = 'flex';
@@ -31,6 +30,7 @@ countCards()
 
 // Setting sortable functionality to the cards with the sortable.js library
 export function sortability() {
+    // applying sortability to the children of each .cards container
     let cardContainers = document.querySelectorAll('.cards')
     cardContainers.forEach(function(element) {
         new Sortable(element, {
@@ -42,69 +42,47 @@ export function sortability() {
             dragClass: "sortable-drag",
             filter: '.filtered', // 'filtered' class is not draggable
             forceFallback: true,
-            onStart: function (/**Event*/evt) {
+
+            onStart: function (evt) {
+                // setting the cursor to grabbing while user is holding card
                 let itemEl = evt.item;
                 itemEl.style.cursor = 'grabbing'
 
                 let body = document.getElementsByTagName('body')[0]
                 body.style.cursor = 'grabbing'
-                evt.oldIndex;  // element index within parent
             },
-            onEnd: function (evt) {
 
+            onEnd: function (evt) {
+                // setting the cursor to grab 
                 let itemEl = evt.item;
                 itemEl.style.cursor = 'grab'
+                
+                // reset cursor to normal arrow
                 let body = document.getElementsByTagName('body')[0]
                 body.style.cursor = 'initial'
 
+                // recount all the cards in each column and update their totals
                 countCards()
-                // ADD COLUMN DELETE UPDATE
+
+                // set enabled/disabled status to each of the buttons after the reallocation happened
                 let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column')
                 allDeleteColumnButtons.forEach( function(button) {
                     let columns = document.getElementsByClassName('column')
                     let column = button.parentElement.parentElement
                     let cards = column.querySelectorAll('.card')
                     
+                    // ensuring there are mroe than 3 columns and no cards within the column
                     if (columns.length > 3 && cards.length == 0) {
                         button.classList.remove('disabled')
                     } else if (columns.length <= 3) {
                         button.classList.add('disabled') 
                     } else if (cards.length > 0) {
                         button.classList.add('disabled')
-                        
                     }
                 })
             },
         });
     })
 }
+
 sortability()
-
-// setting sortable functionality to the columns with the sortable.js library
-var deviceSize
-////////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////
-function mediaQuery(x) {
-    if (x.matches) { // If media query matches
-      deviceSize = 'mobile'
-    } else {
-      deviceSize = 'desktop'
-    }
-}
-
-var x = window.matchMedia("(max-width: 700px)")
-mediaQuery(x) // Call listener function at run time
-x.addEventListener('change', mediaQuery) // Attach listener function on state changes
-
-var tasks = document.getElementById('tasks')
-// if (deviceSize == 'mobile') {
-
-// } else {
-//     new Sortable(tasks, {
-//         animation: 150,
-//         swapThreshold: 0.8,
-//         ghostClass: 'ghost-column',
-//         chosenClass: 'chosen-column',
-//         dragClass: "sortable-drag",
-//         forceFallback: true
-//     });
-// }

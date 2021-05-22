@@ -4,35 +4,32 @@ class Group {
         this.name = name;
     }
 
-    addGroup() { 
-        groupList.push(this)
-        localStorage.setItem('groupList', JSON.stringify(groupList))
-    }
-
     createGroup() {
         // creating the group
         let group = document.querySelector('div.group')
         group = group.cloneNode(true)
+        group.style.display = 'flex'
 
-        let groupName = group.querySelector('input.group-name')
+        // setting the relevant name, link values and edit and delete buttons
+        let groupName = group.querySelector('input.group-name'),
+            groupLink = group.querySelector('h3.open-link'),
+            editButton = group.querySelector('svg.edit-group'),
+            deleteButton = group.querySelector('svg.delete-group')
 
+        // setting attributes
         groupName.value = this.name;
-        groupName.removeAttribute('disabled')
-
-        let groupLink = group.querySelector('h3.open-link')
+        groupName.removeAttribute('disabled')        
         groupLink.setAttribute('listener', 'false')
-
-        let editButton = group.querySelector('svg.edit-group')
         editButton.classList.remove('first')
-        let deleteButton = group.querySelector('svg.delete-group')
         deleteButton.classList.remove('first')
 
+        // removing any tiles that might have duplicated over
         let tiles = group.querySelectorAll('.tiles > *')
         tiles.forEach(function (tile) {
             tile.remove()
         })
  
-
+        // append the group to the content tab
         let content = document.getElementById('content')
         content.appendChild(group)
 
@@ -43,7 +40,6 @@ class Group {
             behavior: 'smooth'
         })
     }
-
 }
 
 export default Group

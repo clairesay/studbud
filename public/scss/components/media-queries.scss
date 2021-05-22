@@ -27,8 +27,8 @@
             max-width: 332px;
         }
     }
+    
     // FORM
-    // 
     form {
 
         &#add-column-form,
@@ -101,6 +101,54 @@
             margin: 0;
             button:first-child {
                 margin: 0;
+            }
+        }
+    }
+
+    // popups
+    .pop-up[state="peek"] {
+        width: 180px;
+
+        &#time {
+            #dropdown {
+                display: none;
+            }
+        }
+        &#music {
+            nav #current-controls {
+                .metadata {
+                    width: 70%;
+                }
+                .controls {
+                    #next, #previous {
+                        display: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .pop-up[state="standby"] {
+        h1#peek-time {
+            display: none;
+        }
+    }
+
+    .pop-up[state="active"]#time, .pop-up[state="active"]#music {
+        position: fixed;
+        z-index: 4;
+        right: 0;
+        width: calc(100vw - 32px);
+        padding: auto;
+
+        #stopwatch {
+            h1 {
+                margin-left: calc((100% - 225px)/2);
+                left: 0;
+            }
+            h1 ~ div {
+                margin: auto;
             }
         }
     }

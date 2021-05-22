@@ -443,16 +443,18 @@ id) /*: string*/
 
 },{}],"Yzrvm":[function(require,module,exports) {
 // toggling time popup window
-const timeToolsOverlay = document.getElementById('time')
-const timeSelector = document.getElementById('time-selector')
-const dropdown = document.getElementById('dropdown')
-var peekStatusDisplay = document.querySelector('#time nav #peek-status')
-var peekTimeDisplay = document.querySelector('#time nav h1');
-var peekMinutes = peekTimeDisplay.querySelector('span.min')
-var peekSeconds = peekTimeDisplay.querySelector('span.sec')
+const timeToolsOverlay = document.getElementById('time'),
+    timeSelector = document.getElementById('time-selector'),
+    dropdown = document.getElementById('dropdown');
+
+var peekStatusDisplay = document.querySelector('#time nav #peek-status'),
+    peekTimeDisplay = document.querySelector('#time nav h1'),
+    peekMinutes = peekTimeDisplay.querySelector('span.min'),
+    peekSeconds = peekTimeDisplay.querySelector('span.sec');
 
 var timeMenuToggleOpen = false
 
+// toggling whether the dropdown menu isopen or closed
 function toggleTimeMenu() {
     if (timeMenuToggleOpen == false) {
         timeSelector.classList = 'open'
@@ -462,6 +464,7 @@ function toggleTimeMenu() {
         timeMenuToggleOpen = false
     }
 }
+// listening for the dropdown selector
 dropdown.addEventListener('click', toggleTimeMenu)
 
 const stopwatch = document.getElementById('stopwatch')
@@ -479,6 +482,7 @@ pomodoroSelector.addEventListener('click', function () {
     setTimerType()
 })
 
+// set the timer type to stopwatch or pomodoro, pending user selection in dropdown
 function setTimerType() {
     let currentTimer = timeSelector.querySelector(':first-child')
     if (currentTimer.id == 'stopwatch-select') {
@@ -489,10 +493,22 @@ function setTimerType() {
         pomodoro.classList.add('active')
     }
 }
-
 setTimerType()
 
-// STOPWATCH FUNCTIONALITY
+//////////////////////////////////////////////////////////////////////////////
+///////////////////////////// COMMON FUNCTIONALITY ///////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+// setting two integer digits for all time functions
+// making sure there are always 2 digits https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers
+function round(value) {
+    return (value).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////// STOPWATCH FUNCTIONALITY /////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
 var min = sec = milli = 0,
     minutes = document.querySelector('#stopwatch .minutes'),
     seconds = document.querySelector('#stopwatch .seconds'),
@@ -503,9 +519,6 @@ const stopwatchReset = document.querySelector('#stopwatch button.reset')
 
 var stopwatchOn = false,
     intervals;
-
-
-// window.timeStatic = timeStatic;
 
 // resetting the stopwatch
 stopwatchReset.addEventListener('click', function () {
@@ -521,11 +534,12 @@ stopwatchReset.addEventListener('click', function () {
     stopwatchStart.textContent = 'Start'
     stopwatchStart.classList.remove('danger')
     stopwatchStart.classList.add('primary')
-    // enable button clicking
+
+    // enable reset button clicking
     stopwatchReset.disabled = false
     stopwatchOn = false
     timeToolsOverlay.setAttribute('static', 'true')
-    // timeStatic = true
+
     // turn off counting
     clearInterval(intervals)
 
@@ -535,12 +549,12 @@ stopwatchReset.addEventListener('click', function () {
 
 var start, currentTime, elapsedTime, stringify;
 var offset = 0;
+
 // stopwatch start/stop button
 stopwatchStart.addEventListener('click', function () {
     timeToolsOverlay.setAttribute('static', 'false')
-    // timeStatic = false;
 
-    // if the stopwatch is on, we want to turn this off
+    // if the stopwatch is on, we want to turn it off
     if (stopwatchOn == true) {
         clearInterval(intervals)
         stopwatchStart.textContent = 'Start'
@@ -555,17 +569,21 @@ stopwatchStart.addEventListener('click', function () {
         start = Date.now()
         incrementUp()
         // increment the time upwards from the time the start button was clicked
+        // learnt from https://stackoverflow.com/questions/29971898/how-to-create-an-accurate-timer-in-javascript
         function incrementUp() {
             currentTime = Date.now()
             elapsedTime = currentTime - start + offset
             
+            // formatting the elapsed time
             stringify = (elapsedTime).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })
             milli = stringify[0] + stringify[1]
 
+            // incrementing seconds
             if (elapsedTime >= 1000) {
                 start += 1000
                 sec += 1
             }
+            // incrementing minutes
             if (sec == 60) {
                 sec = 0
                 min += 1
@@ -584,23 +602,21 @@ stopwatchStart.addEventListener('click', function () {
 
         // enable the reset button
         stopwatchReset.disabled = false
-        // replace text content for relevance
+
+        // replace text content for relevance and restyle button
         stopwatchStart.textContent = 'Stop'
         stopwatchStart.classList.remove('primary')
         stopwatchStart.classList.add('danger')
+
         // disable the timer dropdown
         dropdown.removeEventListener('click', toggleTimeMenu)
         stopwatchOn = true
     }
 })
 
-// setting two integer digits for all time functions
-// making sure there are always 2 digits https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers
-function round(value) {
-    return (value).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
-}
-
-// POMODORO TIMER
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////// POMODORO FUNCTIONALITY //////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 var workMin = 25,
     workSec = 0,
     breakMin = 5,
@@ -631,6 +647,7 @@ pomoMinutes.textContent = round(pomoMin)
 var pomoIntervals,
     pomoOn = false;
 
+//es6 shorthand for event listeners https://josephcardillo.medium.com/arrow-functions-and-this-in-es6-4f1d350a85cf
 workAdd.addEventListener('click', () => pomoTime('add', 'work'))
 workSubtract.addEventListener('click', () => pomoTime('subtract', 'work'))
 breakAdd.addEventListener('click', () => pomoTime('add', 'break'))
@@ -639,6 +656,7 @@ workButtons.style.display = 'flex'
 breakButtons.style.display = 'flex'
 timer.style.display = 'none'
 
+// timeline is the visual representation of work and break times in a pomodoro timer
 var timeline = document.getElementById('timeline')
 const loadSpans = document.querySelectorAll('#pomodoro div.length > div'),
     allSpans = document.querySelectorAll('#pomodoro div > div.length'),
@@ -662,19 +680,15 @@ pomoStartStop.addEventListener('click', function () {
     //https://www.focusboosterapp.com/blog/common-misconceptions-of-the-pomodoro-technique/#:~:text=The%20average%20and%20suggested%20pomodoro,with%20a%2010%2Dminute%20break.
     // if pomo is on, turn it off
     if (pomoOn == true) {
-        // // both timers are inactive
-
+        // recall ending sequence
         endPomo()
         phase = 'break'
-        
         pomodoroTimer('static')
 
     } else if (pomoOn == false) {
         // timer is active
-        timeToolsOverlay.setAttribute('static', 'false')
-        // timeStatic = false;
-        
-        // increment downwards
+        timeToolsOverlay.setAttribute('static', 'false')        
+        // increment downwards (uses similar functionality to stopwatch above^^)
         function incrementDown() {
             if (pomoMin == 0 && pomoSec == 0) {
                 sessions += 1
@@ -752,7 +766,6 @@ function pomoLength() {
     // calculating distance
     let total = workMin * 3 + breakMin * 2,
         timelineLength = 232,
-        // timelineLength = timeline.getBoundingClientRect(width) - 4 * 4,
         workLength = workMin / total * timelineLength,
         breakLength = breakMin / total * timelineLength;
 
@@ -760,17 +773,17 @@ function pomoLength() {
     workSpans.forEach(function (span) {
         span.style.width = workLength + 'px';
     })
-
     breakSpans.forEach(function (span) {
         span.style.width = breakLength + 'px';
     })
 }
-
 pomoLength()
+
 // setting text content
 workMinutes.textContent = round(workMin)
 breakMinutes.textContent = round(breakMin)
 
+// this sets new phases of the timer if a phase ends.
 function pomodoroTimer(mode) {
     // update 'status' for user when pomo time changes
     pomoStatus.textContent = phase;

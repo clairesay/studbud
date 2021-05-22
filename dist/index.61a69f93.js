@@ -442,8 +442,8 @@ id) /*: string*/
 }
 
 },{}],"5qt2H":[function(require,module,exports) {
-// Change "{}" to your options:
 // Import the URL to an image file
+
 // https://github.com/sampotts/plyr/#options
 const player = new Plyr('audio', {
     controls: ['progress']
@@ -527,7 +527,6 @@ var songs = [
     },
 ]
 
-console.log(songs)
 const musicPlayer = document.querySelector('#music')
 var audioContainer = musicPlayer.querySelector('audio')
 const playlistContainer = musicPlayer.querySelector('ul.playlist')
@@ -535,18 +534,20 @@ const previousButton = musicPlayer.querySelector('#previous')
 const nextButton = musicPlayer.querySelector('#next')
 const shuffleButton = musicPlayer.querySelector('#shuffle')
 var playButton = musicPlayer.querySelector('#play-pause')
+
+// on click, toggle play or pause
 playButton.addEventListener('click', function(event) {
     event.stopPropagation()
     player.togglePlay()
     buttonIcon()
 })
 
+// replace the SVG of the button icon pending its status (playing or paused)
 function buttonIcon() {
     if (player.paused) {
         playButton.innerHTML = `<svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0V21L18 10.5L0 0Z" fill="#303030"/>
-        </svg>
-        `
+        </svg>`
     } else if (player.playing) {
         playButton.innerHTML = `<svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 21H6V0H0V21ZM12 0V21H18V0H12Z" fill="#303030"/>
@@ -555,7 +556,6 @@ function buttonIcon() {
 }
 
 var tracks;
-    // musicStatic = true;
 // autopopulating the playlist based on the music available
 function addMusic() {
     // for each of the songs, create a list item and populate with semantic elements
@@ -593,9 +593,11 @@ previousButton.addEventListener('click', function (event) {
     } else {
         songIndex = currentIndex - 1
     }
+    // play the track
     playTrack(songIndex)
 })
 
+// if the user clicks next button
 nextButton.addEventListener('click', function (event) {
     event.stopPropagation()
     let songIndex;
@@ -605,6 +607,7 @@ nextButton.addEventListener('click', function (event) {
     } else {
         songIndex = currentIndex + 1
     }
+    // play the track
     playTrack(songIndex)
 })
 
@@ -629,7 +632,9 @@ shuffleButton.addEventListener('click', function (event) {
 })
 
 var currentIndex;
+// this phantom button shows up to give perceived affordance of playing a song
 var phantomPlayButton = document.getElementById('phantom-play-button')
+
 // function to play a track
 function playTrack(n, mode) {
     // if we are at the end of the playlist, stop playing. 
@@ -656,7 +661,6 @@ function playTrack(n, mode) {
             })
             track.setAttribute('listener', 'true')
         }
-        
     })
     // moving that track to the bottom of the playlist 
     playlistContainer.appendChild(tracks[n])
@@ -690,7 +694,6 @@ function playTrack(n, mode) {
     // if we are initialising, don't play any music, otherwise, play and set static status to false
     if (mode != 'initial') {
         musicPlayer.setAttribute('static', 'false')
-        // musicStatic = false;
         player.play();
     }
     buttonIcon()
@@ -710,10 +713,11 @@ player.on('ended', () => {
     musicPlayer.setAttribute('static', 'true')
 });
 
-// https://stackoverflow.com/questions/31223341/detecting-scroll-direction
+// borrowed code for detecting scroll directionhttps://stackoverflow.com/questions/31223341/detecting-scroll-direction
 var lastScrollTop = 0;
 var scrollCount = 0;
-// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+
+// if the user scrolls down, the playlist is expanded. if tehy scroll to the top, the playlist is condensed
 playlistContainer.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
    var st = playlistContainer.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
    if (st > lastScrollTop){
@@ -729,7 +733,6 @@ playlistContainer.addEventListener("scroll", function(){ // or window.addEventLi
       playlistContainer.style.height = '250px';
       scrollCount = 0
    } 
-
 
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);

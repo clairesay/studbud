@@ -1,3 +1,8 @@
+// should hold all of the user's content in local storage
+// on page load, check how much content ther is in local storage (this should be an array)
+// for each object in the array, create a relevant card
+// populate that card with the relevant details
+// append card to the relevant group
 // import Content from './content'
 import Group from './group'
 // import Task from './task'

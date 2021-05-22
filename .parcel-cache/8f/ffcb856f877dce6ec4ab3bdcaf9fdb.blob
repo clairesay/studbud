@@ -1,0 +1,114 @@
+var timeToolsOverlay = document.getElementById('time');
+var peekStatusDisplay = document.querySelector('#time nav #peek-status'),
+    peekTimeDisplay = document.querySelector('#time nav h1'),
+    peekMinutes = peekTimeDisplay.querySelector('span.min'),
+    peekSeconds = peekTimeDisplay.querySelector('span.sec');
+
+// STOPWATCH FUNCTIONALITY
+var min = sec = milli = 0,
+    minutes = document.querySelector('#stopwatch .minutes'),
+    seconds = document.querySelector('#stopwatch .seconds'),
+    milliseconds = document.querySelector('#stopwatch .milliseconds');
+
+const stopwatchStart = document.querySelector('#stopwatch button.start-stop')
+const stopwatchReset = document.querySelector('#stopwatch button.reset')
+
+var stopwatchOn = false,
+    intervals;
+
+// resetting the stopwatch
+stopwatchReset.addEventListener('click', function () {
+    // set numbers to 0
+    milli = sec = min = offset = 0
+    minutes.textContent = round(min)
+    seconds.textContent = round(sec)
+    milliseconds.textContent = round(milli)
+    peekMinutes.textContent = round(min)
+    peekSeconds.textContent = round(sec)
+
+    // reset inner text of button
+    stopwatchStart.textContent = 'Start'
+    stopwatchStart.classList.remove('danger')
+    stopwatchStart.classList.add('primary')
+
+    // enable reset button clicking
+    stopwatchReset.disabled = false
+    stopwatchOn = false
+    timeToolsOverlay.setAttribute('static', 'true')
+
+    // turn off counting
+    clearInterval(intervals)
+
+    // enable dropdown
+    dropdown.addEventListener('click', toggleTimeMenu)
+})
+
+var start, currentTime, elapsedTime, stringify;
+var offset = 0;
+
+// stopwatch start/stop button
+stopwatchStart.addEventListener('click', function () {
+    timeToolsOverlay.setAttribute('static', 'false')
+
+    // if the stopwatch is on, we want to turn it off
+    if (stopwatchOn == true) {
+        clearInterval(intervals)
+        stopwatchStart.textContent = 'Start'
+        stopwatchStart.classList.remove('danger')
+        stopwatchStart.classList.add('primary')
+        stopwatchOn = false
+        offset = parseInt(milli) * 10
+
+    // otherwise, if the stopwatch is not on,
+    } else if (stopwatchOn == false) {
+
+        start = Date.now()
+        incrementUp()
+        // increment the time upwards from the time the start button was clicked
+        // learnt from https://stackoverflow.com/questions/29971898/how-to-create-an-accurate-timer-in-javascript
+        function incrementUp() {
+            currentTime = Date.now()
+            elapsedTime = currentTime - start + offset
+            
+            stringify = (elapsedTime).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })
+            milli = stringify[0] + stringify[1]
+
+            if (elapsedTime >= 1000) {
+                start += 1000
+                sec += 1
+            }
+            if (sec == 60) {
+                sec = 0
+                min += 1
+            }
+        }
+
+        // set the intervals for frequent update of the numbers
+        intervals = setInterval(function () {
+            minutes.textContent = round(min)
+            seconds.textContent = round(sec)
+            milliseconds.textContent = round(milli)
+            peekMinutes.textContent = round(min)
+            peekSeconds.textContent = round(sec)
+            incrementUp()
+        }, 10); // update every 10 milliseconds
+
+        // enable the reset button
+        stopwatchReset.disabled = false
+
+        // replace text content for relevance and restyle button
+        stopwatchStart.textContent = 'Stop'
+        stopwatchStart.classList.remove('primary')
+        stopwatchStart.classList.add('danger')
+
+        // disable the timer dropdown
+        dropdown.removeEventListener('click', toggleTimeMenu)
+        stopwatchOn = true
+    }
+})
+
+// setting two integer digits for all time functions
+// making sure there are always 2 digits https://stackoverflow.com/questions/8043026/how-to-format-numbers-by-prepending-0-to-single-digit-numbers
+function round(value) {
+    return (value).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+}

@@ -20,7 +20,6 @@ code {
 // FORM
 form {
     z-index: 8;
-
     display: none;
     position: absolute;
     margin-left: auto;
@@ -91,6 +90,7 @@ form {
         display: flex;
         width: 80%;
     }
+    // unformatted code in form
     textarea[name="conceptDescription"] {
         font-family:'Courier New', Courier, monospace;
         max-height: 30%;
@@ -124,6 +124,7 @@ form {
         border-radius: $mini-radius;
         border: none;
         filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+        background-color: $white;
         &:hover {
             filter: drop-shadow(0 0 2px #30303048);
             cursor: pointer;
@@ -193,7 +194,7 @@ form {
         border-radius: $mini-radius;
         padding: 12px;
         font-size: 14px;
-
+        background-color: $white;
         width: 60%;
 
         &:required, &:required:hover, &:required:focus {

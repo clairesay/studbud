@@ -38,9 +38,7 @@
 
         border-radius: $big-radius;
         background-color: $light-grey;
-        // transition: all 0.2s ease-out;
         box-shadow:0px 0px 0px 1px #0e131809 inset;
-        // filter: drop-shadow(0 0 2px #30303018);
 
         &.column:first-of-type {
             margin-left: 36px;
@@ -50,15 +48,7 @@
             margin-right: 36px;
         }
 
-        // &:hover {
-        //     // cursor: grab;
-        //     // filter: drop-shadow(0 0 2px #30303036);
-        // }
-
-        // *:hover {
-        //     cursor: initial;
-        // }
-
+        // contains column settings + title
         div.title {
             z-index: 2;
 
@@ -81,11 +71,13 @@
                 color: $dark-grey;
             }
 
+            // total
             h3 {
                 position: absolute;
                 right: 12px;
             }
 
+            // column title
             input {
                 width: calc(100% - 80px);
                 background-color: transparent;
@@ -93,20 +85,7 @@
                 padding: 2px;
                 text-decoration: underline dotted transparent;
 
-                &.column-name {
-                    // &:hover {
-                    //     cursor: text;
-                    //     text-decoration: underline dotted $dark-grey;
-
-                    //     // & ~ svg.edit-icon {
-                    //     //     background-color: $light-grey;
-                    //     // }
-                    // }
-
-                    // &:focus {
-                    //     text-decoration: none;
-                    // }
-    
+                &.column-name {    
                     &:hover ~ svg.edit-column {
                         background-color: $light-grey;
                     }
@@ -121,7 +100,6 @@
             
             div.tooltip {
                 font-size: 12px;
-                // visibility: hidden;
                 justify-content: center;
                 opacity: 0;
                 width: 104px;
@@ -157,10 +135,9 @@
                 }
             }
 
-
+            // column delete/edit buttons
             svg {
                 position: relative;
-                
                 background-color: $dark-white;
                 visibility: hidden;
 
@@ -212,6 +189,7 @@
 
         }
         
+        // card containers
         div.cards {
             width: auto;
             height: calc(100% - 60px);
@@ -239,6 +217,7 @@
                 background-color: $dark-grey;
             }
 
+            // actual task cards
             article.card {
                 z-index: 10;
                 border-radius: $big-radius;
@@ -265,7 +244,7 @@
                     margin-bottom: 72px;
                 }
 
-
+                // edit task button
                 .edit {
                     padding: 6px;
                     position: absolute;
@@ -281,6 +260,9 @@
                         opacity: 1;
                         
                     }
+                    svg:hover, path:hover {
+                        cursor: pointer;
+                    }
                 }
 
                 h3 {
@@ -292,6 +274,7 @@
                     font-size: 18px;
                     font-weight: 500;
                 }
+
                 span.subject {
                     font-size: 12px;
                     padding: 3px 17px;
@@ -342,30 +325,8 @@
 
             }
         }
-
-
-        div#empty-state-message {
-            flex-direction: column;
-            position: absolute;
-            top: 20%;
-            // max-width: calc(100% - 18px);
-
-            h4, img, button {
-                max-width: calc(100% - 18px);
-            }
-
-            h4 {
-                text-align: center;
-            }
-        }
     }
 }
-
-// div.time-icon {
-//     width: 12px;
-//     height: 12px;
-//     border-radius: 10px;
-// }
 
 // SCROLLABLE CARD MODIFICATIONS
 .chosen-card {
@@ -378,14 +339,7 @@
 
 .sortable-drag {
     cursor: grabbing;
-    // cursor: move !important; /* fallback: no `url()` support or images disabled */
-	// cursor: -webkit-grabbing !important; /* Chrome 1-21, Safari 4+ */
-	// cursor:    -moz-grabbing !important; /* Firefox 1.5-26 */
-	// cursor:         grabbing !important; /* W3C standards syntax, should come least */
 }
-// .draggable-cursor * {
-
-// }
 
 .ghost-card, .ghost-column {
     opacity: 0.5;
@@ -397,34 +351,4 @@
         fill: transparent;
         opacity: 0;
     }
-}
-
-
-#empty-state-tasks, #empty-state-content {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border-radius: $big-radius;
-    border: 2px dashed $dark-grey;
-    img {
-        width: 60%;
-        margin: 24px auto;
-    }
-    h3 {
-        font-size: 18px;
-        font-weight: 500;
-    }
-    p {
-        color: $dark-grey;
-        margin: 8px 0 16px 0;
-        font-size: 14px;
-        line-height: 17px;
-    }
-}
-
-#empty-state-content {
-    min-width: 260px;
-    max-width: 280px;
-    flex: 1 1 280px;
-    margin: 12px;
 }

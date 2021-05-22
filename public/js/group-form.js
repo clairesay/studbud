@@ -1,61 +1,16 @@
-// import Group from './group'
-import * as countTiles from './count-tiles'
+import Group from './group'
+import * as resource from './resource'
 
-class Group {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-        // this.cards = [];
-    }
-
-    addGroup() { 
-        groupList.push(this)
-        localStorage.setItem('groupList', JSON.stringify(groupList))
-    }
-
-    createGroup() {
-        // creating the group
-        let group = document.querySelector('div.group')
-        group = group.cloneNode(true)
-
-        let groupName = group.querySelector('input.group-name')
-
-        groupName.value = this.name;
-        groupName.removeAttribute('disabled')
-
-        let groupLink = group.querySelector('h3.open-link')
-        groupLink.setAttribute('listener', 'false')
-
-        let editButton = group.querySelector('svg.edit-group')
-        editButton.classList.remove('first')
-        let deleteButton = group.querySelector('svg.delete-group')
-        deleteButton.classList.remove('first')
-
-        let tiles = group.querySelectorAll('.tiles > *')
-        tiles.forEach(function (tile) {
-            tile.remove()
-        })
- 
-
-        let content = document.getElementById('content')
-        content.appendChild(group)
-
-        // smooth scroll to the new column
-        group.scrollTo({
-            top: content.clientHeight,
-            left: 0,
-            behavior: 'smooth'
-        })
-    }
-
-}
-
-
-var groupList = []
 // begin by updating how many tiles there are in the groups
-countTiles.countTiles()
+resource.countTiles()
 
+// selecting some DOM elements
 const createContentForm = document.getElementById('create-content-form')
+const modalBackground = document.getElementById('modal-background')
+const addGroupForm = document.getElementById('add-group-form')
+var newGroupToggle = false;
+const newGroup = document.getElementById('new-group');
+
 // updating the group names that a card can be organised in, if any change happens to the group names
 function updateGroupNames() {
     let groupNames = document.querySelectorAll('.group-name')
@@ -71,16 +26,14 @@ function updateGroupNames() {
 }
 updateGroupNames()
 
-
-const modalBackground = document.getElementById('modal-background')
-const addGroupForm = document.getElementById('add-group-form')
-var newGroupToggle = false;
-const newGroup = document.getElementById('new-group');
 // opening/closing the 'add a new group' form
 function toggleGroupForm() {
+    // resetting any validation errors
     validateText.innerHTML = ''
     let name = addGroupForm.querySelector('input')
     name.removeAttribute('required')
+
+    // open or close the group form
     if (newGroupToggle == false) {
         addGroupForm.classList.add('active')
         newGroupToggle = true
@@ -116,6 +69,7 @@ groupSubmitButton.addEventListener('click', function (event) {
     let id = Date.now()
     let name = addGroupForm.querySelector('input')
 
+    // if the user hasn't inputted anything, disallow form submission
     if (name.value == '') {
         validateText.innerHTML = 'Please enter a name for this group.'
         name.setAttribute('required', 'true')
@@ -123,13 +77,12 @@ groupSubmitButton.addEventListener('click', function (event) {
     // create new object in group class
     let group = new Group(id, name.value)
     group.createGroup()
-    group.addGroup()
 
     // reset states
     toggleGroupForm()
     updateGroupNames()
-    countTiles.openGroupLinks()
-    countTiles.countTiles()
+    resource.openGroupLinks()
+    resource.countTiles()
     groupEditDeleteFunctionality()
     }
 })
@@ -143,19 +96,22 @@ function groupEditDeleteFunctionality() {
         let deleteGroupButton = groupTitle.querySelector('svg.delete-group')
         let groupNameInput = groupTitle.querySelector('input.group-name')
     
+        // focus when clicked
         editGroupButton.addEventListener('click', function() {
             groupNameInput.focus()
         })
+         // on change, reupdate all group names
         groupNameInput.addEventListener('change', function(event) {
             updateGroupNames();
-            console.log('changed')
         })
+        // 'save' column name
         groupNameInput.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 groupNameInput.blur()
             }
             updateGroupNames();
         })
+        // tooltip on hover
         editGroupButton.addEventListener('mouseover', function() {
             let groupEditToolTip = document.querySelector('div.tooltip#edit-group')
 
@@ -170,7 +126,7 @@ function groupEditDeleteFunctionality() {
             }
             
         })
-    
+    // delete groups as long as there is more than 1 and there are no cards within it
         deleteGroupButton.addEventListener('click', function() {
             let groups = document.getElementsByClassName('group')
             let group = groupTitle.parentElement
@@ -181,6 +137,7 @@ function groupEditDeleteFunctionality() {
             }
         })
     
+        // on hover, appending the right tooltip to the 'delete' button
         deleteGroupButton.addEventListener('mouseover', function() {
             let groups = document.getElementsByClassName('group')
             let group = groupTitle.parentElement
@@ -197,6 +154,7 @@ function groupEditDeleteFunctionality() {
                 deleteGroupButton.parentElement.appendChild(groupDeleteToolTip)
             }
 
+            // checking for the need to enable or disable buttons
             if (groups.length > 1 && tiles.length == 0) {
                 deleteGroupButton.classList.remove('disabled')
             } else if (groups.length <= 1 || tiles.length > 0) {
@@ -218,19 +176,19 @@ function groupEditDeleteFunctionality() {
 // create card for each task in column
 // create tile for each content in group
 
-window.addEventListener('load', function() {
+// window.addEventListener('load', function() {
 
-    if (localStorage.getItem('groupList') != null) {
-        let groups = JSON.parse(localStorage.getItem('groupList'));
-        groups.forEach(function(group) {
-            let newGroup = new Group(group.id, group.name)
-            newGroup.createGroup()
-            newGroup.addGroup()
+//     if (localStorage.getItem('groupList') != null) {
+//         let groups = JSON.parse(localStorage.getItem('groupList'));
+//         groups.forEach(function(group) {
+//             let newGroup = new Group(group.id, group.name)
+//             newGroup.createGroup()
+//             newGroup.addGroup()
 
-            updateGroupNames()
-            countTiles.openGroupLinks()
-            countTiles.countTiles()
-            groupEditDeleteFunctionality()
-        })
-    }
-})
+//             updateGroupNames()
+//             resource.openGroupLinks()
+//             resource.resource()
+//             groupEditDeleteFunctionality()
+//         })
+//     }
+// })

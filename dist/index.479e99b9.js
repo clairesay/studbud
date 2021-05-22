@@ -442,7 +442,7 @@ id) /*: string*/
 }
 
 },{}],"1Oi4R":[function(require,module,exports) {
-// Popup tab activity
+// POPUP TAB ACTIVITY
 const timePopUp = document.getElementById('time')
 var peekTime = document.querySelector('#time nav h1');
 var dropdown = document.querySelector('#dropdown')
@@ -451,7 +451,6 @@ const musicPopUp = document.getElementById('music')
 var nav = musicPopUp.querySelector('nav')
 var currentControls = musicPopUp.querySelector('#current-controls')
 var currentContainer = musicPopUp.querySelector('#current')
-// window.static = static
 
 timePopUp.setAttribute('state', 'standby')
 musicPopUp.setAttribute('state', 'standby')

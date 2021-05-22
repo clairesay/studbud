@@ -4,7 +4,6 @@ class Content {
         this.id = id;
         this.title = title;
         this.description = description;
-        // this.subject = subject;
         this.group = group;
         this.link = link;
         this.contentList = contentList;
@@ -17,7 +16,7 @@ class Content {
     }
 
     // create new card with relevant elements
-    createCard(n) {
+    createCard() {
         let groupNames = document.querySelectorAll('.group-name')
         let cards = document.querySelectorAll('.tiles'),
             card = document.createElement('article'),
@@ -32,13 +31,14 @@ class Content {
         card.setAttribute('id', 'c-' + this.id)
         card.classList.add('tile')
         title.textContent = this.title
-        // description.classList.add('class="language-css"')
+
+        // only add the code snippet to the card if there is any user input
         if (this.description.length > 0) {
             description.textContent = this.description
             descriptionContainer.appendChild(description)
         }
 
-        // fix links pending invalid nature
+        // fix links to support validity
         if (this.link.includes('https://') || this.link.includes('http://')) {
             link.textContent = this.link
             link.setAttribute('href', this.link)
@@ -55,8 +55,7 @@ class Content {
         // add icons
         linkIcon.innerHTML = `<svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.9 5.00003C1.9 3.29003 3.29 1.90003 5 1.90003H9V3.05176e-05H5C2.24 3.05176e-05 0 2.24003 0 5.00003C0 7.76003 2.24 10 5 10H9V8.10003H5C3.29 8.10003 1.9 6.71003 1.9 5.00003ZM6 6.00003H14V4.00003H6V6.00003ZM15 3.05176e-05H11V1.90003H15C16.71 1.90003 18.1 3.29003 18.1 5.00003C18.1 6.71003 16.71 8.10003 15 8.10003H11V10H15C17.76 10 20 7.76003 20 5.00003C20 2.24003 17.76 3.05176e-05 15 3.05176e-05Z" fill="#909090"/>
-        </svg>
-        `
+        </svg>`
         editIcon.classList.add('edit-content')
         editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"/>
@@ -66,7 +65,6 @@ class Content {
         card.appendChild(title)
         card.appendChild(descriptionContainer)
         card.appendChild(line)
-
         card.appendChild(link)
         card.appendChild(editIcon)
 

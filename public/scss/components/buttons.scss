@@ -40,6 +40,7 @@
         }
     }
 
+    // secondary grey button
     &.secondary {
         background-color: $light-grey;
 
@@ -48,6 +49,7 @@
         }
     }
 
+    // red delete button
     &.danger {
         background-color: $danger;
         color: $white;

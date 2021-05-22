@@ -444,6 +444,8 @@ id) /*: string*/
 },{}],"43dFp":[function(require,module,exports) {
 
 ////////// MEDIA QUERIES https://www.w3schools.com/howto/howto_js_media_queries.asp ///////////////
+
+// test for tablet
 function mediaQueryTablet(query) {
     if (query.matches) { // If media query matches
       deviceSize = 'tablet'
@@ -451,20 +453,24 @@ function mediaQueryTablet(query) {
       deviceSize = 'desktop'
     }
 }
+var tablet = window.matchMedia("(max-width: 700px)")
+// Call listener function at run time
+mediaQueryTablet(tablet) 
+// Attach listener function on state changes
+tablet.addEventListener('change', mediaQueryTablet) 
 
+// test for mobile
 function mediaQueryMobile(query) {
     if (query.matches) { // If media query matches
       deviceSize = 'mobile'
     }
 }
 
-var tablet = window.matchMedia("(max-width: 700px)")
-mediaQueryTablet(tablet) // Call listener function at run time
-tablet.addEventListener('change', mediaQueryTablet) // Attach listener function on state changes
 var mobile = window.matchMedia("(max-width: 500px)")
 mediaQueryMobile(mobile) // Call listener function at run time
-mobile.addEventListener('change', mediaQueryMobile) // Attach listener function on state changes
+mobile.addEventListener('change', mediaQueryMobile)
 
+////////////// SELECTING MAIN TAB ///////////////////
 
 const main = document.getElementsByTagName('main')[0]
 const tasksTab = document.getElementById('tasks-tab')
@@ -479,12 +485,14 @@ const contentCreateButtons = document.querySelectorAll('#content-buttons button.
 const tasks = document.getElementById('tasks')
 const content = document.getElementById('content')
 
-// setting which one is option first
+// setting tasks to show when the page is first loaded
 displayMain('tasks')
 
+// change tabs according to the user's selection
 tasksTab.addEventListener('click', function() {displayMain('tasks')})
 contentTab.addEventListener('click', function() {displayMain('content')})
 
+// display the corresponding tab
 function displayMain(option) {
     if (option == 'tasks') {
         main.appendChild(document.getElementById('tasks'))
@@ -505,11 +513,13 @@ function displayMain(option) {
     }
 }
 
-const contentExpandButton = document.querySelectorAll('#content-buttons button.icon')[0]
+////////////// SHOWING/HIDING THE CTA's IN THE TOP RIGHT HAND CORNER
+
+const contentExpandButton = document.querySelectorAll('#content-buttons button.icon')[0] // this is the (+) button on mobile
 const newContent = document.getElementById('new-content');
 const newGroup = document.getElementById('new-group');
 
-const taskExpandButton = document.querySelectorAll('#task-buttons button.icon')[0]
+const taskExpandButton = document.querySelectorAll('#task-buttons button.icon')[0] // this is the (+) button on mobile
 const newTask = document.getElementById('new-task');
 const newColumn = document.getElementById('new-column');
 
@@ -518,10 +528,12 @@ const buttonBackground = document.getElementById('button-background')
 var contentButtonVisible = false;
 var taskButtonVisible = false;
 
+// listen for clicking from the content buttons
 contentExpandButton.addEventListener('click', contentButtonVisibility)
 newContent.addEventListener('click', contentButtonVisibility)
 newGroup.addEventListener('click', contentButtonVisibility)
 
+// if on mobile, the buttons are open with the overlay, listen for any click to hide those buttons
 buttonBackground.addEventListener('click', function() {
     if (contentButtonVisible == true) {
         contentButtonVisibility()
@@ -530,6 +542,7 @@ buttonBackground.addEventListener('click', function() {
     }
 })
 
+// toggles between visibility of content CTA's
 function contentButtonVisibility() {
     if (contentButtonVisible == false) {
         newContent.classList.add('active')
@@ -548,6 +561,7 @@ function contentButtonVisibility() {
     }
 }
 
+// same premise for the tasks
 taskExpandButton.addEventListener('click', taskButtonVisibility) 
 newTask.addEventListener('click', taskButtonVisibility) 
 newColumn.addEventListener('click', taskButtonVisibility) 
@@ -570,17 +584,6 @@ function taskButtonVisibility() {
     }
 }
 
-// MUSIC PLAYER
-// if device is tablet, only allow one tab to open at a time.
-
-// FORMS
-
-// var closeButtons = document.querySelectorAll('close-form')
-// closeButtons.forEach(function(closeButton) {
-//     closeButton.addEventListener('click', function() {
-//         let thisForm = closeButton.parentElement
-//     })
-// })
 },{}]},["3tXkp","43dFp"], "43dFp", "parcelRequirec526")
 
 //# sourceMappingURL=index.8e0a979d.js.map

@@ -657,6 +657,9 @@ body main .tab.active::before {
   border-radius: 4px;
   opacity: 1;
 }
+#tasks div.column div.cards article.card .edit svg:hover, #tasks div.column div.cards article.card .edit path:hover {
+  cursor: pointer;
+}
 #tasks div.column div.cards article.card h3 {
   margin-top: 4px;
   width: 85%;
@@ -902,6 +905,7 @@ body main .tab.active::before {
   display: flex;
   flex-wrap: wrap;
   margin: -12px;
+  min-height: 90px;
 }
 #content div.group div.tiles:empty {
   min-height: 300px;
@@ -1133,6 +1137,7 @@ form select {
   border-radius: 4px;
   border: none;
   filter: drop-shadow(0 0 1px rgba(48, 48, 48, 0.18));
+  background-color: #fefefe;
 }
 form select:hover {
   filter: drop-shadow(0 0 2px #30303048);
@@ -1153,7 +1158,7 @@ form h1 {
 }
 form h1.validate-message {
   font-size: 14px;
-  margin-top: 36px;
+  margin-top: auto;
   font-weight: 400;
   color: #e56b45;
   text-align: right;
@@ -1186,6 +1191,7 @@ form input {
   border-radius: 4px;
   padding: 12px;
   font-size: 14px;
+  background-color: #fefefe;
   width: 60%;
 }
 form input:required, form input:required:hover, form input:required:focus {

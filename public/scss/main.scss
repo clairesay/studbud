@@ -2,12 +2,11 @@
 @import "global";
 @import "components/music";
 @import "components/time";
-// @import "prism";
-@import "components/structure"; //clean
-@import "components/kanban"; //clean
-@import "components/content"; //clean
-@import "components/buttons"; //clean
-@import "components/form"; //clean
-@import "components/media-queries"; //clean
-@import "components/tagify";
+@import "components/structure"; 
+@import "components/kanban"; 
+@import "components/content"; 
+@import "components/buttons"; 
+@import "components/form"; 
+@import "components/media-queries"; 
 @import "components/pop-up";
+@import "components/empty-states"
