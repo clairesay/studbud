@@ -1,4 +1,7 @@
 // Import the URL to an image file
+import music from "url:../audio/songs/BEAST.mp3";
+
+// import allMusic from "url:../audio/songs/*.mp3";
 
 // https://github.com/sampotts/plyr/#options
 const player = new Plyr('audio', {
@@ -11,10 +14,10 @@ window.player = player;
 // music, artists and album art all drawn from the open source music sight Free Music Archive https://freemusicarchive.org/home
 var songs = [
     {
-        source: 'Amerika.mp3',
+        source: music,
         title: 'Amerika',
         artist: 'Audiobinger',
-        album_art: 'audiobinger.jpg'
+        album_art: './audiobinger.jpg'
     },
     {
         source: 'If-I-Could-Remember.mp3',
@@ -28,60 +31,60 @@ var songs = [
     //     artist: 'Ketsa',
     //     album_art: 'images\albumart\Ketsa.jpg'
     // },
-    {
-        source: 'Synchronised.mp3',
-        title: 'Synchronised',
-        artist: 'Ketsa',
-        album_art: 'images\albumart\Ketsa.jpg'
-    },
-    {
-        source: 'Pray.mp3',
-        title: 'Pray',
-        artist: 'Makaih Beats',
-        album_art: 'images\albumart\makaih Beats.jpg'
-    },
-    {
-        source: 'BEAST.mp3',
-        title: 'BEAST',
-        artist: 'Paul Cesar Beats',
-        album_art: 'images\albumart\paul-cesar-beats.jpg'
-    },
-    {
-        source: 'COFFEE FI.mp3',
-        title: 'COFFEE FI',
-        artist: 'Paul Cesar Beats',
-        album_art: 'images\albumart\paul-cesar-beats.jpg'
-    },
-    {
-        source: 'Chuckin-It.mp3',
-        title: 'Chuckin It',
-        artist: 'Shaolin Dub',
-        album_art: 'images\albumart\shaolin-dub3.jpg'
-    },
-    {
-        source: 'Dogman.mp3',
-        title: 'Dogman',
-        artist: 'Shaolin Dub',
-        album_art: 'images\albumart\shaolin-dub.jpg'
-    },
-    {
-        source: 'Moods.mp3',
-        title: 'Moods',
-        artist: 'Shaolin Dub',
-        album_art: 'images\albumart\shaolin-dub2.jpg'
-    },
-    {
-        source: 'Point-Pleasant.mp3',
-        title: 'Point Pleasant',
-        artist: 'Shaolin Dub',
-        album_art: 'images\albumart\shaolin-dub.jpg'
-    },
-    {
-        source: 'Empire-of-Light.mp3',
-        title: 'Empire of Light',
-        artist: 'Siddhartha Corsus',
-        album_art: 'images\albumart\siddharthacorsus.jpg'
-    },
+    // {
+    //     source: 'Synchronised.mp3',
+    //     title: 'Synchronised',
+    //     artist: 'Ketsa',
+    //     album_art: 'images\albumart\Ketsa.jpg'
+    // },
+    // {
+    //     source: 'Pray.mp3',
+    //     title: 'Pray',
+    //     artist: 'Makaih Beats',
+    //     album_art: 'images\albumart\makaih Beats.jpg'
+    // },
+    // {
+    //     source: 'BEAST.mp3',
+    //     title: 'BEAST',
+    //     artist: 'Paul Cesar Beats',
+    //     album_art: 'images\albumart\paul-cesar-beats.jpg'
+    // },
+    // {
+    //     source: 'COFFEE FI.mp3',
+    //     title: 'COFFEE FI',
+    //     artist: 'Paul Cesar Beats',
+    //     album_art: 'images\albumart\paul-cesar-beats.jpg'
+    // },
+    // {
+    //     source: 'Chuckin-It.mp3',
+    //     title: 'Chuckin It',
+    //     artist: 'Shaolin Dub',
+    //     album_art: 'images\albumart\shaolin-dub3.jpg'
+    // },
+    // {
+    //     source: 'Dogman.mp3',
+    //     title: 'Dogman',
+    //     artist: 'Shaolin Dub',
+    //     album_art: 'images\albumart\shaolin-dub.jpg'
+    // },
+    // {
+    //     source: 'Moods.mp3',
+    //     title: 'Moods',
+    //     artist: 'Shaolin Dub',
+    //     album_art: 'images\albumart\shaolin-dub2.jpg'
+    // },
+    // {
+    //     source: 'Point-Pleasant.mp3',
+    //     title: 'Point Pleasant',
+    //     artist: 'Shaolin Dub',
+    //     album_art: 'images\albumart\shaolin-dub.jpg'
+    // },
+    // {
+    //     source: 'Empire-of-Light.mp3',
+    //     title: 'Empire of Light',
+    //     artist: 'Siddhartha Corsus',
+    //     album_art: 'images\albumart\siddharthacorsus.jpg'
+    // },
 ]
 
 const musicPlayer = document.querySelector('#music')
@@ -229,10 +232,15 @@ function playTrack(n, mode) {
     let currentContainer = document.getElementById('current'),
         currentAlbumArt = currentContainer.querySelector('img'),
         currentTitle = document.querySelector('h1.title'),
-        currentArtist = document.querySelector('h3.artist')
+        currentArtist = document.querySelector('h3.artist'),
+        currentSource = document.createElement('source');
 
     // populate the current container with the appropriate elements
-    audioContainer.innerHTML = `<source src="` + currentSong.source + `" type="audio/mp3">`
+    currentSource.setAttribute('type', 'audio/mp3')
+    currentSource.setAttribute('src', currentSong.source)
+    audioContainer.innerHTML = ''
+    audioContainer.appendChild(currentSource)
+    // audioContainer.innerHTML = `<source src="` + currentSong.source + `" type="audio/mp3">`
     currentAlbumArt.setAttribute('src', currentSong.album_art)
     currentTitle.textContent = currentSong.title
     currentArtist.textContent = currentSong.artist

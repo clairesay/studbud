@@ -377,6 +377,19 @@ table {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
+#time #pomodoro #final-load {
+  display: none;
+  width: 248px;
+  height: 20px;
+  background-color: #cccccc;
+  height: 8px;
+  border-radius: 4px;
+  align-self: center;
+  overflow: clip;
+}
+#time #pomodoro #final-load div {
+  background-color: #09997f;
+}
 body {
   background-color: #fefefe;
 }
@@ -868,9 +881,6 @@ body main .tab.active::before {
   flex-wrap: wrap;
   margin: -12px;
   min-height: 90px;
-}
-#content div.group div.tiles:first:empty {
-  min-height: 0;
 }
 #content div.group div.tiles article.tile {
   min-width: 260px;
@@ -1409,10 +1419,7 @@ form label span.required {
   margin-left: 0;
   margin: auto;
 }
-.pop-up[state=standby]#time #stowatch.active, .pop-up[state=standby]#time #stopwatch, .pop-up[state=standby]#time #pomodoro.active, .pop-up[state=standby]#time #pomodoro {
-  display: none;
-}
-.pop-up[state=standby]#time *, .pop-up[state=standby]#time nav *:not(img), .pop-up[state=standby]#time div ~ h1#peek-time {
+.pop-up[state=standby]#time *, .pop-up[state=standby]#time nav *:not(img), .pop-up[state=standby]#time div ~ h1#peek-time, .pop-up[state=standby]#time #stowatch.active, .pop-up[state=standby]#time #stopwatch, .pop-up[state=standby]#time #pomodoro.active, .pop-up[state=standby]#time #pomodoro {
   display: none;
 }
 .pop-up[state=standby]#time nav h1 {
@@ -1423,65 +1430,49 @@ form label span.required {
   margin-left: 0;
   margin: auto;
 }
-.pop-up[state=standby]#music *, .pop-up[state=standby]#music nav *:not(img) {
-  display: none;
-}
-.pop-up[state=standby]#music #current-controls {
+.pop-up[state=standby]#music *, .pop-up[state=standby]#music nav *:not(img), .pop-up[state=standby]#music #current-controls {
   display: none;
 }
 .pop-up[state=peek] {
   height: 36px;
 }
-#time.pop-up[state=peek] nav .collapse {
+.pop-up[state=peek]#time nav .collapse {
   visibility: hidden;
 }
-#time.pop-up[state=peek] nav #peek-status {
+.pop-up[state=peek]#time nav #peek-status {
   display: flex;
 }
-#time.pop-up[state=peek] #stopwatch, #time.pop-up[state=peek] #pomodoro {
+.pop-up[state=peek]#time #stopwatch, .pop-up[state=peek]#time #pomodoro {
   display: none;
 }
-#music.pop-up[state=peek] nav {
+.pop-up[state=peek]#music nav {
   display: flex;
 }
-#music.pop-up[state=peek] nav #current-controls {
+.pop-up[state=peek]#music nav #current-controls {
   width: 100%;
 }
-#music.pop-up[state=peek] nav #current-controls .metadata {
+.pop-up[state=peek]#music nav #current-controls .metadata {
   width: 50%;
 }
-#music.pop-up[state=peek] nav #current-controls .metadata h1.title {
+.pop-up[state=peek]#music nav #current-controls .metadata h1.title {
   width: 100%;
   display: flex;
   position: relative;
   padding: 0;
   left: 0;
 }
-#music.pop-up[state=peek] nav #current-controls .controls {
+.pop-up[state=peek]#music nav #current-controls .controls {
   position: absolute;
   right: 18px;
 }
-#music.pop-up[state=peek] nav img {
+.pop-up[state=peek]#music nav img {
   display: none;
 }
-#music.pop-up[state=peek] nav .collapse {
+.pop-up[state=peek]#music nav .collapse {
   display: none;
 }
-#music.pop-up[state=peek] #current, #music.pop-up[state=peek] h2, #music.pop-up[state=peek] .playlist {
+.pop-up[state=peek]#music #current, .pop-up[state=peek]#music h2, .pop-up[state=peek]#music .playlist {
   display: none;
-}
-#final-load {
-  display: none;
-  width: 248px;
-  height: 20px;
-  background-color: #cccccc;
-  height: 8px;
-  border-radius: 4px;
-  align-self: center;
-  overflow: clip;
-}
-#final-load div {
-  background-color: #09997f;
 }
 @-webkit-keyframes load-spans {
   from {

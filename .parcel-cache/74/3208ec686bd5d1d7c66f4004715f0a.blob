@@ -1,0 +1,1 @@
+module.exports = require('./bundle-url').getBundleURL() + "BEAST.HASH_REF_4ecd53541a1fbb7fd753ce15dced63df.mp3"
