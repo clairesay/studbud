@@ -29,6 +29,7 @@
         }
     }
 
+    // tasks list
     #tasks.list div.column {
         div.title {
             padding: 0 0 6px 0;
@@ -52,6 +53,7 @@
             }
             hr {
                 display: inline;
+                width: 100%;
             }
             p {
                 // text-overflow: ellipsis;

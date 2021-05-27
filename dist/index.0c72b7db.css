@@ -331,6 +331,7 @@ table {
   display: flex;
   flex-direction: row;
   padding: 36px;
+  margin: auto;
 }
 #time #pomodoro #pomo-button-container button {
   width: -webkit-max-content;
@@ -413,13 +414,18 @@ body main {
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
 }
-body main #tasks, body main #content {
+body main #tasks,
+body main #content {
   position: absolute;
   width: 100vw;
   height: calc(100vh - 72px);
   background-color: #fafafa;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   display: flex;
+}
+body main #tasks {
+  display: grid;
+  grid-auto-flow: column;
 }
 body main .tab {
   position: absolute;
@@ -476,7 +482,8 @@ body main .tab.active::before {
   background-color: #fafafa;
   z-index: 3;
 }
-body main .tab.active svg:hover, body main .tab.active svg:active {
+body main .tab.active svg:hover,
+body main .tab.active svg:active {
   background-color: #eeeeee;
 }
 #tasks {
@@ -775,7 +782,7 @@ body main .tab.active svg:hover, body main .tab.active svg:active {
   padding: 0;
   box-shadow: none;
 }
-#tasks.list div.column:last-of-type {
+#tasks.list div.column:nth-last-child(2) {
   margin-bottom: 96px;
 }
 #tasks.list div.column div.title {
@@ -1425,6 +1432,7 @@ form label span.required {
   }
   #tasks.list div.column div.cards article.card hr {
     display: inline;
+    width: 100%;
   }
   #tasks.list div.column div.cards article.card p {
     white-space: normal;

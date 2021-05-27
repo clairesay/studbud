@@ -22,8 +22,12 @@ class Column {
             card.remove()
         })
 
+        // appending to the tasks container
         let tasks = document.getElementById('tasks')
         tasks.appendChild(column)
+
+        // adding the final padding
+        tasks.appendChild(document.querySelector('#tasks div.padding'))
 
         // smooth scroll to the new column
         tasks.scrollTo({
