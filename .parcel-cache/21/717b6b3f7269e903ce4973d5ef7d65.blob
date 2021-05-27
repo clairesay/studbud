@@ -1,0 +1,14 @@
+const listIcon = document.querySelector('list-icon')
+            const gridIcon = document.querySelector('grid-icon')
+            listIcon.style.display = none;
+            const toggleTaskView = document.querySelector('#tasks-tab a')
+
+            var listView = false;
+            toggleTaskView.addEventListener('click', function() {
+                if (listView) {
+                toggleTaskView
+                listView = false
+            } else {
+                listView = true
+            }
+            })

@@ -200,6 +200,9 @@ table {
   left: 6px;
   top: 6px;
 }
+#music svg#phantom-play-button path {
+  fill: #fefefe;
+}
 
 #time {
   right: 336px;
@@ -424,9 +427,11 @@ body main #tasks, body main #content {
 body main .tab {
   position: absolute;
   top: -60px;
+  display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: 18px;
-  padding: 18px 24px 24px 24px;
+  padding: 14px 18px 14px 24px;
   border-radius: 12px 12px 0 0;
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   color: #909090;
@@ -436,9 +441,26 @@ body main .tab#tasks-tab {
   left: 135px;
   content: "Tasks";
 }
+body main .tab#tasks-tab:not(.active) path {
+  fill: #cccccc;
+}
 body main .tab#content-tab {
-  left: 247px;
+  left: 284px;
   content: "Content";
+}
+body main .tab#content-tab.active::before {
+  bottom: 0px;
+  height: 8px;
+}
+body main .tab a svg {
+  position: relative;
+  top: 1px;
+  border-radius: 4px;
+  margin-left: 12px;
+  padding: 8px;
+}
+body main .tab a svg path {
+  fill: #909090;
 }
 body main .tab:hover {
   cursor: pointer;
@@ -450,12 +472,15 @@ body main .tab.active {
 body main .tab.active::before {
   position: absolute;
   left: 1.5px;
-  bottom: 0;
   content: "";
-  height: 8px;
+  bottom: 3.5px;
+  height: 4px;
   width: calc(100% - 3px);
   background-color: #fafafa;
   z-index: 3;
+}
+body main .tab.active svg:hover, body main .tab.active svg:active {
+  background-color: #eeeeee;
 }
 
 #tasks {
@@ -674,6 +699,7 @@ body main .tab.active::before {
   cursor: pointer;
 }
 #tasks div.column div.cards article.card h3 {
+  line-height: 20px;
   margin-top: 4px;
   width: 85%;
   white-space: nowrap;
@@ -697,8 +723,12 @@ body main .tab.active::before {
   display: flex;
 }
 #tasks div.column div.cards article.card p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   margin: 8px 0 16px 0;
   font-size: 14px;
+  line-height: 16px;
 }
 #tasks div.column div.cards article.card hr {
   border: none;
@@ -724,6 +754,90 @@ body main .tab.active::before {
   padding: 4px 18px;
   border-radius: 16px;
   background-color: #eeeeee;
+}
+
+#tasks.list {
+  display: flex;
+  flex-direction: column;
+  scroll-snap-type: none;
+  overflow: scroll scroll;
+}
+#tasks.list article#empty-state-tasks {
+  min-width: 260px;
+  max-width: 280px;
+}
+#tasks.list div.column {
+  background-color: transparent;
+  height: auto;
+  width: auto;
+  max-width: 1000px;
+  margin: 36px 36px 0 36px;
+  padding: 0;
+  box-shadow: none;
+}
+#tasks.list div.column:last-of-type {
+  margin-bottom: 96px;
+}
+#tasks.list div.column div.title {
+  padding: 0 0 12px 0;
+}
+#tasks.list div.column div.title * {
+  display: none;
+}
+#tasks.list div.column div.title input, #tasks.list div.column div.title h3.total {
+  display: inline;
+}
+#tasks.list div.column div.cards {
+  height: auto;
+  width: auto;
+  margin-top: 0;
+  padding: 2px;
+}
+#tasks.list div.column div.cards article.card {
+  background-color: #fefefe;
+  display: flex;
+  margin: 0 0 36px 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+#tasks.list div.column div.cards article.card span.tag.subject ~ h3, #tasks.list div.column div.cards article.card h3 {
+  max-width: max-content;
+  margin: auto 12px;
+}
+#tasks.list div.column div.cards article.card hr {
+  display: none;
+}
+#tasks.list div.column div.cards article.card p {
+  display: inline;
+  margin: auto;
+  margin-left: 0;
+  white-space: normal;
+  border-radius: 4px;
+}
+#tasks.list div.column div.cards article.card span.tag.subject {
+  margin: auto 12px;
+  padding: 3px 17px;
+}
+#tasks.list div.column div.cards article.card div.time-details {
+  margin-left: auto;
+  padding: 0;
+  justify-content: flex-end;
+  min-width: 250px;
+}
+#tasks.list div.column div.cards article.card div.time-details span.tag.time {
+  margin: auto 12px;
+}
+#tasks.list div.column div.cards article.card .edit {
+  padding: 6px;
+  top: 0;
+  right: 0;
+  opacity: 0.4;
+  position: relative;
+}
+#tasks.list div.column div.cards article.card:last-child, #tasks.list div.column div.cards article.card {
+  margin-bottom: 12px;
 }
 
 .chosen-card {
@@ -778,6 +892,9 @@ body main .tab.active::before {
   flex-direction: column;
   margin: 36px;
 }
+#content div.group:last-of-type {
+  margin-bottom: 96px;
+}
 #content div.group h3.open-link {
   font-weight: 400;
   font-size: 14px;
@@ -788,6 +905,12 @@ body main .tab.active::before {
   align-items: center;
   padding: 8px;
   border-radius: 4px;
+}
+#content div.group h3.open-link.link-absent {
+  color: #cccccc;
+}
+#content div.group h3.open-link.link-absent path {
+  fill: #cccccc;
 }
 #content div.group h3.open-link svg {
   margin-left: 6px;
@@ -1018,16 +1141,19 @@ code {
 form {
   z-index: 8;
   display: none;
-  position: absolute;
+  position: fixed;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   left: 50%;
-  transform: translate(-50%, 0);
+  top: 50%;
+  transform: translate(-50%, -50%);
   padding: 36px;
   flex-direction: column;
   background-color: #fefefe;
   border-radius: 16px;
+  overflow-y: auto;
+  max-height: 80vh;
   max-width: 720px;
 }
 form.active {
@@ -1268,7 +1394,7 @@ form label span.required {
   }
 
   body main .tab#content-tab {
-    left: 128px;
+    left: 165px;
     content: "Content";
   }
 
@@ -1278,12 +1404,52 @@ form label span.required {
     max-width: 332px;
   }
 
+  #tasks.list div.column div.title {
+    padding: 0 0 6px 0;
+  }
+  #tasks.list div.column div.cards article.card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    filter: drop-shadow(0 0 2px #30303018);
+    margin: 16px 0;
+  }
+  #tasks.list div.column div.cards article.card span.tag.subject {
+    margin: 0 0 12px 0;
+  }
+  #tasks.list div.column div.cards article.card div.time-details span.tag.time {
+    margin-right: 0;
+  }
+  #tasks.list div.column div.cards article.card span.tag.subject ~ h3, #tasks.list div.column div.cards article.card h3 {
+    max-width: initial;
+    margin: 0;
+    white-space: normal;
+  }
+  #tasks.list div.column div.cards article.card hr {
+    display: inline;
+  }
+  #tasks.list div.column div.cards article.card p {
+    white-space: normal;
+    overflow: auto;
+    display: inline;
+    max-width: 100%;
+    margin: 6px 0 12px 0;
+  }
+  #tasks.list div.column div.cards article.card .edit {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+
   form#add-column-form, form#add-group-form {
     max-width: 80%;
   }
   form section {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
+  }
+  form h1.validate-message {
+    text-align: left;
   }
 
   /* /////////// COMPONENTS //////////// */
@@ -1322,7 +1488,16 @@ form label span.required {
   }
 }
 @media only screen and (max-width: 500px) {
-  form section div:first-child input, form section div:first-child textarea, form section div:first-child pre, form section div input, form section div textarea, form section div pre {
+  .tooltip {
+    display: none !important;
+  }
+
+  form section div:first-child input,
+form section div:first-child textarea,
+form section div:first-child pre,
+form section div input,
+form section div textarea,
+form section div pre {
     width: calc(100% - 24px);
   }
   form div.form-button-container {
@@ -1330,6 +1505,38 @@ form label span.required {
   }
   form div.form-button-container button:first-child {
     margin: 0;
+  }
+
+  #tasks.list div.column,
+#tasks.list div.column:first-child,
+#tasks.list div.column:last-child {
+    margin: 36px 36px 0 36px;
+  }
+
+  #tasks.list div.column:last-of-type {
+    margin-bottom: 72px;
+  }
+
+  #tasks.list article#empty-state-tasks {
+    min-width: initial;
+    max-width: initial;
+  }
+
+  #content div.group div.group-title {
+    justify-content: space-between;
+  }
+  #content div.group div.group-title div {
+    width: 100%;
+  }
+  #content div.group div.group-title div .edit-group {
+    margin-left: auto;
+  }
+  #content div.group div.group-title h3.open-link {
+    font-size: 0;
+    margin-left: 6px;
+  }
+  #content div.group div.group-title h3.open-link svg {
+    margin-left: 0;
   }
 
   .pop-up[state=peek] {
@@ -1341,7 +1548,8 @@ form label span.required {
   .pop-up[state=peek]#music nav #current-controls .metadata {
     width: 70%;
   }
-  .pop-up[state=peek]#music nav #current-controls .controls #next, .pop-up[state=peek]#music nav #current-controls .controls #previous {
+  .pop-up[state=peek]#music nav #current-controls .controls #next,
+.pop-up[state=peek]#music nav #current-controls .controls #previous {
     display: none;
   }
 
@@ -1349,18 +1557,21 @@ form label span.required {
     display: none;
   }
 
-  .pop-up[state=active]#time, .pop-up[state=active]#music {
+  .pop-up[state=active]#time,
+.pop-up[state=active]#music {
     position: fixed;
     z-index: 4;
     right: 0;
     width: calc(100vw - 32px);
     padding: auto;
   }
-  .pop-up[state=active]#time #stopwatch h1, .pop-up[state=active]#music #stopwatch h1 {
-    margin-left: calc((100% - 225px)/2);
+  .pop-up[state=active]#time #stopwatch h1,
+.pop-up[state=active]#music #stopwatch h1 {
+    margin-left: calc((100% - 225px) / 2);
     left: 0;
   }
-  .pop-up[state=active]#time #stopwatch h1 ~ div, .pop-up[state=active]#music #stopwatch h1 ~ div {
+  .pop-up[state=active]#time #stopwatch h1 ~ div,
+.pop-up[state=active]#music #stopwatch h1 ~ div {
     margin: auto;
   }
 }

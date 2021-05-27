@@ -29,6 +29,10 @@
         flex-direction: column;
         margin: 36px;
 
+        &:last-of-type {
+            margin-bottom: 96px;
+        }
+
         h3.open-link {
             font-weight: 400;
             font-size: 14px;
@@ -39,6 +43,13 @@
             align-items: center;
             padding: 8px;
             border-radius: $mini-radius;
+
+            &.link-absent {
+                color: $grey;
+                path {
+                    fill: $grey;
+                }
+            }
 
             svg {
                 margin-left: 6px;

@@ -252,7 +252,7 @@ taskSaveButton.addEventListener('click', function (event) {
         let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList)
         // append to taskList and create new card with task
         newTask.createCard(newTask.addTask());
-        
+
         // close the form and add event listeners to any new items
         toggleTaskForm()
         reupdate()
@@ -265,5 +265,9 @@ taskSaveButton.addEventListener('click', function (event) {
 // if user chooses to create new task through CTA in empty state message, open form like user clicked on top right hand CTA
 var emptyStateButton = document.querySelector('#empty-state-tasks button')
 emptyStateButton.addEventListener('click', function() {
+    if (deviceSize != 'desktop') {
+        // counter click for the 'buttons container dropdown'
+        document.querySelector('#task-buttons button.icon').click()
+    }
     newTask.click()
 })

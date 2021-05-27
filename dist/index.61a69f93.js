@@ -712,7 +712,7 @@ playlistContainer.addEventListener("scroll", function () {
   lastScrollTop = st <= 0 ? 0 : st;
 }, false);
 
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","url:../audio/songs/BEAST.mp3":"1qAAe"}],"1qAAe":[function(require,module,exports) {
+},{"url:../audio/songs/BEAST.mp3":"1qAAe","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"1qAAe":[function(require,module,exports) {
 module.exports = require('./bundle-url').getBundleURL() + "BEAST.dced63df.mp3"
 },{"./bundle-url":"3seVR"}],"3seVR":[function(require,module,exports) {
 "use strict";

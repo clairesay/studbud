@@ -40,10 +40,13 @@ body {
         .tab {
             position: absolute;
             top: -60px;
+
+            display: flex;
+            align-items: center;
         
             font-weight: 500;
             font-size: 18px;
-            padding: 18px 24px 24px 24px;
+            padding: 14px 18px 14px 24px;
             border-radius: 12px 12px 0 0;
             box-shadow: 0px 0px 0px 1px #0e131809 inset;
         
@@ -53,11 +56,35 @@ body {
             &#tasks-tab {
                 left: 135px;
                 content: "Tasks";
+                &:not(.active) {
+                    path {
+                        fill: $grey;
+                    }
+                }
             }
             
             &#content-tab {
-                left: 247px;
+                // left: 247px;
+                left: 284px;
                 content: "Content";
+
+                &.active {
+                    &::before {
+                        bottom: 0px;
+                        height: 8px;
+                    }
+                }
+            }
+            
+            a svg {
+                position: relative;
+                top: 1px;
+                border-radius: $mini-radius;
+                margin-left: 12px;
+                padding: 8px;
+                path {
+                    fill: $dark-grey;
+                }
             }
 
             &:hover {
@@ -72,13 +99,18 @@ body {
                 &::before {
                     position: absolute;
                     left: 1.5px;
-                    bottom: 0;
                     content: "";
-                    height: 8px;
+                    bottom: 3.5px;
+                    height: 4px;
                     width: calc(100% - 3px);
                     background-color: $dark-white;
                     z-index: 3;
                 }
+
+                svg:hover, svg:active {
+                    background-color: $light-grey;
+
+                }   
             }
         }
     }

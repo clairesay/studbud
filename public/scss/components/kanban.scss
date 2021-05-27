@@ -46,6 +46,7 @@
     
         &.column:last-of-type {
             margin-right: 36px;
+            // box-sizing: border-box;
         }
 
         // contains column settings + title
@@ -266,6 +267,7 @@
                 }
 
                 h3 {
+                    line-height: 20px;
                     margin-top: 4px;
                     width: 85%;
                     white-space: nowrap;
@@ -292,8 +294,12 @@
                 }
 
                 p {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                     margin: 8px 0 16px 0;
                     font-size: 14px;
+                    line-height: 16px;
                 }
                 hr {
                     border: none;
@@ -327,6 +333,111 @@
         }
     }
 }
+
+#tasks.list {
+    // background-color: blue;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: none;
+    overflow: scroll scroll;
+
+
+    article#empty-state-tasks {
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    div.column {
+        background-color: transparent;
+        height: auto;
+        width: auto;
+        max-width: 1000px;
+        margin: 36px 36px 0 36px;
+        padding: 0;
+        box-shadow: none;
+        &:last-of-type {
+            margin-bottom: 96px;
+        }
+        div.title {
+            padding: 0 0 12px 0;
+            * {
+                display: none;
+            }
+            input, h3.total {
+                display: inline;
+            }
+        }
+
+        div.cards {
+            height: auto;
+            width: auto;
+            margin-top: 0;
+            padding: 2px;
+            
+            article.card {
+                background-color: $white;
+                display: flex;
+                margin: 0 0 36px 0;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 6px;
+                // filter: none;
+                span.tag.subject ~ h3, h3 {
+                    max-width: max-content;
+                    margin: auto 12px;
+                }
+                hr {
+                    display: none;
+                }
+                p {
+                    display: inline;
+                    margin: auto;
+                    margin-left: 0;
+                    white-space: normal;
+
+                    border-radius: $mini-radius;
+                }
+                span.tag.subject {
+                    margin: auto 12px;
+                    padding: 3px 17px;
+                }
+
+                div.time-details {
+                    margin-left: auto;
+                    padding: 0;
+                    justify-content: flex-end;
+                    min-width: 250px;
+                    span.tag.time {
+                        margin: auto 12px;
+                    }
+                }
+
+                .edit {
+                    padding: 6px;
+                    // position: absolute;
+                    // top: 12px;
+                    // right: 16px;
+                    top: 0;
+                    right: 0;
+                    opacity: 0.4;
+                    position: relative;
+                    // left: 0;
+                }
+
+                &:last-child, & {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+
+    }
+}
+
+// #tasks.list div.column.column:first-of-type, #tasks.list div.column.column:last-of-type {
+//     margin-left: 0;
+//     margin-right: 0;
+// }
 
 // SCROLLABLE CARD MODIFICATIONS
 .chosen-card {

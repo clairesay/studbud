@@ -21,17 +21,19 @@ code {
 form {
     z-index: 8;
     display: none;
-    position: absolute;
+    position: fixed;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
     left: 50%;
-    transform: translate(-50%, 0);
+    top: 50%;
+    transform: translate(-50%, -50%);
     padding: 36px;
     flex-direction: column;
     background-color: $white;
     border-radius: $big-radius;
-
+    overflow-y: auto;
+    max-height: 80vh;
     max-width: 720px;
 
     &.active {

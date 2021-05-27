@@ -48,9 +48,25 @@
 
     <main>
         <!-- buttons to toggle between tabs -->
-        <button id="content-tab" class="tab" type="button">Content</button>
-        <button id="tasks-tab" class="tab" type="button">Tasks</button>
-
+        <button id="content-tab" class="tab" type="button">Content
+            <svg width="2" height="33" viewBox="0 0 2 33" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            </svg>
+        </button>
+        <button id="tasks-tab" class="tab" type="button">Tasks
+            <a>
+                <svg class="list-icon" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 10.2857H4V5.71429H0V10.2857ZM0 16H4V11.4286H0V16ZM0 4.57143H4V0H0V4.57143ZM5 10.2857H17V5.71429H5V10.2857ZM5 16H17V11.4286H5V16ZM5 0V4.57143H17V0H5Z"
+                        fill="#303030" />
+                </svg>
+                <svg class="grid-icon" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 16H11V0H6V16ZM0 16H5V0H0V16ZM12 0V16H17V0H12Z" fill="#303030" />
+                </svg>
+            </a>
+        </button>
         <!-- CONTENT TAB -->
         <section id="content">
             <!-- default 'ungrouped' tab -->
@@ -91,7 +107,7 @@
         </section>
 
         <!-- TASKS TAB -->
-        <section id="tasks">
+        <section id="tasks" class="grid">
             <!-- By default there are 3 distinct columns. 
                 The simplest kanban board must have a minimum of 3 columns according to https://www.infoq.com/articles/kanban-step-guide/-->
             <div class="column">
@@ -367,7 +383,7 @@
         <section>
             <div>
                 <label for="contentTitle">Title <span class="required">*</span></label>
-                <input type="text" name="contentTitle" placeholder="What is this content about?" autofocus />
+                <input type="text" name="contentTitle" placeholder="What is this content about?" maxlength="150" autofocus />
                 <label for="conceptDescription">Code snippet</label>
                 <pre>
                     <textarea name="conceptDescription" contenteditable="true" maxlength="300"
@@ -513,4 +529,5 @@
     <script src="js/time.js"></script>
     <script src="js/music.js"></script>
 </body>
+
 </html>

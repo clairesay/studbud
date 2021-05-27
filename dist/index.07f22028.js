@@ -635,6 +635,10 @@ contentSaveButton.addEventListener('click', function (event) {
 // if the user decides to create a new card through the empty state CTA, emulate what would happen with the create task button
 var emptyStateButton = document.querySelector('#empty-state-content button');
 emptyStateButton.addEventListener('click', function () {
+  if (deviceSize != 'desktop') {
+    // counter click for the 'buttons container dropdown'
+    document.querySelector('#content-buttons button.icon').click();
+  }
   newContent.click();
 });
 // if user pastes code content into the content cards
@@ -644,7 +648,7 @@ document.querySelector('[contenteditable]').addEventListener('paste', function (
   document.execCommand('inserttext', false, event.clipboardData.getData('text/plain'));
 });
 
-},{"./content":"7gsTB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./resource":"5g5MX"}],"7gsTB":[function(require,module,exports) {
+},{"./content":"7gsTB","./resource":"5g5MX","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"7gsTB":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Content {
@@ -741,7 +745,7 @@ function countTiles() {
     }
     // if the tilecount is empty, there are no links to open in that group
     if (tileCount == 0) {
-      total[index].innerHTML = '0 links';
+      total[index].innerHTML = '0 links' + openLinkSVG;
       total[index].classList.add('link-absent');
     } else if (tileCount == 1) {
       total[index].innerHTML = 'Open ' + tileCount + ' link' + openLinkSVG;

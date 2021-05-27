@@ -20,7 +20,7 @@ export function countTiles() {
         }
         // if the tilecount is empty, there are no links to open in that group
         if (tileCount == 0) {
-            total[index].innerHTML = '0 links';
+            total[index].innerHTML = '0 links' + openLinkSVG;
             total[index].classList.add('link-absent')
         // otherwise, enable group link opening with relevant CTA
         } else if (tileCount == 1) {

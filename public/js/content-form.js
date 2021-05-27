@@ -214,6 +214,10 @@ contentSaveButton.addEventListener('click', function (event) {
 // if the user decides to create a new card through the empty state CTA, emulate what would happen with the create task button
 var emptyStateButton = document.querySelector('#empty-state-content button')
 emptyStateButton.addEventListener('click', function() {
+    if (deviceSize != 'desktop') {
+        // counter click for the 'buttons container dropdown'
+        document.querySelector('#content-buttons button.icon').click()
+    }
     newContent.click()
 })
 

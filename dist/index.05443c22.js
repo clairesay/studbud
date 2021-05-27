@@ -687,135 +687,14 @@ taskSaveButton.addEventListener('click', function (event) {
 // if user chooses to create new task through CTA in empty state message, open form like user clicked on top right hand CTA
 var emptyStateButton = document.querySelector('#empty-state-tasks button');
 emptyStateButton.addEventListener('click', function () {
+  if (deviceSize != 'desktop') {
+    // counter click for the 'buttons container dropdown'
+    document.querySelector('#task-buttons button.icon').click();
+  }
   newTask.click();
 });
 
-},{"./kanban":"3b9tq","./task":"3EAmk","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3b9tq":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "countCards", function () {
-  return countCards;
-});
-_parcelHelpers.export(exports, "sortability", function () {
-  return sortability;
-});
-function countCards() {
-  let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
-  let emptyStateMessage = document.getElementById('empty-state-tasks');
-  // if there are no cards, add an empty state message, otherwise remove it.
-  if (cards.length == 0) {
-    cardContainers[0].appendChild(emptyStateMessage);
-    emptyStateMessage.style.display = 'flex';
-  } else {
-    columns[0].appendChild(emptyStateMessage);
-    emptyStateMessage.style.display = 'none';
-  }
-  // writing the total number of cards at the head of each column
-  total.forEach(function count(object, index) {
-    let cardCount = 0;
-    for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i++) {
-      if (cardContainers[index].querySelectorAll('.card')[i].classList.length == 1) {
-        cardCount += 1;
-      }
-    }
-    total[index].textContent = cardCount;
-  });
-}
-countCards();
-function sortability() {
-  // applying sortability to the children of each .cards container
-  let cardContainers = document.querySelectorAll('.cards');
-  cardContainers.forEach(function (element) {
-    new Sortable(element, {
-      group: 'nested',
-      animation: 200,
-      swapThreshold: 0.65,
-      ghostClass: 'ghost-card',
-      chosenClass: 'chosen-card',
-      dragClass: "sortable-drag",
-      filter: '.filtered',
-      // 'filtered' class is not draggable
-      forceFallback: true,
-      onStart: function (evt) {
-        // setting the cursor to grabbing while user is holding card
-        let itemEl = evt.item;
-        itemEl.style.cursor = 'grabbing';
-        let body = document.getElementsByTagName('body')[0];
-        body.style.cursor = 'grabbing';
-      },
-      onEnd: function (evt) {
-        // setting the cursor to grab
-        let itemEl = evt.item;
-        itemEl.style.cursor = 'grab';
-        // reset cursor to normal arrow
-        let body = document.getElementsByTagName('body')[0];
-        body.style.cursor = 'initial';
-        // recount all the cards in each column and update their totals
-        countCards();
-        // set enabled/disabled status to each of the buttons after the reallocation happened
-        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
-        allDeleteColumnButtons.forEach(function (button) {
-          let columns = document.getElementsByClassName('column');
-          let column = button.parentElement.parentElement;
-          let cards = column.querySelectorAll('.card');
-          // ensuring there are mroe than 3 columns and no cards within the column
-          if (columns.length > 3 && cards.length == 0) {
-            button.classList.remove('disabled');
-          } else if (columns.length <= 3) {
-            button.classList.add('disabled');
-          } else if (cards.length > 0) {
-            button.classList.add('disabled');
-          }
-        });
-      }
-    });
-  });
-}
-sortability();
-
-},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
-    });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"3EAmk":[function(require,module,exports) {
+},{"./task":"3EAmk","./kanban":"3b9tq","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3EAmk":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -916,6 +795,131 @@ class Task {
   }
 }
 exports.default = Task;
+
+},{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
+},{}],"3b9tq":[function(require,module,exports) {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "countCards", function () {
+  return countCards;
+});
+_parcelHelpers.export(exports, "sortability", function () {
+  return sortability;
+});
+function countCards() {
+  let total = document.querySelectorAll('.total'), cardContainers = document.querySelectorAll('.cards'), columns = document.querySelectorAll('.column'), cards = document.getElementsByClassName('card');
+  let emptyStateMessage = document.getElementById('empty-state-tasks');
+  // if there are no cards, add an empty state message, otherwise remove it.
+  if (cards.length == 0) {
+    cardContainers[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'flex';
+  } else {
+    columns[0].appendChild(emptyStateMessage);
+    emptyStateMessage.style.display = 'none';
+  }
+  // writing the total number of cards at the head of each column
+  total.forEach(function count(object, index) {
+    let cardCount = 0;
+    for (let i = 0; i < cardContainers[index].querySelectorAll('.card').length; i++) {
+      if (cardContainers[index].querySelectorAll('.card')[i].classList.length == 1) {
+        cardCount += 1;
+      }
+    }
+    total[index].textContent = cardCount;
+  });
+}
+countCards();
+function sortability() {
+  // applying sortability to the children of each .cards container
+  let cardContainers = document.querySelectorAll('.cards');
+  cardContainers.forEach(function (element) {
+    new Sortable(element, {
+      group: 'nested',
+      animation: 200,
+      swapThreshold: 0.65,
+      ghostClass: 'ghost-card',
+      chosenClass: 'chosen-card',
+      dragClass: "sortable-drag",
+      filter: '.filtered',
+      // 'filtered' class is not draggable
+      forceFallback: true,
+      onStart: function (evt) {
+        // setting the cursor to grabbing while user is holding card
+        let itemEl = evt.item;
+        itemEl.style.cursor = 'grabbing';
+        let body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'grabbing';
+      },
+      onEnd: function (evt) {
+        // setting the cursor to grab
+        let itemEl = evt.item;
+        itemEl.style.cursor = 'grab';
+        // reset cursor to normal arrow
+        let body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'initial';
+        // recount all the cards in each column and update their totals
+        countCards();
+        // set enabled/disabled status to each of the buttons after the reallocation happened
+        let allDeleteColumnButtons = document.querySelectorAll('svg.delete-column');
+        allDeleteColumnButtons.forEach(function (button) {
+          let columns = document.getElementsByClassName('column');
+          let column = button.parentElement.parentElement;
+          let cards = column.querySelectorAll('.card');
+          // ensuring there are mroe than 3 columns and no cards within the column
+          if (columns.length > 3 && cards.length == 0) {
+            button.classList.remove('disabled');
+          } else if (columns.length <= 3) {
+            button.classList.add('disabled');
+          } else if (cards.length > 0) {
+            button.classList.add('disabled');
+          }
+        });
+      }
+    });
+  });
+}
+sortability();
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["jxrgz","xKZW3"], "xKZW3", "parcelRequirec526")
 

@@ -618,6 +618,7 @@ function columnEditDeleteFunctionality() {
     });
   });
 }
+columnEditDeleteFunctionality();
 
 },{"./column":"4Vh9G","./kanban":"3b9tq","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"4Vh9G":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");

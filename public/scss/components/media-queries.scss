@@ -16,7 +16,8 @@
     }
 
     body main .tab#content-tab {
-        left: 128px;
+        // left: 128px;
+        left: 165px;
         content: "Content";
     }
 
@@ -27,10 +28,49 @@
             max-width: 332px;
         }
     }
-    
+
+    #tasks.list div.column {
+        div.title {
+            padding: 0 0 6px 0;
+        }
+        div.cards article.card {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px;
+            filter: drop-shadow(0 0 2px #30303018);
+            margin: 16px 0;
+            span.tag.subject {
+                margin: 0 0 12px 0;
+            }
+            div.time-details span.tag.time {
+                margin-right: 0;
+            }
+            span.tag.subject ~ h3, h3 {
+                max-width: initial;
+                margin: 0;
+                white-space: normal;
+            }
+            hr {
+                display: inline;
+            }
+            p {
+                // text-overflow: ellipsis;
+                white-space: normal;
+                overflow: auto;
+                display: inline;
+                max-width: 100%;
+                margin: 6px 0 12px 0;
+            }
+            .edit {
+                position: absolute;
+                top: 12px;
+                right: 16px;
+            }
+        }
+    }
+
     // FORM
     form {
-
         &#add-column-form,
         &#add-group-form {
             max-width: 80%;
@@ -38,6 +78,10 @@
         section {
             grid-template-columns: auto;
             grid-template-rows: auto auto;
+        }
+
+        h1.validate-message {
+            text-align: left;
         }
     }
 
@@ -67,7 +111,7 @@
                 margin-right: 0;
                 margin-bottom: 12px;
             }
-        
+
             &.create {
                 background-color: $white;
                 color: $black;
@@ -78,7 +122,7 @@
                     background-color: $light-grey;
                 }
             }
-        
+
             &.active {
                 display: flex;
                 visibility: visible;
@@ -88,13 +132,20 @@
 }
 
 @media only screen and (max-width: 500px) {
+
+    .tooltip {
+        display: none !important;
+    }
+
     form {
         section {
-            div:first-child, div{
-                input, textarea, pre{
-                    width: calc(100% - 24px)
+            div:first-child,
+            div {
+                input,
+                textarea,
+                pre {
+                    width: calc(100% - 24px);
                 }
-                
             }
         }
         div.form-button-container {
@@ -103,6 +154,54 @@
                 margin: 0;
             }
         }
+    }
+    // list view for tasks
+
+    #tasks.list div.column,
+    #tasks.list div.column:first-child,
+    #tasks.list div.column:last-child {
+        margin: 36px 36px 0 36px;
+    }
+
+    #tasks.list div.column:last-of-type {
+        margin-bottom: 72px;
+    }
+    
+    #tasks.list {
+        article#empty-state-tasks {
+            min-width: initial;
+            max-width: initial;
+        }
+    }
+
+    #content {
+        div.group {
+            div.group-title {
+                justify-content: space-between;
+                // flex-direction: column;
+                // div {
+                //     justify-content: space-between;
+                //     svg.edit-group {
+                //         margin-left: auto;
+                //     }
+                // }
+                div {
+                    width: 100%;
+                    .edit-group {
+                        margin-left: auto;
+                    }
+                }
+                h3.open-link {
+                    font-size: 0;
+                    margin-left: 6px;
+                    svg {
+                        margin-left: 0
+                    }
+                }
+            }
+
+        }
+
     }
 
     // popups
@@ -120,12 +219,12 @@
                     width: 70%;
                 }
                 .controls {
-                    #next, #previous {
+                    #next,
+                    #previous {
                         display: none;
                     }
                 }
             }
-
         }
     }
 
@@ -135,7 +234,8 @@
         }
     }
 
-    .pop-up[state="active"]#time, .pop-up[state="active"]#music {
+    .pop-up[state="active"]#time,
+    .pop-up[state="active"]#music {
         position: fixed;
         z-index: 4;
         right: 0;
@@ -144,7 +244,7 @@
 
         #stopwatch {
             h1 {
-                margin-left: calc((100% - 225px)/2);
+                margin-left: calc((100% - 225px) / 2);
                 left: 0;
             }
             h1 ~ div {
