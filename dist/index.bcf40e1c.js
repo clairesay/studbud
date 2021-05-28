@@ -591,7 +591,7 @@ function groupEditDeleteFunctionality() {
   });
 }
 
-},{"./group":"271l5","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./resource":"5g5MX"}],"271l5":[function(require,module,exports) {
+},{"./group":"271l5","./resource":"5g5MX","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"271l5":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 class Group {

@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Study tool for programmers in training">
-    <link rel="icon" href="/favicon.3fb3ebf1.svg">
+    <link rel="icon" href="/favicon.d3f04fb5.svg">
 
     <!-- CSS and EXTERNAL CSS STYLESHEETS: includes highlight.js css styles and PLYR css styles-->
-    <link rel="stylesheet" type="text/css" href="/index.0c72b7db.css">
+    <link rel="stylesheet" type="text/css" href="/main.77bb5cfd.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.css" integrity="sha512-ig9FCe92nesnwlWGl9mrk85kB35I29wg6kfP17X0qX2B6GAxS4tKK8QhcTgojdsjOEZRlmaawo49uerBGt6O+Q==" crossorigin="anonymous">
 
@@ -17,24 +17,24 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js" integrity="sha512-zFBRHWZWLXx6ktE7EtT+5RXM5UA+S1V9JHHocTPdKdQbRuNSgq6IFDzYbV1q6fst/1kdz5W7OwZKjyZ6bzE/iA==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
-</head>
+<script src="/main.77bb5cfd.js"></script></head>
 
 <body>
     <header>
         <!-- HOME LINK -->
-        <a href="/index.html"><img id="home-link" src="/logo.cb4b0752.svg"></a>
+        <a href="/index.html"><img id="home-link" src="/logo.236e4034.svg"></a>
 
         <!-- dark modal background for buttons when accessed on mobile -->
         <div id="button-background" class="background"></div>
 
         <!-- main CTA's -->
         <article id="task-buttons" class="button-container">
-            <button class="button primary icon" type="button"><img src="/add.5758ee3e.svg"></button>
+            <button class="button primary icon" type="button"><img src="/add.e45ae499.svg"></button>
             <button id="new-task" class="button primary create" type="button">Create task</button>
             <button id="new-column" class="button secondary create" type="button">Add column</button>
         </article>
         <article id="content-buttons" class="button-container">
-            <button class="button primary icon" type="button"><img src="/add.5758ee3e.svg"></button>
+            <button class="button primary icon" type="button"><img src="/add.e45ae499.svg"></button>
             <button id="new-content" class="button primary create" type="button">Add content</button>
             <button id="new-group" class="button secondary create" type="button">Create group</button>
         </article>
@@ -43,15 +43,15 @@
     <main>
         <!-- buttons to toggle between tabs -->
         <button id="content-tab" class="tab" type="button">Content
-            <svg width="2" height="33" viewbox="0 0 2 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="2" height="33" viewBox="0 0 2 33" fill="none" xmlns="http://www.w3.org/2000/svg">
             </svg>
         </button>
         <button id="tasks-tab" class="tab" type="button">Tasks
             <a>
-                <svg class="list-icon" width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="list-icon" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 10.2857H4V5.71429H0V10.2857ZM0 16H4V11.4286H0V16ZM0 4.57143H4V0H0V4.57143ZM5 10.2857H17V5.71429H5V10.2857ZM5 16H17V11.4286H5V16ZM5 0V4.57143H17V0H5Z" fill="#303030"></path>
                 </svg>
-                <svg class="grid-icon" width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="grid-icon" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 16H11V0H6V16ZM0 16H5V0H0V16ZM12 0V16H17V0H12Z" fill="#303030"></path>
                 </svg>
             </a>
@@ -64,25 +64,25 @@
                 <div class="group-title">
                     <div>
                         <input class="group-name" value="Ungrouped" required="" disabled="">
-                        <svg class="edit-group first" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="edit-group first" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
                         </svg>
                         <div id="edit-group" class="tooltip">Rename group</div>
-                        <svg class="delete-group first" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="delete-group first" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
                         </svg>
                         <div id="delete-group" class="tooltip">Delete group</div>
                     </div>
                     <!-- on click, open all links within the group -->
-                    <h3 class="open-link"><img src="/open-link.c3adc51b.svg"></h3>
+                    <h3 class="open-link"><img src="/open-link.550991b9.svg"></h3>
                 </div>
                 <!-- contains all the tiles -->
                 <div class="tiles">
                     <!-- for empty states, otherwise this is where individual cards go -->
                     <article id="empty-state-content">
-                        <img src="/empty-content.a51d527a.png">
+                        <img src="/empty-content.4ba0c4b7.png">
                         <h3>It’s empty around here.</h3>
-                        <p>Save helpful resource links here before you lose them.</p>
+                        <p>Save helpful content snippets before you lose them.</p>
                         <button class="button primary" type="button">Add content</button>
                     </article>
                 </div>
@@ -99,12 +99,12 @@
                     <input class="column-name" value="To Do" required="">
                     <!-- total number of cards within the column -->
                     <h3 class="total"></h3>
-                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="edit-column" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
                     </svg>
                     <!-- edit and delete buttons -->
                     <div id="edit" class="tooltip">Rename column</div>
-                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="delete-column disabled" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
                     </svg>
                     <div id="delete" class="tooltip">Delete column</div>
@@ -112,7 +112,7 @@
                 <div class="cards">
                     <!-- for empty states, otherwise this is where individual cards go -->
                     <article id="empty-state-tasks" class="filtered">
-                        <img src="/empty-tasks.9f7154e7.png">
+                        <img src="/empty-tasks.74fd08f2.png">
                         <h3>You have no tasks.</h3>
                         <p>Hit that big green button when you’re ready for more.</p>
                         <button class="button primary" type="button">Create task</button>
@@ -123,10 +123,10 @@
                 <div class="title">
                     <input class="column-name" value="In Progress" required="">
                     <h3 class="total"></h3>
-                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="edit-column" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
                     </svg>
-                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="delete-column disabled" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
                     </svg>
                 </div>
@@ -137,18 +137,18 @@
                 <div class="title">
                     <input class="column-name" value="Done" required="">
                     <h3 class="total"></h3>
-                    <svg class="edit-column" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="edit-column" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 12.6672V16H3.33287L13.1626 6.17028L9.82975 2.83741L0 12.6672ZM15.74 3.59286C16.0867 3.24625 16.0867 2.68632 15.74 2.33971L13.6603 0.259994C13.3137 -0.0866241 12.7538 -0.0866241 12.4072 0.259994L10.7807 1.88644L14.1136 5.21931L15.74 3.59286Z" fill="#909090"></path>
                     </svg>
-                    <svg class="delete-column disabled" width="14" height="18" viewbox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="delete-column disabled" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z" fill="#909090"></path>
                     </svg>
                 </div>
                 <div class="cards">
                 </div>
             </div>
-            <div class="padding" style="width: 18px
-"></div>
+            <!-- this ensures we have extra padding on the end of the kanban board -->
+            <div class="padding" style="padding:9px"></div>
         </section>
 
     </main>
@@ -159,14 +159,14 @@
         <!-- Navigation -->
         <nav>
             <!-- icon -->
-            <img src="/timer.cb744305.svg">
+            <img src="/timer.c4bb198c.svg">
             <!-- dropdown to choose between timer or stopwatch -->
             <div id="dropdown">
                 <div id="time-selector" class="close">
                     <h3 id="stopwatch-select">Stopwatch</h3>
                     <h3 id="pomodoro-select">Pomodoro</h3>
                 </div>
-                <svg width="10" height="6" viewbox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L5 5L9 1" stroke="#909090" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </div>
@@ -174,7 +174,7 @@
             <h1 id="peek-time"><span class="min"></span>:<span class="sec"></span></h1>
             <h1 id="peek-status"></h1>
             <button class="button icon collapse" type="button">
-                <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
                     <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
                 </svg>
@@ -198,14 +198,14 @@
                 <h4>Work for:</h4>
                 <div>
                     <button class="button secondary icon subtract" type="button">
-                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
                         </svg>
                     </button>
                     <h1><span class="minutes">00</span>:<span class="seconds">00</span>
                     </h1>
                     <button class="button secondary icon add" type="button">
-                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
                         </svg>
                     </button>
@@ -215,14 +215,14 @@
                 <h4>Break for:</h4>
                 <div>
                     <button class="button secondary icon subtract" type="button">
-                        <svg width="14" height="2" viewbox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2H0V0H14V2Z" fill="#303030"></path>
                         </svg>
                     </button>
                     <h1><span class="minutes">00</span>:<span class="seconds">00</span>
                     </h1>
                     <button class="button secondary icon add" type="button">
-                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#303030"></path>
                         </svg>
                     </button>
@@ -268,9 +268,9 @@
         <!-- navigation -->
         <nav>
             <!-- icon -->
-            <img src="/music.d0bb5015.svg">
+            <img src="/music.a8cfba0f.svg">
             <button class="button icon collapse" type="button">
-                <svg width="20" height="23" viewbox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="23" viewBox="0 0 20 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.49292 21.5739L4.8778 18.6765L1.61458 22.3172L3.00407e-05 20.5283L3.28599 16.9129L0.670866 14.0156H7.49292V21.5739Z" fill="#909090"></path>
                     <path d="M15.1222 3.79918L12.5071 0.901808V8.46017H19.3292L16.714 5.5628L20 1.94738L18.3854 0.158569L15.1222 3.79918Z" fill="#909090"></path>
                 </svg>
@@ -279,7 +279,7 @@
         <!-- currently playing song -->
         <div id="current">
             <!-- album art to display -->
-            <img src="/index.html">
+            <img src="">
             <audio crossorigin="" playsinline="">
             </audio>
 
@@ -293,14 +293,14 @@
                 <!-- music controls -->
                 <div class="controls">
                     <button id="previous" type="button">
-                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 0L3.5 6L12 12L12 0ZM2 12L2 0H0L0 12H2Z" fill="#303030"></path>
                         </svg>
                     </button>
                     <button id="play-pause" type="button">
                     </button>
                     <button id="next" type="button">
-                        <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 12L8.5 6L0 0V12ZM10 0V12H12V0H10Z" fill="#303030"></path>
                         </svg>
                     </button>
@@ -310,22 +310,21 @@
         <h2>Up next
             <!-- shuffle button for playlist -->
             <button id="shuffle" type="button">
-                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.59 5.17L1.41 0L0 1.41L5.17 6.58L6.59 5.17ZM10.5 0L12.54 2.04L0 14.59L1.41 16L13.96 3.46L16 5.5V0H10.5ZM10.83 9.41L9.42 10.82L12.55 13.95L10.5 16H16V10.5L13.96 12.54L10.83 9.41Z" fill="black"></path>
                 </svg>
             </button>
         </h2>
         <!-- playlist of songs -->
         <ul class="playlist"></ul>
-        <svg id="phantom-play-button" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="phantom-play-button" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 25.5L25 21L19 16.5V25.5ZM21 11C15.48 11 11 15.48 11 21C11 26.52 15.48 31 21 31C26.52 31 31 26.52 31 21C31 15.48 26.52 11 21 11ZM21 29C16.59 29 13 25.41 13 21C13 16.59 16.59 13 21 13C25.41 13 29 16.59 29 21C29 25.41 25.41 29 21 29Z" fill="#303030"></path>
         </svg>
     </section>
 
     <!-- https://freesound.org/people/pan14/sounds/263131/ -->
-    <audio id="alarm-sound" style="width: 0; height: 0;
-">
-        <source src="/reverbbeep.e35d2b20.wav" type="audio/mpeg">
+    <audio id="alarm-sound" style="width: 0; height: 0;">
+        <source src="/reverbbeep.6b9202a7.wav" type="audio/mpeg">
     </audio>
 
     <!-- dark background behind open modal -->
@@ -352,8 +351,7 @@
                     <!-- Only default option is None for ungrouped cards, otherwise users can add groups -->
                     <option value="None">None</option>
                 </select>
-                <span style="position: relative;left: -30px;
-"><img src="/chevron-down.7b2f881d.svg"></span>
+                <span style="position: relative;left: -30px;"><img src="/chevron-down.05d1bb01.svg"></span>
             </div>
         </section>
         <!-- validate message appears when required -->
@@ -362,7 +360,7 @@
         <div class="form-button-container">
             <button id="content-save" class="button primary" type="submit">Save</button>
             <button id="edit-content-cancel" class="button secondary" type="button">Cancel</button>
-            <button class="close-form" type="reset"><img src="/black-close.cf81a7ab.svg"></button>
+            <button class="close-form" type="reset"><img src="/black-close.c1f81ac7.svg"></button>
             <button id="edit-content-delete" class="button danger" type="button">Delete</button>
         </div>
     </form>
@@ -378,7 +376,7 @@
         <div class="form-button-container">
             <button id="add-group-submit" class="button primary" type="submit">Save</button>
             <button id="add-group-cancel" class="button secondary" type="button">Cancel</button>
-            <button class="close-form" type="reset"><img src="/black-close.cf81a7ab.svg"></button>
+            <button class="close-form" type="reset"><img src="/black-close.c1f81ac7.svg"></button>
         </div>
     </form>
 
@@ -392,7 +390,7 @@
                 <input type="text" name="taskName" placeholder="What's the task called?" autofocus="">
                 <label for="taskDescription">Task Description</label>
                 <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?"></textarea>
-                <label for="subject">Subject</label>
+                <label for="subject">Subject Code</label>
                 <input type="text" name="subject" list="subject" placeholder="What subject is it for?" autocomplete="off">
                 <!-- subjects are populated based on user input -->
                 <datalist id="subject"></datalist>
@@ -403,8 +401,7 @@
                 <div>
                     <!-- status options are populated based on what columns exist -->
                     <select name="status"></select>
-                    <span style="position: relative;left: -30px;
-"><img src="/chevron-down.7b2f881d.svg"></span>
+                    <span style="position: relative;left: -30px;"><img src="/chevron-down.05d1bb01.svg"></span>
                 </div>
                 <label for="taskPriorityRating">Priority Level</label>
                 <!-- radio selection -->
@@ -412,22 +409,19 @@
                     <label class="false-radio">
                         <input type="radio" name="taskPriorityRating" value="Low" checked="">
                         <span>
-                            <div style="background-color: rgb(112, 184, 21);
-"></div>Low
+                            <div style="background-color: rgb(112, 184, 21);"></div>Low
                         </span>
                     </label>
                     <label class="false-radio">
                         <input type="radio" name="taskPriorityRating" value="Mid">
                         <span>
-                            <div style="background-color: rgb(229, 196, 76);
-"></div>Mid
+                            <div style="background-color: rgb(229, 196, 76);"></div>Mid
                         </span>
                     </label>
                     <label class="false-radio">
                         <input type="radio" name="taskPriorityRating" value="High">
                         <span>
-                            <div style="background-color: rgb(245, 146, 115);
-"></div>High
+                            <div style="background-color: rgb(245, 146, 115);"></div>High
                         </span>
                     </label>
                 </div>
@@ -449,7 +443,7 @@
         <div class="form-button-container">
             <button id="task-save" class="button primary" type="submit">Save</button>
             <button id="edit-task-cancel" class="button secondary" type="button">Cancel</button>
-            <button class="close-form" type="reset"><img src="/black-close.cf81a7ab.svg"></button>
+            <button class="close-form" type="reset"><img src="/black-close.c1f81ac7.svg"></button>
             <button id="edit-task-delete" class="button danger" type="button">Delete</button>
         </div>
     </form>
@@ -465,473 +459,26 @@
         <div class="form-button-container">
             <button id="add-column-submit" class="button primary" type="submit">Save</button>
             <button id="add-column-cancel" class="button secondary" type="button">Cancel</button>
-            <button class="close-form" type="button"><img src="/black-close.cf81a7ab.svg"></button>
+            <button class="close-form" type="button"><img src="/black-close.c1f81ac7.svg"></button>
         </div>
     </form>
 
     <!-- SCRIPTS -->
-    <script>// modules are defined as an array
-// [ module function, map of requires ]
-//
-// map of requires is short require name -> numeric require
-//
-// anything defined in a previous bundle is accessed via the
-// orig method which is the require for previous bundles
-
-(function(modules, entry, mainEntry, parcelRequireName, globalName) {
-  /* eslint-disable no-undef */
-  var globalObject =
-    typeof globalThis !== 'undefined'
-      ? globalThis
-      : typeof self !== 'undefined'
-      ? self
-      : typeof window !== 'undefined'
-      ? window
-      : typeof global !== 'undefined'
-      ? global
-      : {};
-  /* eslint-enable no-undef */
-
-  // Save the require from previous bundle to this closure if any
-  var previousRequire =
-    typeof globalObject[parcelRequireName] === 'function' &&
-    globalObject[parcelRequireName];
-
-  var cache = previousRequire.cache || {};
-  // Do not use `require` to prevent Webpack from trying to bundle this call
-  var nodeRequire =
-    typeof module !== 'undefined' &&
-    typeof module.require === 'function' &&
-    module.require.bind(module);
-
-  function newRequire(name, jumped) {
-    if (!cache[name]) {
-      if (!modules[name]) {
-        // if we cannot find the module within our internal map or
-        // cache jump to the current global require ie. the last bundle
-        // that was added to the page.
-        var currentRequire =
-          typeof globalObject[parcelRequireName] === 'function' &&
-          globalObject[parcelRequireName];
-        if (!jumped && currentRequire) {
-          return currentRequire(name, true);
-        }
-
-        // If there are other bundles on this page the require from the
-        // previous one is saved to 'previousRequire'. Repeat this as
-        // many times as there are bundles until the module is found or
-        // we exhaust the require chain.
-        if (previousRequire) {
-          return previousRequire(name, true);
-        }
-
-        // Try the node require function if it exists.
-        if (nodeRequire && typeof name === 'string') {
-          return nodeRequire(name);
-        }
-
-        var err = new Error("Cannot find module '" + name + "'");
-        err.code = 'MODULE_NOT_FOUND';
-        throw err;
-      }
-
-      localRequire.resolve = resolve;
-      localRequire.cache = {};
-
-      var module = (cache[name] = new newRequire.Module(name));
-
-      modules[name][0].call(
-        module.exports,
-        localRequire,
-        module,
-        module.exports,
-        this
-      );
-    }
-
-    return cache[name].exports;
-
-    function localRequire(x) {
-      return newRequire(localRequire.resolve(x));
-    }
-
-    function resolve(x) {
-      return modules[name][1][x] || x;
-    }
-  }
-
-  function Module(moduleName) {
-    this.id = moduleName;
-    this.bundle = newRequire;
-    this.exports = {};
-  }
-
-  newRequire.isParcelRequire = true;
-  newRequire.Module = Module;
-  newRequire.modules = modules;
-  newRequire.cache = cache;
-  newRequire.parent = previousRequire;
-  newRequire.register = function(id, exports) {
-    modules[id] = [
-      function(require, module) {
-        module.exports = exports;
-      },
-      {},
-    ];
-  };
-
-  Object.defineProperty(newRequire, 'root', {
-    get: function() {
-      return globalObject[parcelRequireName];
-    },
-  });
-
-  globalObject[parcelRequireName] = newRequire;
-
-  for (var i = 0; i < entry.length; i++) {
-    newRequire(entry[i]);
-  }
-
-  if (mainEntry) {
-    // Expose entry point to Node, AMD or browser globals
-    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
-    var mainExports = newRequire(mainEntry);
-
-    // CommonJS
-    if (typeof exports === 'object' && typeof module !== 'undefined') {
-      module.exports = mainExports;
-
-      // RequireJS
-    } else if (typeof define === 'function' && define.amd) {
-      define(function() {
-        return mainExports;
-      });
-
-      // <script>
-    } else if (globalName) {
-      this[globalName] = mainExports;
-    }
-  }
-})({"7AXbw":[function(require,module,exports) {
-var HMR_HOST = null;
-var HMR_PORT = 1234;
-var HMR_SECURE = false;
-var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "a1a6817ac482f1c0669a7c5b14ff18aa";
-// @flow
-/*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
-/*::
-import type {
-HMRAsset,
-HMRMessage,
-} from '@parcel/reporter-dev-server/src/HMRServer.js';
-interface ParcelRequire {
-(string): mixed;
-cache: {|[string]: ParcelModule|};
-hotData: mixed;
-Module: any;
-parent: ?ParcelRequire;
-isParcelRequire: true;
-modules: {|[string]: [Function, {|[string]: string|}]|};
-HMR_BUNDLE_ID: string;
-root: ParcelRequire;
-}
-interface ParcelModule {
-hot: {|
-data: mixed,
-accept(cb: (Function) => void): void,
-dispose(cb: (mixed) => void): void,
-// accept(deps: Array<string> | string, cb: (Function) => void): void,
-// decline(): void,
-_acceptCallbacks: Array<(Function) => void>,
-_disposeCallbacks: Array<(mixed) => void>,
-|};
-}
-declare var module: {bundle: ParcelRequire, ...};
-declare var HMR_HOST: string;
-declare var HMR_PORT: string;
-declare var HMR_ENV_HASH: string;
-declare var HMR_SECURE: boolean;
-*/
-var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
-function Module(moduleName) {
-  OldModule.call(this, moduleName);
-  this.hot = {
-    data: module.bundle.hotData,
-    _acceptCallbacks: [],
-    _disposeCallbacks: [],
-    accept: function (fn) {
-      this._acceptCallbacks.push(fn || (function () {}));
-    },
-    dispose: function (fn) {
-      this._disposeCallbacks.push(fn);
-    }
-  };
-  module.bundle.hotData = undefined;
-}
-module.bundle.Module = Module;
-var checkedAssets, /*: {|[string]: boolean|}*/
-acceptedAssets, /*: {|[string]: boolean|}*/
-/*: {|[string]: boolean|}*/
-assetsToAccept;
-function getHostname() {
-  return HMR_HOST || (location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
-}
-function getPort() {
-  return HMR_PORT || location.port;
-}
-// eslint-disable-next-line no-redeclare
-var parent = module.bundle.parent;
-if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = getHostname();
-  var port = getPort();
-  var protocol = HMR_SECURE || location.protocol == 'https:' && !(/localhost|127.0.0.1|0.0.0.0/).test(hostname) ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/');
-  // $FlowFixMe
-  ws.onmessage = function (event) /*: {data: string, ...}*/
-  {
-    checkedAssets = {
-      /*: {|[string]: boolean|}*/
-    };
-    acceptedAssets = {
-      /*: {|[string]: boolean|}*/
-    };
-    assetsToAccept = [];
-    var data = /*: HMRMessage*/
-    JSON.parse(event.data);
-    if (data.type === 'update') {
-      // Remove error overlay if there is one
-      removeErrorOverlay();
-      let assets = data.assets.filter(asset => asset.envHash === HMR_ENV_HASH);
-      // Handle HMR Update
-      var handled = false;
-      assets.forEach(asset => {
-        var didAccept = asset.type === 'css' || asset.type === 'js' && hmrAcceptCheck(module.bundle.root, asset.id, asset.depsByBundle);
-        if (didAccept) {
-          handled = true;
-        }
-      });
-      if (handled) {
-        console.clear();
-        assets.forEach(function (asset) {
-          hmrApply(module.bundle.root, asset);
-        });
-        for (var i = 0; i < assetsToAccept.length; i++) {
-          var id = assetsToAccept[i][1];
-          if (!acceptedAssets[id]) {
-            hmrAcceptRun(assetsToAccept[i][0], id);
-          }
-        }
-      } else {
-        window.location.reload();
-      }
-    }
-    if (data.type === 'error') {
-      // Log parcel errors to console
-      for (let ansiDiagnostic of data.diagnostics.ansi) {
-        let stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
-        console.error('🚨 [parcel]: ' + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
-      }
-      // Render the fancy html overlay
-      removeErrorOverlay();
-      var overlay = createErrorOverlay(data.diagnostics.html);
-      // $FlowFixMe
-      document.body.appendChild(overlay);
-    }
-  };
-  ws.onerror = function (e) {
-    console.error(e.message);
-  };
-  ws.onclose = function (e) {
-    if (undefined !== 'test') {
-      console.warn('[parcel] 🚨 Connection to the HMR server was lost');
-    }
-  };
-}
-function removeErrorOverlay() {
-  var overlay = document.getElementById(OVERLAY_ID);
-  if (overlay) {
-    overlay.remove();
-    console.log('[parcel] ✨ Error resolved');
-  }
-}
-function createErrorOverlay(diagnostics) {
-  var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID;
-  let errorHTML = '<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">';
-  for (let diagnostic of diagnostics) {
-    let stack = diagnostic.codeframe ? diagnostic.codeframe : diagnostic.stack;
-    errorHTML += `
-      <div>
-        <div style="font-size: 18px; font-weight: bold; margin-top: 20px;">
-          🚨 ${diagnostic.message}
-        </div>
-        <pre>
-          ${stack}
-        </pre>
-        <div>
-          ${diagnostic.hints.map(hint => '<div>' + hint + '</div>').join('')}
-        </div>
-      </div>
-    `;
-  }
-  errorHTML += '</div>';
-  overlay.innerHTML = errorHTML;
-  return overlay;
-}
-function getParents(bundle, id) /*: Array<[ParcelRequire, string]>*/
-{
-  var modules = bundle.modules;
-  if (!modules) {
-    return [];
-  }
-  var parents = [];
-  var k, d, dep;
-  for (k in modules) {
-    for (d in modules[k][1]) {
-      dep = modules[k][1][d];
-      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push([bundle, k]);
-      }
-    }
-  }
-  if (bundle.parent) {
-    parents = parents.concat(getParents(bundle.parent, id));
-  }
-  return parents;
-}
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    if (link.parentNode !== null) {
-      // $FlowFixMe
-      link.parentNode.removeChild(link);
-    }
-  };
-  newLink.setAttribute('href', // $FlowFixMe
-  link.getAttribute('href').split('?')[0] + '?' + Date.now());
-  // $FlowFixMe
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      // $FlowFixMe[incompatible-type]
-      var href = /*: string*/
-      links[i].getAttribute('href');
-      var hostname = getHostname();
-      var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-      var absolute = (/^https?:\/\//i).test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
-      if (!absolute) {
-        updateLink(links[i]);
-      }
-    }
-    cssTimeout = null;
-  }, 50);
-}
-function hmrApply(bundle, /*: ParcelRequire*/
-asset) /*:  HMRAsset*/
-{
-  var modules = bundle.modules;
-  if (!modules) {
-    return;
-  }
-  if (asset.type === 'css') {
-    reloadCSS();
-    return;
-  }
-  let deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
-  if (deps) {
-    var fn = new Function('require', 'module', 'exports', asset.output);
-    modules[asset.id] = [fn, deps];
-  } else if (bundle.parent) {
-    hmrApply(bundle.parent, asset);
-  }
-}
-function hmrAcceptCheck(bundle, /*: ParcelRequire*/
-id, /*: ParcelRequire*/
-/*: string*/
-depsByBundle) /*: ?{ [string]: { [string]: string } }*/
-{
-  var modules = bundle.modules;
-  if (!modules) {
-    return;
-  }
-  if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
-    // If we reached the root bundle without finding where the asset should go,
-    // there's nothing to do. Mark as "accepted" so we don't reload the page.
-    if (!bundle.parent) {
-      return true;
-    }
-    return hmrAcceptCheck(bundle.parent, id, depsByBundle);
-  }
-  if (checkedAssets[id]) {
-    return;
-  }
-  checkedAssets[id] = true;
-  var cached = bundle.cache[id];
-  assetsToAccept.push([bundle, id]);
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    return true;
-  }
-  return getParents(module.bundle.root, id).some(function (v) {
-    return hmrAcceptCheck(v[0], v[1], null);
-  });
-}
-function hmrAcceptRun(bundle, /*: ParcelRequire*/
-id) /*: string*/
-{
-  var cached = bundle.cache[id];
-  bundle.hotData = {};
-  if (cached && cached.hot) {
-    cached.hot.data = bundle.hotData;
-  }
-  if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
-    cached.hot._disposeCallbacks.forEach(function (cb) {
-      cb(bundle.hotData);
-    });
-  }
-  delete bundle.cache[id];
-  bundle(id);
-  cached = bundle.cache[id];
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    cached.hot._acceptCallbacks.forEach(function (cb) {
-      var assetsToAlsoAccept = cb(function () {
-        return getParents(module.bundle.root, id);
-      });
-      if (assetsToAlsoAccept && assetsToAccept.length) {
-        assetsToAccept.push.apply(assetsToAccept, assetsToAlsoAccept);
-      }
-    });
-  }
-  acceptedAssets[id] = true;
-}
-
-},{}],"2Ippo":[function(require,module,exports) {
-var deviceSize;
-},{}]},["7AXbw","2Ippo"], "2Ippo", "parcelRequirec526")
-
-</script>
-    <script src="/index.8e0a979d.js"></script>
+    <script>var deviceSize;</script>
+    <script src="/main.1f19ae8e.js"></script>
 
     <!-- Main JS for tasks -->
-    <script src="/index.05443c22.js"></script>
-    <script src="/index.d7a8e4fc.js"></script>
+    <script src="/task-form.13727781.js"></script>
+    <script src="/column-form.81f2e434.js"></script>
 
     <!-- Main JS for content -->
-    <script src="/index.07f22028.js"></script>
-    <script src="/index.bcf40e1c.js"></script>
+    <script src="/content-form.9e7e7ba9.js"></script>
+    <script src="/group-form.1dc0ff30.js"></script>
 
     <!-- Pop-up content -->
-    <script src="/index.479e99b9.js"></script>
-    <script src="/index.b1ba32bc.js"></script>
-    <script src="/index.61a69f93.js"></script>
+    <script src="/pop-up.cc1feb1b.js"></script>
+    <script src="/time.b749e876.js"></script>
+    <script src="/music.6db5f702.js"></script>
 </body>
 
 </html>

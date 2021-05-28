@@ -722,7 +722,7 @@ class Task {
   /*this creates a new card and applies it to the kanban board*/
   createCard(n) {
     // initialising new elements
-    let card = document.createElement('article'), subjectTag = document.createElement('span'), title = document.createElement('h3'), description = document.createElement('p'), timeDetails = document.createElement('div'), dueDate = document.createElement('h4'), timeTag = document.createElement('span'), editIcon = document.createElement('a'), timeIcon = document.createElement('div'), line = document.createElement('HR');
+    let card = document.createElement('article'), subjectTag = document.createElement('span'), title = document.createElement('h3'), description = document.createElement('p'), informationDiv = document.createElement('div'), timeDetails = document.createElement('div'), dueDate = document.createElement('h4'), timeTag = document.createElement('span'), editIcon = document.createElement('a'), timeIcon = document.createElement('div'), line = document.createElement('HR');
     // setting classes and attributes
     editIcon.classList.add('edit');
     editIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -758,7 +758,7 @@ class Task {
       let day = dueDateElements[2];
       dueDate.textContent = 'Due ' + day + ' ' + month;
     } else {
-      dueDate.textContent = '';
+      dueDate.textContent = 'No due date';
     }
     // concatenating hour and minute estimated time durations
     if (this.estimatedTimeHr > 0 && this.estimatedTimeMin > 0) {
@@ -775,11 +775,14 @@ class Task {
     timeDetails.appendChild(dueDate);
     timeDetails.appendChild(timeTag);
     // appending everything to whole div
-    if (this.subject.length != 0) {
-      card.appendChild(subjectTag);
-    }
-    card.appendChild(title);
-    card.appendChild(description);
+    // if (this.subject.length != 0) {
+    card.appendChild(subjectTag);
+    // }
+    informationDiv.appendChild(title);
+    informationDiv.appendChild(description);
+    // card.appendChild(title)
+    // card.appendChild(description)
+    card.appendChild(informationDiv);
     card.appendChild(line);
     card.appendChild(timeDetails);
     card.appendChild(editIcon);

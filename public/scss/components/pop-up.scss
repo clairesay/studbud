@@ -1,3 +1,4 @@
+// pop-up tabs
 .pop-up {
     position: absolute;
     bottom: 17px;
@@ -44,6 +45,8 @@
         }
     }
 }
+
+// different states of the pop-up tabs
 .pop-up[state=active] {
     &#music {
         nav {
@@ -54,10 +57,23 @@
     }
 }
 
+.pop-up#music[state=standby], .pop-up#music[state=peek] {
+    nav {
+        width: initial;
+    }
+    #current {
+        padding-top: 0;
+    }
+}
+
 .pop-up[state=standby] {
     height: 36px;
     width: 36px;
     display: flex;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     &#time {
         right: 110px;
@@ -88,6 +104,11 @@
 
 .pop-up[state=peek] {
     height: 36px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
     &#time {
         nav {
             .collapse {
@@ -137,6 +158,7 @@
     }
 }
 
+// this is the animation for the pomodoro-timer
 @keyframes load-spans {
     from {width: 0}
     to {width: inherit}

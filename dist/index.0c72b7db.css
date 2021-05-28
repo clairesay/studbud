@@ -101,7 +101,7 @@ table {
   font-weight: 400;
   white-space: nowrap;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 #music #current-controls .metadata h3.artist {
@@ -423,10 +423,6 @@ body main #content {
   box-shadow: 0px 0px 0px 1px #0e131809 inset;
   display: flex;
 }
-body main #tasks {
-  display: grid;
-  grid-auto-flow: column;
-}
 body main .tab {
   position: absolute;
   top: -60px;
@@ -487,7 +483,9 @@ body main .tab.active svg:active {
   background-color: #eeeeee;
 }
 #tasks {
-  max-width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
   overflow: scroll hidden;
@@ -707,7 +705,7 @@ body main .tab.active svg:active {
 }
 #tasks div.column div.cards article.card h3 {
   line-height: 20px;
-  margin-top: 4px;
+  margin-top: 12px;
   width: 85%;
   white-space: nowrap;
   overflow: hidden;
@@ -802,18 +800,22 @@ body main .tab.active svg:active {
 }
 #tasks.list div.column div.cards article.card {
   background-color: #fefefe;
-  display: flex;
   margin: 0 0 36px 0;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 150px auto 250px 28px;
+  grid-template-areas: "Subject Info TimeDetails Edit";
   padding: 6px;
+}
+#tasks.list div.column div.cards article.card div {
+  display: flex;
+  flex-direction: column;
 }
 #tasks.list div.column div.cards article.card span.tag.subject ~ h3, #tasks.list div.column div.cards article.card h3 {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-  margin: auto 12px;
+  margin: auto 0;
 }
 #tasks.list div.column div.cards article.card hr {
   display: none;
@@ -828,22 +830,32 @@ body main .tab.active svg:active {
 #tasks.list div.column div.cards article.card span.tag.subject {
   margin: auto 12px;
   padding: 3px 17px;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  grid-area: Subject;
 }
 #tasks.list div.column div.cards article.card div.time-details {
   margin-left: auto;
   padding: 0;
   justify-content: flex-end;
   min-width: 250px;
+  grid-area: TimeDetails;
 }
 #tasks.list div.column div.cards article.card div.time-details span.tag.time {
   margin: auto 12px;
 }
 #tasks.list div.column div.cards article.card .edit {
+  margin: auto;
   padding: 6px;
   top: 0;
   right: 0;
   opacity: 0.4;
   position: relative;
+  grid-area: Edit;
 }
 #tasks.list div.column div.cards article.card:last-child, #tasks.list div.column div.cards article.card {
   margin-bottom: 12px;
@@ -1413,6 +1425,7 @@ form label span.required {
     padding: 0 0 6px 0;
   }
   #tasks.list div.column div.cards article.card {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
@@ -1445,6 +1458,12 @@ form label span.required {
     position: absolute;
     top: 12px;
     right: 16px;
+  }
+  #tasks.list div.column div.cards article.card div.time-details {
+    width: 100%;
+  }
+  #tasks.list div.column div.cards article.card div.time-details h4 {
+    margin-right: auto;
   }
 
   form#add-column-form, form#add-group-form {
@@ -1632,6 +1651,9 @@ form section div pre {
   width: 36px;
   display: flex;
 }
+.pop-up[state=standby]:hover {
+  cursor: pointer;
+}
 .pop-up[state=standby]#time {
   right: 110px;
 }
@@ -1656,6 +1678,9 @@ form section div pre {
 }
 .pop-up[state=peek] {
   height: 36px;
+}
+.pop-up[state=peek]:hover {
+  cursor: pointer;
 }
 .pop-up[state=peek]#time nav .collapse {
   visibility: hidden;

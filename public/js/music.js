@@ -1,5 +1,5 @@
 // Import the URL to an image file
-import music from "url:../audio/songs/BEAST.mp3";
+// import music from "url:../audio/songs/BEAST.mp3";
 
 // import allMusic from "url:../audio/songs/*.mp3";
 
@@ -14,77 +14,79 @@ window.player = player;
 // music, artists and album art all drawn from the open source music sight Free Music Archive https://freemusicarchive.org/home
 var songs = [
     {
-        source: music,
-        title: 'Amerika',
-        artist: 'Audiobinger',
-        album_art: './audiobinger.jpg'
+        source: './audio/Moods.mp3',
+        title: 'Moods',
+        artist: 'Shaolin Dub',
+        album_art: './albumart/shaolin-dub2.jpg'
     },
     {
-        source: 'If-I-Could-Remember.mp3',
+        source: './audio/Amerika.mp3',
+        title: 'Amerika',
+        artist: 'Audiobinger',
+        album_art: './albumart/audiobinger.jpg'
+    },
+
+    {
+        source: './audio/Snow-Dawn.mp3',
+        title: 'Snow Dawn',
+        artist: 'Ketsa',
+        album_art: './albumart/Ketsa.jpg'
+    },
+    {
+        source: './audio/Pray.mp3',
+        title: 'Pray',
+        artist: 'Makaih Beats',
+        album_art: './albumart/makaih Beats.jpg'
+    },
+    {
+        source: './audio/BEAST.mp3',
+        title: 'BEAST',
+        artist: 'Paul Cesar Beats',
+        album_art: './albumart/paul-cesar-beats.jpg'
+    },
+    {
+        source: './audio/If-I-Could-Remember.mp3',
         title: 'If I Could Remember',
         artist: 'Ketsa',
-        album_art: 'images\albumart\Ketsa.jpg'
+        album_art: './albumart/Ketsa.jpg'
     },
-    // {
-    //     source: 'audio\songs\Ketsa - Snow-Dawn.mp3',
-    //     title: 'Snow Dawn',
-    //     artist: 'Ketsa',
-    //     album_art: 'images\albumart\Ketsa.jpg'
-    // },
-    // {
-    //     source: 'Synchronised.mp3',
-    //     title: 'Synchronised',
-    //     artist: 'Ketsa',
-    //     album_art: 'images\albumart\Ketsa.jpg'
-    // },
-    // {
-    //     source: 'Pray.mp3',
-    //     title: 'Pray',
-    //     artist: 'Makaih Beats',
-    //     album_art: 'images\albumart\makaih Beats.jpg'
-    // },
-    // {
-    //     source: 'BEAST.mp3',
-    //     title: 'BEAST',
-    //     artist: 'Paul Cesar Beats',
-    //     album_art: 'images\albumart\paul-cesar-beats.jpg'
-    // },
-    // {
-    //     source: 'COFFEE FI.mp3',
-    //     title: 'COFFEE FI',
-    //     artist: 'Paul Cesar Beats',
-    //     album_art: 'images\albumart\paul-cesar-beats.jpg'
-    // },
-    // {
-    //     source: 'Chuckin-It.mp3',
-    //     title: 'Chuckin It',
-    //     artist: 'Shaolin Dub',
-    //     album_art: 'images\albumart\shaolin-dub3.jpg'
-    // },
-    // {
-    //     source: 'Dogman.mp3',
-    //     title: 'Dogman',
-    //     artist: 'Shaolin Dub',
-    //     album_art: 'images\albumart\shaolin-dub.jpg'
-    // },
-    // {
-    //     source: 'Moods.mp3',
-    //     title: 'Moods',
-    //     artist: 'Shaolin Dub',
-    //     album_art: 'images\albumart\shaolin-dub2.jpg'
-    // },
-    // {
-    //     source: 'Point-Pleasant.mp3',
-    //     title: 'Point Pleasant',
-    //     artist: 'Shaolin Dub',
-    //     album_art: 'images\albumart\shaolin-dub.jpg'
-    // },
-    // {
-    //     source: 'Empire-of-Light.mp3',
-    //     title: 'Empire of Light',
-    //     artist: 'Siddhartha Corsus',
-    //     album_art: 'images\albumart\siddharthacorsus.jpg'
-    // },
+
+    {
+        source: './audio/Chuckin-It.mp3',
+        title: 'Chuckin It',
+        artist: 'Shaolin Dub',
+        album_art: './albumart/shaolin-dub3.jpg'
+    },
+    {
+        source: './audio/Synchronised.mp3',
+        title: 'Synchronised',
+        artist: 'Ketsa',
+        album_art: './albumart/Ketsa.jpg'
+    },
+    {
+        source: './audio/COFFEE FI.mp3',
+        title: 'COFFEE FI',
+        artist: 'Paul Cesar Beats',
+        album_art: './albumart/paul-cesar-beats.jpg'
+    },
+    {
+        source: './audio/Point-Pleasant.mp3',
+        title: 'Point Pleasant',
+        artist: 'Shaolin Dub',
+        album_art: './albumart/shaolin-dub.jpg'
+    },
+    {
+        source: './audio/Empire-of-Light.mp3',
+        title: 'Empire of Light',
+        artist: 'Siddhartha Corsus',
+        album_art: './albumart/siddharthacorsus.jpg'
+    },
+    {
+        source: './audio/Dogman.mp3',
+        title: 'Dogman',
+        artist: 'Shaolin Dub',
+        album_art: './albumart/shaolin-dub.jpg'
+    },
 ]
 
 const musicPlayer = document.querySelector('#music')

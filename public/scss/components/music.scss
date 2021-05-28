@@ -1,5 +1,9 @@
 #music {
     right: 30px;
+    nav {
+        margin-left: auto;
+        width: max-content;
+    }
 
     .plyr__progress input[type="range"] {
         margin-bottom: 12px;
@@ -8,6 +12,20 @@
             display: none;
         }
         --plyr-color-main: #09997f;
+    }
+
+    #current {
+        display: flex;
+        flex-direction: column;
+        padding-top: 90px;
+        img {
+            position: absolute;
+            top: 28px;
+            width: 150px;
+            left: 50%;
+            transform: translate(-50%);
+            border-radius: $big-radius;
+        }
     }
 
     #current-controls {
@@ -48,7 +66,7 @@
                 font-weight: 400;
                 white-space: nowrap;
                 width: 100%;
-                overflow-x: hidden;
+                overflow: hidden;
                 text-overflow: ellipsis;
             }
             h3.artist {

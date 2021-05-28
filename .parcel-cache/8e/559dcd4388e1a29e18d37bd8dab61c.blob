@@ -1,6 +1,0 @@
-var total = document.querySelectorAll('.total')
-total.forEach(function set(object) {
-    // var cards = object.parentElement.querySelectorAll('~ div.cards .card');
-    // console.log()
-    object.textContent = cards.length;
-})

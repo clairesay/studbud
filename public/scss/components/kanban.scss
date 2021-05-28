@@ -1,6 +1,6 @@
 // KANBAN BOARD
 #tasks {
-    max-width: 100%;
+    width: max-content;
     scroll-snap-type: x mandatory;
     overflow: scroll hidden;
 
@@ -46,7 +46,6 @@
     
         &.column:last-of-type {
             margin-right: 36px;
-            // box-sizing: border-box;
         }
 
         // contains column settings + title
@@ -268,7 +267,7 @@
 
                 h3 {
                     line-height: 20px;
-                    margin-top: 4px;
+                    margin-top: 12px;
                     width: 85%;
                     white-space: nowrap;
                     overflow: hidden;
@@ -376,16 +375,19 @@
             
             article.card {
                 background-color: $white;
-                display: flex;
                 margin: 0 0 36px 0;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
+                display: grid;
+                grid-template-rows: 1fr;
+                grid-template-columns: 150px auto 250px 28px;
+                grid-template-areas: 'Subject Info TimeDetails Edit';
                 padding: 6px;
-                // filter: none;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                }
                 span.tag.subject ~ h3, h3 {
                     max-width: max-content;
-                    margin: auto 12px;
+                    margin: auto 0;
                 }
                 hr {
                     display: none;
@@ -401,28 +403,38 @@
                 span.tag.subject {
                     margin: auto 12px;
                     padding: 3px 17px;
+
+                    max-width: max-content;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    grid-area: Subject;
+                    &:empty {
+                        border: none;
+                    }
                 }
 
                 div.time-details {
                     margin-left: auto;
                     padding: 0;
+                    flex-direction: row;
                     justify-content: flex-end;
                     min-width: 250px;
+                    grid-area: TimeDetails;
                     span.tag.time {
                         margin: auto 12px;
                     }
                 }
 
                 .edit {
+                    margin: auto;
                     padding: 6px;
-                    // position: absolute;
-                    // top: 12px;
-                    // right: 16px;
                     top: 0;
                     right: 0;
                     opacity: 0.4;
                     position: relative;
-                    // left: 0;
+                    grid-area: Edit;
                 }
 
                 &:last-child, & {

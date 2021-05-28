@@ -1,7 +1,0 @@
-// SETTING THE TOTAL NUMBER OF CARDS IN EACH COLUMN FOR DISPLAY
-
-// initialising the total for each of the elements
-var total = document.querySelectorAll('.total')
-
-// for each of them
-total.forEach(set(object))

@@ -37,11 +37,6 @@ body {
             display: flex;
         }
 
-        #tasks {
-            display: grid;
-            grid-auto-flow: column;
-        }
-
         // TABS FOR NAVIGATING
         .tab {
             position: absolute;

@@ -14,8 +14,16 @@
     "url": "git+https://github.com/clairesay/studbud.git"
   },
   "staticFiles": {
-    "staticPath": "public",
-    "watcherGlob": "**"
+    "staticPath": [
+      {
+        "staticPath": "public/audio/songs",
+        "staticOutDir": "audio"
+      },
+      {
+        "staticPath": "public/images/albumart",
+        "staticOutDir": "albumart"
+      }
+    ]
   },
   "author": "Claire Say",
   "license": "ISC",
@@ -31,7 +39,7 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.0-beta.2",
     "autoprefixer": "^10.2.5",
-    "parcel": "^2.0.0-beta.2",
+    "parcel-bundler": "^1.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "postcss": "^8.2.13"
   }

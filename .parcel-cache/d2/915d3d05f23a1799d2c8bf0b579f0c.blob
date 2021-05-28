@@ -1,9 +1,0 @@
-var total = document.getElementsByClassName('total')
-
-total.forEach(funct(object))
-
-function funct(object) {
-    var cards = object.parentElement.querySelectorAll('div.cards .card');
-
-    total.textContent = cards.length;
-}
