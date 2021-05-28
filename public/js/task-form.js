@@ -10,7 +10,7 @@ function updateSubjectList() {
         let taskSubject = task.subject.trim().toUpperCase()
         let duplicate = false
         // if the subject already exists in the subjectlist, its a duplicate so don't push
-        for (i in subjectList) {
+        for (let i = 0; i < subjectList.length; i ++) {
             if (subjectList[i] == taskSubject) {
                 duplicate = true
             }

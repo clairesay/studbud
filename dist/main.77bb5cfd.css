@@ -1656,6 +1656,10 @@ form section div pre {
   padding: 16px;
   filter: drop-shadow(0 0 2px #30303018);
   z-index: 3;
+  transition: filter 0.2s ease-out;
+}
+.pop-up:hover {
+  filter: drop-shadow(0 0 4px #30303028);
 }
 .pop-up nav {
   display: flex;

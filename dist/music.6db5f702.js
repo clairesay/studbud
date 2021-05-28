@@ -118,9 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/music.js":[function(require,module,exports) {
-// Import the URL to an image file
-// import music from "url:../audio/songs/BEAST.mp3";
-// import allMusic from "url:../audio/songs/*.mp3";
 // https://github.com/sampotts/plyr/#options
 var player = new Plyr('audio', {
   controls: ['progress']
@@ -419,7 +416,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50923" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50303" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

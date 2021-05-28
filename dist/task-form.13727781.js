@@ -226,15 +226,10 @@ var Task = /*#__PURE__*/function () {
 
       timeDetails.appendChild(timeIcon);
       timeDetails.appendChild(dueDate);
-      timeDetails.appendChild(timeTag); // appending everything to whole div
-      // if (this.subject.length != 0) {
-
-      card.appendChild(subjectTag); // }
-
+      timeDetails.appendChild(timeTag);
+      card.appendChild(subjectTag);
       informationDiv.appendChild(title);
-      informationDiv.appendChild(description); // card.appendChild(title)
-      // card.appendChild(description)
-
+      informationDiv.appendChild(description);
       card.appendChild(informationDiv);
       card.appendChild(line);
       card.appendChild(timeDetails);
@@ -369,7 +364,7 @@ function updateSubjectList() {
     var taskSubject = task.subject.trim().toUpperCase();
     var duplicate = false; // if the subject already exists in the subjectlist, its a duplicate so don't push
 
-    for (i in subjectList) {
+    for (var i = 0; i < subjectList.length; i++) {
       if (subjectList[i] == taskSubject) {
         duplicate = true;
       }
@@ -555,8 +550,8 @@ taskCloseButton.addEventListener('click', function () {
 taskDeleteButton.addEventListener('click', function () {
   var id = parseInt(taskSaveButton.value); // iterate through existing elements in the task list and remove the match
 
-  for (var _i = 0; _i < taskList.length; _i++) {
-    var oldTask = taskList[_i];
+  for (var i = 0; i < taskList.length; i++) {
+    var oldTask = taskList[i];
 
     if (oldTask.id == id) {
       taskList.splice(taskList.indexOf(oldTask), 1);
@@ -593,8 +588,8 @@ taskSaveButton.addEventListener('click', function (event) {
     if (createTaskForm.classList.contains('update')) {
       taskID = parseInt(taskSaveButton.value);
 
-      for (var _i2 = 0; _i2 < taskList.length; _i2++) {
-        var oldTask = taskList[_i2];
+      for (var i = 0; i < taskList.length; i++) {
+        var oldTask = taskList[i];
 
         if (oldTask.id == taskID) {
           taskList.splice(taskList.indexOf(oldTask), 1);
@@ -662,7 +657,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50923" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50303" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
