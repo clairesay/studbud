@@ -46,6 +46,7 @@
                 display: flex;
                 &:hover {
                     background-color: $light-grey;
+                    cursor: pointer;
                 }
                 svg {
                     margin: auto;
@@ -88,6 +89,7 @@
                 border-radius: $mini-radius;
                 &:hover {
                     background-color: $light-grey;
+                    cursor: pointer;
                 }
             }
         }

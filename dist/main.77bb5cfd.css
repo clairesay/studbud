@@ -107,6 +107,7 @@ table {
 }
 #music #current-controls .controls button:hover {
   background-color: #eeeeee;
+  cursor: pointer;
 }
 #music #current-controls .controls button svg {
   margin: auto;
@@ -149,6 +150,7 @@ table {
 }
 #music h2 #shuffle svg:hover {
   background-color: #eeeeee;
+  cursor: pointer;
 }
 #music .playlist {
   display: grid;
@@ -821,7 +823,7 @@ body main .tab.active svg:active {
   overflow-x: clip;
 }
 #tasks.list div.column div.cards article.card {
-  background-color: #fafafa;
+  background-color: #fefefe;
   min-width: max-content;
   width: calc(100% - 12px);
   margin: 0 0 36px 0;
