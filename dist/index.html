@@ -81,8 +81,9 @@
                     <!-- for empty states, otherwise this is where individual cards go -->
                     <article id="empty-state-content">
                         <img src="/empty-content.4ba0c4b7.png">
-                        <h3>It’s empty around here.</h3>
+                        <h3>It’s empty around here.
                         <p>Save helpful content snippets before you lose them.</p>
+                    </h3>
                         <button class="button primary" type="button">Add content</button>
                     </article>
                 </div>
@@ -113,8 +114,9 @@
                     <!-- for empty states, otherwise this is where individual cards go -->
                     <article id="empty-state-tasks" class="filtered">
                         <img src="/empty-tasks.74fd08f2.png">
-                        <h3>You have no tasks.</h3>
+                        <h3>You have no tasks.
                         <p>Hit that big green button when you’re ready for more.</p>
+                    </h3>
                         <button class="button primary" type="button">Create task</button>
                     </article>
                 </div>
@@ -337,13 +339,13 @@
         <section>
             <div>
                 <label for="contentTitle">Title <span class="required">*</span></label>
-                <input type="text" name="contentTitle" placeholder="What is this content about?" maxlength="150" autofocus="">
+                <input type="text" name="contentTitle" placeholder="What is this content about?" maxlength="50" autofocus="">
+                <label for="link">Link <span class="required">*</span></label>
+                <input type="text" name="link" placeholder="Paste the resource link here">
                 <label for="conceptDescription">Code snippet</label>
                 <pre>
                     <textarea name="conceptDescription" contenteditable="true" maxlength="300" placeholder="Paste short reference code here." spellcheck="false"></textarea>
                 </pre>
-                <label for="link">Link <span class="required">*</span></label>
-                <input type="text" name="link" placeholder="Paste the resource link here">
             </div>
             <div>
                 <label for="group">Group</label>
@@ -387,7 +389,7 @@
         <section>
             <div>
                 <label for="taskName">Task Name <span class="required">*</span></label>
-                <input type="text" name="taskName" placeholder="What's the task called?" autofocus="">
+                <input type="text" name="taskName" placeholder="What's the task called?" maxlength="50" autofocus="">
                 <label for="taskDescription">Task Description</label>
                 <textarea type="text" name="taskDescription" maxlength="150" placeholder="What are the steps to complete it?"></textarea>
                 <label for="subject">Subject Code</label>

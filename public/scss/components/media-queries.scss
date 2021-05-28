@@ -23,7 +23,6 @@
 
     #tasks {
         div.column {
-            min-width: 260px;
             width: 75vw;
             max-width: 332px;
         }
@@ -41,8 +40,13 @@
             padding: 16px;
             filter: drop-shadow(0 0 2px #30303018);
             margin: 16px 0;
+            min-width: initial;
+            width: initial;
             span.tag.subject {
                 margin: 0 0 12px 0;
+                &:empty {
+                    display: none;
+                }
             }
             div.time-details span.tag.time {
                 margin-right: 0;
@@ -51,6 +55,7 @@
                 max-width: initial;
                 margin: 0;
                 white-space: normal;
+                width: 100%;
             }
             hr {
                 display: inline;
@@ -62,7 +67,7 @@
                 overflow: auto;
                 display: inline;
                 max-width: 100%;
-                margin: 6px 0 12px 0;
+                margin: 6px 0;
             }
             .edit {
                 position: absolute;

@@ -208,6 +208,10 @@ taskDeleteButton.addEventListener('click', function () {
             oldCard.remove();
         }
     }
+
+    // scroll back to top of form
+    createTaskForm.scrollTop = 0;
+
     // reset form and other functionality
     toggleTaskForm()
     reupdate()
@@ -252,6 +256,9 @@ taskSaveButton.addEventListener('click', function (event) {
         let newTask = new Task(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList)
         // append to taskList and create new card with task
         newTask.createCard(newTask.addTask());
+
+        // scroll back to top of form
+        createTaskForm.scrollTop = 0;
 
         // close the form and add event listeners to any new items
         toggleTaskForm()

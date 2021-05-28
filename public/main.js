@@ -161,6 +161,7 @@ toggleTaskView.addEventListener('click', function () {
             tasks.classList.remove('list')
 
             listView = false
+
         } else {
             listIcon.style.display = 'inline';
             gridIcon.style.display = 'none';

@@ -113,6 +113,10 @@ form {
         &:hover {
             filter: drop-shadow(0 0 2px #30303048);
         }
+
+        &::placeholder {
+            color: $grey;
+        }
     }
     code:empty:before {
         content:attr(data-text);

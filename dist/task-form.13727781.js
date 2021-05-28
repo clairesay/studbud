@@ -563,8 +563,10 @@ taskDeleteButton.addEventListener('click', function () {
       var oldCard = document.getElementById('t-' + id);
       oldCard.remove();
     }
-  } // reset form and other functionality
+  } // scroll back to top of form
 
+
+  createTaskForm.scrollTop = 0; // reset form and other functionality
 
   toggleTaskForm();
   reupdate();
@@ -610,8 +612,10 @@ taskSaveButton.addEventListener('click', function (event) {
     var _newTask = new _task.default(taskID, task.name, task.description, task.subject, task.status, task.priorityRating, task.estimatedTimeHr, task.estimatedTimeMin, task.dueDate, taskList); // append to taskList and create new card with task
 
 
-    _newTask.createCard(_newTask.addTask()); // close the form and add event listeners to any new items
+    _newTask.createCard(_newTask.addTask()); // scroll back to top of form
 
+
+    createTaskForm.scrollTop = 0; // close the form and add event listeners to any new items
 
     toggleTaskForm();
     reupdate();
@@ -658,7 +662,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62103" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

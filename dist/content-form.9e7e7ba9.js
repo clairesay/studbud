@@ -446,8 +446,10 @@ contentDeleteButton.addEventListener('click', function (event) {
       oldTile.remove();
       contentSaveButton.value = '';
     }
-  } // reset form status
+  } // scroll back to top of form
 
+
+  createContentForm.scrollTop = 0; // reset form status
 
   toggleContentForm();
   reupdate();
@@ -498,7 +500,9 @@ contentSaveButton.addEventListener('click', function (event) {
 
     content = new _content.default(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList); // create DOM and also save to list
 
-    content.createCard(content.addContent()); // update tile count and group links
+    content.createCard(content.addContent()); // scroll back to top of form
+
+    createContentForm.scrollTop = 0; // update tile count and group links
 
     toggleContentForm();
     resource.countTiles();
@@ -551,7 +555,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62103" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

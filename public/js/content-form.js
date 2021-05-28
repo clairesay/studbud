@@ -149,6 +149,10 @@ contentDeleteButton.addEventListener('click', function (event) {
             contentSaveButton.value = ''
         }
     }
+    
+    // scroll back to top of form
+    createContentForm.scrollTop = 0;
+
     // reset form status
     toggleContentForm()
     reupdate()
@@ -201,6 +205,9 @@ contentSaveButton.addEventListener('click', function (event) {
     content = new Content(contentID, contentTitle, contentDescription, contentLink, contentGroup, contentList)
     // create DOM and also save to list
     content.createCard(content.addContent());
+
+    // scroll back to top of form
+    createContentForm.scrollTop = 0;
 
     // update tile count and group links
     toggleContentForm()

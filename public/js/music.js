@@ -297,7 +297,7 @@ playlistContainer.addEventListener("scroll", function(){ // or window.addEventLi
       
    }
    if (scrollCount > 5) {
-      playlistContainer.style.height = '250px';
+      playlistContainer.style.height = '200px';
       scrollCount = 0
    } 
 

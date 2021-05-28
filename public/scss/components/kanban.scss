@@ -229,7 +229,7 @@
                 scroll-snap-align: start;
 
                 *:hover {
-                    cursor: initial;
+                    cursor: grab;
                 }
     
                 &:hover {
@@ -285,6 +285,9 @@
                     border: 1.2px solid $black;
                     & ~ h3 {
                         margin: 16px 0 8px 0;
+                    }
+                    &:empty {
+                        display: none;
                     }
                 }
 
@@ -343,14 +346,17 @@
 
     article#empty-state-tasks {
         min-width: 260px;
-        max-width: 280px;
+        max-width: max-content;
+        img {
+            display: none;
+        }
     }
 
     div.column {
         background-color: transparent;
         height: auto;
         width: auto;
-        max-width: 1000px;
+        max-width: initial;
         margin: 36px 36px 0 36px;
         padding: 0;
         box-shadow: none;
@@ -372,20 +378,29 @@
             width: auto;
             margin-top: 0;
             padding: 2px;
+            overflow-x: clip;
             
             article.card {
-                background-color: $white;
+                background-color: $dark-white;
+                min-width: max-content;
+                width: calc(100% - 12px);
                 margin: 0 0 36px 0;
                 display: grid;
                 grid-template-rows: 1fr;
                 grid-template-columns: 150px auto 250px 28px;
                 grid-template-areas: 'Subject Info TimeDetails Edit';
                 padding: 6px;
+
+                &:hover {
+                    cursor: initial;
+                }
+
                 div {
                     display: flex;
                     flex-direction: column;
                 }
                 span.tag.subject ~ h3, h3 {
+                    font-size: 14px;
                     max-width: max-content;
                     margin: auto 0;
                 }
@@ -393,12 +408,17 @@
                     display: none;
                 }
                 p {
+                    font-size: 12px;
                     display: inline;
                     margin: auto;
                     margin-left: 0;
                     white-space: normal;
 
                     border-radius: $mini-radius;
+
+                    &:empty {
+                        margin: 0;
+                    }
                 }
                 span.tag.subject {
                     margin: auto 12px;
@@ -411,6 +431,7 @@
 
                     grid-area: Subject;
                     &:empty {
+                        display: inline;
                         border: none;
                     }
                 }
@@ -419,7 +440,7 @@
                     margin-left: auto;
                     padding: 0;
                     flex-direction: row;
-                    justify-content: flex-end;
+                    justify-content: flex-start;
                     min-width: 250px;
                     grid-area: TimeDetails;
                     span.tag.time {
@@ -445,11 +466,6 @@
 
     }
 }
-
-// #tasks.list div.column.column:first-of-type, #tasks.list div.column.column:last-of-type {
-//     margin-left: 0;
-//     margin-right: 0;
-// }
 
 // SCROLLABLE CARD MODIFICATIONS
 .chosen-card {
