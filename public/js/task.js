@@ -98,15 +98,10 @@ class Task {
         timeDetails.appendChild(dueDate)
         timeDetails.appendChild(timeTag)
 
-        // appending everything to whole div
-        // if (this.subject.length != 0) {
-            card.appendChild(subjectTag)
-        // }
-        
+        card.appendChild(subjectTag)
+
         informationDiv.appendChild(title)
         informationDiv.appendChild(description)
-        // card.appendChild(title)
-        // card.appendChild(description)
         card.appendChild(informationDiv)
         card.appendChild(line)
         card.appendChild(timeDetails)

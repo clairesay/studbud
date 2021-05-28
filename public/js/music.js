@@ -1,7 +1,3 @@
-// Import the URL to an image file
-// import music from "url:../audio/songs/BEAST.mp3";
-
-// import allMusic from "url:../audio/songs/*.mp3";
 
 // https://github.com/sampotts/plyr/#options
 const player = new Plyr('audio', {
@@ -50,7 +46,6 @@ var songs = [
         artist: 'Ketsa',
         album_art: './albumart/Ketsa.jpg'
     },
-
     {
         source: './audio/Chuckin-It.mp3',
         title: 'Chuckin It',
