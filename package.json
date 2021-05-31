@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "prestart": "parcel build ./public/index.html",
+    "prestart": "parcel ./public/index.html",
     "dev": "parcel serve ./public/index.html"
   },
   "repository": {
@@ -40,7 +40,6 @@
     "@parcel/transformer-sass": "^2.0.0-beta.2",
     "autoprefixer": "^10.2.5",
     "parcel-bundler": "^1.12.5",
-    "parcel-plugin-static-files-copy": "^2.6.0",
-    "postcss": "^8.2.13"
+    "parcel-plugin-static-files-copy": "^2.6.0"
   }
 }
