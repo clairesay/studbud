@@ -251,7 +251,7 @@
     .pop-up[state="active"]#time,
     .pop-up[state="active"]#music {
         position: fixed;
-        z-index: 5;
+        z-index: 4;
         right: 0;
         width: calc(100vw - 32px);
         padding: auto;
