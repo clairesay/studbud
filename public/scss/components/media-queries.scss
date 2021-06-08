@@ -147,6 +147,23 @@
 
 @media only screen and (max-width: 500px) {
 
+    // danger button from delete word to bin
+    form {
+        .button {
+            &.danger {
+                width: max-content;
+                min-width: initial;
+                svg {
+                    display: inline;
+                }
+        
+                text {
+                    display: none;
+                }
+            }
+        }
+    }
+
     .tooltip {
         display: none !important;
     }
