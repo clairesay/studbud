@@ -1615,6 +1615,9 @@ form section div pre {
   #content div.group div.group-title {
     justify-content: space-between;
   }
+  #content div.group div.group-title input {
+    max-width: 40vw;
+  }
   #content div.group div.group-title div {
     width: 100%;
   }

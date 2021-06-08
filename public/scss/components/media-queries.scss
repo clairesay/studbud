@@ -209,13 +209,9 @@
         div.group {
             div.group-title {
                 justify-content: space-between;
-                // flex-direction: column;
-                // div {
-                //     justify-content: space-between;
-                //     svg.edit-group {
-                //         margin-left: auto;
-                //     }
-                // }
+                input {
+                    max-width: 40vw;
+                }
                 div {
                     width: 100%;
                     .edit-group {
