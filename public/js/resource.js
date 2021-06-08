@@ -13,7 +13,7 @@ export function countTiles() {
     total.forEach(function count(object, index) {
         let tileCount = 0;
         // iterates through each list of tiles, to add to tileCount
-        for (let i = 0; i < tileContainers[index].querySelectorAll('.tile').length; i ++) {
+        for (let i = 0; i < tileContainers[index].querySelectorAll('.tile').length; i++) {
             if (tileContainers[index].querySelectorAll('.tile')[i].classList.length == 1) {
                 tileCount += 1
             }
@@ -22,7 +22,7 @@ export function countTiles() {
         if (tileCount == 0) {
             total[index].innerHTML = '0 links' + openLinkSVG;
             total[index].classList.add('link-absent')
-        // otherwise, enable group link opening with relevant CTA
+            // otherwise, enable group link opening with relevant CTA
         } else if (tileCount == 1) {
             total[index].innerHTML = 'Open ' + tileCount + ' link' + openLinkSVG;
             total[index].classList.remove('link-absent')
@@ -53,12 +53,12 @@ export function countTiles() {
 export function openGroupLinks() {
     let groupLinks = document.querySelectorAll('h3.open-link')
     // for each group link
-    groupLinks.forEach(function(groupLink) {
+    groupLinks.forEach(function (groupLink) {
         if (groupLink.getAttribute('listener') != 'true') {
             // add an event listener so that on click, it opens up all links in child element
-            groupLink.addEventListener('click', function() {
+            groupLink.addEventListener('click', function () {
                 let links = groupLink.parentElement.parentElement.querySelectorAll('a.external-link')
-                links.forEach(function(link) {
+                links.forEach(function (link) {
                     let url = link.getAttribute('href')
                     // opens url in a new tab
                     window.open(url)
@@ -70,3 +70,61 @@ export function openGroupLinks() {
 }
 
 openGroupLinks()
+
+// Setting sortable functionality to the cards with the sortable.js library
+export function sortability() {
+    // applying sortability to the children of each .cards container
+    let tileContainers = document.querySelectorAll('.tiles')
+    tileContainers.forEach(function (element) {
+        new Sortable(element, {
+            group: 'grouped',
+            animation: 200,
+            swapThreshold: 1,
+            ghostClass: 'ghost-card',
+            chosenClass: 'chosen-card',
+            dragClass: "sortable-drag",
+            filter: '.filtered', // 'filtered' class is not draggable
+            forceFallback: true,
+
+            onStart: function (evt) {
+                // setting the cursor to grabbing while user is holding card
+                let itemEl = evt.item;
+                itemEl.style.cursor = 'grabbing'
+
+                let body = document.getElementsByTagName('body')[0]
+                body.style.cursor = 'grabbing'
+            },
+
+            onEnd: function (evt) {
+                console.log('dropped')
+                // setting the cursor to grab 
+                let itemEl = evt.item;
+                itemEl.style.cursor = 'grab'
+
+                // reset cursor to normal arrow
+                let body = document.getElementsByTagName('body')[0]
+                body.style.cursor = 'initial'
+
+                // recount all the tiles in each group and update their totals
+                countTiles()
+
+                 // // set enabled/disabled status to each of the buttons after the reallocation happened
+                let allDeleteGroupButtons = document.querySelectorAll('svg.delete-group')
+                allDeleteGroupButtons.forEach(function (button) {
+                    let groups = document.getElementsByClassName('group')
+                    let group = button.parentElement.parentElement.parentElement
+                    let tiles = group.querySelectorAll('.tile')
+    
+                    //if there are tiles inside the group, or there is only 1 group, delete is disabled. 
+                    if (groups.length > 1 && tiles.length == 0) {
+                        button.classList.remove('disabled')
+                    } else if (groups.length <= 1 || tiles.length > 0) {
+                        button.classList.add('disabled')
+                    }
+                })
+            },
+        });
+    })
+}
+
+sortability()

@@ -43,6 +43,10 @@ function toggleGroupForm() {
         addGroupForm.reset()
         newGroupToggle = false
         modalBackground.style.display = 'none'
+
+        // updating state of tiles and sortability after closing the form
+        resource.countTiles()
+        resource.sortability()
     }
 }
 
@@ -159,6 +163,21 @@ function groupEditDeleteFunctionality() {
                 deleteGroupButton.classList.remove('disabled')
             } else if (groups.length <= 1 || tiles.length > 0) {
                 deleteGroupButton.classList.add('disabled')
+            }
+        })
+
+        // updating all groups dynamically
+        let allDeleteGroupButtons = document.querySelectorAll('svg.delete-group')
+        allDeleteGroupButtons.forEach(function (button) {
+            let groups = document.getElementsByClassName('group')
+            let group = button.parentElement.parentElement.parentElement
+            let tiles = group.querySelectorAll('.tile')
+
+            //if there are tiles inside the group, or there is only 1 group, delete is disabled. 
+            if (groups.length > 1 && tiles.length == 0) {
+                button.classList.remove('disabled')
+            } else if (groups.length <= 1 || tiles.length > 0) {
+                button.classList.add('disabled')
             }
         })
     })

@@ -36,6 +36,9 @@ function toggleContentForm(type) {
         overlayToggle = false
         modalBackground.style.display = 'none'
         contentSaveButton.value = ''
+
+        resource.countTiles()
+        resource.sortability()
     }
 }
 
@@ -157,6 +160,7 @@ contentDeleteButton.addEventListener('click', function (event) {
     toggleContentForm()
     reupdate()
     resource.countTiles()
+    resource.sortability()
     enableButtons()
 })
 
@@ -212,6 +216,7 @@ contentSaveButton.addEventListener('click', function (event) {
     // update tile count and group links
     toggleContentForm()
     resource.countTiles()
+    resource.sortability()
     resource.openGroupLinks()
     reupdate()
     enableButtons()

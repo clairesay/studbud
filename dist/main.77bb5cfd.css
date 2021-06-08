@@ -477,6 +477,7 @@ body main .tab a svg {
   position: relative;
   top: 1px;
   border-radius: 4px;
+  box-shadow: inset 0px 0px 1px rgba(48, 48, 48, 0.36);
   margin-left: 12px;
   padding: 8px;
 }
@@ -946,7 +947,7 @@ body main .tab.active svg:active {
 #content div.group {
   display: flex;
   flex-direction: column;
-  margin: 36px;
+  margin: 24px 36px 36px 36px;
 }
 #content div.group:last-of-type {
   margin-bottom: 96px;

@@ -227,6 +227,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.countTiles = countTiles;
 exports.openGroupLinks = openGroupLinks;
+exports.sortability = sortability;
 
 // counts how many tiles there are in total, and within a group
 function countTiles() {
@@ -296,7 +297,58 @@ function openGroupLinks() {
   });
 }
 
-openGroupLinks();
+openGroupLinks(); // Setting sortable functionality to the cards with the sortable.js library
+
+function sortability() {
+  // applying sortability to the children of each .cards container
+  var tileContainers = document.querySelectorAll('.tiles');
+  tileContainers.forEach(function (element) {
+    new Sortable(element, {
+      group: 'grouped',
+      animation: 200,
+      swapThreshold: 1,
+      ghostClass: 'ghost-card',
+      chosenClass: 'chosen-card',
+      dragClass: "sortable-drag",
+      filter: '.filtered',
+      // 'filtered' class is not draggable
+      forceFallback: true,
+      onStart: function onStart(evt) {
+        // setting the cursor to grabbing while user is holding card
+        var itemEl = evt.item;
+        itemEl.style.cursor = 'grabbing';
+        var body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'grabbing';
+      },
+      onEnd: function onEnd(evt) {
+        console.log('dropped'); // setting the cursor to grab 
+
+        var itemEl = evt.item;
+        itemEl.style.cursor = 'grab'; // reset cursor to normal arrow
+
+        var body = document.getElementsByTagName('body')[0];
+        body.style.cursor = 'initial'; // recount all the tiles in each group and update their totals
+
+        countTiles(); // // set enabled/disabled status to each of the buttons after the reallocation happened
+
+        var allDeleteGroupButtons = document.querySelectorAll('svg.delete-group');
+        allDeleteGroupButtons.forEach(function (button) {
+          var groups = document.getElementsByClassName('group');
+          var group = button.parentElement.parentElement.parentElement;
+          var tiles = group.querySelectorAll('.tile'); //if there are tiles inside the group, or there is only 1 group, delete is disabled. 
+
+          if (groups.length > 1 && tiles.length == 0) {
+            button.classList.remove('disabled');
+          } else if (groups.length <= 1 || tiles.length > 0) {
+            button.classList.add('disabled');
+          }
+        });
+      }
+    });
+  });
+}
+
+sortability();
 },{}],"js/content-form.js":[function(require,module,exports) {
 "use strict";
 
@@ -345,6 +397,8 @@ function toggleContentForm(type) {
     overlayToggle = false;
     modalBackground.style.display = 'none';
     contentSaveButton.value = '';
+    resource.countTiles();
+    resource.sortability();
   }
 } // adding event listeners to edit buttons on for each resource card
 
@@ -454,6 +508,7 @@ contentDeleteButton.addEventListener('click', function (event) {
   toggleContentForm();
   reupdate();
   resource.countTiles();
+  resource.sortability();
   enableButtons();
 }); // save the content
 
@@ -506,6 +561,7 @@ contentSaveButton.addEventListener('click', function (event) {
 
     toggleContentForm();
     resource.countTiles();
+    resource.sortability();
     resource.openGroupLinks();
     reupdate();
     enableButtons();
@@ -555,7 +611,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54726" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52510" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
